@@ -2,7 +2,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {T2}
+## Grupo T2
 
 * **Gomez, Joaquin** - [perfil](https://github.com/joaqogomez)
 * **Grassano, Bruno** - [perfil](https://github.com/brunograssano)
@@ -11,6 +11,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Stancanelli, Guillermo** - [perfil](https://github.com/guillermo-st)
 
 Corrector: **{Corrector}**
+
+## Manejo de recursos aparte
+Tabla de Trello - [Trello](https://trello.com/b/VJmgsyJc/tp-algoritmos)
+Edicion de Informe - [Overleaf](https://es.overleaf.com/3373845313gbbdtrmdjgdn)
 
 ### Pre-requisitos
 
