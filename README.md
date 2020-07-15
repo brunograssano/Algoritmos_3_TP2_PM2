@@ -13,8 +13,9 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 Corrector: **{Corrector}**
 
 ## Manejo de recursos aparte
-Tabla de Trello - [Trello](https://trello.com/b/VJmgsyJc/tp-algoritmos)
-Edicion de Informe - [Overleaf](https://es.overleaf.com/3373845313gbbdtrmdjgdn)
+Tabla de Trello - [Trello](https://trello.com/b/VJmgsyJc/tp-algoritmos)  
+
+Edicion de Informe - [Overleaf](https://es.overleaf.com/3373845313gbbdtrmdjgdn)  
 
 ### Pre-requisitos
 
