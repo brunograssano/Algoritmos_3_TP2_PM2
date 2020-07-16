@@ -5,8 +5,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo T2
 
 * **Gomez, Joaquin** - [perfil](https://github.com/joaqogomez)
-* **Grassano, Bruno** - [perfil](https://github.com/brunograssano)
-* **Moletta, Federica** - [perfil](https://github.com/fedemoletta)
+* **Grassano, Bruno** - [perfil](https://github.com/brunograssano)  
 * **Roussillian, Juan Cruz** - [perfil](https://github.com/Uchihacrimson99)
 * **Stancanelli, Guillermo** - [perfil](https://github.com/guillermo-st)
 
