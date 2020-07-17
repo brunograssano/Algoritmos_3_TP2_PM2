@@ -27,7 +27,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         int puntos = unaPregunta.responder(respuestaCorrecta);
 
-        assertEquals(puntos,1);
+        assertEquals(1,puntos);
 
     }
 
@@ -50,7 +50,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         int puntos = unaPregunta.responder(respuestaIncorrecta);
 
-        assertEquals(puntos,0);
+        assertEquals(0,puntos);
 
     }
 
