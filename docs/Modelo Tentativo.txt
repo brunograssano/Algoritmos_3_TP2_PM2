@@ -1,0 +1,78 @@
+@startuml
+
+title Modelo Tentativo
+skinparam classAttributeIconSize 0
+
+note "Clase LectorPreguntas al iniciar el juego, dependiendo el tipo las crea" as NotaLector
+NotaLector .. Algohoot
+NotaLector .. Pregunta
+
+note top of Algohoot: Aplicar un patron Singleton
+class Algohoot
+Jugador "2"<-- "1" Algohoot
+Pregunta "*"<-- "1"Algohoot
+
+class Jugador{
+  -puntos : int
+  -nombre : String
+}
+ModificadorPuntaje "0..4"<-- "1" Jugador
+
+note top of ModificadorPuntaje: Usar strategy?
+Interface ModificadorPuntaje
+Multiplicador ..|> ModificadorPuntaje
+Exclusividad ..|> ModificadorPuntaje
+SinModificador ..|> ModificadorPuntaje
+class Multiplicador{
+  -multiplo : int
+}
+
+class Exclusividad
+class SinModificador
+
+note top of Pregunta: Usar factory?
+class Pregunta{
+  -textoPregunta : String  
+}
+TipoPuntaje "1"<--"1" Pregunta
+ModificadorPuntaje "1"<--"1" Pregunta
+MetodoRespuesta "1"<--"1" Pregunta
+
+
+/'
+note "Quizas conviene mover las respuestas a las implementaciones de MetodoRespuesta, esto puede facilitar las cosas" as N1
+MetodoRespuesta .. N1
+Respuesta .. N1
+'/
+
+Interface TipoPuntaje
+Penalizable ..|> TipoPuntaje
+Clasico ..|> TipoPuntaje
+PuntajeParcial ..|> TipoPuntaje
+
+class Penalizable
+class Clasico
+class PuntajeParcial
+
+Interface MetodoRespuesta
+Respuesta "1..*" <-- "1" MetodoRespuesta
+MetodoChoice ..|> MetodoRespuesta
+VerdaderoFalso ..|> MetodoRespuesta
+Orden ..|> MetodoRespuesta
+Grupos ..|> MetodoRespuesta
+
+class MetodoChoice
+class VerdaderoFalso
+class Orden
+class Grupos
+
+Abstract Respuesta{
+  #textoRespuesta : String 
+}
+RespuestaCorrecta --|> Respuesta
+RespuestaIncorrecta --|> Respuesta
+
+class RespuestaCorrecta
+class RespuestaIncorrecta
+
+@enduml
