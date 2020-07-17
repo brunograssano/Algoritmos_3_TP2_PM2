@@ -31,6 +31,31 @@ public class PreguntasVerdaderoFalsoTest {
 
     }
 
+    @Test
+    public void test02CreoUnaPreguntaVerdaderoFalsoYSeEligeLaIncorrecta(){
+
+        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        String enunciado = "Diciembre tiene 31 dias?";
+
+        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
+        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+
+        respuestas.add(respuestaCorrecta);
+        respuestas.add(respuestaIncorrecta);
+
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
+
+        int puntos = unaPregunta.responder(respuestaIncorrecta);
+
+        assertEquals(puntos,0);
+
+    }
+
+
+
 
 }
 
