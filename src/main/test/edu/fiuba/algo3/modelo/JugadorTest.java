@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JugadorTest {
 
     @Test
-    void test01UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico(){
+    public void test01UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico(){
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
@@ -35,7 +35,7 @@ public class JugadorTest {
     }
 
     @Test
-    void test02UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos(){
+    public void test02UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos(){
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El pasto es verde?";
@@ -61,7 +61,7 @@ public class JugadorTest {
     }
 
     @Test
-    void test03UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos(){
+    public void test03UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos(){
         int puntos = 0;
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
