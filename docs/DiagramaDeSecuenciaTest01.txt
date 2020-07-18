@@ -1,0 +1,43 @@
+@startuml
+
+'autonumber
+title test01UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico
+participant Test
+participant "respuestas \n: ArrayList" as respuestas
+participant Pregunta
+participant "unaPregunta \n :Pregunta" as pregunta
+participant "verdaderoFalso \n : MetodoVerdaderoFalso" as metodo
+participant "respuestaJugador \n: RespuestaCorrecta" as respuesta
+participant "pedro \n: Jugador" as jugador
+
+activate Test
+Test -> respuestas: add(respuestaCorrecta)
+activate respuestas
+Test -> respuestas: add(respuestaIncorrecta)
+deactivate respuestas
+
+Test -> Pregunta: new(enunciado,respuestas,verdaderoFalso,tipoClasico)
+activate Pregunta
+Pregunta --> Test: nueva pregunta
+deactivate Pregunta
+
+Test -> pregunta : responder(respuestaJugador)
+activate pregunta
+pregunta -> metodo: evaluar(respuestaJugador)
+activate metodo
+metodo -> respuesta : evaluar()
+activate respuesta
+note right : En este caso \n el jugador \n responde bien 
+respuesta --> metodo : puntos
+deactivate respuesta
+metodo --> pregunta: puntos
+deactivate metodo
+pregunta --> Test: puntos
+deactivate pregunta
+
+Test -> jugador : sumarPuntos(puntos)
+activate jugador
+deactivate jugador
+
+
+@enduml
