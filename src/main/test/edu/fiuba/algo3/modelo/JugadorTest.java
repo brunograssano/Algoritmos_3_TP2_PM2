@@ -25,13 +25,12 @@ public class JugadorTest {
         Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Pedro");
+        Respuesta respuestaJugador = respuestaCorrecta;
 
-        int puntos = unaPregunta.responder(respuestaCorrecta);
+        int puntos = unaPregunta.responder(respuestaJugador);
 
         jugador.sumarPuntos(puntos);
-
         assertEquals(1,jugador.obtenerPuntos());
-
     }
 
     @Test
@@ -51,11 +50,11 @@ public class JugadorTest {
         Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Lucas");
+        Respuesta respuestaJugador = respuestaIncorrecta;
 
-        int puntos = unaPregunta.responder(respuestaIncorrecta);
+        int puntos = unaPregunta.responder(respuestaJugador);
 
         jugador.sumarPuntos(puntos);
-
         assertEquals(0,jugador.obtenerPuntos());
 
     }
@@ -83,12 +82,13 @@ public class JugadorTest {
         Pregunta unaPregunta5 = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Lucas");
+        Respuesta respuestaJugador = respuestaCorrecta;
 
-        puntos += unaPregunta1.responder(respuestaCorrecta);
-        puntos += unaPregunta2.responder(respuestaCorrecta);
-        puntos += unaPregunta3.responder(respuestaCorrecta);
-        puntos += unaPregunta4.responder(respuestaCorrecta);
-        puntos += unaPregunta5.responder(respuestaCorrecta);
+        puntos += unaPregunta1.responder(respuestaJugador);
+        puntos += unaPregunta2.responder(respuestaJugador);
+        puntos += unaPregunta3.responder(respuestaJugador);
+        puntos += unaPregunta4.responder(respuestaJugador);
+        puntos += unaPregunta5.responder(respuestaJugador);
 
         jugador.sumarPuntos(puntos);
 
