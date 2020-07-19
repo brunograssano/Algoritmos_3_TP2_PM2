@@ -1,0 +1,93 @@
+@startuml
+
+title Diagrama General
+skinparam classAttributeIconSize 0
+/'
+note "Clase LectorPreguntas al iniciar el juego, dependiendo el tipo las crea" as NotaLector
+
+NotaLector .. Algohoot
+NotaLector .. Pregunta
+'/
+
+/'
+El Panel del juego va a estar llamando a Algohoot
+'/
+
+
+/'
+note top of Algohoot: Aplicar un patron Singleton
+'/
+class Algohoot
+Jugador "2"<-up- "1" Algohoot
+Pregunta "*"<-- "1"Algohoot
+
+class Jugador{
+  -puntos : int
+  -nombre : String
+}
+ModificadorPuntaje "0..4"<-- "1" Jugador
+
+/'
+note top of ModificadorPuntaje: Usar strategy?
+'/
+Interface ModificadorPuntaje
+Multiplicador ..|> ModificadorPuntaje
+Exclusividad ..|> ModificadorPuntaje
+SinModificador ..|> ModificadorPuntaje
+class Multiplicador{
+  -multiplo : int
+}
+
+class Exclusividad
+class SinModificador
+
+/'
+note top of Pregunta: Usar factory?
+'/
+class Pregunta{
+  -textoPregunta : String  
+}
+TipoPuntaje "1"<-left-"1" Pregunta
+ModificadorPuntaje "1"<--"1" Pregunta
+MetodoRespuesta "1"<-right-"1" Pregunta
+
+
+/'
+note "Quizas conviene mover las respuestas a las implementaciones de MetodoRespuesta, esto puede facilitar las cosas" as N1
+MetodoRespuesta .. N1
+Respuesta .. N1
+'/
+
+Interface TipoPuntaje
+TipoPuntajePenalizable .down.|> TipoPuntaje
+TipoPuntajeClasico .up.|> TipoPuntaje
+TipoPuntajeParcial .up.|> TipoPuntaje
+
+class TipoPuntajePenalizable
+class TipoPuntajeClasico
+class TipoPuntajeParcial
+
+
+Interface MetodoRespuesta
+Respuesta "2..5" <-right- "1" MetodoRespuesta
+MetodoChoice ..|> MetodoRespuesta
+MetodoVerdaderoFalso ..|> MetodoRespuesta
+MetodoOrden .up.|> MetodoRespuesta
+MetodoGrupos .up.|> MetodoRespuesta
+
+class MetodoChoice
+class MetodoVerdaderoFalso
+class MetodoOrden
+class MetodoGrupos
+
+Abstract Respuesta{
+  -textoRespuesta : String
+  #puntos : int
+}
+RespuestaCorrecta -up-|> Respuesta
+RespuestaIncorrecta --|> Respuesta
+
+class RespuestaCorrecta
+class RespuestaIncorrecta
+
+@enduml
