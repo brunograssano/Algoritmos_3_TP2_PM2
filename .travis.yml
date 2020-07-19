@@ -2,5 +2,6 @@ language: java
 
 script: mvn clean test
 
+export CODECOV_TOKEN="7df5be11-e984-40a6-bb93-83fc18f9ef1d"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
