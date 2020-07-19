@@ -9,7 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JugadorTest {
 
     @Test
-    public void test01UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico(){
+    public void test01CreoUnJugadorYLePidoSusPuntosDeberiaSerCero(){
+        Jugador jugador = new Jugador("Pedro");
+        assertEquals(0,jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico(){
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
@@ -36,7 +42,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test02UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos(){
+    public void test03UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos(){
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El pasto es verde?";
@@ -64,7 +70,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void test03UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos(){
+    public void test04UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos(){
         int puntos = 0;
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
