@@ -19,8 +19,8 @@ public class Pregunta {
 
     }
 
-    public int responder(Respuesta respuesta) {
-        return metodo.evaluar(respuesta);
+    public int responder(ArrayList<Respuesta> respuestas) {
+        return metodo.evaluar(respuestas);
 
     }
 }

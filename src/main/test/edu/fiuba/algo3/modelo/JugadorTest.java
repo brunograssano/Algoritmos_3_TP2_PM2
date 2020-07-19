@@ -25,9 +25,11 @@ public class JugadorTest {
         Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Pedro");
-        Respuesta respuestaJugador = respuestaCorrecta;
 
-        int puntos = unaPregunta.responder(respuestaJugador);
+        Respuesta respuestaJugador = respuestaCorrecta;
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaJugador);
+        int puntos = unaPregunta.responder(respuestasJugador);
 
         jugador.sumarPuntos(puntos);
         assertEquals(1,jugador.obtenerPuntos());
@@ -50,9 +52,11 @@ public class JugadorTest {
         Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Lucas");
-        Respuesta respuestaJugador = respuestaIncorrecta;
 
-        int puntos = unaPregunta.responder(respuestaJugador);
+        Respuesta respuestaJugador = respuestaIncorrecta;
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaJugador);
+        int puntos = unaPregunta.responder(respuestasJugador);
 
         jugador.sumarPuntos(puntos);
         assertEquals(0,jugador.obtenerPuntos());
@@ -84,11 +88,13 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Lucas");
         Respuesta respuestaJugador = respuestaCorrecta;
 
-        puntos += unaPregunta1.responder(respuestaJugador);
-        puntos += unaPregunta2.responder(respuestaJugador);
-        puntos += unaPregunta3.responder(respuestaJugador);
-        puntos += unaPregunta4.responder(respuestaJugador);
-        puntos += unaPregunta5.responder(respuestaJugador);
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaJugador);
+        puntos += unaPregunta1.responder(respuestasJugador);
+        puntos += unaPregunta2.responder(respuestasJugador);
+        puntos += unaPregunta3.responder(respuestasJugador);
+        puntos += unaPregunta4.responder(respuestasJugador);
+        puntos += unaPregunta5.responder(respuestasJugador);
 
         jugador.sumarPuntos(puntos);
 

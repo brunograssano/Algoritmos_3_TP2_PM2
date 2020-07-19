@@ -5,5 +5,5 @@ import java.util.ArrayList;
 public interface MetodoRespuesta {
     void agregarRespuestas(ArrayList<Respuesta> respuestas);
 
-    int evaluar(Respuesta respuesta);
+    int evaluar(ArrayList<Respuesta> respuestas);
 }

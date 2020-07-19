@@ -26,8 +26,9 @@ public class PreguntasVerdaderoFalsoTest {
         respuestas.add(respuestaIncorrecta);
 
         Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
-
-        int puntos = unaPregunta.responder(respuestaCorrecta);
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaCorrecta);
+        int puntos = unaPregunta.responder(respuestasJugador);
 
         assertEquals(1,puntos);
 
@@ -50,7 +51,9 @@ public class PreguntasVerdaderoFalsoTest {
 
         Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);
 
-        int puntos = unaPregunta.responder(respuestaIncorrecta);
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaIncorrecta);
+        int puntos = unaPregunta.responder(respuestasJugador);
 
         assertEquals(0,puntos);
 
