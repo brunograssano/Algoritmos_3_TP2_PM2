@@ -13,7 +13,7 @@ public class MetodoVerdaderoFalso implements MetodoRespuesta{
 
     @Override
     public void agregarRespuestas(ArrayList<Respuesta> respuestas) {
-        if(respuestas.size()!=CANT_RESPUESTAS_INICIALES_VERDADERO_FALSO){
+        if(respuestas.size()!= CANT_RESPUESTAS_INICIALES_VERDADERO_FALSO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
         this.respuestas = respuestas;
@@ -24,7 +24,7 @@ public class MetodoVerdaderoFalso implements MetodoRespuesta{
         if (respuestas.size() != CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        int puntos=0;
+        int puntos = 0;
         for (Respuesta respuesta: respuestas){
             puntos += respuesta.evaluar();
         }
