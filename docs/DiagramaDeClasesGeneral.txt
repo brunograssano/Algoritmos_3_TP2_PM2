@@ -18,7 +18,7 @@ El Panel del juego va a estar llamando a Algohoot
 note top of Algohoot: Aplicar un patron Singleton
 '/
 class Algohoot
-Jugador "2"<-up- "1" Algohoot
+Jugador "2"<-- "1" Algohoot
 Pregunta "*"<-- "1"Algohoot
 
 class Jugador{
@@ -47,9 +47,9 @@ note top of Pregunta: Usar factory?
 class Pregunta{
   -textoPregunta : String  
 }
-TipoPuntaje "1"<-left-"1" Pregunta
+TipoPuntaje "1"<-down-"1" Pregunta
 ModificadorPuntaje "1"<--"1" Pregunta
-MetodoRespuesta "1"<-right-"1" Pregunta
+MetodoRespuesta "1"<--"1" Pregunta
 
 
 /'
@@ -59,9 +59,9 @@ Respuesta .. N1
 '/
 
 Interface TipoPuntaje
-TipoPuntajePenalizable .down.|> TipoPuntaje
-TipoPuntajeClasico .up.|> TipoPuntaje
-TipoPuntajeParcial .up.|> TipoPuntaje
+TipoPuntajePenalizable ..|> TipoPuntaje
+TipoPuntajeClasico ..|> TipoPuntaje
+TipoPuntajeParcial ..|> TipoPuntaje
 
 class TipoPuntajePenalizable
 class TipoPuntajeClasico
@@ -69,23 +69,34 @@ class TipoPuntajeParcial
 
 
 Interface MetodoRespuesta
-Respuesta "2..5" <-right- "1" MetodoRespuesta
+/'Respuesta "2..5" <-- "1" MetodoRespuesta'/
 MetodoChoice ..|> MetodoRespuesta
 MetodoVerdaderoFalso ..|> MetodoRespuesta
-MetodoOrden .up.|> MetodoRespuesta
-MetodoGrupos .up.|> MetodoRespuesta
+MetodoOrden ..|> MetodoRespuesta
+MetodoGrupos ..|> MetodoRespuesta
 
 class MetodoChoice
 class MetodoVerdaderoFalso
 class MetodoOrden
 class MetodoGrupos
 
-Abstract Respuesta{
-  -textoRespuesta : String
-  #puntos : int
-}
-RespuestaCorrecta -up-|> Respuesta
-RespuestaIncorrecta --|> Respuesta
+MetodoVerdaderoFalso "1"--> "2"RespuestaComun
+MetodoChoice "1" --> "2..5" RespuestaComun
+
+MetodoGrupos "1" --> "2..5" RespuestaGrupo
+
+RespuestaGrupo "1..5" -- "1" Grupo
+
+class RespuestaGrupo
+class Grupo
+
+class RespuestaOrden
+
+RespuestaOrden "2..5" <-- "1" MetodoOrden
+
+Interface RespuestaComun
+RespuestaCorrecta ..|> RespuestaComun
+RespuestaIncorrecta ..|> RespuestaComun
 
 class RespuestaCorrecta
 class RespuestaIncorrecta
