@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +56,28 @@ public class PreguntasVerdaderoFalsoTest {
 
     }
 
+
+    @Test
+    public void test03SiCreoUnaPreguntaVerdaderoFalsoYLeIntentoAgregarMasDeDosRespuestasLanzaExcepcion(){
+
+        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        String enunciado = "El sistema solar tiene 12 planetas?";
+
+        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
+        RespuestaCorrecta otraRespuestaCorrecta = new RespuestaCorrecta("Otro falso");
+        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
+
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+
+        respuestas.add(respuestaCorrecta);
+        respuestas.add(otraRespuestaCorrecta);
+        respuestas.add(respuestaIncorrecta);
+
+        assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
+                ()->{Pregunta unaPregunta = new Pregunta(enunciado,respuestas,verdaderoFalso,tipoClasico);}
+                );
+    }
 
 
 
