@@ -2,38 +2,59 @@
 
 title Diagrama General
 skinparam classAttributeIconSize 0
-/'
-note "Clase LectorPreguntas al iniciar el juego, dependiendo el tipo las crea" as NotaLector
 
-NotaLector .. Algohoot
-NotaLector .. Pregunta
-'/
+/' RELACIONES '/
 
-/'
-El Panel del juego va a estar llamando a Algohoot
-'/
-
-
-/'
-note top of Algohoot: Aplicar un patron Singleton
-'/
-class Algohoot
 Jugador "2"<-- "1" Algohoot
 Pregunta "*"<-- "1"Algohoot
+
+ModificadorPuntaje "0..4"<-- "1" Jugador
+
+Interface ModificadorPuntaje
+Multiplicador ..|> ModificadorPuntaje
+Exclusividad ..|> ModificadorPuntaje
+SinModificador ..|> ModificadorPuntaje
+
+Multiplicador "1"-->"1" Jugador
+
+TipoPuntaje "1"<-right-"1" Pregunta
+ModificadorPuntaje "1..2"<--"1" Pregunta
+MetodoRespuesta "1"<--"1" Pregunta
+
+Interface TipoPuntaje
+TipoPuntajePenalizable .up.|> TipoPuntaje
+TipoPuntajeClasico .up.|> TipoPuntaje
+TipoPuntajeParcial .up.|> TipoPuntaje
+
+MetodoChoice ..|> MetodoRespuesta
+MetodoVerdaderoFalso ..|> MetodoRespuesta
+MetodoOrden ..|> MetodoRespuesta
+MetodoGrupos .up.|> MetodoRespuesta
+
+MetodoVerdaderoFalso "1"-up-> "2"RespuestaComun
+MetodoChoice "1" -up-> "2..5" RespuestaComun
+
+MetodoGrupos "1" --> "2..5" RespuestaGrupo
+
+RespuestaGrupo "1..5" -- "1" Grupo
+
+RespuestaOrden "2..5" <-- "1" MetodoOrden
+
+Interface RespuestaComun
+RespuestaCorrecta ..|> RespuestaComun
+RespuestaIncorrecta ..|> RespuestaComun
+
+/' CLASES '/
+
+
+class Algohoot
 
 class Jugador{
   -puntos : int
   -nombre : String
 }
-ModificadorPuntaje "0..4"<-- "1" Jugador
 
-/'
-note top of ModificadorPuntaje: Usar strategy?
-'/
-Interface ModificadorPuntaje
-Multiplicador ..|> ModificadorPuntaje
-Exclusividad ..|> ModificadorPuntaje
-SinModificador ..|> ModificadorPuntaje
+
 class Multiplicador{
   -multiplo : int
 }
@@ -41,27 +62,11 @@ class Multiplicador{
 class Exclusividad
 class SinModificador
 
-/'
-note top of Pregunta: Usar factory?
-'/
+
 class Pregunta{
   -textoPregunta : String  
 }
-TipoPuntaje "1"<-down-"1" Pregunta
-ModificadorPuntaje "1"<--"1" Pregunta
-MetodoRespuesta "1"<--"1" Pregunta
 
-
-/'
-note "Quizas conviene mover las respuestas a las implementaciones de MetodoRespuesta, esto puede facilitar las cosas" as N1
-MetodoRespuesta .. N1
-Respuesta .. N1
-'/
-
-Interface TipoPuntaje
-TipoPuntajePenalizable ..|> TipoPuntaje
-TipoPuntajeClasico ..|> TipoPuntaje
-TipoPuntajeParcial ..|> TipoPuntaje
 
 class TipoPuntajePenalizable
 class TipoPuntajeClasico
@@ -69,34 +74,19 @@ class TipoPuntajeParcial
 
 
 Interface MetodoRespuesta
-/'Respuesta "2..5" <-- "1" MetodoRespuesta'/
-MetodoChoice ..|> MetodoRespuesta
-MetodoVerdaderoFalso ..|> MetodoRespuesta
-MetodoOrden ..|> MetodoRespuesta
-MetodoGrupos ..|> MetodoRespuesta
+
 
 class MetodoChoice
 class MetodoVerdaderoFalso
 class MetodoOrden
 class MetodoGrupos
 
-MetodoVerdaderoFalso "1"--> "2"RespuestaComun
-MetodoChoice "1" --> "2..5" RespuestaComun
-
-MetodoGrupos "1" --> "2..5" RespuestaGrupo
-
-RespuestaGrupo "1..5" -- "1" Grupo
 
 class RespuestaGrupo
 class Grupo
 
 class RespuestaOrden
 
-RespuestaOrden "2..5" <-- "1" MetodoOrden
-
-Interface RespuestaComun
-RespuestaCorrecta ..|> RespuestaComun
-RespuestaIncorrecta ..|> RespuestaComun
 
 class RespuestaCorrecta
 class RespuestaIncorrecta
