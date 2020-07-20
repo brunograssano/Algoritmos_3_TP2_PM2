@@ -1,0 +1,94 @@
+@startuml
+
+title Diagrama General
+skinparam classAttributeIconSize 0
+
+/' RELACIONES '/
+
+Jugador "2"<-- "1" Algohoot
+Pregunta "*"<-- "1"Algohoot
+
+ModificadorPuntaje "0..4"<-- "1" Jugador
+
+Interface ModificadorPuntaje
+Multiplicador ..|> ModificadorPuntaje
+Exclusividad ..|> ModificadorPuntaje
+SinModificador ..|> ModificadorPuntaje
+
+Multiplicador "1"-->"1" Jugador
+
+TipoPuntaje "1"<-right-"1" Pregunta
+ModificadorPuntaje "1..2"<--"1" Pregunta
+MetodoRespuesta "1"<--"1" Pregunta
+
+Interface TipoPuntaje
+TipoPuntajePenalizable .up.|> TipoPuntaje
+TipoPuntajeClasico .up.|> TipoPuntaje
+TipoPuntajeParcial .up.|> TipoPuntaje
+
+MetodoChoice ..|> MetodoRespuesta
+MetodoVerdaderoFalso ..|> MetodoRespuesta
+MetodoOrden ..|> MetodoRespuesta
+MetodoGrupos .up.|> MetodoRespuesta
+
+MetodoVerdaderoFalso "1"-up-> "2"RespuestaComun
+MetodoChoice "1" -up-> "2..5" RespuestaComun
+
+MetodoGrupos "1" --> "2..5" RespuestaGrupo
+
+RespuestaGrupo "1..5" -- "1" Grupo
+
+RespuestaOrden "2..5" <-- "1" MetodoOrden
+
+Interface RespuestaComun
+RespuestaCorrecta ..|> RespuestaComun
+RespuestaIncorrecta ..|> RespuestaComun
+
+/' CLASES '/
+
+
+class Algohoot
+
+class Jugador{
+  -puntos : int
+  -nombre : String
+}
+
+
+class Multiplicador{
+  -multiplo : int
+}
+
+class Exclusividad
+class SinModificador
+
+
+class Pregunta{
+  -textoPregunta : String  
+}
+
+
+class TipoPuntajePenalizable
+class TipoPuntajeClasico
+class TipoPuntajeParcial
+
+
+Interface MetodoRespuesta
+
+
+class MetodoChoice
+class MetodoVerdaderoFalso
+class MetodoOrden
+class MetodoGrupos
+
+
+class RespuestaGrupo
+class Grupo
+
+class RespuestaOrden
+
+
+class RespuestaCorrecta
+class RespuestaIncorrecta
+
+@enduml

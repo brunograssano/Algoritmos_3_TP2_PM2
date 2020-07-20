@@ -1,0 +1,18 @@
+@startuml
+
+
+hide empty description
+
+state  "Inicializar Juego" as InicializarJuego
+state  "Responde jugador 1" as RespondeJugador1
+state  "Responde jugador 2" as RespondeJugador2
+state "Declarar ganador" as ganador
+
+[*] --> InicializarJuego
+InicializarJuego -right-> RespondeJugador1
+RespondeJugador1 -left-> RespondeJugador2
+RespondeJugador2 -down-> RespondeJugador1 :Quedan mas preguntas
+RespondeJugador2 -right-> ganador :No quedan mas preguntas
+ganador --> [*] 
+
+@enduml
