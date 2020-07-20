@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Roussillian, Juan Cruz** - [perfil](https://github.com/Uchihacrimson99)
 * **Stancanelli, Guillermo** - [perfil](https://github.com/guillermo-st)
 
-Corrector: **{Corrector}**
+Corrector: Pablo Massuh
 
 ## Manejo de recursos aparte
 Tablero de Trello - [Trello](https://trello.com/b/VJmgsyJc/tp-algoritmos)  
