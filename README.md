@@ -1,5 +1,6 @@
 # TP2 Algoritmos 3: {nombre}
-[![Build Status](https://travis-ci.com/brunograssano/Algoritmos_3_TP2.svg?token=kxawFvHvMKcCczSHri2q&branch=master)](https://travis-ci.com/brunograssano/Algoritmos_3_TP2)  
+[![Build Status](https://travis-ci.com/brunograssano/Algoritmos_3_TP2.svg?token=kxawFvHvMKcCczSHri2q&branch=master)](https://travis-ci.com/brunograssano/Algoritmos_3_TP2)
+[![codecov](https://codecov.io/gh/brunograssano/Algoritmos_3_TP2/branch/master/graph/badge.svg?token=Rg2WnH9FMd)](https://codecov.io/gh/brunograssano/Algoritmos_3_TP2)  
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
