@@ -1,17 +1,17 @@
-# TP2 Algoritmos 3: {nombre}
+﻿# TP2 Algoritmos 3: {nombre}
 [![Build Status](https://travis-ci.com/brunograssano/Algoritmos_3_TP2.svg?token=kxawFvHvMKcCczSHri2q&branch=master)](https://travis-ci.com/brunograssano/Algoritmos_3_TP2)
 [![codecov](https://codecov.io/gh/brunograssano/Algoritmos_3_TP2/branch/master/graph/badge.svg?token=Rg2WnH9FMd)](https://codecov.io/gh/brunograssano/Algoritmos_3_TP2)  
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo T2
+## Grupo PM2
 
 * **Gomez, Joaquin** - [perfil](https://github.com/joaqogomez)
 * **Grassano, Bruno** - [perfil](https://github.com/brunograssano)  
 * **Roussillian, Juan Cruz** - [perfil](https://github.com/Uchihacrimson99)
 * **Stancanelli, Guillermo** - [perfil](https://github.com/guillermo-st)
 
-Corrector: Pablo Massuh
+Corrector: Pablo Massuh - [perfil](https://github.com/xpitr256)
 
 ## Manejo de recursos aparte
 Tablero de Trello - [Trello](https://trello.com/b/VJmgsyJc/tp-algoritmos)  
