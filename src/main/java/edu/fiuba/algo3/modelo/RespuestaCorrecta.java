@@ -1,20 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
-public class RespuestaCorrecta extends Respuesta {
+public class RespuestaCorrecta implements RespuestaComun {
 
+
+    private String textoRespuesta;
     static final int PUNTAJE_RESPUESTA_CORRECTA = 1;
 
 
     public RespuestaCorrecta(String textoRespuestaCorrecta) {
-        super(textoRespuestaCorrecta);
-        this.puntos = PUNTAJE_RESPUESTA_CORRECTA;
+        this.textoRespuesta = textoRespuestaCorrecta;
+    }
+
+
+    @Override
+    public int evaluarClasico() {
+        return PUNTAJE_RESPUESTA_CORRECTA;
     }
 
     @Override
-    public int evaluar() {
-        return puntos;
+    public int evaluarPenalizable() {
+        return PUNTAJE_RESPUESTA_CORRECTA;
     }
-
-
-
 }

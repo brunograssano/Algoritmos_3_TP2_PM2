@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Pregunta {
 
@@ -9,18 +8,18 @@ public class Pregunta {
     private MetodoRespuesta metodo;
     private TipoPuntaje tipoPuntaje;
 
-    public Pregunta(String enunciado, ArrayList<Respuesta> respuestas, MetodoRespuesta unMetodo, TipoPuntaje unTipoPuntos) {
+    public Pregunta(String enunciado, ArrayList<RespuestaComun> respuestas, MetodoRespuesta unMetodo, TipoPuntaje unTipoPuntos) {
 
         this.enunciado = enunciado;
         this.metodo = unMetodo;
-        this.tipoPuntaje = unTipoPuntos;
 
+        this.tipoPuntaje = unTipoPuntos;
         this.metodo.agregarRespuestas(respuestas);
 
     }
 
-    public int responder(ArrayList<Respuesta> respuestas) {
-        return metodo.evaluar(respuestas);
+    public int responder(ArrayList<RespuestaComun> respuestas) {
+        return tipoPuntaje.evaluar(metodo,respuestas);
 
     }
 }
