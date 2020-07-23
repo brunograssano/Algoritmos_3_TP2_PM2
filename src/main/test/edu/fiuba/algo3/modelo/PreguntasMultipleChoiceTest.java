@@ -35,7 +35,6 @@ public class PreguntasMultipleChoiceTest {
         int puntos = unaPregunta.responder(respuestasJugador);
 
         assertEquals(1,puntos);
-
     }
 
 
