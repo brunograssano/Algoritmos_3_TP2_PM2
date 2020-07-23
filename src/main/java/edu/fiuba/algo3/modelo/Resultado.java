@@ -8,9 +8,6 @@ public class Resultado {
     private int respuestasCorrectasTotales;
     private int respuestasIncorrectasRespondidas;
 
-    private static final int PUNTAJE_CORRECTO_CLASICO = 1;
-    private static final int PUNTAJE_INCORRECTO_CLASICO = 0;
-
     public Resultado(int cantidadDeRespuestasCorrectasTotales){
         this.respuestasCorrectasRespondidas = 0;
         this.respuestasCorrectasTotales = cantidadDeRespuestasCorrectasTotales;
@@ -26,10 +23,7 @@ public class Resultado {
     }
 
     public int calcularClasico() {
-        if(respuestasCorrectasRespondidas == respuestasCorrectasTotales && respuestasIncorrectasRespondidas == 0){
-            return PUNTAJE_CORRECTO_CLASICO;
-        }
-        return PUNTAJE_INCORRECTO_CLASICO;
+        return respuestasCorrectasRespondidas;
     }
 
     public int calcularPenalizable() {
