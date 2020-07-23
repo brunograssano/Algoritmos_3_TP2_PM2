@@ -20,14 +20,15 @@ public class PreguntasMultipleChoiceTest {
         RespuestaCorrecta respuestaCorrecta3 = new RespuestaCorrecta("Vigilante");
         RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("Cordero a la Wellington");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta1);
-        respuestasPosibles.add(respuestaCorrecta2);
-        respuestasPosibles.add(respuestaCorrecta3);
-        respuestasPosibles.add(respuestaIncorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,multipleChoice,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoClasico);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
