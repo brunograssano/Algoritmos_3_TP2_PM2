@@ -9,54 +9,34 @@ public class MetodoMultipleChoice implements MetodoRespuesta {
     static final int CANT_OPCIONES_MIN = 2;
     static final int CANT_OPCIONES_MAX = 5;
 
+    private int respuestasTotales = 0;
     private TipoPuntaje tipoPuntaje;
-    private ArrayList<RespuestaComun> respuestas;
+    private ArrayList<RespuestaCorrecta> respuestasCorrectas;
+    private ArrayList<RespuestaIncorrecta> respuestasIncorrectas;
 
     @Override
-    public void agregarRespuestas(ArrayList<RespuestaComun> respuestas) {
-        if(respuestas.size() < CANT_OPCIONES_MIN || respuestas.size() > CANT_OPCIONES_MAX){
+    public void agregarRespuestas(ArrayList<RespuestaCorrecta> respuestasCorrectas,ArrayList<RespuestaIncorrecta> respuestasIncorrectas ) {
+
+        respuestasTotales = respuestasCorrectas.size() + respuestasIncorrectas.size();
+        if(respuestasTotales < CANT_OPCIONES_MIN || respuestasTotales > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        this.respuestas = respuestas;
-    }
-
-    @Override
-    public void agregarTipo(TipoPuntaje unTipoPuntos) {
-        this.tipoPuntaje = unTipoPuntos;
-    }
-
-    @Override
-    public int evaluarClasico(ArrayList<RespuestaComun> respuestasJugador) {
-        if(respuestas.size() < CANT_OPCIONES_MIN || respuestas.size() > CANT_OPCIONES_MAX){
-            throw new CantidadErroneaDeRespuestasParaPreguntaException();
-        }
-        int puntos = 0;
-
-        return puntos;
+        this.respuestasCorrectas = respuestasCorrectas;
+        this.respuestasIncorrectas = respuestasIncorrectas;
     }
 
     @Override
-    public int evaluarPenalizable(ArrayList<RespuestaComun> respuestas) {
-        if(respuestas.size() < CANT_OPCIONES_MIN || respuestas.size() > CANT_OPCIONES_MAX) {
+    public Resultado evaluar(ArrayList<RespuestaComun> respuestasUsuario) {
+        if (respuestasUsuario.size() < CANT_OPCIONES_MIN || respuestasUsuario.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        int puntos = 0;
-        for (RespuestaComun respuesta: respuestas){
-            puntos += respuesta.evaluarPenalizable();
+        Resultado unResultado = new Resultado(respuestasCorrectas.size());
+        for (RespuestaComun respuesta: respuestasUsuario){
+            respuesta.evaluar(unResultado);
         }
-        return puntos;
+        return unResultado;
     }
-// no hago override porque MetodoRespuesta aun no tiene el evaluarParcial. Hay que considerar hacerla una interfaz aparte para no joder VoF.
-    public int evaluarParcial(ArrayList<RespuestaComun> respuestas) {
-        if(respuestas.size() < CANT_OPCIONES_MIN || respuestas.size() > CANT_OPCIONES_MAX) {
-            throw new CantidadErroneaDeRespuestasParaPreguntaException();
-        }
-        int puntos = 0;
-        for (RespuestaComun respuesta: respuestas){
-            puntos += respuesta.evaluarClasico();
-        }
-        return puntos;
-    }
+
 
 }
 
