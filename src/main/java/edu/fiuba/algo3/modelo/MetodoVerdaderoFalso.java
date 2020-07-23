@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MetodoVerdaderoFalso implements MetodoRespuesta{
 
-    static final int CANT_RESPUESTAS_INICIALES_VERDADERO_FALSO_POR_TIPO = 1;
+    static final int CANT_RESPUESTAS_INICIALES_VOF_POR_TIPO = 1;
     static final int CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO = 1;
 
     private TipoPuntaje tipoPuntaje;
@@ -16,10 +16,11 @@ public class MetodoVerdaderoFalso implements MetodoRespuesta{
 
     @Override
     public void agregarRespuestas(ArrayList<RespuestaCorrecta> respuestasCorrectas,ArrayList<RespuestaIncorrecta> respuestasIncorrectas) {
-        if(respuestasCorrectas.size()!= CANT_RESPUESTAS_INICIALES_VERDADERO_FALSO_POR_TIPO){
+
+        if(respuestasCorrectas.size() != CANT_RESPUESTAS_INICIALES_VOF_POR_TIPO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        if(respuestasIncorrectas.size()!= CANT_RESPUESTAS_INICIALES_VERDADERO_FALSO_POR_TIPO){
+        if(respuestasIncorrectas.size() != CANT_RESPUESTAS_INICIALES_VOF_POR_TIPO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
         this.respuestasCorrectas = respuestasCorrectas;

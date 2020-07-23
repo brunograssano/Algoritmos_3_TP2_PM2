@@ -9,9 +9,9 @@ public class Resultado {
     private int respuestasIncorrectasRespondidas;
 
     public Resultado(int cantidadDeRespuestasCorrectasTotales){
-        this.respuestasCorrectasRespondidas=0;
-        this.respuestasCorrectasTotales= cantidadDeRespuestasCorrectasTotales;
-        this.respuestasIncorrectasRespondidas=0;
+        this.respuestasCorrectasRespondidas = 0;
+        this.respuestasCorrectasTotales = cantidadDeRespuestasCorrectasTotales;
+        this.respuestasIncorrectasRespondidas = 0;
     }
 
     public void sumarRespuestaCorrecta() {
@@ -31,7 +31,7 @@ public class Resultado {
     }
 
     public int calcularParcial() {
-        if (respuestasIncorrectasRespondidas==0){
+        if (respuestasIncorrectasRespondidas == 0){
             return respuestasCorrectasRespondidas;
         }
         return 0;
