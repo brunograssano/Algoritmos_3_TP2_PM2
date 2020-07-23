@@ -35,9 +35,9 @@ public class JugadorTest {
         Respuesta respuestaJugador = respuestaCorrecta;
         ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaJugador);
-        int puntos = unaPregunta.responder(respuestasJugador);
 
-        jugador.sumarPuntos(puntos);
+        jugador.responder(unaPregunta,respuestasJugador);
+
         assertEquals(1,jugador.obtenerPuntos());
     }
 
@@ -62,16 +62,15 @@ public class JugadorTest {
         Respuesta respuestaJugador = respuestaIncorrecta;
         ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaJugador);
-        int puntos = unaPregunta.responder(respuestasJugador);
 
-        jugador.sumarPuntos(puntos);
+        jugador.responder(unaPregunta,respuestasJugador);
+
         assertEquals(0,jugador.obtenerPuntos());
 
     }
 
     @Test
     public void test04UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos(){
-        int puntos = 0;
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El pasto es verde?";
@@ -96,13 +95,12 @@ public class JugadorTest {
 
         ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaJugador);
-        puntos += unaPregunta1.responder(respuestasJugador);
-        puntos += unaPregunta2.responder(respuestasJugador);
-        puntos += unaPregunta3.responder(respuestasJugador);
-        puntos += unaPregunta4.responder(respuestasJugador);
-        puntos += unaPregunta5.responder(respuestasJugador);
 
-        jugador.sumarPuntos(puntos);
+        jugador.responder(unaPregunta1,respuestasJugador);
+        jugador.responder(unaPregunta2,respuestasJugador);
+        jugador.responder(unaPregunta3,respuestasJugador);
+        jugador.responder(unaPregunta4,respuestasJugador);
+        jugador.responder(unaPregunta5,respuestasJugador);
 
         assertEquals(5,jugador.obtenerPuntos());
 
