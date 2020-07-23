@@ -11,7 +11,12 @@ public class RespuestaCorrecta implements RespuestaComun {
         this.textoRespuesta = textoRespuestaCorrecta;
     }
 
+    @Override
+    public void evaluar(Resultado unResultado) {
+        unResultado.sumarRespuestaCorrecta();
+    }
 
+/*
     @Override
     public int evaluarClasico() {
         return PUNTAJE_RESPUESTA_CORRECTA;
@@ -21,4 +26,6 @@ public class RespuestaCorrecta implements RespuestaComun {
     public int evaluarPenalizable() {
         return PUNTAJE_RESPUESTA_CORRECTA;
     }
+
+ */
 }

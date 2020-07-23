@@ -11,6 +11,11 @@ public class RespuestaIncorrecta implements RespuestaComun {
     }
 
     @Override
+    public void evaluar(Resultado unResultado) {
+        unResultado.sumarRespuestaIncorrecta();
+    }
+/*
+    @Override
     public int evaluarClasico() {
         return PUNTAJE_RESPUESTA_INCORRECTA;
     }
@@ -19,4 +24,6 @@ public class RespuestaIncorrecta implements RespuestaComun {
     public int evaluarPenalizable() {
         return PENALIZACION_RESPUESTA_INCORRECTA;
     }
+ */
+
 }
