@@ -21,7 +21,7 @@ public class Jugador {
         return puntos;
     }
 
-    public void responder(Pregunta unaPregunta, ArrayList<Respuesta> respuestasJugador) {
+    public void responder(Pregunta unaPregunta, ArrayList<RespuestaComun> respuestasJugador) {
         puntos += unaPregunta.responder(respuestasJugador);
     }
 }

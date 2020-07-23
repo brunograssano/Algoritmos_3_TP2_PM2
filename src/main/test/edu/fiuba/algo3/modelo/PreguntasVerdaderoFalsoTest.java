@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PreguntasVerdaderoFalsoTest {
 
@@ -20,13 +19,13 @@ public class PreguntasVerdaderoFalsoTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
 
         respuestasPosibles.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaIncorrecta);
 
         Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta);
         int puntos = unaPregunta.responder(respuestasJugador);
 
@@ -44,14 +43,14 @@ public class PreguntasVerdaderoFalsoTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<Respuesta> respuestasPosibles= new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasPosibles= new ArrayList<>();
 
         respuestasPosibles.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaIncorrecta);
 
         Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
 
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta);
         int puntos = unaPregunta.responder(respuestasJugador);
 
@@ -71,7 +70,7 @@ public class PreguntasVerdaderoFalsoTest {
         RespuestaCorrecta otraRespuestaCorrecta = new RespuestaCorrecta("Otro falso");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
 
         respuestasPosibles.add(respuestaCorrecta);
         respuestasPosibles.add(otraRespuestaCorrecta);
@@ -92,14 +91,14 @@ public class PreguntasVerdaderoFalsoTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
 
         respuestasPosibles.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaIncorrecta);
 
         Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
 
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta);
         respuestasJugador.add(respuestaIncorrecta);
 
@@ -118,14 +117,14 @@ public class PreguntasVerdaderoFalsoTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
 
         respuestasPosibles.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaIncorrecta);
 
         Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
 
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
                 ()->{unaPregunta.responder(respuestasJugador);}
@@ -133,6 +132,55 @@ public class PreguntasVerdaderoFalsoTest {
 
     }
 
+    @Test
+    public void test06CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoBienYDevuelvePuntos(){
+        String enunciado = "El patron poxi existe?";
+
+        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+
+        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
+        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
+
+        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+
+        respuestasPosibles.add(respuestaCorrecta);
+        respuestasPosibles.add(respuestaIncorrecta);
+
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
+
+        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaCorrecta);
+        int puntos = unaPregunta.responder(respuestasJugador);
+
+        assertEquals(1,puntos);
+
+    }
+
+    @Test
+    public void test07CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoMalYPierdoPuntos(){
+        String enunciado = "El patron poxi existe?";
+
+        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+
+        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
+        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
+
+        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+
+        respuestasPosibles.add(respuestaCorrecta);
+        respuestasPosibles.add(respuestaIncorrecta);
+
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
+
+        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaIncorrecta);
+        int puntos = unaPregunta.responder(respuestasJugador);
+
+        assertEquals(-1,puntos);
+
+    }
 
 }
 
