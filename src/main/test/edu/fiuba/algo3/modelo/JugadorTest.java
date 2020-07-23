@@ -23,12 +23,14 @@ public class JugadorTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        respuestasCorrectas.add(respuestaCorrecta);
+        respuestasIncorrectas.add(respuestaIncorrecta);
+
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Pedro");
 
@@ -50,12 +52,13 @@ public class JugadorTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasCorrectas.add(respuestaCorrecta);
+        respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Lucas");
 
@@ -78,17 +81,17 @@ public class JugadorTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasCorrectas.add(respuestaCorrecta);
+        respuestasIncorrectas.add(respuestaIncorrecta);
 
-
-        Pregunta unaPregunta1 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta2 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta3 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta4 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta5 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta1 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta2 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta3 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta4 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta5 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
 
         Jugador jugador = new Jugador("Lucas");
         RespuestaComun respuestaJugador = respuestaCorrecta;
@@ -115,12 +118,14 @@ public class JugadorTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasCorrectas.add(respuestaCorrecta);
+        respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+
 
         Jugador jugador = new Jugador("Lucas");
 
@@ -144,12 +149,14 @@ public class JugadorTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasCorrectas.add(respuestaCorrecta);
+        respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+
 
         Jugador jugador = new Jugador("Lucas");
 
@@ -172,17 +179,18 @@ public class JugadorTest {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
 
-        ArrayList<RespuestaComun> respuestasPosibles = new ArrayList<>();
+        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasCorrectas.add(respuestaCorrecta);
+        respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta1 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
-        Pregunta unaPregunta2 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
-        Pregunta unaPregunta3 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
-        Pregunta unaPregunta4 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
-        Pregunta unaPregunta5 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
-        Pregunta unaPregunta6 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta1 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta2 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta3 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta4 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta5 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta6 = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
 
         Jugador jugador = new Jugador("Lucas");
         RespuestaComun respuestaCorrectaJugador = respuestaCorrecta;
