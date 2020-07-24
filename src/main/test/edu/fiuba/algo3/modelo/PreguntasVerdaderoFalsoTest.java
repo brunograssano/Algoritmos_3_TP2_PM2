@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PreguntasVerdaderoFalsoTest {
 
     @Test
-    public void test01CreoUnaPreguntaVerdaderoFalsoYSeEligeLaCorrecta(){
+    public void test01CreoUnaPreguntaVerdaderoFalsoSeEligeLaCorrectaYDevuelve1Punto(){
 
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
@@ -35,7 +35,7 @@ public class PreguntasVerdaderoFalsoTest {
     }
 
     @Test
-    public void test02CreoUnaPreguntaVerdaderoFalsoYSeEligeLaIncorrecta(){
+    public void test02CreoUnaPreguntaVerdaderoFalsoSeEligeLaIncorrectaYDevuelve0Puntos(){
 
         TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
@@ -141,7 +141,7 @@ public class PreguntasVerdaderoFalsoTest {
     }
 
     @Test
-    public void test06CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoBienYDevuelvePuntos(){
+    public void test06CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoBienYDevuelve1Punto(){
         String enunciado = "El patron poxi existe?";
 
         TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
@@ -168,7 +168,7 @@ public class PreguntasVerdaderoFalsoTest {
     }
 
     @Test
-    public void test07CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoMalYPierdoPuntos(){
+    public void test07CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoMalYPierdo1Punto(){
         String enunciado = "El patron poxi existe?";
 
         TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
