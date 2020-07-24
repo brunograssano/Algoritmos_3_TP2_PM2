@@ -27,7 +27,7 @@ public class MetodoMultipleChoice implements MetodoRespuesta {
 
     @Override
     public Resultado evaluar(ArrayList<RespuestaComun> respuestasUsuario) {
-        if (respuestasUsuario.size() < CANT_OPCIONES_MIN || respuestasUsuario.size() > CANT_OPCIONES_MAX){
+        if (respuestasUsuario.size() < 1 || respuestasUsuario.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
         Resultado unResultado = new Resultado(respuestasCorrectas.size());
