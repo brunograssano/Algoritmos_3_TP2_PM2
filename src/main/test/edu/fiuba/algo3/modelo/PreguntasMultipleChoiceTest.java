@@ -124,7 +124,7 @@ public class PreguntasMultipleChoiceTest {
         assertEquals(2,puntos);
     }
     @Test
-    public void test04CreoUnaPreguntaMultipleChoiceParcialSeEligenDosCorrectasYDosIncorrectasDevuelveDosPuntos(){
+    public void test04CreoUnaPreguntaMultipleChoiceParcialSeEligenDosCorrectasYDosIncorrectasYNoDevuelvePuntos(){
 
         TipoPuntajeParcial tipoParcial = new TipoPuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
@@ -151,6 +151,6 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta2);
         int puntos = unaPregunta.responder(respuestasJugador);
 
-        assertEquals(2,puntos);
+        assertEquals(0,puntos);
     }
 }

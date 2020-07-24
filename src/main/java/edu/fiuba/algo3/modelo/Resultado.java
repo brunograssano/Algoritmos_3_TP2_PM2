@@ -36,7 +36,7 @@ public class Resultado {
     }
 
     public int calcularParcial() {
-        if (respuestasIncorrectasRespondidas == 0){
+        if(respuestasIncorrectasRespondidas == 0) {
             return respuestasCorrectasRespondidas;
         }
         return 0;
