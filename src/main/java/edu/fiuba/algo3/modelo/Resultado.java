@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Resultado {
 
+    private static final int PUNTAJE_CORRECTO_CLASICO = 1;
+    private static final int PUNTAJE_INCORRECTO_CLASICO = 0;
     private int respuestasCorrectasRespondidas;
     private int respuestasCorrectasTotales;
     private int respuestasIncorrectasRespondidas;
@@ -23,7 +25,10 @@ public class Resultado {
     }
 
     public int calcularClasico() {
-        return respuestasCorrectasRespondidas;
+        if(respuestasCorrectasRespondidas == respuestasCorrectasTotales && respuestasIncorrectasRespondidas == 0){
+            return PUNTAJE_CORRECTO_CLASICO;
+        }
+        return PUNTAJE_INCORRECTO_CLASICO;
     }
 
     public int calcularPenalizable() {
