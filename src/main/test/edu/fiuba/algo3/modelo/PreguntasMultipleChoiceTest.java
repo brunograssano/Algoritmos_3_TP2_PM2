@@ -28,7 +28,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta3);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, multipleChoice,tipoClasico);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);

@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 public class Resultado {
 
+    private static final int PUNTAJE_CORRECTO_CLASICO = 1;
+    private static final int PUNTAJE_INCORRECTO_CLASICO = 0;
     private int respuestasCorrectasRespondidas;
     private int respuestasCorrectasTotales;
     private int respuestasIncorrectasRespondidas;
-
-    private static final int PUNTAJE_CORRECTO_CLASICO = 1;
-    private static final int PUNTAJE_INCORRECTO_CLASICO = 0;
 
     public Resultado(int cantidadDeRespuestasCorrectasTotales){
         this.respuestasCorrectasRespondidas = 0;
