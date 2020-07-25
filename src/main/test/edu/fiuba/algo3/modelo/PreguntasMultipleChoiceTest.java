@@ -75,7 +75,7 @@ public class PreguntasMultipleChoiceTest {
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Esta pregunta es una prueba?";
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Nah");
-        
+
         ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
         ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
 
