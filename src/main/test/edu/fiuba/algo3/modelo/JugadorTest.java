@@ -17,7 +17,7 @@ public class JugadorTest {
 
     @Test
     public void test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico() {
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
 
@@ -31,7 +31,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajeClasico);
 
         Jugador jugador = new Jugador("Pedro");
 
@@ -46,7 +46,7 @@ public class JugadorTest {
 
     @Test
     public void test03UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos() {
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El pasto es verde?";
 
@@ -59,7 +59,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajeClasico);
 
         Jugador jugador = new Jugador("Lucas");
 
@@ -75,7 +75,7 @@ public class JugadorTest {
 
     @Test
     public void test04UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos() {
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El pasto es verde?";
 
@@ -88,7 +88,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajeClasico);
 
         Jugador jugador = new Jugador("Lucas");
         RespuestaComun respuestaJugador = respuestaCorrecta;
@@ -107,7 +107,7 @@ public class JugadorTest {
 
     @Test
     public void test05UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoPenalizableYTienePuntosNegativos() {
-        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Existe el comando git mix?";
 
@@ -120,7 +120,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajePenalizable);
 
 
         Jugador jugador = new Jugador("Lucas");
@@ -137,7 +137,7 @@ public class JugadorTest {
 
     @Test
     public void test06UnJugadorRespondeCorrectamenteUnaPreguntaVerdaderoFalsoPenalizableYSumaPuntos() {
-        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Existe el comando git mix?";
 
@@ -150,7 +150,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajePenalizable);
 
 
         Jugador jugador = new Jugador("Lucas");
@@ -167,7 +167,7 @@ public class JugadorTest {
 
     @Test
     public void test07UnJugadorRespondeVariasPreguntasVFPenalizablesYLeQuedan0Puntos() {
-        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Todo metodo iterativo se puede hacer recursivo?";
 
@@ -180,7 +180,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajePenalizable);
 
         Jugador jugador = new Jugador("Lucas");
         RespuestaComun respuestaCorrectaJugador = respuestaCorrecta;
@@ -212,7 +212,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Lucas");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajeClasico  puntaje = new TipoPuntajeClasico();
+        PuntajeClasico puntaje = new PuntajeClasico();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -246,7 +246,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Lucas");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajeClasico  puntaje = new TipoPuntajeClasico();
+        PuntajeClasico puntaje = new PuntajeClasico();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -275,7 +275,7 @@ public class JugadorTest {
             Jugador jugador = new Jugador("Pablo");
             ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-            TipoPuntajeClasico  puntaje = new TipoPuntajeClasico();
+            PuntajeClasico puntaje = new PuntajeClasico();
             MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
             String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -307,7 +307,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Pablo");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajeParcial puntaje = new TipoPuntajeParcial();
+        PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -342,7 +342,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Pablo");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajeParcial puntaje = new TipoPuntajeParcial();
+        PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -375,7 +375,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Pablo");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajeParcial puntaje = new TipoPuntajeParcial();
+        PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -405,7 +405,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Pablo");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajeParcial  puntaje = new TipoPuntajeParcial();
+        PuntajeParcial  puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -444,7 +444,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Oscar");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
@@ -478,7 +478,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("ISURUS | 10429");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
@@ -513,7 +513,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("ISURUS | 10429");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
@@ -549,7 +549,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("ISURUS | 10429");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
@@ -584,7 +584,7 @@ public class JugadorTest {
         Jugador jugador = new Jugador("Pablo");
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
-        TipoPuntajePenalizable puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son simuladores?";
 
