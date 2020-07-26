@@ -1,5 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,73 +28,70 @@ public class JugadorTest {
 
     @Test
     public void test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico() {
-        PuntajeClasico puntajeClasico = new PuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+
         String enunciado = "Diciembre tiene 31 dias?";
+        boolean enunciadoEsCorrecto = true;
+        Pregunta verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        Jugador jugador1 = new Jugador("Pedro");
+        Jugador jugador2 = new Jugador("Juan");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
+        RespuestaCorrectaVerdaderoFalso respuestaJugador1 = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador2 = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        respuestasCorrectas.add(respuestaCorrecta);
-        respuestasIncorrectas.add(respuestaIncorrecta);
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajeClasico);
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
 
-        Jugador jugador = new Jugador("Pedro");
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
 
-        RespuestaComun respuestaJugador = respuestaCorrecta;
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaJugador);
-
-        jugador.responder(unaPregunta, respuestasJugador);
-
-        assertEquals(1, jugador.obtenerPuntos());
+        assertEquals(1, jugador1.obtenerPuntos());
     }
 
     @Test
     public void test03UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos() {
-        PuntajeClasico puntajeClasico = new PuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El pasto es verde?";
+        boolean enunciadoEsCorrecto = true;
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
-        respuestasCorrectas.add(respuestaCorrecta);
-        respuestasIncorrectas.add(respuestaIncorrecta);
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajeClasico);
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
-        Jugador jugador = new Jugador("Lucas");
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador1 = respuestaIncorrecta;
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador2 = respuestaIncorrecta;
 
-        RespuestaComun respuestaJugador = respuestaIncorrecta;
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaJugador);
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
 
-        jugador.responder(unaPregunta, respuestasJugador);
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
 
-        assertEquals(0, jugador.obtenerPuntos());
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(0, jugador1.obtenerPuntos());
 
     }
-
+/*
     @Test
     public void test04UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos() {
         PuntajeClasico puntajeClasico = new PuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        VerdaderoFalso verdaderoFalso = new VerdaderoFalso();
         String enunciado = "El pasto es verde?";
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta = new RespuestaCorrectaMultipleChoice("Verdadero");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta = new RespuestaIncorrectaMultipleChoice("Falso");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
@@ -91,9 +99,9 @@ public class JugadorTest {
         Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajeClasico);
 
         Jugador jugador = new Jugador("Lucas");
-        RespuestaComun respuestaJugador = respuestaCorrecta;
+        RespuestaMultipleChoice respuestaJugador = respuestaCorrecta;
 
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaJugador);
 
         //Reutilizamos la misma pregunta y el jugador las responde varias veces para simular que responde muchas preguntas
@@ -108,14 +116,14 @@ public class JugadorTest {
     @Test
     public void test05UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoPenalizableYTienePuntosNegativos() {
         PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        VerdaderoFalso verdaderoFalso = new VerdaderoFalso();
         String enunciado = "Existe el comando git mix?";
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta = new RespuestaCorrectaMultipleChoice("Falso");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta = new RespuestaIncorrectaMultipleChoice("Verdadero");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
@@ -125,8 +133,8 @@ public class JugadorTest {
 
         Jugador jugador = new Jugador("Lucas");
 
-        RespuestaComun respuestaJugador = respuestaIncorrecta;
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        RespuestaMultipleChoice respuestaJugador = respuestaIncorrecta;
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaJugador);
 
         jugador.responder(unaPregunta, respuestasJugador);
@@ -138,14 +146,14 @@ public class JugadorTest {
     @Test
     public void test06UnJugadorRespondeCorrectamenteUnaPreguntaVerdaderoFalsoPenalizableYSumaPuntos() {
         PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        VerdaderoFalso verdaderoFalso = new VerdaderoFalso();
         String enunciado = "Existe el comando git mix?";
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta = new RespuestaCorrectaMultipleChoice("Falso");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta = new RespuestaIncorrectaMultipleChoice("Verdadero");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
@@ -155,8 +163,8 @@ public class JugadorTest {
 
         Jugador jugador = new Jugador("Lucas");
 
-        RespuestaComun respuestaJugador = respuestaCorrecta;
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        RespuestaMultipleChoice respuestaJugador = respuestaCorrecta;
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaJugador);
 
         jugador.responder(unaPregunta, respuestasJugador);
@@ -168,14 +176,14 @@ public class JugadorTest {
     @Test
     public void test07UnJugadorRespondeVariasPreguntasVFPenalizablesYLeQuedan0Puntos() {
         PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        VerdaderoFalso verdaderoFalso = new VerdaderoFalso();
         String enunciado = "Todo metodo iterativo se puede hacer recursivo?";
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta = new RespuestaCorrectaMultipleChoice("Verdadero");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta = new RespuestaIncorrectaMultipleChoice("Falso");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
@@ -183,10 +191,10 @@ public class JugadorTest {
         Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, verdaderoFalso, puntajePenalizable);
 
         Jugador jugador = new Jugador("Lucas");
-        RespuestaComun respuestaCorrectaJugador = respuestaCorrecta;
-        RespuestaComun respuestaIncorrectaJugador = respuestaIncorrecta;
+        RespuestaMultipleChoice respuestaCorrectaJugador = respuestaCorrecta;
+        RespuestaMultipleChoice respuestaIncorrectaJugador = respuestaIncorrecta;
 
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrectaJugador);
 
         //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas
@@ -210,20 +218,20 @@ public class JugadorTest {
     public void test08UnJugadorRespondeUnaPreguntaMultipleChoiceClasicoCorrectamenteYSuma1Punto() {
 
         Jugador jugador = new Jugador("Lucas");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajeClasico puntaje = new PuntajeClasico();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
-        RespuestaIncorrecta respuestaIncorrecta2 = new RespuestaIncorrecta("FFFX");
-        RespuestaIncorrecta respuestaIncorrecta3 = new RespuestaIncorrecta("CSS");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("FFFX");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("CSS");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -244,18 +252,18 @@ public class JugadorTest {
     public void test09UnJugadorRespondeUnaPreguntaMultipleChoiceClasicoIncorrectamenteYSuma0Puntos() {
 
         Jugador jugador = new Jugador("Lucas");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajeClasico puntaje = new PuntajeClasico();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -273,18 +281,18 @@ public class JugadorTest {
     public void test10UnJugadorRespondeUnaPreguntaMultipleChoiceClasicoCorrectamenteYUnaIncorectamenteYSuma1Puntos() {
 
             Jugador jugador = new Jugador("Pablo");
-            ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+            ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
             PuntajeClasico puntaje = new PuntajeClasico();
             MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
             String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-            RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-            RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-            RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
+            RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+            RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+            RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
 
-            ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-            ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+            ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+            ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
             respuestasCorrectas.add(respuestaCorrecta1);
             respuestasCorrectas.add(respuestaCorrecta2);
             respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -305,20 +313,20 @@ public class JugadorTest {
     public void test11UnJugadorRespondeUnaPreguntaMultipleChoiceParcialCon4RespuestasCorrectasY0IncorrectasYSuma4Puntos() {
 
         Jugador jugador = new Jugador("Pablo");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-        RespuestaCorrecta respuestaCorrecta3 = new RespuestaCorrecta("Python");
-        RespuestaCorrecta respuestaCorrecta4 = new RespuestaCorrecta("C++");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Python");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasCorrectas.add(respuestaCorrecta3);
@@ -340,20 +348,20 @@ public class JugadorTest {
     public void test12UnJugadorRespondeUnaPreguntaMultipleChoiceParcialCon1RespuestaCorrectaY0IncorrectasYSuma1Punto() {
 
         Jugador jugador = new Jugador("Pablo");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-        RespuestaCorrecta respuestaCorrecta3 = new RespuestaCorrecta("Python");
-        RespuestaCorrecta respuestaCorrecta4 = new RespuestaCorrecta("C++");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Python");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasCorrectas.add(respuestaCorrecta3);
@@ -373,18 +381,18 @@ public class JugadorTest {
     public void test13UnJugadoRespondeUnaPreguntaMultipleChoiceParcialCon2RespuestasCorrectasY1IncorrectaYSuma0Puntos(){
 
         Jugador jugador = new Jugador("Pablo");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -403,18 +411,18 @@ public class JugadorTest {
     public void test14UnJugadoRespondeVariasPreguntasMultipleChoiceParcialYTieneElNumeroCorrectoDePuntos(){
 
         Jugador jugador = new Jugador("Pablo");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
-        PuntajeParcial  puntaje = new PuntajeParcial();
+        PuntajeParcial puntaje = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("C#");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("PHP");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("HTML");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -442,20 +450,20 @@ public class JugadorTest {
     public void test15UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon3RespuestasCorrectasYSuma3Puntos() {
 
         Jugador jugador = new Jugador("Oscar");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("Gato");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("Delfin");
-        RespuestaCorrecta respuestaCorrecta3 = new RespuestaCorrecta("Mapache");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("Tiburon");
-        RespuestaIncorrecta respuestaIncorrecta2 = new RespuestaIncorrecta("Iguana");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Gato");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Delfin");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Mapache");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Tiburon");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Iguana");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasCorrectas.add(respuestaCorrecta3);
@@ -476,20 +484,20 @@ public class JugadorTest {
     public void test16UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon4RespuestasCorrectasY1IncorrectaYSuma3Puntos() {
 
         Jugador jugador = new Jugador("ISURUS | 10429");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("Gato");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("Delfin");
-        RespuestaCorrecta respuestaCorrecta3 = new RespuestaCorrecta("Mapache");
-        RespuestaCorrecta respuestaCorrecta4 = new RespuestaCorrecta("Gorila");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Iguana");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Gato");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Delfin");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Mapache");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("Gorila");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta = new RespuestaIncorrectaMultipleChoice("Iguana");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasCorrectas.add(respuestaCorrecta3);
@@ -511,20 +519,20 @@ public class JugadorTest {
     public void test17UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon2RespuestasCorrectasY3IncorrectasYResta1Punto() {
 
         Jugador jugador = new Jugador("ISURUS | 10429");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("Gato");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("Delfin");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("Iguana");
-        RespuestaIncorrecta respuestaIncorrecta2 = new RespuestaIncorrecta("Cocodrilo");
-        RespuestaIncorrecta respuestaIncorrecta3 = new RespuestaIncorrecta("Sanguijuela");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Gato");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Delfin");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Iguana");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Cocodrilo");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("Sanguijuela");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -547,20 +555,20 @@ public class JugadorTest {
     public void test18UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon3RespuestasIncorrectasYResta3Puntos() {
 
         Jugador jugador = new Jugador("ISURUS | 10429");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son mamiferos?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("Gato");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("Delfin");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("Iguana");
-        RespuestaIncorrecta respuestaIncorrecta2 = new RespuestaIncorrecta("Cocodrilo");
-        RespuestaIncorrecta respuestaIncorrecta3 = new RespuestaIncorrecta("Sanguijuela");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Gato");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Delfin");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Iguana");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Cocodrilo");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("Sanguijuela");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta1);
@@ -582,20 +590,20 @@ public class JugadorTest {
     public void test19UnJugadorRespondeVariasPreguntasMultipleChoicePenalizablesYTieneElNumeroCorrectoDePuntos() {
 
         Jugador jugador = new Jugador("Pablo");
-        ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaMultipleChoice> respuestasJugador = new ArrayList<>();
 
         PuntajePenalizable puntaje = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son simuladores?";
 
-        RespuestaCorrecta respuestaCorrecta1 = new RespuestaCorrecta("Santos");
-        RespuestaCorrecta respuestaCorrecta2 = new RespuestaCorrecta("Ravenna");
-        RespuestaCorrecta respuestaCorrecta3 = new RespuestaCorrecta("Lamponne");
-        RespuestaIncorrecta respuestaIncorrecta1 = new RespuestaIncorrecta("Garponne");
-        RespuestaIncorrecta respuestaIncorrecta2 = new RespuestaIncorrecta("Juan");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Santos");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Ravenna");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Lamponne");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Garponne");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Juan");
 
-        ArrayList<RespuestaCorrecta> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrecta> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasCorrectas.add(respuestaCorrecta3);
@@ -625,7 +633,7 @@ public class JugadorTest {
         assertEquals(31, jugador.obtenerPuntos());
     }
 
-
+*/
 
 
 }

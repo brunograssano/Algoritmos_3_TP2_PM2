@@ -1,10 +1,21 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas;
 
 import java.util.ArrayList;
 
-public class Resultado {
+public interface Resultado {
+    void sumarRespuestaCorrecta();
 
-    private static final int PUNTAJE_CORRECTO_CLASICO = 1;
+    void sumarRespuestaIncorrecta();
+
+    void calcularClasico();
+
+    void calcularPenalizable();
+
+    void calcularParcial();
+
+    int obtenerPuntos();
+
+    /*private static final int PUNTAJE_CORRECTO_CLASICO = 1;
     private static final int PUNTAJE_INCORRECTO_CLASICO = 0;
     private int respuestasCorrectasRespondidas;
     private int respuestasCorrectasTotales;
@@ -40,5 +51,5 @@ public class Resultado {
             return respuestasCorrectasRespondidas;
         }
         return 0;
-    }
+    }*/
 }

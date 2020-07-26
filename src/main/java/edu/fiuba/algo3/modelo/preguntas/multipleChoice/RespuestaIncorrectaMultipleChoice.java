@@ -1,12 +1,15 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
-public class RespuestaIncorrecta implements RespuestaComun {
+import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Resultado;
+
+public class RespuestaIncorrectaMultipleChoice implements Respuesta {
 
     private String textoRespuesta;
     static final int PUNTAJE_RESPUESTA_INCORRECTA = 0;
     static final int PENALIZACION_RESPUESTA_INCORRECTA = -1;
 
-    public RespuestaIncorrecta(String textoRespuestaIncorrecta) {
+    public RespuestaIncorrectaMultipleChoice(String textoRespuestaIncorrecta) {
         this.textoRespuesta = textoRespuestaIncorrecta;
     }
 
