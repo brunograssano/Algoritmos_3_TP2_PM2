@@ -13,7 +13,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test01CreoUnaPreguntaMultipleChoiceClasicoSeEligenLasCorrectasYDevuelveUnPunto(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son postres?";
 
@@ -30,7 +30,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta3);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, multipleChoice,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, multipleChoice,puntajeClasico);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
@@ -43,7 +43,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test02CreoUnaPreguntaMultipleChoiceClasicoYSeEligenLasIncorrectasYNoDevuelvePuntos(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son postres?";
 
@@ -60,7 +60,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta3);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajeClasico);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaIncorrecta1);
@@ -71,7 +71,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test03IntentoCrearUnaPreguntaMultipleChoiceCon1RespuestaYLanzaExcepcion(){
 
-        TipoPuntajeParcial tipoParcial = new TipoPuntajeParcial();
+        PuntajeParcial puntajeParcial = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Esta pregunta es una prueba?";
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Nah");
@@ -83,14 +83,14 @@ public class PreguntasMultipleChoiceTest {
 
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, multipleChoice ,tipoParcial);}
+                ()->{Pregunta unaPregunta = new Pregunta(enunciado, respuestasCorrectas, respuestasIncorrectas, multipleChoice ,puntajeParcial);}
         );
     }
 
     @Test
     public void test04CreoUnaPreguntaMultipleChoiceParcialSeEligenTresCorrectasYDevuelveTresPuntos(){
 
-        TipoPuntajeParcial tipoParcial = new TipoPuntajeParcial();
+        PuntajeParcial puntajeParcial = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son postres?";
 
@@ -107,7 +107,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta3);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoParcial);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajeParcial);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
@@ -119,7 +119,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test05CreoUnaPreguntaMultipleChoiceParcialSeEligenDosCorrectasYDevuelveDosPuntos(){
 
-        TipoPuntajeParcial tipoParcial = new TipoPuntajeParcial();
+        PuntajeParcial puntajeParcial = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son postres?";
 
@@ -136,7 +136,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta3);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoParcial);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajeParcial);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
@@ -147,7 +147,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test06CreoUnaPreguntaMultipleChoiceParcialSeEligenDosCorrectasYDosIncorrectasYNoDevuelvePuntos(){
 
-        TipoPuntajeParcial tipoParcial = new TipoPuntajeParcial();
+        PuntajeParcial puntajeParcial = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son postres?";
 
@@ -164,7 +164,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoParcial);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajeParcial);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
@@ -178,7 +178,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test07CreoUnaPreguntaMultipleChoiceParcialYSeEligen4RespuestasCorrectasYUnaIncorrectaYNoDevuelvePuntos() {
 
-        TipoPuntajeParcial tipoParcial = new TipoPuntajeParcial();
+        PuntajeParcial puntajeParcial = new PuntajeParcial();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son pokemones?";
 
@@ -197,7 +197,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta4);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,tipoParcial);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajeParcial);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
@@ -213,7 +213,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test08CreoUnaPreguntaMultipleChoicePenalizableYSeEligen3RespuestasCorrectasYDevuelve3Puntos() {
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son chocolates?";
 
@@ -228,7 +228,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasCorrectas.add(respuestaCorrecta2);
         respuestasCorrectas.add(respuestaCorrecta3);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntaje);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajePenalizable);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
@@ -242,7 +242,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test09CreoUnaPreguntaMultipleChoicePenalizableYSeEligenRespuestas2IncorrectasYDevuelve2PuntosNegativos() {
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son chocolates?";
 
@@ -256,7 +256,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntaje);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajePenalizable);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaIncorrecta2);
@@ -269,7 +269,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test10CreoUnaPreguntaMultipleChoicePenalizableYSeEligen3RespuestasCorrectasY2IncorrectaYDevuelve1Punto() {
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son chocolates?";
 
@@ -287,7 +287,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntaje);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajePenalizable);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
         respuestasJugador.add(respuestaCorrecta1);
@@ -303,7 +303,7 @@ public class PreguntasMultipleChoiceTest {
     @Test
     public void test11CreoUnaPreguntaMultipleChoicePenalizableYSeEligen2RespuestasCorrectasY3IncorrectasYDevuelve1PuntoNegativo() {
 
-        TipoPuntajePenalizable  puntaje = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoMultipleChoice multipleChoice = new MetodoMultipleChoice();
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
@@ -321,7 +321,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
         respuestasIncorrectas.add(respuestaIncorrecta3);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntaje);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,multipleChoice,puntajePenalizable);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
         respuestasJugador.add(respuestaCorrecta1);

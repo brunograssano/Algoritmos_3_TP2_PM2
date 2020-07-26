@@ -12,7 +12,7 @@ public class PreguntasVerdaderoFalsoTest {
     @Test
     public void test01CreoUnaPreguntaVerdaderoFalsoSeEligeLaCorrectaYDevuelve1Punto(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El cielo es azul?";
 
@@ -25,7 +25,7 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajeClasico);
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta);
         int puntos = unaPregunta.responder(respuestasJugador);
@@ -37,7 +37,7 @@ public class PreguntasVerdaderoFalsoTest {
     @Test
     public void test02CreoUnaPreguntaVerdaderoFalsoSeEligeLaIncorrectaYDevuelve0Puntos(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
 
@@ -50,7 +50,7 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajeClasico);
 
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta);
@@ -64,7 +64,7 @@ public class PreguntasVerdaderoFalsoTest {
     @Test
     public void test03SiCreoUnaPreguntaVerdaderoFalsoYLeIntentoAgregarMasDeDosRespuestasLanzaExcepcion(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "El sistema solar tiene 12 planetas?";
 
@@ -81,14 +81,14 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasIncorrectas.add(respuestaIncorrecta);
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);}
+                ()->{Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajeClasico);}
                 );
     }
 
     @Test
     public void test04CreoUnaPreguntaVerdaderoFalsoYSeDaMasDeUnaRespuestaDeberiaLanzarExcepcion(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
 
@@ -102,7 +102,7 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajeClasico);
 
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta);
@@ -116,7 +116,7 @@ public class PreguntasVerdaderoFalsoTest {
     @Test
     public void test05CreoUnaPreguntaVerdaderoFalsoYNoSeDaUnaRespuestaDeberiaLanzarExcepcion(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
+        PuntajeClasico puntajeClasico = new PuntajeClasico();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
 
@@ -130,7 +130,7 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoClasico);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajeClasico);
 
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
 
@@ -144,7 +144,7 @@ public class PreguntasVerdaderoFalsoTest {
     public void test06CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoBienYDevuelve1Punto(){
         String enunciado = "El patron poxi existe?";
 
-        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
 
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
@@ -157,7 +157,7 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajePenalizable);
 
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta);
@@ -171,7 +171,7 @@ public class PreguntasVerdaderoFalsoTest {
     public void test07CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoMalYPierdo1Punto(){
         String enunciado = "El patron poxi existe?";
 
-        TipoPuntajePenalizable tipoPenalizable = new TipoPuntajePenalizable();
+        PuntajePenalizable puntajePenalizable = new PuntajePenalizable();
         MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
 
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
@@ -184,7 +184,7 @@ public class PreguntasVerdaderoFalsoTest {
         respuestasCorrectas.add(respuestaCorrecta);
         respuestasIncorrectas.add(respuestaIncorrecta);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,tipoPenalizable);
+        Pregunta unaPregunta = new Pregunta(enunciado,respuestasCorrectas,respuestasIncorrectas,verdaderoFalso,puntajePenalizable);
 
         ArrayList<RespuestaComun> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta);

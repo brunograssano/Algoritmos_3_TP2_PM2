@@ -6,13 +6,13 @@ public class Pregunta {
 
     private String enunciado;
     private MetodoRespuesta metodo;
-    private TipoPuntaje tipoPuntaje;
+    private Puntaje puntaje;
 
-    public Pregunta(String enunciado, ArrayList<RespuestaCorrecta> respuestasCorrectas,ArrayList<RespuestaIncorrecta> respuestasIncorrectas, MetodoRespuesta unMetodo, TipoPuntaje unTipoPuntos) {
+    public Pregunta(String enunciado, ArrayList<RespuestaCorrecta> respuestasCorrectas,ArrayList<RespuestaIncorrecta> respuestasIncorrectas, MetodoRespuesta unMetodo, Puntaje unTipoPuntos) {
 
         this.enunciado = enunciado;
         this.metodo = unMetodo;
-        this.tipoPuntaje = unTipoPuntos;
+        this.puntaje = unTipoPuntos;
         this.metodo.agregarRespuestas(respuestasCorrectas,respuestasIncorrectas);
 
     }
@@ -20,6 +20,6 @@ public class Pregunta {
     public int responder(ArrayList<RespuestaComun> respuestas) {
         //return tipoPuntaje.evaluar(metodo,respuestas);
         Resultado unResultado = metodo.evaluar(respuestas);
-        return tipoPuntaje.evaluar(unResultado);
+        return puntaje.evaluar(unResultado);
     }
 }

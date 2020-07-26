@@ -11,7 +11,7 @@ public class MetodoMultipleChoice implements MetodoRespuesta {
     static final int RESPUESTAS_CORRECTAS_MIN = 1;
 
     private int respuestasTotales = 0;
-    private TipoPuntaje tipoPuntaje;
+    private Puntaje puntaje;
     private ArrayList<RespuestaCorrecta> respuestasCorrectas;
     private ArrayList<RespuestaIncorrecta> respuestasIncorrectas;
 

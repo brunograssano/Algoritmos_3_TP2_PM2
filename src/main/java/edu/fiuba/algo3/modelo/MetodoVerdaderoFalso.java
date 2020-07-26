@@ -9,7 +9,7 @@ public class MetodoVerdaderoFalso implements MetodoRespuesta{
     static final int CANT_RESPUESTAS_INICIALES_VOF_POR_TIPO = 1;
     static final int CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO = 1;
 
-    private TipoPuntaje tipoPuntaje;
+    private Puntaje puntaje;
     private ArrayList<RespuestaIncorrecta> respuestasIncorrectas;
     private ArrayList<RespuestaCorrecta> respuestasCorrectas;
 
