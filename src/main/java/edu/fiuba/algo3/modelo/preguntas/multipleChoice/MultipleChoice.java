@@ -37,12 +37,16 @@ public class MultipleChoice implements Pregunta {
         if (respuestasUsuario.size() < 1 || respuestasUsuario.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        Resultado unResultado = new ResultadoEleccion(respuestasCorrectas.size());
+        ResultadoEleccion unResultado = new ResultadoEleccion(respuestasCorrectas.size());
+        evaluarRespuestasUsuario(respuestasUsuario, unResultado);
+        return unResultado;
+    }
+
+    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,ResultadoEleccion unResultado){
         for (Respuesta respuesta: respuestasUsuario){
             respuesta.evaluar(unResultado);
         }
         puntaje.evaluar(unResultado);
-        return unResultado;
     }
 
 }

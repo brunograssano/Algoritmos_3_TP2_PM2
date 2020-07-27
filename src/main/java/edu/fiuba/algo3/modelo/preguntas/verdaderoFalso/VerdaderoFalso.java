@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class VerdaderoFalso implements Pregunta {
 
-    static final int CANT_RESPUESTAS_INICIALES_VOF_POR_TIPO = 1;
     static final int CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO = 1;
 
     private String enunciado;
@@ -33,12 +32,15 @@ public class VerdaderoFalso implements Pregunta {
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
         ResultadoEleccion unResultado = new ResultadoEleccion(1);
+        evaluarRespuestasUsuario(respuestasUsuario,unResultado);
+        return unResultado;
+    }
+
+    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,ResultadoEleccion unResultado){
         for (Respuesta respuesta: respuestasUsuario){
             respuesta.evaluar(unResultado);
         }
         puntaje.evaluar(unResultado);
-        return unResultado;
     }
-
 
 }
