@@ -4,7 +4,6 @@ import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaExcept
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.ResultadoEleccion;
 
 
 import java.util.ArrayList;
@@ -31,12 +30,12 @@ public class VerdaderoFalso implements Pregunta {
         if (respuestasUsuario.size() != CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        ResultadoEleccion unResultado = new ResultadoEleccion(1);
+        Resultado unResultado =  puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO);
         evaluarRespuestasUsuario(respuestasUsuario,unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,ResultadoEleccion unResultado){
+    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,Resultado unResultado){
         for (Respuesta respuesta: respuestasUsuario){
             respuesta.evaluar(unResultado);
         }

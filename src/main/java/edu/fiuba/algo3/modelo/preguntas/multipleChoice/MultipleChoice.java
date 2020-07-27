@@ -4,7 +4,6 @@ import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaExcept
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.ResultadoEleccion;
 
 import java.util.ArrayList;
 
@@ -37,12 +36,12 @@ public class MultipleChoice implements Pregunta {
         if (respuestasUsuario.size() < 1 || respuestasUsuario.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        ResultadoEleccion unResultado = new ResultadoEleccion(respuestasCorrectas.size());
+        Resultado unResultado = puntaje.obtenerResultado(respuestasCorrectas.size());
         evaluarRespuestasUsuario(respuestasUsuario, unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,ResultadoEleccion unResultado){
+    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,Resultado unResultado){
         for (Respuesta respuesta: respuestasUsuario){
             respuesta.evaluar(unResultado);
         }

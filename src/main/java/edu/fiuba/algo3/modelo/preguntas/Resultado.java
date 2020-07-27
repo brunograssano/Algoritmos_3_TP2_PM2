@@ -1,55 +1,34 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.preguntas.Resultado;
 
-public interface Resultado {
-    void sumarRespuestaCorrecta();
+public abstract class Resultado {
 
-    void sumarRespuestaIncorrecta();
+    protected int respuestasCorrectas;
+    protected int respuestasIncorrectas;
+    protected int puntos;
+    protected int respuestasCorrectasTotales;
 
-    void calcularClasico();
 
-    void calcularPenalizable();
+    public abstract void calcular();
 
-    void calcularParcial();
-
-    int obtenerPuntos();
-
-    /*private static final int PUNTAJE_CORRECTO_CLASICO = 1;
-    private static final int PUNTAJE_INCORRECTO_CLASICO = 0;
-    private int respuestasCorrectasRespondidas;
-    private int respuestasCorrectasTotales;
-    private int respuestasIncorrectasRespondidas;
-
-    public Resultado(int cantidadDeRespuestasCorrectasTotales){
-        this.respuestasCorrectasRespondidas = 0;
-        this.respuestasCorrectasTotales = cantidadDeRespuestasCorrectasTotales;
-        this.respuestasIncorrectasRespondidas = 0;
+    public Resultado(int unaCantidadDeRespuesasCorrectasTotales){
+        respuestasCorrectas = 0;
+        respuestasIncorrectas = 0;
+        puntos = 0;
+        respuestasCorrectasTotales = unaCantidadDeRespuesasCorrectasTotales;
     }
 
     public void sumarRespuestaCorrecta() {
-        this.respuestasCorrectasRespondidas++;
+        respuestasCorrectas++;
     }
 
     public void sumarRespuestaIncorrecta() {
-        this.respuestasIncorrectasRespondidas++;
+        respuestasIncorrectas++;
     }
 
-    public int calcularClasico() {
-        if(respuestasCorrectasRespondidas == respuestasCorrectasTotales && respuestasIncorrectasRespondidas == 0){
-            return PUNTAJE_CORRECTO_CLASICO;
-        }
-        return PUNTAJE_INCORRECTO_CLASICO;
-    }
 
-    public int calcularPenalizable() {
-        return (respuestasCorrectasRespondidas - respuestasIncorrectasRespondidas);
+    public int obtenerPuntos() {
+        return puntos;
     }
-
-    public int calcularParcial() {
-        if(respuestasIncorrectasRespondidas == 0) {
-            return respuestasCorrectasRespondidas;
-        }
-        return 0;
-    }*/
 }
