@@ -26,17 +26,17 @@ public class VerdaderoFalso implements Pregunta {
     }
 
     @Override
-    public Resultado evaluar(ArrayList<Respuesta> respuestasUsuario) {
-        if (respuestasUsuario.size() != CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO){
+    public Resultado evaluar(ArrayList<Respuesta> respuestasJugador) {
+        if (respuestasJugador.size() != CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        Resultado unResultado =  puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO);
-        evaluarRespuestasUsuario(respuestasUsuario,unResultado);
+        Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO);
+        evaluarRespuestasJugador(respuestasJugador,unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,Resultado unResultado){
-        for (Respuesta respuesta: respuestasUsuario){
+    private void evaluarRespuestasJugador(ArrayList<Respuesta> respuestasJugador,Resultado unResultado){
+        for (Respuesta respuesta: respuestasJugador){
             respuesta.evaluar(unResultado);
         }
         puntaje.evaluar(unResultado);

@@ -32,17 +32,17 @@ public class MultipleChoice implements Pregunta {
     }
 
     @Override
-    public Resultado evaluar(ArrayList<Respuesta> respuestasUsuario) {
-        if (respuestasUsuario.size() < 1 || respuestasUsuario.size() > CANT_OPCIONES_MAX){
+    public Resultado evaluar(ArrayList<Respuesta> respuestasJugador) {
+        if (respuestasJugador.size() < 1 || respuestasJugador.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
         Resultado unResultado = puntaje.obtenerResultado(respuestasCorrectas.size());
-        evaluarRespuestasUsuario(respuestasUsuario, unResultado);
+        evaluarRespuestasJugador(respuestasJugador, unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasUsuario(ArrayList<Respuesta> respuestasUsuario,Resultado unResultado){
-        for (Respuesta respuesta: respuestasUsuario){
+    private void evaluarRespuestasJugador(ArrayList<Respuesta> respuestasJugador,Resultado unResultado){
+        for (Respuesta respuesta: respuestasJugador){
             respuesta.evaluar(unResultado);
         }
         puntaje.evaluar(unResultado);
