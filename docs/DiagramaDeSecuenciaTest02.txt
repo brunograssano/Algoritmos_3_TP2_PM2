@@ -1,46 +1,49 @@
 @startuml
 
 'autonumber
+
+
 title test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico
 participant Test
-participant "respuestasPosibles \n: ArrayList" as respuestas
-participant Pregunta
-participant "unaPregunta \n :Pregunta" as pregunta
-participant "verdaderoFalso \n : MetodoVerdaderoFalso" as metodo
-participant "respuestaJugador \n: RespuestaCorrecta" as respuesta
-participant "pedro \n: Jugador" as jugador
+participant FabricaDePreguntas
+participant Jugada
+participant ":Jugada" as jugada
+participant ":pregunta" as pregunta
+participant "jugador1\n:Jugador" as j1
+participant "jugador2\n:Jugador" as j2
 
 activate Test
-Test -> respuestas: add(respuestaCorrecta)
-activate respuestas
-Test -> respuestas: add(respuestaIncorrecta)
-deactivate respuestas
+Test -> FabricaDePreguntas: crearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto)
+activate FabricaDePreguntas
+FabricaDePreguntas -->Test: verdaderoFalso
+deactivate FabricaDePreguntas
 
-Test -> Pregunta: new(enunciado,respuestas,verdaderoFalso,tipoClasico)
-activate Pregunta
-Pregunta --> Test: nueva pregunta
-deactivate Pregunta
+Test -> Jugada: new (jugador1,jugador2,verdaderoFalso)
+activate Jugada
+Jugada --> Test: jugada
+deactivate Jugada
 
-Test -> pregunta : responder(respuestasJugador)
-note right: respuestasjugador es una lista\n de respuestas, pero al ser VoF\n contiene una sola
+activate jugada
+Test ->jugada: ProcesarJugada(respuestaJugador1,respuestaJugador2)
+jugada->pregunta: evaluar(respuestaJugador1)
 activate pregunta
-pregunta -> metodo: evaluar(respuestasJugador)
-activate metodo
-metodo -> respuesta : evaluar()
-activate respuesta
-note right : En este caso \n el jugador \n responde bien 
-respuesta --> metodo : puntos
-deactivate respuesta
-metodo --> pregunta: puntos
-deactivate metodo
-pregunta --> Test: puntos
-deactivate pregunta
+pregunta --> jugada: resultadoJugador1
+jugada->pregunta: evaluar(respuestaJugador1)
+pregunta --> jugada: resultadoJugador2
+deactivate pregunta 
 
-Test -> jugador : sumarPuntos(puntos)
-activate jugador
-deactivate jugador
+jugada ->j1:sumarPuntos(resultadoJugador1)
+activate j1
+deactivate j1
+jugada ->j2:sumarPuntos(resultadoJugador2)
+activate j2
+deactivate j2
+deactivate jugada
+
+
 deactivate Test
 
 
 @enduml
+
 
