@@ -28,7 +28,7 @@ Test ->jugada: ProcesarJugada(respuestaJugador1,respuestaJugador2)
 jugada->pregunta: evaluar(respuestaJugador1)
 activate pregunta
 pregunta --> jugada: resultadoJugador1
-jugada->pregunta: evaluar(respuestaJugador1)
+jugada->pregunta: evaluar(respuestaJugador2)
 pregunta --> jugada: resultadoJugador2
 deactivate pregunta 
 
