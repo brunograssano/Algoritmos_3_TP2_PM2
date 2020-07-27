@@ -4,11 +4,13 @@
 
 
 title test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico
+
 participant Test
 participant FabricaDePreguntas
 participant Jugada
 participant ":Jugada" as jugada
-participant ":pregunta" as pregunta
+participant ":Pregunta" as pregunta
+participant ":PuntajeVerdaderoFalso" as puntaje
 participant "jugador1\n:Jugador" as j1
 participant "jugador2\n:Jugador" as j2
 
@@ -25,12 +27,18 @@ deactivate Jugada
 
 activate jugada
 Test ->jugada: ProcesarJugada(respuestaJugador1,respuestaJugador2)
-jugada->pregunta: evaluar(respuestaJugador1)
-activate pregunta
-pregunta --> jugada: resultadoJugador1
-jugada->pregunta: evaluar(respuestaJugador2)
-pregunta --> jugada: resultadoJugador2
-deactivate pregunta 
+
+loop por cada jugador
+    jugada->pregunta: evaluar(respuestaJugador)
+    activate pregunta
+    pregunta -> puntaje: obtenerResultado(cantidadRespuestasCorrectasTotales)
+    activate puntaje
+    puntaje --> pregunta: resultadoJugador:ResultadoClasico
+    deactivate puntaje
+    pregunta->pregunta:evaluarRespuestasUsuario(respuestasUsuario, resultadoJugador)
+    pregunta-->jugada:resultadoJugador
+    deactivate pregunta
+end
 
 jugada ->j1:sumarPuntos(resultadoJugador1)
 activate j1
@@ -40,10 +48,6 @@ activate j2
 deactivate j2
 deactivate jugada
 
-
 deactivate Test
 
-
 @enduml
-
-
