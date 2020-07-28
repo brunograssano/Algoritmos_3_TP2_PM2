@@ -6,6 +6,4 @@ public interface Pregunta {
 
     Resultado evaluar(ArrayList<Respuesta> respuestasUsuario);
 
-
-
 }

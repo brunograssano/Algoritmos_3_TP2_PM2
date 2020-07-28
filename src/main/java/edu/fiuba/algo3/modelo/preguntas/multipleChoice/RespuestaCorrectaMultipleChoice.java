@@ -7,8 +7,6 @@ public class RespuestaCorrectaMultipleChoice implements Respuesta {
 
 
     private String textoRespuesta;
-    static final int PUNTAJE_RESPUESTA_CORRECTA = 1;
-
 
     public RespuestaCorrectaMultipleChoice(String textoRespuestaCorrecta) {
         this.textoRespuesta = textoRespuestaCorrecta;
