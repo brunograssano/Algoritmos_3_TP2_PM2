@@ -1,138 +1,135 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PreguntasVerdaderoFalsoTest {
 
     @Test
-    public void test01CreoUnaPreguntaVerdaderoFalsoYSeEligeLaCorrecta(){
+    public void test01CreoUnaPreguntaVerdaderoFalsoSeEligeLaCorrectaYDevuelve1Punto(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+        boolean enunciadoEsCorrecto = true;
         String enunciado = "El cielo es azul?";
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        RespuestaCorrectaVerdaderoFalso respuestaJugador = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
-
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
         ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaCorrecta);
-        int puntos = unaPregunta.responder(respuestasJugador);
+        respuestasJugador.add(respuestaJugador);
 
-        assertEquals(1,puntos);
+        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
+
+        assertEquals(1,resultado.obtenerPuntos());
 
     }
 
     @Test
-    public void test02CreoUnaPreguntaVerdaderoFalsoYSeEligeLaIncorrecta(){
+    public void test02CreoUnaPreguntaVerdaderoFalsoSeEligeLaIncorrectaYDevuelve0Puntos(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
+        boolean enunciadoEsCorrecto = true;
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasPosibles= new ArrayList<>();
-
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
-
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaIncorrecta);
-        int puntos = unaPregunta.responder(respuestasJugador);
+        respuestasJugador.add(respuestaJugador);
 
-        assertEquals(0,puntos);
+        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
+
+        assertEquals(0,resultado.obtenerPuntos());
 
     }
 
 
+
     @Test
-    public void test03SiCreoUnaPreguntaVerdaderoFalsoYLeIntentoAgregarMasDeDosRespuestasLanzaExcepcion(){
+    public void test03CreoUnaPreguntaVerdaderoFalsoYSeDaMasDeUnaRespuestaDeberiaLanzarExcepcion(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
-        String enunciado = "El sistema solar tiene 12 planetas?";
+        String enunciado = "Diciembre tiene 31 dias?";
+        boolean enunciadoEsCorrecto = true;
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Falso");
-        RespuestaCorrecta otraRespuestaCorrecta = new RespuestaCorrecta("Otro falso");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Verdadero");
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(otraRespuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaJugador);
+        respuestasJugador.add(respuestaJugador);
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);}
-                );
-    }
-
-    @Test
-    public void test04CreoUnaPreguntaVerdaderoFalsoYSeDaMasDeUnaRespuestaDeberiaLanzarExcepcion(){
-
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
-        String enunciado = "Diciembre tiene 31 dias?";
-
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
-
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
-
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaIncorrecta);
-        respuestasJugador.add(respuestaIncorrecta);
-
-        assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{unaPregunta.responder(respuestasJugador);}
+                ()->{preguntaVerdaderoFalso.evaluar(respuestasJugador);}
         );
     }
 
+
     @Test
-    public void test05CreoUnaPreguntaVerdaderoFalsoYNoSeDaUnaRespuestaDeberiaLanzarExcepcion(){
+    public void test04CreoUnaPreguntaVerdaderoFalsoYNoSeDaUnaRespuestaDeberiaLanzarExcepcion(){
 
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
         String enunciado = "Diciembre tiene 31 dias?";
+        boolean enunciadoEsCorrecto = true;
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
-
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
-
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{unaPregunta.responder(respuestasJugador);}
+                ()->{preguntaVerdaderoFalso.evaluar(respuestasJugador);}
         );
+    }
+
+
+    @Test
+    public void test05CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoBienYDevuelve1Punto(){
+        String enunciado = "El patron poxi existe?";
+
+        boolean enunciadoEsCorrecto = false;
+
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado, enunciadoEsCorrecto);
+
+        RespuestaCorrectaVerdaderoFalso respuestaJugador = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaJugador);
+
+        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
+
+        assertEquals(1,resultado.obtenerPuntos());
 
     }
 
+    @Test
+    public void test06CreoUnaPreguntaVerdaderoFalsoPenalizableRespondoMalYPierdo1Punto(){
+        String enunciado = "El patron poxi existe?";
+
+        boolean enunciadoEsCorrecto = true;
+
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado, enunciadoEsCorrecto);
+
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
+
+        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        respuestasJugador.add(respuestaJugador);
+
+        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
+
+        assertEquals(-1,resultado.obtenerPuntos());
+
+    }
 
 }
 

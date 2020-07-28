@@ -1,112 +1,692 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class JugadorTest {
 
     @Test
-    public void test01CreoUnJugadorYLePidoSusPuntosDeberiaSerCero(){
+    public void test01CreoUnJugadorYLePidoSusPuntosDeberiaSerCero() {
         Jugador jugador = new Jugador("Pedro");
-        assertEquals(0,jugador.obtenerPuntos());
+        assertEquals(0, jugador.obtenerPuntos());
     }
 
     @Test
-    public void test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico(){
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+    public void test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico() {
+
         String enunciado = "Diciembre tiene 31 dias?";
+        boolean enunciadoEsCorrecto = true;
+        Pregunta verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        Jugador jugador1 = new Jugador("Pedro");
+        Jugador jugador2 = new Jugador("Juan");
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        RespuestaCorrectaVerdaderoFalso respuestaJugador1 = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador2 = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
 
-        Jugador jugador = new Jugador("Pedro");
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
 
-        Respuesta respuestaJugador = respuestaCorrecta;
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaJugador);
-        int puntos = unaPregunta.responder(respuestasJugador);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
 
-        jugador.sumarPuntos(puntos);
-        assertEquals(1,jugador.obtenerPuntos());
+        assertEquals(1, jugador1.obtenerPuntos());
     }
 
     @Test
-    public void test03UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos(){
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+    public void test03UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoYNoTienePuntos() {
         String enunciado = "El pasto es verde?";
+        boolean enunciadoEsCorrecto = true;
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
 
-        Pregunta unaPregunta = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
-        Jugador jugador = new Jugador("Lucas");
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador1 = respuestaIncorrecta;
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador2 = respuestaIncorrecta;
 
-        Respuesta respuestaJugador = respuestaIncorrecta;
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaJugador);
-        int puntos = unaPregunta.responder(respuestasJugador);
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
 
-        jugador.sumarPuntos(puntos);
-        assertEquals(0,jugador.obtenerPuntos());
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(0, jugador1.obtenerPuntos());
 
     }
 
     @Test
-    public void test04UnJugadorResponde5PreguntasVerdaderoFalsoBienYTiene5Puntos(){
-        int puntos = 0;
-        TipoPuntajeClasico tipoClasico = new TipoPuntajeClasico();
-        MetodoVerdaderoFalso verdaderoFalso = new MetodoVerdaderoFalso();
+    public void test04UnJugadorResponde5PreguntasVerdaderoFalsoClasicoBienYTiene5Puntos() {
         String enunciado = "El pasto es verde?";
+        boolean enunciadoEsCorrecto = true;
 
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
-        respuestasPosibles.add(respuestaCorrecta);
-        respuestasPosibles.add(respuestaIncorrecta);
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
 
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
-        Pregunta unaPregunta1 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta2 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta3 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta4 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
-        Pregunta unaPregunta5 = new Pregunta(enunciado,respuestasPosibles,verdaderoFalso,tipoClasico);
+        RespuestaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
+        RespuestaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
-        Jugador jugador = new Jugador("Lucas");
-        Respuesta respuestaJugador = respuestaCorrecta;
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
 
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaJugador);
-        puntos += unaPregunta1.responder(respuestasJugador);
-        puntos += unaPregunta2.responder(respuestasJugador);
-        puntos += unaPregunta3.responder(respuestasJugador);
-        puntos += unaPregunta4.responder(respuestasJugador);
-        puntos += unaPregunta5.responder(respuestasJugador);
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
 
-        jugador.sumarPuntos(puntos);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
 
-        assertEquals(5,jugador.obtenerPuntos());
+        assertEquals(5, jugador1.obtenerPuntos());
+
+    }
+    @Test
+    public void test05UnJugadorRespondeErroneamenteUnaPreguntaVerdaderoFalsoPenalizableYTienePuntosNegativos() {
+        String enunciado = "El pasto es verde?";
+        boolean enunciadoEsCorrecto = true;
+
+        RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(enunciadoEsCorrecto);
+
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
+
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador1 = respuestaIncorrecta;
+        RespuestaIncorrectaVerdaderoFalso respuestaJugador2 = respuestaIncorrecta;
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(-1, jugador1.obtenerPuntos());
+
+    }
+    @Test
+    public void test06UnJugadorRespondeCorrectamenteUnaPreguntaVerdaderoFalsoPenalizableYSumaPuntos() {
+        String enunciado = "El pasto es verde?";
+        boolean enunciadoEsCorrecto = true;
+
+        RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
+
+        RespuestaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
+        RespuestaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(1, jugador1.obtenerPuntos());
 
     }
 
+    @Test
+    public void test07UnJugadorRespondeVariasPreguntasVFPenalizablesYLeQuedan0Puntos() {
+        String enunciado = "El pasto es verde?";
+        boolean enunciadoEsCorrecto = true;
 
+        RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+
+        Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
+
+        RespuestaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
+        RespuestaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaJugador1);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaJugador2);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        respuestasJugador1.remove(respuestaCorrecta);
+        RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
+        respuestasJugador1.add(respuestaIncorrecta);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+
+        assertEquals(0, jugador1.obtenerPuntos());
+
+    }
+
+    @Test
+    public void test08UnJugadorRespondeUnaPreguntaMultipleChoiceClasicoCorrectamenteYSuma1Punto() {
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("FFFX");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+        respuestasIncorrectas.add(respuestaIncorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta3);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(1, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test09UnJugadorRespondeUnaPreguntaMultipleChoiceClasicoIncorrectamenteYSuma0Puntos() {
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("FFFX");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+        respuestasIncorrectas.add(respuestaIncorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta3);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+        respuestasJugador1.add(respuestaIncorrecta2);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(0, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test10UnJugadorRespondeUnaPreguntaMultipleChoiceClasicoCorrectamenteYUnaIncorectamenteYSuma1Puntos() {
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("FFFX");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+        respuestasIncorrectas.add(respuestaIncorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta3);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        respuestasJugador1.add(respuestaIncorrecta1);
+
+        assertEquals(1, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test11UnJugadorRespondeUnaPreguntaMultipleChoiceParcialCon4RespuestasCorrectasY0IncorrectasYSuma4Puntos() {
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+        respuestasJugador1.add(respuestaCorrecta3);
+        respuestasJugador1.add(respuestaCorrecta4);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(4, jugador1.obtenerPuntos());
+    }
+    @Test
+    public void test12UnJugadorRespondeUnaPreguntaMultipleChoiceParcialCon1RespuestaCorrectaY0IncorrectasYSuma1Punto() {
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(1, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test13UnJugadoRespondeUnaPreguntaMultipleChoiceParcialCon2RespuestasCorrectasY1IncorrectaYSuma0Puntos(){
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+        respuestasJugador1.add(respuestaIncorrecta1);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(0, jugador1.obtenerPuntos());
+    }
+    @Test
+    public void test14UnJugadoRespondeVariasPreguntasMultipleChoiceParcialYTieneElNumeroCorrectoDePuntos(){
+
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas
+        for (int i = 0; i < 10; i++) {
+            jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        }
+        respuestasJugador1.add(respuestaIncorrecta1);
+
+        for (int i = 0; i < 10; i++) {
+            jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        }
+
+        assertEquals(20, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test15UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon3RespuestasCorrectasYSuma3Puntos() {
+
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+        respuestasJugador1.add(respuestaCorrecta3);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(3, jugador1.obtenerPuntos());
+    }
+    @Test
+    public void test16UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon4RespuestasCorrectasY1IncorrectaYSuma3Puntos() {
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+        respuestasJugador1.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(3, jugador1.obtenerPuntos());
+    }
+    @Test
+    public void test17UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon2RespuestasCorrectasY3IncorrectasYResta1Punto() {
+
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("JSON");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+        respuestasIncorrectas.add(respuestaIncorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta3);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+        respuestasJugador1.add(respuestaIncorrecta1);
+        respuestasJugador1.add(respuestaIncorrecta2);
+        respuestasJugador1.add(respuestaIncorrecta3);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(-1, jugador1.obtenerPuntos());
+    }
+    @Test
+    public void test18UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon3RespuestasIncorrectasYResta3Puntos() {
+
+
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("HTML");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("JSON");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+        respuestasIncorrectas.add(respuestaIncorrecta2);
+        respuestasIncorrectas.add(respuestaIncorrecta3);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+
+        respuestasJugador1.add(respuestaIncorrecta1);
+        respuestasJugador1.add(respuestaIncorrecta2);
+        respuestasJugador1.add(respuestaIncorrecta3);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+
+        assertEquals(-3, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test19UnJugadorRespondeVariasPreguntasMultipleChoicePenalizablesYTieneElNumeroCorrectoDePuntos() {
+
+
+        String enunciado = "Cuales de estos son lenguajes de programacion?";
+
+        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("C#");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("PHP");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("C");
+        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("C++");
+        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CSS");
+
+        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        respuestasCorrectas.add(respuestaCorrecta1);
+        respuestasCorrectas.add(respuestaCorrecta2);
+        respuestasCorrectas.add(respuestaCorrecta3);
+        respuestasCorrectas.add(respuestaCorrecta4);
+        respuestasIncorrectas.add(respuestaIncorrecta1);
+
+        Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
+
+        Jugador jugador1 = new Jugador("Lucas");
+        Jugador jugador2 = new Jugador("Gonzalo");
+
+        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador1.add(respuestaCorrecta2);
+
+        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador2.add(respuestaCorrecta1);
+
+        Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
+
+        //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas
+        for (int i = 0; i < 10; i++) {
+            jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        }
+        respuestasJugador1.add(respuestaIncorrecta1);
+
+        for (int i = 0; i < 10; i++) {
+            jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        }
+
+        assertEquals(30, jugador1.obtenerPuntos());
+    }
 }
