@@ -9,13 +9,7 @@ public class PuntajePenalizable implements PuntajeChoice, PuntajeVerdaderoFalso 
 
 
     @Override
-    public void evaluar(Resultado unResultado) {
-        unResultado.calcular();
-    }
-
-    @Override
     public Resultado obtenerResultado(int respuestasCorrectasTotales) {
-        return new ResultadoPenalizable(respuestasCorrectasTotales);
-
+        return new ResultadoPenalizable();
     }
 }

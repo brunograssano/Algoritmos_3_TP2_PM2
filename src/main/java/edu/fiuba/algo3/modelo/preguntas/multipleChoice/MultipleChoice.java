@@ -45,7 +45,6 @@ public class MultipleChoice implements Pregunta {
         for (Respuesta respuesta: respuestasJugador){
             respuesta.evaluar(unResultado);
         }
-        puntaje.evaluar(unResultado);
     }
 
 }

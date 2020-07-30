@@ -1,17 +1,29 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
+import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
 
-public class ResultadoParcial extends Resultado {
+public class ResultadoParcial implements Resultado {
 
-    public ResultadoParcial(int unaCantidadDeRespuesasCorrectasTotales) {
-        super(unaCantidadDeRespuesasCorrectasTotales);
+    private EstadoResultadoParcial estado;
+
+    public ResultadoParcial(){
+        estado = new EstadoCorrectoParcial();
     }
 
     @Override
-    public void calcular() {
-        if(respuestasIncorrectas == 0) {
-            puntos = respuestasCorrectas;
-        }
+    public void sumarRespuestaCorrecta() {
+        estado.agregarPunto(new PuntoPositivo());
+    }
+
+    @Override
+    public void sumarRespuestaIncorrecta() {
+        estado = new EstadoIncorrecto();
+    }
+
+    @Override
+    public Punto obtenerPuntos() {
+        return estado.obtenerPuntos();
     }
 }

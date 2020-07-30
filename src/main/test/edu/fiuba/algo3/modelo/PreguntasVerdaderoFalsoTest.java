@@ -30,7 +30,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
 
-        assertEquals(1,resultado.obtenerPuntos());
+        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
 
     }
 
@@ -49,7 +49,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
 
-        assertEquals(0,resultado.obtenerPuntos());
+        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
 
     }
 
@@ -108,7 +108,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
 
-        assertEquals(1,resultado.obtenerPuntos());
+        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
 
     }
 
@@ -127,7 +127,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestasJugador);
 
-        assertEquals(-1,resultado.obtenerPuntos());
+        assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
 
     }
 

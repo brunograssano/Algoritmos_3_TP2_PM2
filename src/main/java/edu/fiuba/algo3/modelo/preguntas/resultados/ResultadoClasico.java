@@ -1,20 +1,32 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
+import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
 
-public class ResultadoClasico extends Resultado {
+public class ResultadoClasico implements Resultado {
 
-    static final int PUNTOS_CLASICO = 1;
-    
+    private EstadoResultadoClasico estado;
+
     public ResultadoClasico(int unaCantidadDeRespuesasCorrectasTotales) {
-        super(unaCantidadDeRespuesasCorrectasTotales);
+        estado = new EstadoCorrectoClasico(unaCantidadDeRespuesasCorrectasTotales);
+    }
+
+
+    @Override
+    public void sumarRespuestaCorrecta() {
+        estado.agregarPunto(new PuntoPositivo());
     }
 
     @Override
-    public void calcular() {
-
-        if(respuestasIncorrectas == 0 && respuestasCorrectasTotales == respuestasCorrectas){
-            puntos = PUNTOS_CLASICO;
-        }
+    public void sumarRespuestaIncorrecta() {
+        estado = new EstadoIncorrecto();
     }
+
+    @Override
+    public Punto obtenerPuntos() {
+        return estado.obtenerPuntos();
+    }
+
+
 }

@@ -1,24 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
+import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
 
 public class Jugador {
     private String nombre;
-    private int puntos;
+    private Puntuacion puntos;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.puntos = 0;
+        puntos = new Puntuacion();
     }
 
-    public void sumarPuntos(int unosPuntos){
-        puntos += unosPuntos;
+    public void sumarPuntos(Punto unosPuntos){
+        puntos.agregarPunto(unosPuntos);
     }
 
     public int obtenerPuntos(){
-        return puntos;
+        return puntos.valorNumerico();
     }
 
 }

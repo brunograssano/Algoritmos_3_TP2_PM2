@@ -7,10 +7,6 @@ import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoParcial;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.PuntajeVerdaderoFalso;
 
 public class PuntajeClasico implements PuntajeChoice, PuntajeVerdaderoFalso {
-    @Override
-    public void evaluar(Resultado unResultado) {
-        unResultado.calcular();
-    }
 
     @Override
     public Resultado obtenerResultado(int respuestasCorrectasTotales) {

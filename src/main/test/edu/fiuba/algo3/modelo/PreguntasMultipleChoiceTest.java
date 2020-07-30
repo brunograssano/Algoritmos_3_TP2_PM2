@@ -8,9 +8,6 @@ import edu.fiuba.algo3.modelo.preguntas.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
 
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -46,7 +43,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(1,resultado.obtenerPuntos());
+        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -75,7 +72,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(0,resultado.obtenerPuntos());
+        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -120,7 +117,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(3,resultado.obtenerPuntos());
+        assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -148,7 +145,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(2,resultado.obtenerPuntos());
+        assertEquals(2,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -179,7 +176,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(0,resultado.obtenerPuntos());
+        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -214,7 +211,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(0,resultado.obtenerPuntos());
+        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -245,7 +242,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(3,resultado.obtenerPuntos());
+        assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -277,7 +274,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(-2,resultado.obtenerPuntos());
+        assertEquals(-2,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -312,7 +309,7 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(1,resultado.obtenerPuntos());
+        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
 
     @Test
@@ -347,6 +344,6 @@ public class PreguntasMultipleChoiceTest {
 
         Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
 
-        assertEquals(-1,resultado.obtenerPuntos());
+        assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
     }
 }
