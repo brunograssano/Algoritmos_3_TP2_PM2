@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
@@ -38,4 +40,7 @@ public class FabricaDePreguntas {
         return new VerdaderoFalso(enunciado,enunciadoEsCorrecto,penalizable);
     }
 
+    public static Pregunta CrearOrden(String enunciado, ArrayList<RespuestaOrden> respuestasOrdenadas) {
+        return new OrderedChoice(enunciado,respuestasOrdenadas);
+    }
 }

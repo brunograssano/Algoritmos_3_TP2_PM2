@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
-import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
 
@@ -40,8 +37,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -69,8 +67,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaCorrecta3);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -115,7 +114,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
@@ -143,7 +144,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(2,resultado.obtenerPuntos().valorNumerico());
     }
@@ -174,7 +177,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta2);
 
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -209,7 +214,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta1);
 
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -240,7 +247,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
@@ -272,7 +281,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta2);
 
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(-2,resultado.obtenerPuntos().valorNumerico());
     }
@@ -307,7 +318,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta2);
 
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -342,7 +355,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta2);
         respuestasJugador.add(respuestaIncorrecta3);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestasJugador);
+        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+
+        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
 
         assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
     }

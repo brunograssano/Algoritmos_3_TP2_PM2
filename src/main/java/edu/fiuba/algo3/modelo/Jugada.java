@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.RespuestaJugador;
 import edu.fiuba.algo3.modelo.preguntas.Resultado;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Jugada {
     }
 
 
-    public void procesarJugada(ArrayList<Respuesta> respuestasJugador1,ArrayList<Respuesta> respuestasJugador2){
+    public void procesarJugada(RespuestaJugador respuestasJugador1, RespuestaJugador respuestasJugador2){
         Resultado resultadoJugador1 = pregunta.evaluar(respuestasJugador1);
         Resultado resultadoJugador2 = pregunta.evaluar(respuestasJugador2);
 

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.RespuestaJugador;
 import edu.fiuba.algo3.modelo.preguntas.Resultado;
 
 
@@ -26,19 +27,10 @@ public class VerdaderoFalso implements Pregunta {
     }
 
     @Override
-    public Resultado evaluar(ArrayList<Respuesta> respuestasJugador) {
-        if (respuestasJugador.size() != CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO){
-            throw new CantidadErroneaDeRespuestasParaPreguntaException();
-        }
+    public Resultado evaluar(RespuestaJugador respuestasJugador) {
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO);
-        evaluarRespuestasJugador(respuestasJugador,unResultado);
+        respuestasJugador.evaluar(unResultado);
         return unResultado;
-    }
-
-    private void evaluarRespuestasJugador(ArrayList<Respuesta> respuestasJugador,Resultado unResultado){
-        for (Respuesta respuesta: respuestasJugador){
-            respuesta.evaluar(unResultado);
-        }
     }
 
 }
