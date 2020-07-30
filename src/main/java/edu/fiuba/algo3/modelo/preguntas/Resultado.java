@@ -1,34 +1,13 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 
-public abstract class Resultado {
-
-    protected int respuestasCorrectas;
-    protected int respuestasIncorrectas;
-    protected int puntos;
-    protected int respuestasCorrectasTotales;
+public interface Resultado {
 
 
-    public abstract void calcular();
+    void sumarRespuestaCorrecta();
 
-    public Resultado(int unaCantidadDeRespuesasCorrectasTotales){
-        respuestasCorrectas = 0;
-        respuestasIncorrectas = 0;
-        puntos = 0;
-        respuestasCorrectasTotales = unaCantidadDeRespuesasCorrectasTotales;
-    }
+    void sumarRespuestaIncorrecta();
 
-    public void sumarRespuestaCorrecta() {
-        respuestasCorrectas++;
-    }
-
-    public void sumarRespuestaIncorrecta() {
-        respuestasIncorrectas++;
-    }
-
-
-    public int obtenerPuntos() {
-        return puntos;
-    }
+    Punto obtenerPuntos();
 }

@@ -39,7 +39,6 @@ public class VerdaderoFalso implements Pregunta {
         for (Respuesta respuesta: respuestasJugador){
             respuesta.evaluar(unResultado);
         }
-        puntaje.evaluar(unResultado);
     }
 
 }
