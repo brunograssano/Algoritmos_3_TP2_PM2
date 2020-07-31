@@ -33,8 +33,7 @@ public class RespuestaJugadorGroupChoice implements RespuestaJugador {
         if (respuestasTotalesJugador < RESPUESTAS_MIN_GRUPO || respuestasTotalesJugador > RESPUESTAS_MAX_GRUPO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        if( (respuestaCorrectaGrupo1.containsAll(grupo1Respuesta) && grupo1Respuesta.containsAll(respuestaCorrectaGrupo1))
-                && (respuestaCorrectaGrupo2.containsAll(grupo2Respuesta) && grupo2Respuesta.containsAll(respuestaCorrectaGrupo2)) ){
+        if( respuestaCorrectaGrupo1.containsAll(grupo1Respuesta) && respuestaCorrectaGrupo2.containsAll(grupo2Respuesta) ){
 
             unResultado.sumarRespuestaCorrecta();
         }else{
