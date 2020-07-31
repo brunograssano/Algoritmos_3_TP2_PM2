@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
 
@@ -32,19 +34,15 @@ public class MultipleChoice implements Pregunta {
     }
 
     @Override
-    public Resultado evaluar(ArrayList<Respuesta> respuestasJugador) {
-        if (respuestasJugador.size() < 1 || respuestasJugador.size() > CANT_OPCIONES_MAX){
-            throw new CantidadErroneaDeRespuestasParaPreguntaException();
-        }
+    public Resultado evaluar(RespuestaJugador respuestasJugador) {
         Resultado unResultado = puntaje.obtenerResultado(respuestasCorrectas.size());
-        evaluarRespuestasJugador(respuestasJugador, unResultado);
+        respuestasJugador.evaluar(unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasJugador(ArrayList<Respuesta> respuestasJugador,Resultado unResultado){
-        for (Respuesta respuesta: respuestasJugador){
-            respuesta.evaluar(unResultado);
-        }
+    @Override
+    public void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada) {
+        puntaje.puedeUsarModificador(modificador,modificadoresDeLaJugada);
     }
 
 }
