@@ -1,28 +1,25 @@
 [
 	{
-		"Casa": {
-			"propietario" : {
-					"nombre":"pedro",
-					"dni": 41541356
-			},
-			"precio" : {
-				"valor_sin_muebles": 100000,
-				"valor_con_muebles": 120000
-			}
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"La primera computadora en Argentina se llamo Clementina",
+			"enunciadoEsCorrecto": true
 		}
 	},
+
 	{
-		"Casa": {
-			"propietario" : {
-				"nombre":"roberto",
-				"dni": 41541567
-			},
-			"precio" : {
-				"valor_sin_muebles": 200000,
-				"valor_con_muebles": 220000
-			}
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"El patron poxy fue creado por Richard Stallman",
+			"enunciadoEsCorrecto": false
 		}
+	},
 
+	{
+		"VoF": {
+			"penalizable": false,
+			"enunciado":"El kernel de Linux tiene licencia GPLv2",
+			"enunciadoEsCorrecto": true
+		}
 	}
-
 ]

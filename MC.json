@@ -1,25 +1,46 @@
 [
 	{
-		"VoF": {
-			"penalizable": true,
-			"enunciado":"La primera computadora en Argentina se llamo Clementina",
-			"enunciadoEsCorrecto": true
+		"MC": {
+			"puntaje": "clasico",
+			"enunciado" : "Cuales de los siguientes son lenguajes de programacion?",
+			"respuestasCorrectas": [
+				"BrainFuck",
+				"Clojure"
+			],
+			"respuestasIncorrectas": [
+				"BrainFrick",
+				"HeartFuck"
+			]
 		}
 	},
 
 	{
-		"VoF": {
-			"penalizable": true,
-			"enunciado":"El patron poxy fue creado por Richard Stallman",
-			"enunciadoEsCorrecto": false
+		"MC": {
+			"puntaje": "parcial",
+			"enunciado" : "Cuales de los siguientes son unidades validas?",
+			"respuestasCorrectas": [
+				"Mebibyte",
+				"Megabyte",
+				"Kilobit"
+			],
+			"respuestasIncorrectas": [
+				"MasterByte"
+			]
 		}
 	},
 
 	{
-		"VoF": {
-			"penalizable": false,
-			"enunciado":"El kernel de Linux tiene licencia GPLv2",
-			"enunciadoEsCorrecto": true
+		"MC": {
+			"puntaje": "penalizable",
+			"enunciado" : "Cuales de los siguientes son perifericos de salida?",
+			"respuestasCorrectas": [
+				"Monitor",
+				"Parlantes"
+			],
+			"respuestasIncorrectas": [
+				"Mouse",
+				"Webcam"
+			]
 		}
 	}
 ]
