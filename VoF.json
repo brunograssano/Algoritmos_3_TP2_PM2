@@ -1,0 +1,28 @@
+[
+	{
+		"Casa": {
+			"propietario" : {
+					"nombre":"pedro",
+					"dni": 41541356
+			},
+			"precio" : {
+				"valor_sin_muebles": 100000,
+				"valor_con_muebles": 120000
+			}
+		}
+	},
+	{
+		"Casa": {
+			"propietario" : {
+				"nombre":"roberto",
+				"dni": 41541567
+			},
+			"precio" : {
+				"valor_sin_muebles": 200000,
+				"valor_con_muebles": 220000
+			}
+		}
+
+	}
+
+]
