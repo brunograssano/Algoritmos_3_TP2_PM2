@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
 import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
 
@@ -25,6 +27,11 @@ public class ResultadoClasico implements Resultado {
     @Override
     public Punto obtenerPuntos() {
         return estado.obtenerPuntos();
+    }
+
+    @Override
+    public void aplicarModificador(Multiplicador multiplicador) {
+
     }
 
 

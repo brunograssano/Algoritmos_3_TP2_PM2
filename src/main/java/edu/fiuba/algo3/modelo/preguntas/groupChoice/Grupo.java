@@ -7,10 +7,12 @@ import java.util.ArrayList;
 
 public class Grupo {
 
+    private String nombreGrupo;
     ArrayList<RespuestaGrupo> respuestasDelGrupo;
 
     public Grupo(String nombreGrupo, ArrayList<RespuestaGrupo> respuestasDelGrupo){
         this.respuestasDelGrupo = respuestasDelGrupo;
+        this.nombreGrupo = nombreGrupo;
     }
 
     public void contiene(Resultado unResultado, ArrayList<RespuestaGrupal> respuestasDelUsuario) {

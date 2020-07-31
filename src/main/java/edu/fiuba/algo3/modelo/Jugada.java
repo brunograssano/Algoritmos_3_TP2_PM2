@@ -1,14 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
+import java.util.ArrayList;
 
 public class Jugada {
 
     Jugador jugador1;
     Jugador jugador2;
+
+    ArrayList<Modificador> modificadoresJugadas;
 
     Pregunta pregunta;
 
@@ -16,6 +20,7 @@ public class Jugada {
         pregunta = unaPregunta;
         jugador1 = unJugador;
         jugador2 = otroJugador;
+        modificadoresJugadas = new ArrayList<Modificador>();
     }
 
 
@@ -28,7 +33,12 @@ public class Jugada {
     }
 
     private void aplicarModificadores(Resultado resultadoJugador1, Resultado resultadoJugador2){
-
+        for (Modificador modificador:modificadoresJugadas) {
+            modificador.aplicar(jugador1,resultadoJugador1,resultadoJugador2);
+        }
     }
 
+    public void agregarModificador(Modificador modificador) {
+        pregunta.verificarModificador(modificador,modificadoresJugadas);
+    }
 }
