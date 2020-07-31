@@ -1,12 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -28,6 +29,7 @@ public class PreguntaGrupoTest {
         ArrayList<RespuestaGrupo> grupo1Respuesta = new ArrayList<>();
         ArrayList<RespuestaGrupo> grupo2Respuesta = new ArrayList<>();
 
+
         grupo1Respuesta.add(respuesta1Grupo1);
         grupo1Respuesta.add(respuesta2Grupo1);
         grupo1Respuesta.add(respuesta3Grupo1);
@@ -35,10 +37,13 @@ public class PreguntaGrupoTest {
         grupo2Respuesta.add(respuesta2Grupo2);
         grupo2Respuesta.add(respuesta3Grupo2);
 
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1Respuesta, grupo2Respuesta);
+        Grupo grupo1 = new Grupo("Tipado estatico",grupo1Respuesta);
+        Grupo grupo2 = new Grupo("Tipado dinamico",grupo2Respuesta);
 
-        ArrayList<RespuestaGrupo> respuestaGrupo1Jugador = new ArrayList<>();
-        ArrayList<RespuestaGrupo> respuestaGrupo2Jugador = new ArrayList<>();
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+
+        ArrayList<RespuestaGrupal> respuestaGrupo1Jugador = new ArrayList<>();
+        ArrayList<RespuestaGrupal> respuestaGrupo2Jugador = new ArrayList<>();
 
         respuestaGrupo1Jugador.add(respuesta1Grupo1);
         respuestaGrupo1Jugador.add(respuesta2Grupo1);
@@ -73,10 +78,13 @@ public class PreguntaGrupoTest {
         grupo2Respuesta.add(respuesta1Grupo2);
         grupo2Respuesta.add(respuesta2Grupo2);
 
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1Respuesta, grupo2Respuesta);
+        Grupo grupo1 = new Grupo("Mamiferos",grupo1Respuesta);
+        Grupo grupo2 = new Grupo("Reptiles",grupo2Respuesta);
 
-        ArrayList<RespuestaGrupo> respuestaGrupo1Jugador = new ArrayList<>();
-        ArrayList<RespuestaGrupo> respuestaGrupo2Jugador = new ArrayList<>();
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+
+        ArrayList<RespuestaGrupal> respuestaGrupo1Jugador = new ArrayList<>();
+        ArrayList<RespuestaGrupal> respuestaGrupo2Jugador = new ArrayList<>();
 
         respuestaGrupo1Jugador.add(respuesta1Grupo1);
         respuestaGrupo1Jugador.add(respuesta2Grupo2);

@@ -3,12 +3,10 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -206,11 +204,11 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -245,12 +243,12 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
         respuestasJugador1.add(respuestaIncorrecta2);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -285,11 +283,11 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -328,13 +326,13 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
         respuestasJugador1.add(respuestaCorrecta3);
         respuestasJugador1.add(respuestaCorrecta4);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -370,10 +368,10 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -408,12 +406,12 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
         respuestasJugador1.add(respuestaIncorrecta1);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -448,11 +446,11 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -496,12 +494,12 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
         respuestasJugador1.add(respuestaCorrecta3);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -535,14 +533,14 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
         respuestasJugador1.add(respuestaCorrecta3);
         respuestasCorrectas.add(respuestaCorrecta4);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -577,14 +575,14 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
         respuestasJugador1.add(respuestaIncorrecta1);
         respuestasJugador1.add(respuestaIncorrecta2);
         respuestasJugador1.add(respuestaIncorrecta3);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -620,13 +618,13 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
 
         respuestasJugador1.add(respuestaIncorrecta1);
         respuestasJugador1.add(respuestaIncorrecta2);
         respuestasJugador1.add(respuestaIncorrecta3);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
@@ -663,11 +661,11 @@ public class JugadorTest {
         Jugador jugador1 = new Jugador("Lucas");
         Jugador jugador2 = new Jugador("Gonzalo");
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador2 = new ArrayList<>();
         respuestasJugador2.add(respuestaCorrecta1);
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);

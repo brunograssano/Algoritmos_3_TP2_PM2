@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.preguntas.resultados;
 
 import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNegativo;
 import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
 

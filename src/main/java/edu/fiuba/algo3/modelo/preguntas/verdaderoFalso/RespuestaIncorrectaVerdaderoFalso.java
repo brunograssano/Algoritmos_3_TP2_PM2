@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.RespuestaIndividual;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-import java.util.ArrayList;
-
-public class RespuestaIncorrectaVerdaderoFalso implements Respuesta {
+public class RespuestaIncorrectaVerdaderoFalso implements RespuestaIndividual {
     private String enunciado;
     public RespuestaIncorrectaVerdaderoFalso(boolean respuestaIncorrecta) {
         enunciado = respuestaIncorrecta?"Verdadero":"Falso";

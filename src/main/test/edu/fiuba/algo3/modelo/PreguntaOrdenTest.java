@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class PreguntaOrdenTest {
 
         Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
 
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaGrupal> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaOrden1);
         respuestasJugador.add(respuestaOrden2);
         respuestasJugador.add(respuestaOrden3);
@@ -62,7 +64,7 @@ public class PreguntaOrdenTest {
 
         Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
 
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaGrupal> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaOrden1);
         respuestasJugador.add(respuestaOrden3);
         respuestasJugador.add(respuestaOrden4);

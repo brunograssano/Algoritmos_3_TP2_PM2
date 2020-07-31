@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Jugada;
+
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
+
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
@@ -46,7 +47,7 @@ public class FabricaDePreguntas {
     public static Pregunta CrearOrden(String enunciado, ArrayList<RespuestaOrden> respuestasOrdenadas) {
         return new OrderedChoice(enunciado,respuestasOrdenadas);
     }
-    public static Pregunta CrearGrupo(String enunciado, ArrayList<RespuestaGrupo> respuestaGrupo1, ArrayList<RespuestaGrupo> respuestaGrupo2){
-        return new GroupChoice(enunciado, respuestaGrupo1, respuestaGrupo2);
+    public static Pregunta CrearGrupo(String enunciado, Grupo grupo1, Grupo grupo2){
+        return new GroupChoice(enunciado, grupo1, grupo2);
     }
 }

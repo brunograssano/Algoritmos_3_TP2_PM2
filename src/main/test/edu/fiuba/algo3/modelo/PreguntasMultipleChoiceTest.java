@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
 
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -63,7 +65,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaCorrecta3);
@@ -109,7 +111,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -140,7 +142,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
 
@@ -170,7 +172,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaIncorrecta1);
@@ -206,7 +208,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -242,7 +244,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -276,7 +278,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaIncorrecta2);
 
@@ -310,7 +312,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -348,7 +350,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta3);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<Respuesta> respuestasJugador = new ArrayList<>();
+        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaIncorrecta1);

@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.RespuestaIndividual;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-public class RespuestaIncorrectaMultipleChoice implements Respuesta {
+public class RespuestaIncorrectaMultipleChoice implements RespuestaIndividual {
 
     private String textoRespuesta;
 

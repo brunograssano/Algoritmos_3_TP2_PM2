@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas.orderedChoice;
 
+import edu.fiuba.algo3.modelo.preguntas.evaluadores.EvaluadorOrden;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.RespuestaJugador;
-import edu.fiuba.algo3.modelo.preguntas.RespuestaJugadorOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
 import java.util.ArrayList;
@@ -21,7 +21,8 @@ public class OrderedChoice implements Pregunta {
     @Override
     public Resultado evaluar(RespuestaJugador respuestasUsuario) {
         Resultado unResultado = new ResultadoClasico(1);
-        respuestasUsuario.evaluarOrden(unResultado,respuestasOrdenadasCorrectamente);
+        EvaluadorOrden evaluador = new EvaluadorOrden(respuestasOrdenadasCorrectamente);
+        respuestasUsuario.evaluarConParametro(unResultado,evaluador);
         return unResultado;
     }
 }
