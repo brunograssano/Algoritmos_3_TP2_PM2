@@ -14,7 +14,7 @@ public class Grupo {
     }
 
     public void contiene(Resultado unResultado, ArrayList<RespuestaGrupal> respuestasDelUsuario) {
-        if( respuestasDelUsuario.containsAll(respuestasDelGrupo) ){
+        if( respuestasDelUsuario.containsAll(respuestasDelGrupo) && respuestasDelGrupo.size() == respuestasDelUsuario.size() ){
             unResultado.sumarRespuestaCorrecta();
         }else{
             unResultado.sumarRespuestaIncorrecta();
