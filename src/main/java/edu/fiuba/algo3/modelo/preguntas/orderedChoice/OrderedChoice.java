@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 import java.util.ArrayList;
 
 public class OrderedChoice implements Pregunta {
+
     private String enunciado;
     private ArrayList<RespuestaOrden> respuestasOrdenadasCorrectamente;
 

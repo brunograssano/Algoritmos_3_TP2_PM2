@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
 
 import java.util.ArrayList;
@@ -20,6 +21,11 @@ public class RespuestaJugadorVerdaderoFalso implements RespuestaJugador {
 
     @Override
     public void evaluarOrden(Resultado unResultado, ArrayList<RespuestaOrden> respuestasOrdenadasCorrectamente) {
+
+    }
+
+    @Override
+    public void evaluarGrupo(Resultado unResultado, ArrayList<RespuestaGrupo> respuestaGrupo1, ArrayList<RespuestaGrupo> respuestaGrupo2) {
 
     }
 }

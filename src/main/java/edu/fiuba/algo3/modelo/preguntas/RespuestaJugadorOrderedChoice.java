@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
 
 import java.util.ArrayList;
@@ -22,5 +23,10 @@ public class RespuestaJugadorOrderedChoice implements RespuestaJugador {
         }else{
             unResultado.sumarRespuestaIncorrecta();
         }
+    }
+
+    @Override
+    public void evaluarGrupo(Resultado unResultado, ArrayList<RespuestaGrupo> respuestaGrupo1, ArrayList<RespuestaGrupo> respuestaGrupo2) {
+
     }
 }
