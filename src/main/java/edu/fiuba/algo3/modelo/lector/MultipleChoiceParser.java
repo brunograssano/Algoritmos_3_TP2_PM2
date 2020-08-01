@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.lector;
 
+import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
@@ -40,7 +41,7 @@ public class MultipleChoiceParser implements Parser{
                 break;
 
             default:
-                pregunta = null; //acá deberia lanzar excepcion
+               throw new TipoDePuntajeEnArchivoNoValidoException();
 
         }
         return pregunta;

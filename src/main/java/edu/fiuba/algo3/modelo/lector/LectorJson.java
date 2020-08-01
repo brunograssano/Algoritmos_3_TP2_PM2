@@ -1,7 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.lector;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
 import java.io.FileReader;
@@ -28,23 +30,18 @@ public class LectorJson implements LectorPreguntas {
 
         Parser parserVerdaderoFalso = new VerdaderoFalsoParser();
         Parser parserMultipleChoice = new MultipleChoiceParser();
-        agregarPreguntas(preguntasTotales, RUTA_MC, parserMultipleChoice);
-        agregarPreguntas(preguntasTotales, RUTA_VOF, parserVerdaderoFalso);
+        agregarPreguntasDeArchivo(preguntasTotales, RUTA_MC, parserMultipleChoice);
+        agregarPreguntasDeArchivo(preguntasTotales, RUTA_VOF, parserVerdaderoFalso);
         return preguntasTotales;
     }
 
-    private void agregarPreguntas(ArrayList<Pregunta> preguntasTotales, String ruta, Parser parser) {
+    private void agregarPreguntasDeArchivo(ArrayList<Pregunta> preguntasTotales, String ruta, Parser preguntaParser) {
 
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader lector = new FileReader(System.getProperty("user.dir") + ruta)) {
 
-            ArrayList<Pregunta> preguntas = new ArrayList<>();
-            Object obj = jsonParser.parse(lector);
-            JSONArray preguntasJson = (JSONArray) obj;
-
-            preguntasJson.forEach(jsPregunta -> preguntas.add(parser.parse((JSONObject) jsPregunta)));
-            preguntasTotales.addAll(preguntas);
+            agregarPreguntas(preguntasTotales, lector, preguntaParser, jsonParser);
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
@@ -52,6 +49,21 @@ public class LectorJson implements LectorPreguntas {
             ex.printStackTrace();
         } catch (ParseException ex) {
             ex.printStackTrace();
+        } catch (TipoDePuntajeEnArchivoNoValidoException ex) {  //ver que hacemos con las excepciones.
+            ex.printStackTrace();
         }
     }
+
+
+    private void agregarPreguntas(ArrayList<Pregunta> preguntasTotales, FileReader lector, Parser preguntaParser, JSONParser jsonParser) throws IOException, ParseException {
+
+        ArrayList<Pregunta> preguntas = new ArrayList<>();
+        Object obj = jsonParser.parse(lector);
+        JSONArray preguntasJson = (JSONArray) obj;
+
+        preguntasJson.forEach(jsPregunta -> preguntas.add(preguntaParser.parse((JSONObject) jsPregunta)));
+        preguntasTotales.addAll(preguntas);
+
+    }
+
 }
