@@ -28,7 +28,10 @@ public class Exclusividad implements Modificador {
 
     @Override
     public void aplicar(Jugador jugador, Resultado resultadoJugador1, Resultado resultadoJugador2) {
-
+        AnalizadorExclusividad analizador = new AnalizadorExclusividad();
+        resultadoJugador1.aplicaExclusividad(analizador);
+        resultadoJugador2.aplicaExclusividad(analizador);
+        analizador.analizarSituacion();
     }
 
 }

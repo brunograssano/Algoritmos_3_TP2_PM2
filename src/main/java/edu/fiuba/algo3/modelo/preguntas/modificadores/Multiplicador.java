@@ -39,10 +39,10 @@ public class Multiplicador implements Modificador{
     @Override
     public void aplicar(Jugador jugador,Resultado resultadoJugador1, Resultado resultadoJugador2) {
         if(this.jugador == jugador){
-            resultadoJugador1.aplicarModificador(this);
+            resultadoJugador1.aplicarMultiplicador(this);
         }
         else{
-            resultadoJugador2.aplicarModificador(this);
+            resultadoJugador2.aplicarMultiplicador(this);
         }
     }
 
