@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.modificadores;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaExcepcion;
+import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
@@ -28,12 +28,12 @@ public class Multiplicador implements Modificador{
 
     @Override
     public void usarEnPuntaje(PuntajeClasico puntajeClasico, ArrayList<Modificador> modificadoresDeLaJugada) {
-        throw new ModificadorNoAptoParaPreguntaExcepcion();
+        throw new ModificadorNoAptoParaPreguntaException();
     }
 
     @Override
     public void usarEnPuntaje(PuntajeParcial puntajeParcial, ArrayList<Modificador> modificadoresDeLaJugada) {
-        throw new ModificadorNoAptoParaPreguntaExcepcion();
+        throw new ModificadorNoAptoParaPreguntaException();
     }
 
     @Override

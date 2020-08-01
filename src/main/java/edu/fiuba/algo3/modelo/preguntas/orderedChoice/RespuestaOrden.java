@@ -9,5 +9,4 @@ public class RespuestaOrden implements RespuestaGrupal {
     public  RespuestaOrden(String enunciado){
         this.enunciado = enunciado;
     }
-
 }

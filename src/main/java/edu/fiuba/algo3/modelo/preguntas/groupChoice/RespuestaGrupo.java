@@ -11,6 +11,4 @@ public class RespuestaGrupo implements RespuestaGrupal {
     public RespuestaGrupo(String enunciado) {
             this.enunciado = enunciado;
     }
-
-
 }
