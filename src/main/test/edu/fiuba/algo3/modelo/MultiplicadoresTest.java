@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaExcepcion;
+import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.RespuestaGrupal;
@@ -93,7 +93,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
-        assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
+        assertThrows(ModificadorNoAptoParaPreguntaException.class,
                 ()->{jugada.agregarModificador(new Multiplicador(jugador2,3));}
         );
     }
@@ -121,7 +121,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
-        assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
+        assertThrows(ModificadorNoAptoParaPreguntaException.class,
                 ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
         );
     }
@@ -149,7 +149,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
-        assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
+        assertThrows(ModificadorNoAptoParaPreguntaException.class,
                 ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
         );
     }
@@ -181,7 +181,7 @@ public class MultiplicadoresTest {
         Jugador jugador2 = new Jugador("Bruno");
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaGrupo);
 
-        assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
+        assertThrows(ModificadorNoAptoParaPreguntaException.class,
                 ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
         );
     }
@@ -209,10 +209,11 @@ public class MultiplicadoresTest {
         Jugador jugador2 = new Jugador("Bruno");
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaOrden);
 
-        assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
+        assertThrows(ModificadorNoAptoParaPreguntaException.class,
                 ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
         );
     }
 
 
 }
+
