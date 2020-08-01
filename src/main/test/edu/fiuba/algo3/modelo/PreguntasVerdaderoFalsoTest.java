@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,7 +19,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto);
 
-        RespuestaCorrectaVerdaderoFalso respuestaJugador = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaJugador = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
@@ -37,7 +37,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoEsCorrecto);
 
-        RespuestaIncorrectaVerdaderoFalso respuestaJugador = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
+        OpcionIncorrectaVerdaderoFalso respuestaJugador = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
@@ -54,7 +54,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado, enunciadoEsCorrecto);
 
-        RespuestaCorrectaVerdaderoFalso respuestaJugador = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaJugador = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
@@ -72,7 +72,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado, enunciadoEsCorrecto);
 
-        RespuestaIncorrectaVerdaderoFalso respuestaJugador = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
+        OpcionIncorrectaVerdaderoFalso respuestaJugador = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 

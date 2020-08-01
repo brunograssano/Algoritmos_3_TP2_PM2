@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class JugadaTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaCorrecta);
         RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaCorrecta);
@@ -60,8 +60,8 @@ public class JugadaTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
-        RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaCorrecta);
         RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrecta);
@@ -91,7 +91,7 @@ public class JugadaTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
+        OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrecta);
         RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrecta);

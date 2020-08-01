@@ -1,22 +1,20 @@
 package edu.fiuba.algo3.modelo.preguntas.evaluadores;
 
-import edu.fiuba.algo3.modelo.preguntas.RespuestaGrupal;
-import edu.fiuba.algo3.modelo.preguntas.evaluadores.Evaluador;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
 
 public class EvaluadorOrden implements Evaluador {
 
-    ArrayList<RespuestaOrden> respuestasOrdenadas;
+    ArrayList<OpcionSimple> respuestasOrdenadas;
 
-    public EvaluadorOrden(ArrayList<RespuestaOrden> respuestasOrdenadas){
+    public EvaluadorOrden(ArrayList<OpcionSimple> respuestasOrdenadas){
         this.respuestasOrdenadas = respuestasOrdenadas;
     }
 
     @Override
-    public void evaluar(Resultado unResultado, ArrayList<RespuestaGrupal> respuestasJugador) {
+    public void evaluar(Resultado unResultado, ArrayList<OpcionSimple> respuestasJugador) {
         if(respuestasOrdenadas.equals(respuestasJugador)){
             unResultado.sumarRespuestaCorrecta();
         }else{

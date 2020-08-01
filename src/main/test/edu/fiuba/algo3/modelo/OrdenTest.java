@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,16 +11,17 @@ public class OrdenTest {
     @Test
     public void test01CuandoSeCreanDosOrdenesIgualesDeTresRespuestasLaComparacionDevuelveQueSonIguales() {
 
-        RespuestaOrden respuesta1 = new RespuestaOrden("Soy la primer respuesta :) ");
-        RespuestaOrden respuesta2 = new RespuestaOrden("Soy la segunda respuesta :| ");
-        RespuestaOrden respuesta3 = new RespuestaOrden("Soy la ultima respuesta :(");
-        ArrayList<RespuestaOrden> unasRespuestasOrdenadas = new ArrayList<>();
-        unasRespuestasOrdenadas.add(respuesta1);
-        unasRespuestasOrdenadas.add(respuesta2);
-        unasRespuestasOrdenadas.add(respuesta3);
+        OpcionSimple opcion1 = new OpcionSimple("Soy la primer respuesta :) ");
+        OpcionSimple opcion2 = new OpcionSimple("Soy la segunda respuesta :| ");
+        OpcionSimple opcion3 = new OpcionSimple("Soy la ultima respuesta :(");
 
-        Orden unOrden = new Orden(unasRespuestasOrdenadas);
-        Orden otroOrden = new Orden(unasRespuestasOrdenadas);
+        ArrayList<OpcionSimple> unasOpcionesOrdenadas = new ArrayList<>();
+        unasOpcionesOrdenadas.add(opcion1);
+        unasOpcionesOrdenadas.add(opcion2);
+        unasOpcionesOrdenadas.add(opcion3);
+
+        Orden unOrden = new Orden(unasOpcionesOrdenadas);
+        Orden otroOrden = new Orden(unasOpcionesOrdenadas);
 
         assert(unOrden.esIgual(otroOrden) && otroOrden.esIgual(unOrden));
     }
@@ -28,21 +29,21 @@ public class OrdenTest {
     @Test
     public void test02CuandoSeCreanDosOrdenesIgualesDeCincoRespuestasLaComparacionDevuelveQueSonIguales() {
 
-        RespuestaOrden respuesta1 = new RespuestaOrden("Soy la primer respuesta :) ");
-        RespuestaOrden respuesta2 = new RespuestaOrden("Soy la segunda respuesta <:| ");
-        RespuestaOrden respuesta3 = new RespuestaOrden("Soy la tercer respuesta :| ");
-        RespuestaOrden respuesta4 = new RespuestaOrden("Soy la cuarta respuesta >:^| ");
-        RespuestaOrden respuesta5 = new RespuestaOrden("Soy la ultima respuesta :(");
+        OpcionSimple opcion1 = new OpcionSimple("Soy la primer respuesta :) ");
+        OpcionSimple opcion2 = new OpcionSimple("Soy la segunda respuesta <:| ");
+        OpcionSimple opcion3 = new OpcionSimple("Soy la tercer respuesta :| ");
+        OpcionSimple opcion4 = new OpcionSimple("Soy la cuarta respuesta >:^| ");
+        OpcionSimple opcion5 = new OpcionSimple("Soy la ultima respuesta :(");
 
-        ArrayList<RespuestaOrden> unasRespuestasOrdenadas = new ArrayList<>();
-        unasRespuestasOrdenadas.add(respuesta1);
-        unasRespuestasOrdenadas.add(respuesta2);
-        unasRespuestasOrdenadas.add(respuesta3);
-        unasRespuestasOrdenadas.add(respuesta4);
-        unasRespuestasOrdenadas.add(respuesta5);
+        ArrayList<OpcionSimple> unasOpcionesOrdenadas = new ArrayList<>();
+        unasOpcionesOrdenadas.add(opcion1);
+        unasOpcionesOrdenadas.add(opcion2);
+        unasOpcionesOrdenadas.add(opcion3);
+        unasOpcionesOrdenadas.add(opcion4);
+        unasOpcionesOrdenadas.add(opcion5);
 
-        Orden unOrden = new Orden(unasRespuestasOrdenadas);
-        Orden otroOrden = new Orden(unasRespuestasOrdenadas);
+        Orden unOrden = new Orden(unasOpcionesOrdenadas);
+        Orden otroOrden = new Orden(unasOpcionesOrdenadas);
 
         assert(unOrden.esIgual(otroOrden) && otroOrden.esIgual(unOrden));
     }
@@ -50,50 +51,50 @@ public class OrdenTest {
     @Test
     public void test03CuandoSeCreanDosOrdenesDistintosDeTresRespuestasLaComparacionDevuelveQueSonDistintos() {
 
-        RespuestaOrden respuesta1 = new RespuestaOrden("Soy la primer respuesta :) ");
-        RespuestaOrden respuesta2 = new RespuestaOrden("Soy la segunda respuesta :| ");
-        RespuestaOrden respuesta3 = new RespuestaOrden("Soy la ultima respuesta :(");
+        OpcionSimple opcion1 = new OpcionSimple("Soy la primer respuesta :) ");
+        OpcionSimple opcion2 = new OpcionSimple("Soy la segunda respuesta :| ");
+        OpcionSimple opcion3 = new OpcionSimple("Soy la ultima respuesta :(");
 
-        ArrayList<RespuestaOrden> unasRespuestasOrdenadas = new ArrayList<>();
-        unasRespuestasOrdenadas.add(respuesta1);
-        unasRespuestasOrdenadas.add(respuesta2);
-        unasRespuestasOrdenadas.add(respuesta3);
+        ArrayList<OpcionSimple> unasOpcionesOrdenadas = new ArrayList<>();
+        unasOpcionesOrdenadas.add(opcion1);
+        unasOpcionesOrdenadas.add(opcion2);
+        unasOpcionesOrdenadas.add(opcion3);
 
-        ArrayList<RespuestaOrden> otrasRespuestasOrdenadas = new ArrayList<>();
-        otrasRespuestasOrdenadas.add(respuesta2);
-        otrasRespuestasOrdenadas.add(respuesta3);
-        otrasRespuestasOrdenadas.add(respuesta1);
+        ArrayList<OpcionSimple> otrasOpcionesOrdenadas = new ArrayList<>();
+        otrasOpcionesOrdenadas.add(opcion2);
+        otrasOpcionesOrdenadas.add(opcion3);
+        otrasOpcionesOrdenadas.add(opcion1);
 
-        Orden unOrden = new Orden(unasRespuestasOrdenadas);
-        Orden otroOrden = new Orden(otrasRespuestasOrdenadas);
+        Orden unOrden = new Orden(unasOpcionesOrdenadas);
+        Orden otroOrden = new Orden(otrasOpcionesOrdenadas);
 
         assert(!unOrden.esIgual(otroOrden) && !otroOrden.esIgual(unOrden));
     }
     @Test
     public void test04CuandoSeCreanDosOrdenesDistintosDeCincoRespuestasLaComparacionDevuelveQueSonDistintos() {
 
-        RespuestaOrden respuesta1 = new RespuestaOrden("Soy la primer respuesta :) ");
-        RespuestaOrden respuesta2 = new RespuestaOrden("Soy la segunda respuesta <:| ");
-        RespuestaOrden respuesta3 = new RespuestaOrden("Soy la tercer respuesta :| ");
-        RespuestaOrden respuesta4 = new RespuestaOrden("Soy la cuarta respuesta >:^| ");
-        RespuestaOrden respuesta5 = new RespuestaOrden("Soy la ultima respuesta :(");
+        OpcionSimple opcion1 = new OpcionSimple("Soy la primer respuesta :) ");
+        OpcionSimple opcion2 = new OpcionSimple("Soy la segunda respuesta <:| ");
+        OpcionSimple opcion3 = new OpcionSimple("Soy la tercer respuesta :| ");
+        OpcionSimple opcion4 = new OpcionSimple("Soy la cuarta respuesta >:^| ");
+        OpcionSimple opcion5 = new OpcionSimple("Soy la ultima respuesta :(");
 
-        ArrayList<RespuestaOrden> unasRespuestasOrdenadas = new ArrayList<>();
-        unasRespuestasOrdenadas.add(respuesta1);
-        unasRespuestasOrdenadas.add(respuesta2);
-        unasRespuestasOrdenadas.add(respuesta3);
-        unasRespuestasOrdenadas.add(respuesta4);
-        unasRespuestasOrdenadas.add(respuesta5);
+        ArrayList<OpcionSimple> unasOpcionesOrdenadas = new ArrayList<>();
+        unasOpcionesOrdenadas.add(opcion1);
+        unasOpcionesOrdenadas.add(opcion2);
+        unasOpcionesOrdenadas.add(opcion3);
+        unasOpcionesOrdenadas.add(opcion4);
+        unasOpcionesOrdenadas.add(opcion5);
 
-        ArrayList<RespuestaOrden> otrasRespuestasOrdenadas = new ArrayList<>();
-        otrasRespuestasOrdenadas.add(respuesta2);
-        otrasRespuestasOrdenadas.add(respuesta3);
-        otrasRespuestasOrdenadas.add(respuesta1);
-        otrasRespuestasOrdenadas.add(respuesta5);
-        otrasRespuestasOrdenadas.add(respuesta4);
+        ArrayList<OpcionSimple> otrasOpcionesOrdenadas = new ArrayList<>();
+        otrasOpcionesOrdenadas.add(opcion2);
+        otrasOpcionesOrdenadas.add(opcion3);
+        otrasOpcionesOrdenadas.add(opcion1);
+        otrasOpcionesOrdenadas.add(opcion5);
+        otrasOpcionesOrdenadas.add(opcion4);
 
-        Orden unOrden = new Orden(unasRespuestasOrdenadas);
-        Orden otroOrden = new Orden(otrasRespuestasOrdenadas);
+        Orden unOrden = new Orden(unasOpcionesOrdenadas);
+        Orden otroOrden = new Orden(otrasOpcionesOrdenadas);
 
         assert(!unOrden.esIgual(otroOrden) && !otroOrden.esIgual(unOrden));
     }

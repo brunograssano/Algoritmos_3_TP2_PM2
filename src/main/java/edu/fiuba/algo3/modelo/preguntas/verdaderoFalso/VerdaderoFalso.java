@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
@@ -14,14 +15,14 @@ public class VerdaderoFalso implements Pregunta {
 
     private String enunciado;
     private PuntajeVerdaderoFalso puntaje;
-    private RespuestaIncorrectaVerdaderoFalso respuestasIncorrectas;
-    private RespuestaCorrectaVerdaderoFalso respuestasCorrectas;
+    private OpcionIncorrectaVerdaderoFalso respuestasIncorrectas;
+    private OpcionaCorrectaVerdaderoFalso respuestasCorrectas;
 
 
     public VerdaderoFalso(String enunciado,boolean respuestaCorrecta,PuntajeVerdaderoFalso puntaje) {
         this.enunciado = enunciado;
-        this.respuestasCorrectas = new RespuestaCorrectaVerdaderoFalso(respuestaCorrecta);
-        this.respuestasIncorrectas = new RespuestaIncorrectaVerdaderoFalso(!respuestaCorrecta);
+        this.respuestasCorrectas = new OpcionaCorrectaVerdaderoFalso(respuestaCorrecta);
+        this.respuestasIncorrectas = new OpcionIncorrectaVerdaderoFalso(!respuestaCorrecta);
         this.puntaje = puntaje;
     }
 

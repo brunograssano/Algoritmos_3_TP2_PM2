@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
+package edu.fiuba.algo3.modelo.preguntas.opciones.evaluables;
 
-import edu.fiuba.algo3.modelo.preguntas.RespuestaIndividual;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-public class RespuestaCorrectaVerdaderoFalso implements RespuestaIndividual {
+public class OpcionaCorrectaVerdaderoFalso implements OpcionEvaluable {
     private String enunciado;
-    public RespuestaCorrectaVerdaderoFalso(boolean respuestaCorrecta) {
+    public OpcionaCorrectaVerdaderoFalso(boolean respuestaCorrecta) {
         enunciado = respuestaCorrecta?"Verdadero":"Falso";
     }
 

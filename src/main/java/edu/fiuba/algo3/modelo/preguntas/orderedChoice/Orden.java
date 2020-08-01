@@ -1,12 +1,15 @@
 package edu.fiuba.algo3.modelo.preguntas.orderedChoice;
 
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Orden {
 
-    ArrayList<RespuestaOrden> respuestasOrdenadas;
+    ArrayList<OpcionSimple> respuestasOrdenadas;
 
-    public Orden(ArrayList<RespuestaOrden> unasRespuestasOrdenadas) {
+    public Orden(ArrayList<OpcionSimple> unasRespuestasOrdenadas) {
         respuestasOrdenadas = unasRespuestasOrdenadas;
     }
 
@@ -14,7 +17,7 @@ public class Orden {
         return unOrden.poseeMismoOrden(respuestasOrdenadas);
     }
 
-    private boolean poseeMismoOrden(ArrayList<RespuestaOrden> unOrdenRespuestas){
+    private boolean poseeMismoOrden(ArrayList<OpcionSimple> unOrdenRespuestas){
         return respuestasOrdenadas.equals(unOrdenRespuestas);
     }
 }

@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.evaluadores.Evaluador;
-import edu.fiuba.algo3.modelo.preguntas.RespuestaIndividual;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ public class RespuestaJugadorMultipleChoice implements RespuestaJugador {
     static final int CANT_OPCIONES_MIN = 1;
     static final int CANT_OPCIONES_MAX = 5;
 
-    private ArrayList<RespuestaIndividual> respuestasJugador;
+    private ArrayList<OpcionEvaluable> respuestasJugador;
 
-    public RespuestaJugadorMultipleChoice(ArrayList<RespuestaIndividual> respuestasJugador){
+    public RespuestaJugadorMultipleChoice(ArrayList<OpcionEvaluable> respuestasJugador){
         if (respuestasJugador.size() < CANT_OPCIONES_MIN || respuestasJugador.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
@@ -23,7 +23,7 @@ public class RespuestaJugadorMultipleChoice implements RespuestaJugador {
 
     @Override
     public void evaluar(Resultado unResultado) {
-        for (RespuestaIndividual respuesta: respuestasJugador){
+        for (OpcionEvaluable respuesta: respuestasJugador){
             respuesta.evaluar(unResultado);
         }
     }

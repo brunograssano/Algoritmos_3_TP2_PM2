@@ -3,18 +3,14 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.RespuestaGrupal;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -40,8 +36,8 @@ public class MultiplicadoresTest {
 
         jugada.agregarModificador(new Multiplicador(jugador1,2));
 
-        RespuestaCorrectaVerdaderoFalso respuestaJugador1 = new RespuestaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
-        RespuestaCorrectaVerdaderoFalso respuestaJugador2 = new RespuestaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaJugador1 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
         RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
@@ -68,8 +64,8 @@ public class MultiplicadoresTest {
 
         jugada.agregarModificador(new Multiplicador(jugador2,3));
 
-        RespuestaIncorrectaVerdaderoFalso respuestaJugador1 = new RespuestaIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
-        RespuestaCorrectaVerdaderoFalso respuestaJugador2 = new RespuestaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+        OpcionIncorrectaVerdaderoFalso respuestaJugador1 = new OpcionIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
+        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
 
         RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
         RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
@@ -103,12 +99,12 @@ public class MultiplicadoresTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -131,12 +127,12 @@ public class MultiplicadoresTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -159,21 +155,21 @@ public class MultiplicadoresTest {
 
         String enunciado = "Agrupar los segun mamiferos y reptiles";
 
-        RespuestaGrupo respuesta1Grupo1 = new RespuestaGrupo("Gatito");
-        RespuestaGrupo respuesta2Grupo1 = new RespuestaGrupo("Conejo");
-        RespuestaGrupo respuesta1Grupo2 = new RespuestaGrupo("Lagarto");
-        RespuestaGrupo respuesta2Grupo2 = new RespuestaGrupo("Iguana");
+        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
+        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
+        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
+        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
 
-        ArrayList<RespuestaGrupo> grupo1Respuesta = new ArrayList<>();
-        ArrayList<RespuestaGrupo> grupo2Respuesta = new ArrayList<>();
+        ArrayList<OpcionSimple> grupo1OpcionesCorrectas = new ArrayList<>();
+        ArrayList<OpcionSimple> grupo2OpcionesCorrectas = new ArrayList<>();
 
-        grupo1Respuesta.add(respuesta1Grupo1);
-        grupo1Respuesta.add(respuesta2Grupo1);
-        grupo2Respuesta.add(respuesta1Grupo2);
-        grupo2Respuesta.add(respuesta2Grupo2);
+        grupo1OpcionesCorrectas.add(opcion1Grupo1);
+        grupo1OpcionesCorrectas.add(opcion2Grupo1);
+        grupo2OpcionesCorrectas.add(opcion1Grupo2);
+        grupo2OpcionesCorrectas.add(opcion2Grupo2);
 
-        Grupo grupo1 = new Grupo("Mamiferos",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Reptiles",grupo2Respuesta);
+        Grupo grupo1 = new Grupo("Mamiferos",grupo1OpcionesCorrectas);
+        Grupo grupo2 = new Grupo("Reptiles",grupo2OpcionesCorrectas);
 
         Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
 
@@ -191,17 +187,17 @@ public class MultiplicadoresTest {
 
         String enunciado = "Ordenar de menor a mayor";
 
-        RespuestaOrden respuestaOrden1 = new RespuestaOrden("1");
-        RespuestaOrden respuestaOrden2 = new RespuestaOrden("2");
-        RespuestaOrden respuestaOrden3 = new RespuestaOrden("3");
-        RespuestaOrden respuestaOrden4 = new RespuestaOrden("4");
+        OpcionSimple opcionOrden1 = new OpcionSimple("1");
+        OpcionSimple opcionOrden2 = new OpcionSimple("2");
+        OpcionSimple opcionOrden3 = new OpcionSimple("3");
+        OpcionSimple opcionOrden4 = new OpcionSimple("4");
 
-        ArrayList<RespuestaOrden> respuestasOrdenadas = new ArrayList<>();
+        ArrayList<OpcionSimple> respuestasOrdenadas = new ArrayList<>();
 
-        respuestasOrdenadas.add(respuestaOrden1);
-        respuestasOrdenadas.add(respuestaOrden2);
-        respuestasOrdenadas.add(respuestaOrden3);
-        respuestasOrdenadas.add(respuestaOrden4);
+        respuestasOrdenadas.add(opcionOrden1);
+        respuestasOrdenadas.add(opcionOrden2);
+        respuestasOrdenadas.add(opcionOrden3);
+        respuestasOrdenadas.add(opcionOrden4);
 
         Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
 

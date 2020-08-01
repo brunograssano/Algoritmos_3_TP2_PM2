@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.evaluadores;
 
-import edu.fiuba.algo3.modelo.preguntas.RespuestaGrupal;
-import edu.fiuba.algo3.modelo.preguntas.evaluadores.Evaluador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
@@ -18,7 +17,7 @@ public class EvaluadorGrupo implements Evaluador {
     }
 
     @Override
-    public void evaluar(Resultado unResultado, ArrayList<RespuestaGrupal> respuestasDelUsuario) {
+    public void evaluar(Resultado unResultado, ArrayList<OpcionSimple> respuestasDelUsuario) {
         grupo1.contiene(unResultado,respuestasDelUsuario);
 
     }

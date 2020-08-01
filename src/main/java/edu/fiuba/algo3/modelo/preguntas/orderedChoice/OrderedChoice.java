@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.evaluadores.EvaluadorOrden;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
@@ -13,10 +14,10 @@ import java.util.ArrayList;
 public class OrderedChoice implements Pregunta {
 
     private String enunciado;
-    private ArrayList<RespuestaOrden> respuestasOrdenadasCorrectamente;
+    private ArrayList<OpcionSimple> respuestasOrdenadasCorrectamente;
     private PuntajeClasico puntaje;
 
-    public OrderedChoice(String enunciado, ArrayList<RespuestaOrden> respuestasOrdenadas) {
+    public OrderedChoice(String enunciado, ArrayList<OpcionSimple> respuestasOrdenadas) {
         this.enunciado = enunciado;
         respuestasOrdenadasCorrectamente = respuestasOrdenadas;
         puntaje = new PuntajeClasico();

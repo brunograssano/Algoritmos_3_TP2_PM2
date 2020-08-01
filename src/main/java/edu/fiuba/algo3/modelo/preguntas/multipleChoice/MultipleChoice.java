@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
@@ -18,10 +19,10 @@ public class MultipleChoice implements Pregunta {
     private String enunciado;
     private int respuestasTotales;
     private PuntajeChoice puntaje;
-    private ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas;
-    private ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas;
+    private ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas;
+    private ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas;
 
-    public MultipleChoice(String enunciado, ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas, ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas, PuntajeChoice puntaje){
+    public MultipleChoice(String enunciado, ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas, ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas, PuntajeChoice puntaje){
         respuestasTotales = respuestasCorrectas.size() + respuestasIncorrectas.size();
         if(respuestasTotales < CANT_OPCIONES_MIN || respuestasTotales > CANT_OPCIONES_MAX || respuestasCorrectas.size() < RESPUESTAS_CORRECTAS_MIN ) {
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
