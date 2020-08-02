@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
+import edu.fiuba.algo3.modelo.preguntas.modificadores.*;
 import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNulo;
 import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
@@ -8,25 +9,42 @@ import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
 public class EstadoCorrectoClasico implements EstadoResultadoClasico {
 
     private int cantidadDeRespuestasCorrectasTotales;
-    private Puntuacion puntos;
+    private Puntuacion puntosTemporales;
+    private Puntuacion punto;
 
     public EstadoCorrectoClasico(int unaCantidadDeRespuesasCorrectasTotales){
         cantidadDeRespuestasCorrectasTotales = unaCantidadDeRespuesasCorrectasTotales;
-        puntos = new Puntuacion();
+        puntosTemporales = new Puntuacion();
+        punto = new Puntuacion();
+        punto.agregarPunto(new PuntoPositivo());
     }
 
     @Override
     public void agregarPunto(Punto unPunto) {
-        puntos.agregarPunto(unPunto);
+        puntosTemporales.agregarPunto(unPunto);
     }
 
     @Override
     public Punto obtenerPuntos() {
-        Punto punto = new PuntoNulo();
-        if(puntos.valorNumerico() == cantidadDeRespuestasCorrectasTotales){
-            punto = new PuntoPositivo();
+        if(puntosTemporales.valorNumerico() != cantidadDeRespuestasCorrectasTotales){
+            return new PuntoNulo();
         }
         return punto;
+    }
+
+    @Override
+    public void multiplicarPuntos(Multiplicador multiplicador) {
+        multiplicador.usarEnPuntos(punto);
+    }
+
+    @Override
+    public void verSiAplicaExclusividad(Resultado resultado, AnalizadorExclusividad analizador) {
+        if(puntosTemporales.valorNumerico() == cantidadDeRespuestasCorrectasTotales) {
+            analizador.agregarSituacion(new UsuarioRespondioBien(resultado));
+        }
+        else{
+            analizador.agregarSituacion(new UsuarioSeEquivoco(resultado));
+        }
     }
 
 }

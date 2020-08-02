@@ -11,6 +11,14 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMult
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -34,7 +42,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
-        jugada.agregarModificador(new Multiplicador(jugador1,2));
+        jugada.agregarModificador(new MultiplicadorJugador(jugador1,2));
 
         OpcionaCorrectaVerdaderoFalso respuestaJugador1 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
@@ -62,7 +70,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
-        jugada.agregarModificador(new Multiplicador(jugador2,3));
+        jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));
 
         OpcionIncorrectaVerdaderoFalso respuestaJugador1 = new OpcionIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
