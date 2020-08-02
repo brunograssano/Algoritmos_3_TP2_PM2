@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import java.util.ArrayList;
 
 public interface Modificador {
+
     void usarEnPuntaje(PuntajePenalizable puntajePenalizable, ArrayList<Modificador> modificadoresDeLaJugada);
 
     void usarEnPuntaje(PuntajeClasico puntajeClasico, ArrayList<Modificador> modificadoresDeLaJugada);

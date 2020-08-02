@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoPenalizable;
@@ -8,10 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RespuestaIncorrectaMultipleChoiceTest {
+public class OpcionIncorrectaVerdaderoFalsoTest {
+
     @Test
-    public void test01CreoUnaRespuestaIncorrectaMCLePasoUnResultadoClasicoPidoPuntosDebeSer0(){
-        RespuestaIncorrectaMultipleChoice respuesta = new RespuestaIncorrectaMultipleChoice("Soy incorrecta");
+    public void test01CreoUnaOpcionIncorrectaVFLePasoUnResultadoClasicoPidoPuntosDebeSer0(){
+        OpcionIncorrectaVerdaderoFalso respuesta = new OpcionIncorrectaVerdaderoFalso(false);
         ResultadoClasico resultado = new ResultadoClasico(1);
 
         respuesta.evaluar(resultado);
@@ -22,8 +23,8 @@ public class RespuestaIncorrectaMultipleChoiceTest {
     }
 
     @Test
-    public void test02CreoUnaRespuestaIncorrectaMCLePasoUnResultadoPenalizablePidoPuntosDebeSerNegativo(){
-        RespuestaIncorrectaMultipleChoice respuesta = new RespuestaIncorrectaMultipleChoice("Soy incorrecta");
+    public void test02CreoUnaOpcionIncorrectaVFLePasoUnResultadoPenalizablePidoPuntosDebeSerMenosUno(){
+        OpcionIncorrectaVerdaderoFalso respuesta = new OpcionIncorrectaVerdaderoFalso(false);
         ResultadoPenalizable resultado = new ResultadoPenalizable();
 
         respuesta.evaluar(resultado);

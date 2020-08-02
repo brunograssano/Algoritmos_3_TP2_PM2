@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Or;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 
@@ -16,30 +19,28 @@ public class PreguntaOrdenTest {
 
         String enunciado = "Ordenar de menor a mayor";
 
-        RespuestaOrden respuestaOrden1 = new RespuestaOrden("1");
-        RespuestaOrden respuestaOrden2 = new RespuestaOrden("2");
-        RespuestaOrden respuestaOrden3 = new RespuestaOrden("3");
-        RespuestaOrden respuestaOrden4 = new RespuestaOrden("4");
+        OpcionSimple opcion1 = new OpcionSimple("1");
+        OpcionSimple opcion2 = new OpcionSimple("2");
+        OpcionSimple opcion3 = new OpcionSimple("3");
+        OpcionSimple opcion4 = new OpcionSimple("4");
 
-        ArrayList<RespuestaOrden> respuestasOrdenadas = new ArrayList<>();
+        ArrayList<OpcionSimple> opcionesOrdenadas = new ArrayList<>();
+        opcionesOrdenadas.add(opcion1);
+        opcionesOrdenadas.add(opcion2);
+        opcionesOrdenadas.add(opcion3);
+        opcionesOrdenadas.add(opcion4);
 
+        Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,opcionesOrdenadas);
 
-        respuestasOrdenadas.add(respuestaOrden1);
-        respuestasOrdenadas.add(respuestaOrden2);
-        respuestasOrdenadas.add(respuestaOrden3);
-        respuestasOrdenadas.add(respuestaOrden4);
+        ArrayList<OpcionSimple> opcionesJugador = new ArrayList<>();
+        opcionesJugador.add(opcion1);
+        opcionesJugador.add(opcion2);
+        opcionesJugador.add(opcion3);
+        opcionesJugador.add(opcion4);
+        Orden ordenCorrecto = new Orden(opcionesJugador);
+        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(ordenCorrecto);
 
-        Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
-
-        ArrayList<RespuestaGrupal> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaOrden1);
-        respuestasJugador.add(respuestaOrden2);
-        respuestasJugador.add(respuestaOrden3);
-        respuestasJugador.add(respuestaOrden4);
-
-        RespuestaJugadorOrderedChoice respuestaJugadorOC = new RespuestaJugadorOrderedChoice(respuestasJugador);
-
-        Resultado resultado = preguntaOrden.evaluar(respuestaJugadorOC);
+        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -49,30 +50,28 @@ public class PreguntaOrdenTest {
 
         String enunciado = "Ordenar de menor a mayor";
 
-        RespuestaOrden respuestaOrden1 = new RespuestaOrden("1");
-        RespuestaOrden respuestaOrden2 = new RespuestaOrden("2");
-        RespuestaOrden respuestaOrden3 = new RespuestaOrden("3");
-        RespuestaOrden respuestaOrden4 = new RespuestaOrden("4");
+        OpcionSimple opcion1 = new OpcionSimple("1");
+        OpcionSimple opcion2 = new OpcionSimple("2");
+        OpcionSimple opcion3 = new OpcionSimple("3");
+        OpcionSimple opcion4 = new OpcionSimple("4");
 
-        ArrayList<RespuestaOrden> respuestasOrdenadas = new ArrayList<>();
+        ArrayList<OpcionSimple> opcionesOrdenadas = new ArrayList<>();
+        opcionesOrdenadas.add(opcion1);
+        opcionesOrdenadas.add(opcion2);
+        opcionesOrdenadas.add(opcion3);
+        opcionesOrdenadas.add(opcion4);
 
+        Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,opcionesOrdenadas);
 
-        respuestasOrdenadas.add(respuestaOrden1);
-        respuestasOrdenadas.add(respuestaOrden2);
-        respuestasOrdenadas.add(respuestaOrden3);
-        respuestasOrdenadas.add(respuestaOrden4);
+        ArrayList<OpcionSimple> opcionesJugador = new ArrayList<>();
+        opcionesJugador.add(opcion1);
+        opcionesJugador.add(opcion3);
+        opcionesJugador.add(opcion4);
+        opcionesJugador.add(opcion2);
+        Orden ordenCorrecto = new Orden(opcionesJugador);
+        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(ordenCorrecto);
 
-        Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
-
-        ArrayList<RespuestaGrupal> respuestasJugador = new ArrayList<>();
-        respuestasJugador.add(respuestaOrden1);
-        respuestasJugador.add(respuestaOrden3);
-        respuestasJugador.add(respuestaOrden4);
-        respuestasJugador.add(respuestaOrden2);
-
-        RespuestaJugadorOrderedChoice respuestaJugadorOC = new RespuestaJugadorOrderedChoice(respuestasJugador);
-
-        Resultado resultado = preguntaOrden.evaluar(respuestaJugadorOC);
+        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }

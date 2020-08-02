@@ -2,10 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 
@@ -21,13 +22,13 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Vigilante");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Vigilante");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -35,13 +36,13 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -51,13 +52,13 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Vigilante");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Vigilante");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -65,13 +66,13 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaCorrecta3);
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -81,10 +82,10 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
         respuestasCorrectas.add(respuestaCorrecta1);
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
@@ -97,13 +98,13 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Vigilante");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Vigilante");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -111,14 +112,14 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
@@ -128,13 +129,13 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Vigilante");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Vigilante");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -142,13 +143,13 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(2,resultado.obtenerPuntos().valorNumerico());
     }
@@ -158,13 +159,13 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("CocaCola");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("CocaCola");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta2 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -172,16 +173,16 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaIncorrecta2);
 
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -192,14 +193,14 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Flan");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("Helado");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Flan");
+        OpcionCorrectaMultipleChoice respuestaCorrecta4 = new OpcionCorrectaMultipleChoice("Helado");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -208,7 +209,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -216,9 +217,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta1);
 
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -228,14 +229,14 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Flan");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta4 = new RespuestaCorrectaMultipleChoice("Helado");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Flan");
+        OpcionCorrectaMultipleChoice respuestaCorrecta4 = new OpcionCorrectaMultipleChoice("Helado");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -244,14 +245,14 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
@@ -261,15 +262,15 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Flan");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Flan");
 
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Carne al horno");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta2 = new OpcionIncorrectaMultipleChoice("Carne al horno");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -278,14 +279,14 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaIncorrecta2);
 
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(-2,resultado.obtenerPuntos().valorNumerico());
     }
@@ -295,15 +296,15 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta3 = new RespuestaCorrectaMultipleChoice("Flan");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta3 = new OpcionCorrectaMultipleChoice("Flan");
 
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Carne al horno");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta2 = new OpcionIncorrectaMultipleChoice("Carne al horno");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -312,7 +313,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta2);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaCorrecta3);
@@ -320,9 +321,9 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaIncorrecta2);
 
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -332,16 +333,16 @@ public class PreguntasMultipleChoiceTest {
 
         String enunciado = "Cuales de estos son postres?";
 
-        RespuestaCorrectaMultipleChoice respuestaCorrecta1 = new RespuestaCorrectaMultipleChoice("Tiramisú");
-        RespuestaCorrectaMultipleChoice respuestaCorrecta2 = new RespuestaCorrectaMultipleChoice("Gelatina");
+        OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
+        OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
 
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta1 = new RespuestaIncorrectaMultipleChoice("Cordero a la Wellington");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta2 = new RespuestaIncorrectaMultipleChoice("Carne al horno");
-        RespuestaIncorrectaMultipleChoice respuestaIncorrecta3 = new RespuestaIncorrectaMultipleChoice("Papas al horno");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta2 = new OpcionIncorrectaMultipleChoice("Carne al horno");
+        OpcionIncorrectaMultipleChoice respuestaIncorrecta3 = new OpcionIncorrectaMultipleChoice("Papas al horno");
 
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
         respuestasCorrectas.add(respuestaCorrecta1);
         respuestasCorrectas.add(respuestaCorrecta2);
@@ -350,16 +351,16 @@ public class PreguntasMultipleChoiceTest {
         respuestasIncorrectas.add(respuestaIncorrecta3);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-        ArrayList<RespuestaIndividual> respuestasJugador = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador = new ArrayList<>();
         respuestasJugador.add(respuestaCorrecta1);
         respuestasJugador.add(respuestaCorrecta2);
         respuestasJugador.add(respuestaIncorrecta1);
         respuestasJugador.add(respuestaIncorrecta2);
         respuestasJugador.add(respuestaIncorrecta3);
 
-        RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
+        RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
 
         assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
     }

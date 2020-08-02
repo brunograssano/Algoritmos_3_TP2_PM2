@@ -1,14 +1,14 @@
-package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
+package edu.fiuba.algo3.modelo.preguntas.opciones.evaluables;
 
-import edu.fiuba.algo3.modelo.preguntas.RespuestaIndividual;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-public class RespuestaCorrectaMultipleChoice implements RespuestaIndividual {
+public class OpcionCorrectaMultipleChoice implements OpcionEvaluable {
 
 
     private String textoRespuesta;
 
-    public RespuestaCorrectaMultipleChoice(String textoRespuestaCorrecta) {
+    public OpcionCorrectaMultipleChoice(String textoRespuestaCorrecta) {
         this.textoRespuesta = textoRespuestaCorrecta;
     }
 

@@ -2,7 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
@@ -23,17 +24,24 @@ public class Jugada {
         modificadoresJugadas = new ArrayList<Modificador>();
     }
 
-
-    public void procesarJugada(RespuestaJugador respuestasJugador1, RespuestaJugador respuestasJugador2){
-        Resultado resultadoJugador1 = pregunta.evaluar(respuestasJugador1);
-        Resultado resultadoJugador2 = pregunta.evaluar(respuestasJugador2);
+    public void procesarJugada(RespuestaAutoEvaluable respuestasJugador1, RespuestaAutoEvaluable respuestasJugador2){
+        Resultado resultadoJugador1 = pregunta.responder(respuestasJugador1);
+        Resultado resultadoJugador2 = pregunta.responder(respuestasJugador2);
+        aplicarModificadores(resultadoJugador1,resultadoJugador2);
+        jugador1.sumarPuntos(resultadoJugador1.obtenerPuntos());
+        jugador2.sumarPuntos(resultadoJugador2.obtenerPuntos());
+    }
+    
+    public void procesarJugada(RespuestaComparable respuestasJugador1, RespuestaComparable respuestasJugador2){
+        Resultado resultadoJugador1 = pregunta.responder(respuestasJugador1);
+        Resultado resultadoJugador2 = pregunta.responder(respuestasJugador2);
         aplicarModificadores(resultadoJugador1,resultadoJugador2);
         jugador1.sumarPuntos(resultadoJugador1.obtenerPuntos());
         jugador2.sumarPuntos(resultadoJugador2.obtenerPuntos());
     }
 
     private void aplicarModificadores(Resultado resultadoJugador1, Resultado resultadoJugador2){
-        for (Modificador modificador:modificadoresJugadas) {
+        for (Modificador modificador: modificadoresJugadas) {
             modificador.aplicar(jugador1,resultadoJugador1,resultadoJugador2);
         }
     }
