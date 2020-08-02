@@ -23,7 +23,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
 
@@ -41,7 +41,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -58,7 +58,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
 
@@ -76,7 +76,7 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.evaluar(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
 
         assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
 

@@ -37,7 +37,7 @@ public class PreguntaOrdenTest {
 
         RespuestaJugadorOrderedChoice respuestaJugadorOC = new RespuestaJugadorOrderedChoice(opcionesJugador);
 
-        Resultado resultado = preguntaOrden.evaluar(respuestaJugadorOC);
+        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -68,7 +68,7 @@ public class PreguntaOrdenTest {
 
         RespuestaJugadorOrderedChoice respuestaJugadorOC = new RespuestaJugadorOrderedChoice(opcionesJugador);
 
-        Resultado resultado = preguntaOrden.evaluar(respuestaJugadorOC);
+        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }

@@ -42,7 +42,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta3);
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -72,7 +72,7 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta3);
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -119,7 +119,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
@@ -149,7 +149,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(2,resultado.obtenerPuntos().valorNumerico());
     }
@@ -182,7 +182,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -219,7 +219,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -252,7 +252,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(3,resultado.obtenerPuntos().valorNumerico());
     }
@@ -286,7 +286,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(-2,resultado.obtenerPuntos().valorNumerico());
     }
@@ -323,7 +323,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
     }
@@ -360,7 +360,7 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaJugadorMultipleChoice respuestaJugadorMultipleChoice = new RespuestaJugadorMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.evaluar(respuestaJugadorMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaJugadorMultipleChoice);
 
         assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
     }

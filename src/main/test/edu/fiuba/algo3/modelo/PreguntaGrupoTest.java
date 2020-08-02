@@ -52,7 +52,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo2Jugador.add(opcion3Grupo2);
 
         RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
-        Resultado resultado = preguntaGrupo.evaluar(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(1, resultado.obtenerPuntos().valorNumerico());
     }
@@ -89,7 +89,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo2Jugador.add(opcion1Grupo2);
 
         RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
-        Resultado resultado = preguntaGrupo.evaluar(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
     }
@@ -127,7 +127,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo2Jugador.add(opcion1Grupo2);
 
         RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
-        Resultado resultado = preguntaGrupo.evaluar(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
     }
@@ -173,7 +173,7 @@ public class PreguntaGrupoTest {
 
 
         RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
-        Resultado resultado = preguntaGrupo.evaluar(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
     }

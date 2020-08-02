@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.preguntas.evaluadores.Evaluador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-public class RespuestaJugadorVerdaderoFalso implements RespuestaJugador {
+public class RespuestaJugadorVerdaderoFalso implements RespuestaAutoEvaluable {
 
     private OpcionEvaluable respuestaJugador;
 
@@ -16,9 +16,4 @@ public class RespuestaJugadorVerdaderoFalso implements RespuestaJugador {
     public void evaluar(Resultado unResultado) {
         respuestaJugador.evaluar(unResultado);
     }
-
-    @Override
-    public void evaluarConParametro(Resultado unResultado, Evaluador evaluadorRespuestas) {
-    }
-
 }

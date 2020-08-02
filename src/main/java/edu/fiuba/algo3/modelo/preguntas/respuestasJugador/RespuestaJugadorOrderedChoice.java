@@ -6,21 +6,19 @@ import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
 
-public class RespuestaJugadorOrderedChoice implements RespuestaJugador {
+public class RespuestaJugadorOrderedChoice implements RespuestaComparable {
 
-    private ArrayList<OpcionSimple> respuestasJugador;
+    // PARA CUANDO SE REFACTORICE  --> private Orden ordenJugador;
 
-    public RespuestaJugadorOrderedChoice(ArrayList<OpcionSimple> respuestasUsuario){
-        this.respuestasJugador = respuestasUsuario;
-    }
+    private ArrayList<OpcionSimple> ordenJugador;
 
-    @Override
-    public void evaluar(Resultado unResultado) {
+    public RespuestaJugadorOrderedChoice(ArrayList<OpcionSimple> respuestasJugador){
+        ordenJugador = respuestasJugador;
+        // PARA CUANDO SE REFACTORICE --> ordenJugador = new Orden(respuestasUsuario);
     }
 
     @Override
     public void evaluarConParametro(Resultado unResultado, Evaluador evaluadorRespuestas) {
-        evaluadorRespuestas.evaluar(unResultado,respuestasJugador);
+        evaluadorRespuestas.evaluar(unResultado,ordenJugador);
     }
-
 }

@@ -4,7 +4,9 @@ import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugador;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
@@ -27,10 +29,16 @@ public class VerdaderoFalso implements Pregunta {
     }
 
     @Override
-    public Resultado evaluar(RespuestaJugador respuestasJugador) {
+    public Resultado responder(RespuestaAutoEvaluable respuestasJugador) {
+
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO);
         respuestasJugador.evaluar(unResultado);
         return unResultado;
+    }
+
+    @Override
+    public Resultado responder(RespuestaComparable respuestasUsuario) {
+        return null;
     }
 
     @Override
