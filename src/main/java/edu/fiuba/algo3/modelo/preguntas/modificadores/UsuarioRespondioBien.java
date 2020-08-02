@@ -30,8 +30,6 @@ public class UsuarioRespondioBien implements SituacionesExclusividad {
     }
 
     public void ganoExclusividad() {
-        resultadoDelJugador.aplicarMultiplicador(new Multiplicador(new Jugador("TEMPORAL"),2));
-        //Ver forma de evitar tener que mandarle el jugador, quizas crear un multiplicar exclusivo de Exclusividad
-        // (este puede llegar a ser siempre 2)
+        resultadoDelJugador.aplicarMultiplicador(new MultiplicadorExclusividad());
     }
 }

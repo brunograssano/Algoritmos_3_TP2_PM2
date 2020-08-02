@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
 
@@ -16,8 +16,8 @@ public class Jugador {
         this.nombre = nombre;
         puntos = new Puntuacion();
         modificadores = new ArrayList<Modificador>();
-        modificadores.add(new Multiplicador(this,2));
-        modificadores.add(new Multiplicador(this,3));
+        modificadores.add(new MultiplicadorJugador(this,2));
+        modificadores.add(new MultiplicadorJugador(this,3));
     }
 
     public void sumarPuntos(Punto unosPuntos){

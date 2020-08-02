@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.preguntas.RespuestaIndividual;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.Exclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;

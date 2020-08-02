@@ -3,16 +3,13 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.RespuestaGrupal;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
@@ -38,7 +35,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
-        jugada.agregarModificador(new Multiplicador(jugador1,2));
+        jugada.agregarModificador(new MultiplicadorJugador(jugador1,2));
 
         RespuestaCorrectaVerdaderoFalso respuestaJugador1 = new RespuestaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
         RespuestaCorrectaVerdaderoFalso respuestaJugador2 = new RespuestaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
@@ -66,7 +63,7 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
-        jugada.agregarModificador(new Multiplicador(jugador2,3));
+        jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));
 
         RespuestaIncorrectaVerdaderoFalso respuestaJugador1 = new RespuestaIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
         RespuestaCorrectaVerdaderoFalso respuestaJugador2 = new RespuestaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
@@ -94,7 +91,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
         assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador2,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));}
         );
     }
 
@@ -122,7 +119,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
         assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
@@ -150,7 +147,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
         assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
@@ -182,7 +179,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaGrupo);
 
         assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
@@ -210,7 +207,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaOrden);
 
         assertThrows(ModificadorNoAptoParaPreguntaExcepcion.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
