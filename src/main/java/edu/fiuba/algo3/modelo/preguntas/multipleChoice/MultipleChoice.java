@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMult
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
 import java.util.ArrayList;
 
@@ -44,7 +45,8 @@ public class MultipleChoice implements Pregunta {
 
     @Override
     public Resultado responder(RespuestaComparable respuestasUsuario) {
-        return null;
+        //Arreglar este return
+        return new ResultadoClasico(0);
     }
 
     @Override

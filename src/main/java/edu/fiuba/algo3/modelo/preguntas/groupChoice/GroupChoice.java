@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
 import java.util.ArrayList;
 
@@ -28,11 +29,6 @@ public class GroupChoice implements Pregunta {
     public Resultado responder(RespuestaComparable respuestasJugador) {
         Resultado unResultado = puntaje.obtenerResultado(1);
 
-        /* POSIBLE
-        EvaluadorGrupo evaluador = new EvaluadorGrupo(grupo1,grupo2);
-        respuestasUsuario.esIgual(unResultado, evaluador);
-        */
-
         if(respuestasJugador.esIgual(respuestaCorrecta)){
             unResultado.sumarRespuestaCorrecta();
         }else{
@@ -43,7 +39,7 @@ public class GroupChoice implements Pregunta {
 
     @Override
     public Resultado responder(RespuestaAutoEvaluable respuestasUsuario) {
-        return null;
+        return new ResultadoClasico(0);
     }
 
     @Override

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +30,7 @@ public class JugadaTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaCorrecta);
         RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaCorrecta);
@@ -60,7 +60,7 @@ public class JugadaTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
         OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaCorrecta);

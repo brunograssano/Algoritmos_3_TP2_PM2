@@ -9,20 +9,11 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.RespuestaGrupo;
 import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.RespuestaOrden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -44,8 +35,8 @@ public class MultiplicadoresTest {
 
         jugada.agregarModificador(new MultiplicadorJugador(jugador1,2));
 
-        OpcionaCorrectaVerdaderoFalso respuestaJugador1 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
-        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaJugador1 = new OpcionCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = new OpcionCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
         RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
@@ -73,7 +64,7 @@ public class MultiplicadoresTest {
         jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));
 
         OpcionIncorrectaVerdaderoFalso respuestaJugador1 = new OpcionIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
-        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = new OpcionCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
         RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
@@ -98,7 +89,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador2,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));}
         );
     }
 
@@ -126,7 +117,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
@@ -154,7 +145,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
@@ -186,7 +177,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaGrupo);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 
@@ -214,7 +205,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaOrden);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Multiplicador(jugador1,3));}
+                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
         );
     }
 

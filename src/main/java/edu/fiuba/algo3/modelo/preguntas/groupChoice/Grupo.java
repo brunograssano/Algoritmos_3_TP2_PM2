@@ -29,12 +29,4 @@ public class Grupo {
     private boolean tieneMismoNombre(String unNombre){
         return nombreGrupo.equals(unNombre);
     }
-//A BORRAR JUNTO EVALUADORES
-    public void contiene(Resultado unResultado, ArrayList<OpcionSimple> respuestasDelUsuario) {
-        if( respuestasDelUsuario.containsAll(respuestasDelGrupo) && respuestasDelGrupo.size() == respuestasDelUsuario.size() ){
-            unResultado.sumarRespuestaCorrecta();
-        }else{
-            unResultado.sumarRespuestaIncorrecta();
-        }
-    }
 }

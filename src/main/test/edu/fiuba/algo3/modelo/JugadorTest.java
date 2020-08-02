@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMult
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +35,7 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
-        OpcionaCorrectaVerdaderoFalso respuestaJugador1 = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaJugador1 = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
         OpcionIncorrectaVerdaderoFalso respuestaJugador2 = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
@@ -77,7 +77,7 @@ public class JugadorTest {
         String enunciado = "El pasto es verde?";
         boolean enunciadoEsCorrecto = true;
 
-        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
@@ -86,8 +86,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
-        OpcionaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
-        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
+        OpcionCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
         RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
@@ -128,7 +128,7 @@ public class JugadorTest {
         String enunciado = "El pasto es verde?";
         boolean enunciadoEsCorrecto = true;
 
-        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
 
@@ -137,8 +137,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
-        OpcionaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
-        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
+        OpcionCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
         RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
@@ -154,7 +154,7 @@ public class JugadorTest {
         String enunciado = "El pasto es verde?";
         boolean enunciadoEsCorrecto = true;
 
-        OpcionaCorrectaVerdaderoFalso respuestaCorrecta = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
 
@@ -163,8 +163,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
-        OpcionaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
-        OpcionaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
+        OpcionCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
         RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
         RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
