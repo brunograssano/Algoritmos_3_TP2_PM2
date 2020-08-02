@@ -4,11 +4,11 @@ import edu.fiuba.algo3.modelo.preguntas.evaluadores.Evaluador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-public class RespuestaJugadorVerdaderoFalso implements RespuestaAutoEvaluable {
+public class RespuestaVerdaderoFalso implements RespuestaAutoEvaluable {
 
     private OpcionEvaluable respuestaJugador;
 
-    public RespuestaJugadorVerdaderoFalso(OpcionEvaluable respuestasJugador){
+    public RespuestaVerdaderoFalso(OpcionEvaluable respuestasJugador){
         this.respuestaJugador = respuestasJugador;
     }
 

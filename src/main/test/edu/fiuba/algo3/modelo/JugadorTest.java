@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
@@ -38,8 +38,8 @@ public class JugadorTest {
         OpcionaCorrectaVerdaderoFalso respuestaJugador1 = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
         OpcionIncorrectaVerdaderoFalso respuestaJugador2 = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
 
         jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
@@ -63,8 +63,8 @@ public class JugadorTest {
         OpcionIncorrectaVerdaderoFalso respuestaJugador1 = respuestaIncorrecta;
         OpcionIncorrectaVerdaderoFalso respuestaJugador2 = respuestaIncorrecta;
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
 
         jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
@@ -89,8 +89,8 @@ public class JugadorTest {
         OpcionaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
         for(int i = 0; i < 5; i++){
             jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
         }
@@ -115,8 +115,8 @@ public class JugadorTest {
         OpcionIncorrectaVerdaderoFalso respuestaJugador1 = respuestaIncorrecta;
         OpcionIncorrectaVerdaderoFalso respuestaJugador2 = respuestaIncorrecta;
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
 
         jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
@@ -140,8 +140,8 @@ public class JugadorTest {
         OpcionaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
 
         jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
@@ -166,14 +166,14 @@ public class JugadorTest {
         OpcionaCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = respuestaCorrecta;
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
         for(int i = 0; i < 3; i++){
             jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
         }
         OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
         OpcionIncorrectaVerdaderoFalso respuestaIncorrectaJugador1 = respuestaIncorrecta;
-        respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrectaJugador1);
+        respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaIncorrectaJugador1);
         for(int i = 0; i < 3; i++){
             jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
         }
@@ -214,8 +214,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(1, jugador1.obtenerPuntos());
@@ -254,8 +254,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(0, jugador1.obtenerPuntos());
@@ -293,8 +293,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         respuestasJugador1.add(respuestaIncorrecta1);
@@ -338,8 +338,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(4, jugador1.obtenerPuntos());
@@ -377,8 +377,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(1, jugador1.obtenerPuntos());
@@ -417,8 +417,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(0, jugador1.obtenerPuntos());
@@ -456,8 +456,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas
         for (int i = 0; i < 10; i++) {
             jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
@@ -505,8 +505,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(3, jugador1.obtenerPuntos());
@@ -546,8 +546,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(3, jugador1.obtenerPuntos());
@@ -588,8 +588,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(-1, jugador1.obtenerPuntos());
@@ -630,8 +630,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
         jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
         assertEquals(-3, jugador1.obtenerPuntos());
@@ -671,8 +671,8 @@ public class JugadorTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaMultipleChoice);
 
-        RespuestaJugadorMultipleChoice respuestasJugador1MC = new RespuestaJugadorMultipleChoice(respuestasJugador1);
-        RespuestaJugadorMultipleChoice respuestasJugador2MC = new RespuestaJugadorMultipleChoice(respuestasJugador2);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
 
 
         //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas

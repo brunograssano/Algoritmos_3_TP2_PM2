@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
@@ -39,8 +39,8 @@ public class MultiplicadoresTest {
         OpcionaCorrectaVerdaderoFalso respuestaJugador1 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
 
         jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
@@ -67,8 +67,8 @@ public class MultiplicadoresTest {
         OpcionIncorrectaVerdaderoFalso respuestaJugador1 = new OpcionIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
         OpcionaCorrectaVerdaderoFalso respuestaJugador2 = new OpcionaCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador1);
-        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaJugador2);
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
 
         jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 

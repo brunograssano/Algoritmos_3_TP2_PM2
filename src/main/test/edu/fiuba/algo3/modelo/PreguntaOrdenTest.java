@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +35,7 @@ public class PreguntaOrdenTest {
         opcionesJugador.add(opcion3);
         opcionesJugador.add(opcion4);
 
-        RespuestaJugadorOrderedChoice respuestaJugadorOC = new RespuestaJugadorOrderedChoice(opcionesJugador);
+        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(opcionesJugador);
 
         Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
 
@@ -66,7 +66,7 @@ public class PreguntaOrdenTest {
         opcionesJugador.add(opcion4);
         opcionesJugador.add(opcion2);
 
-        RespuestaJugadorOrderedChoice respuestaJugadorOC = new RespuestaJugadorOrderedChoice(opcionesJugador);
+        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(opcionesJugador);
 
         Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
 

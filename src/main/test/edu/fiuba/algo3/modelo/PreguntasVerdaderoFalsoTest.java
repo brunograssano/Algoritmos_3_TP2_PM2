@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
@@ -21,9 +21,9 @@ public class PreguntasVerdaderoFalsoTest {
 
         OpcionaCorrectaVerdaderoFalso respuestaJugador = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
+        RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
 
@@ -39,9 +39,9 @@ public class PreguntasVerdaderoFalsoTest {
 
         OpcionIncorrectaVerdaderoFalso respuestaJugador = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
+        RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
 
         assertEquals(0,resultado.obtenerPuntos().valorNumerico());
     }
@@ -56,9 +56,9 @@ public class PreguntasVerdaderoFalsoTest {
 
         OpcionaCorrectaVerdaderoFalso respuestaJugador = new OpcionaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
+        RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
 
         assertEquals(1,resultado.obtenerPuntos().valorNumerico());
 
@@ -74,9 +74,9 @@ public class PreguntasVerdaderoFalsoTest {
 
         OpcionIncorrectaVerdaderoFalso respuestaJugador = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        RespuestaJugadorVerdaderoFalso respuestaJugadorVerdaderoFalso = new RespuestaJugadorVerdaderoFalso(respuestaJugador);
+        RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaJugadorVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
 
         assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
 

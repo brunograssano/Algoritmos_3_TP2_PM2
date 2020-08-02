@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -51,7 +51,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo2Jugador.add(opcion2Grupo2);
         respuestaGrupo2Jugador.add(opcion3Grupo2);
 
-        RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(1, resultado.obtenerPuntos().valorNumerico());
@@ -88,7 +88,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion1Grupo2);
 
-        RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
@@ -126,7 +126,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion1Grupo2);
 
-        RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
@@ -172,7 +172,7 @@ public class PreguntaGrupoTest {
         respuestaGrupo1Jugador.add(opcion3Grupo2);
 
 
-        RespuestaJugadorGroupChoice respuestasJugador = new RespuestaJugadorGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());

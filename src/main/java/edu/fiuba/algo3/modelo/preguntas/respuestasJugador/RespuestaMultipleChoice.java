@@ -7,14 +7,14 @@ import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
 
-public class RespuestaJugadorMultipleChoice implements RespuestaAutoEvaluable {
+public class RespuestaMultipleChoice implements RespuestaAutoEvaluable {
 
     static final int CANT_OPCIONES_MIN = 1;
     static final int CANT_OPCIONES_MAX = 5;
 
     private ArrayList<OpcionEvaluable> opcionesJugador;
 
-    public RespuestaJugadorMultipleChoice(ArrayList<OpcionEvaluable> respuestasJugador){
+    public RespuestaMultipleChoice(ArrayList<OpcionEvaluable> respuestasJugador){
         if (respuestasJugador.size() < CANT_OPCIONES_MIN || respuestasJugador.size() > CANT_OPCIONES_MAX){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
