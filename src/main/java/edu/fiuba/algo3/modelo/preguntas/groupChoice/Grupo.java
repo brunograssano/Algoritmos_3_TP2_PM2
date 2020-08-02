@@ -15,6 +15,21 @@ public class Grupo {
         this.nombreGrupo = nombreGrupo;
     }
 
+    public boolean esIgual(Grupo otroGrupo){
+        return (otroGrupo.contieneMismasRespuestas(respuestasDelGrupo) && otroGrupo.tieneMismoNombre(nombreGrupo));
+    }
+    public int cantidadElementos(){
+        return respuestasDelGrupo.size();
+    }
+
+    private boolean contieneMismasRespuestas(ArrayList<OpcionSimple> unasRespuestas){
+        return (respuestasDelGrupo.containsAll(unasRespuestas) && unasRespuestas.containsAll(respuestasDelGrupo));
+    }
+
+    private boolean tieneMismoNombre(String unNombre){
+        return nombreGrupo.equals(unNombre);
+    }
+//A BORRAR JUNTO EVALUADORES
     public void contiene(Resultado unResultado, ArrayList<OpcionSimple> respuestasDelUsuario) {
         if( respuestasDelUsuario.containsAll(respuestasDelGrupo) && respuestasDelGrupo.size() == respuestasDelUsuario.size() ){
             unResultado.sumarRespuestaCorrecta();

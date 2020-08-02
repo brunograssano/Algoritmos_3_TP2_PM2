@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
 
-import edu.fiuba.algo3.modelo.preguntas.evaluadores.Evaluador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 

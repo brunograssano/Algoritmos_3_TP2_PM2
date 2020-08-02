@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
@@ -47,11 +48,15 @@ public class PreguntaGrupoTest {
         respuestaGrupo1Jugador.add(opcion1Grupo1);
         respuestaGrupo1Jugador.add(opcion2Grupo1);
         respuestaGrupo1Jugador.add(opcion3Grupo1);
+        Grupo grupo1Jugador = new Grupo("Tipado estatico",respuestaGrupo1Jugador);
+
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion2Grupo2);
         respuestaGrupo2Jugador.add(opcion3Grupo2);
+        Grupo grupo2Jugador = new Grupo("Tipado dinamico",respuestaGrupo2Jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(1, resultado.obtenerPuntos().valorNumerico());
@@ -85,10 +90,14 @@ public class PreguntaGrupoTest {
 
         respuestaGrupo1Jugador.add(opcion1Grupo1);
         respuestaGrupo1Jugador.add(opcion2Grupo2);
-        respuestaGrupo2Jugador.add(opcion1Grupo2);
-        respuestaGrupo2Jugador.add(opcion1Grupo2);
+        Grupo grupo1Jugador = new Grupo("Mamiferos", respuestaGrupo1Jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        respuestaGrupo2Jugador.add(opcion1Grupo2);
+        respuestaGrupo2Jugador.add(opcion1Grupo2);
+        Grupo grupo2Jugador = new Grupo("Reptiles", respuestaGrupo2Jugador);
+
+
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
@@ -123,10 +132,12 @@ public class PreguntaGrupoTest {
 
         respuestaGrupo1Jugador.add(opcion1Grupo1);
         respuestaGrupo1Jugador.add(opcion2Grupo2);
+        Grupo grupo1Jugador = new Grupo("Mamiferos", respuestaGrupo1Jugador);
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion1Grupo2);
+        Grupo grupo2Jugador = new Grupo("Reptiles", respuestaGrupo2Jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
@@ -171,8 +182,10 @@ public class PreguntaGrupoTest {
         respuestaGrupo1Jugador.add(opcion2Grupo2);
         respuestaGrupo1Jugador.add(opcion3Grupo2);
 
+        Grupo grupo1Jugador = new Grupo("Tipado estatico", respuestaGrupo1Jugador);
+        Grupo grupo2Jugador = new Grupo("Tipado dinamico", respuestaGrupo2Jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(respuestaGrupo1Jugador, respuestaGrupo2Jugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
         Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
         assertEquals(0, resultado.obtenerPuntos().valorNumerico());
