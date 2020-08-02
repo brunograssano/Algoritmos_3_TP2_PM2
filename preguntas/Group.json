@@ -1,0 +1,49 @@
+[
+	{
+		"GROUP": {
+			"enunciado" : "Cuales son frutas y cuales son verduras?",
+			"labelGrupo1" : "Frutas",
+			"labelGrupo2" : "Verduras",
+			"respuestasGrupo1": [
+				"Tomate",
+				"Limon"
+			],
+			"respuestasGrupo2": [
+				"Cebolla",
+				"Lechuga"
+			]
+		}
+	},
+
+	{
+		"GROUP": {
+			"enunciado" : "Cuales son de tipado estatico y cuales de tipado dinamico?",
+			"labelGrupo1" : "Estatico",
+			"labelGrupo2" : "Dinamico",
+			"respuestasGrupo1": [
+				"Java",
+				"C"
+			],
+			"respuestasGrupo2": [
+				"Python",
+				"Smalltalk"
+			]
+		}
+	},
+
+	{
+		"GROUP": {
+			"enunciado" : "Cuales son modelos de GPUS y cuales de CPUS?",
+			"labelGrupo1" : "GPUs",
+			"labelGrupo2" : "CPUs",
+			"respuestasGrupo1": [
+				"gtx 2080",
+				"Rx 580"
+			],
+			"respuestasGrupo2": [
+				"fx 6300",
+				"Xeon 1231v3"
+			]
+		}
+	}
+]
