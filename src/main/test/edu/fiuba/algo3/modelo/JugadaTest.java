@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaJugadorVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.RespuestaIncorrectaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
@@ -32,13 +32,10 @@ public class JugadaTest {
 
         RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
-        respuestasJugador1.add(respuestaCorrecta);
+        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaCorrecta);
+        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaCorrecta);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
-        respuestasJugador2.add(respuestaCorrecta);
-
-        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
         puntosJugadores.add(jugador1.obtenerPuntos());
@@ -66,13 +63,10 @@ public class JugadaTest {
         RespuestaCorrectaVerdaderoFalso respuestaCorrecta = new RespuestaCorrectaVerdaderoFalso(enunciadoEsCorrecto);
         RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
-        respuestasJugador1.add(respuestaCorrecta);
+        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaCorrecta);
+        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrecta);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
-        respuestasJugador2.add(respuestaIncorrecta);
-
-        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
         puntosJugadores.add(jugador1.obtenerPuntos());
@@ -99,13 +93,10 @@ public class JugadaTest {
 
         RespuestaIncorrectaVerdaderoFalso respuestaIncorrecta = new RespuestaIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
-        ArrayList<Respuesta> respuestasJugador1 = new ArrayList<>();
-        respuestasJugador1.add(respuestaIncorrecta);
+        RespuestaJugadorVerdaderoFalso respuestasJugador1VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrecta);
+        RespuestaJugadorVerdaderoFalso respuestasJugador2VoF = new RespuestaJugadorVerdaderoFalso(respuestaIncorrecta);
 
-        ArrayList<Respuesta> respuestasJugador2 = new ArrayList<>();
-        respuestasJugador2.add(respuestaIncorrecta);
-
-        jugada.procesarJugada(respuestasJugador1,respuestasJugador2);
+        jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
 
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
         puntosJugadores.add(jugador1.obtenerPuntos());
