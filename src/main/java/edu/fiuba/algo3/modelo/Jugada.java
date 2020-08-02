@@ -26,16 +26,16 @@ public class Jugada {
     }
 
     public void procesarJugada(RespuestaAutoEvaluable respuestasJugador1, RespuestaAutoEvaluable respuestasJugador2){
-        Resultado resultadoJugador1 = pregunta.responderAutoEvaluable(respuestasJugador1);
-        Resultado resultadoJugador2 = pregunta.responderAutoEvaluable(respuestasJugador2);
+        Resultado resultadoJugador1 = pregunta.responder(respuestasJugador1);
+        Resultado resultadoJugador2 = pregunta.responder(respuestasJugador2);
         aplicarModificadores(resultadoJugador1,resultadoJugador2);
         jugador1.sumarPuntos(resultadoJugador1.obtenerPuntos());
         jugador2.sumarPuntos(resultadoJugador2.obtenerPuntos());
     }
     
     public void procesarJugada(RespuestaComparable respuestasJugador1, RespuestaComparable respuestasJugador2){
-        Resultado resultadoJugador1 = pregunta.responderComparable(respuestasJugador1);
-        Resultado resultadoJugador2 = pregunta.responderComparable(respuestasJugador2);
+        Resultado resultadoJugador1 = pregunta.responder(respuestasJugador1);
+        Resultado resultadoJugador2 = pregunta.responder(respuestasJugador2);
         aplicarModificadores(resultadoJugador1,resultadoJugador2);
         jugador1.sumarPuntos(resultadoJugador1.obtenerPuntos());
         jugador2.sumarPuntos(resultadoJugador2.obtenerPuntos());

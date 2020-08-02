@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public interface Pregunta {
 
-    Resultado responderAutoEvaluable(RespuestaAutoEvaluable respuestasUsuario);
+    Resultado responder(RespuestaAutoEvaluable respuestasUsuario);
 
-    Resultado responderComparable(RespuestaComparable respuestasUsuario);
+    Resultado responder(RespuestaComparable respuestasUsuario);
 
     void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada);
 
