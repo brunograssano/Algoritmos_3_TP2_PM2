@@ -16,7 +16,6 @@ import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import org.junit.jupiter.api.Test;
 
-import javax.management.loading.MLet;
 
 import java.util.ArrayList;
 
