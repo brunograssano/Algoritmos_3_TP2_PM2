@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
@@ -10,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RespuestaGroupChoiceTest {
 
@@ -101,5 +105,57 @@ public class RespuestaGroupChoiceTest {
 
         assertEquals(false, unaRespuesta.esIgual(otraRespuesta));
 
+    }
+
+    @Test
+    public void test04AlIntentarCrearUnaRespuestaGroupChoiceConMasDe6OpcionesSeDebeLanzarExcepcion(){
+
+        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
+        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
+        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
+        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
+
+        ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
+        ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
+
+        opcionesGrupo1Respuesta1.add(opcion1Grupo1);
+        opcionesGrupo1Respuesta1.add(opcion2Grupo1);
+        opcionesGrupo2Respuesta1.add(opcion1Grupo2);
+        opcionesGrupo2Respuesta1.add(opcion1Grupo2);
+        opcionesGrupo2Respuesta1.add(opcion1Grupo2);
+        opcionesGrupo2Respuesta1.add(opcion1Grupo2);
+        opcionesGrupo2Respuesta1.add(opcion2Grupo2);
+
+        Grupo grupo1Respuesta1 = new Grupo("Mamiferos",opcionesGrupo1Respuesta1);
+        Grupo grupo2Respuesta1 = new Grupo("Reptiles",opcionesGrupo2Respuesta1);
+
+
+        assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
+                ()->{
+                    RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1Respuesta1, grupo2Respuesta1);}
+        );
+    }
+
+    @Test
+    public void test05AlIntentarCrearUnaRespuestaGroupChoiceConMenosDe1OpcionSeDebeLanzarExcepcion(){
+
+        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
+        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
+        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
+        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
+
+        ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
+        ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
+
+        opcionesGrupo1Respuesta1.add(opcion1Grupo1);
+
+        Grupo grupo1Respuesta1 = new Grupo("Mamiferos",opcionesGrupo1Respuesta1);
+        Grupo grupo2Respuesta1 = new Grupo("Reptiles",opcionesGrupo2Respuesta1);
+
+
+        assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
+                ()->{
+                    RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1Respuesta1, grupo2Respuesta1);}
+        );
     }
 }
