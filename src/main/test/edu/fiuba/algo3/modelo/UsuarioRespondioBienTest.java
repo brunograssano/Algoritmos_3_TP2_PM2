@@ -47,6 +47,7 @@ public class UsuarioRespondioBienTest {
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         ResultadoParcial otroResultado = new ResultadoParcial();
+        otroResultado.sumarRespuestaIncorrecta();
 
         UsuarioRespondioBien unaSituacion = new UsuarioRespondioBien(unResultado);
         UsuarioSeEquivoco otraSituacion = new UsuarioSeEquivoco(otroResultado);
@@ -64,6 +65,7 @@ public class UsuarioRespondioBienTest {
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         ResultadoParcial otroResultado = new ResultadoParcial();
+        otroResultado.sumarRespuestaCorrecta();
 
         UsuarioRespondioBien unaSituacion = new UsuarioRespondioBien(unResultado);
         UsuarioRespondioBien otraSituacion = new UsuarioRespondioBien(otroResultado);
@@ -72,6 +74,5 @@ public class UsuarioRespondioBienTest {
 
         assertEquals(0,unResultado.obtenerPuntos().valorNumerico());
     }
-
 
 }
