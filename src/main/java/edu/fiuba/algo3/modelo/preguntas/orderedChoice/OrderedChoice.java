@@ -27,10 +27,6 @@ public class OrderedChoice implements Pregunta {
     @Override
     public Resultado responder(RespuestaComparable respuestaJugador) {
         Resultado unResultado = puntaje.obtenerResultado(1);
-        /* POSIBLE REFACTOR
-        EvaluadorOrden evaluador = new EvaluadorOrden(respuestasOrdenadasCorrectamente);
-        respuestasUsuario.evaluarConParametro(unResultado,evaluador);
-        */
         if(respuestaJugador.esIgual(respuestaCorrecta)){
             unResultado.sumarRespuestaCorrecta();
         }else{
