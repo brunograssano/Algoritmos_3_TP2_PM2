@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo.lector;
 import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.RespuestaIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -19,11 +19,11 @@ public class MultipleChoiceParser implements Parser{
         String enunciado = (String) jMC.get("enunciado");
         String strPuntaje = (String) jMC.get("puntaje");
 
-        ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
-        ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
+        ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas = new ArrayList<>();
+        ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas = new ArrayList<>();
 
-        jCorrectas.forEach(jsCorrecta -> respuestasCorrectas.add(new RespuestaCorrectaMultipleChoice((String) jsCorrecta )));
-        jIncorrectas.forEach(jsIncorrecta -> respuestasIncorrectas.add(new RespuestaIncorrectaMultipleChoice((String) jsIncorrecta )));
+        jCorrectas.forEach(jsCorrecta -> respuestasCorrectas.add(new OpcionCorrectaMultipleChoice((String) jsCorrecta )));
+        jIncorrectas.forEach(jsIncorrecta -> respuestasIncorrectas.add(new OpcionIncorrectaMultipleChoice((String) jsIncorrecta )));
 
         Pregunta pregunta;
 
