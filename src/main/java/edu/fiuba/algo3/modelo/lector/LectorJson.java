@@ -16,10 +16,10 @@ import org.json.simple.parser.ParseException;
 
 public class LectorJson implements LectorPreguntas {
 
-    private static final String RUTA_VOF = "preguntas/VoF.json";
-    private static final String RUTA_MC = "preguntas/MC.json";
-    private static final String RUTA_ORDEN = "preguntas/Order.json";
-    private static final String RUTA_GRUPO = "preguntas/Group.json";
+    private static final String RUTA_VOF     =    "\\preguntas\\VoF.json";
+    private static final String RUTA_MC      =    "\\preguntas\\MC.json";
+    private static final String RUTA_ORDEN   =    "\\preguntas\\Order.json";
+    private static final String RUTA_GRUPO   =    "\\preguntas\\Group.json";
 
     private final ArrayList<Pregunta> preguntasTotales;
 
@@ -34,8 +34,8 @@ public class LectorJson implements LectorPreguntas {
         Parser parserMultipleChoice = new MultipleChoiceParser();
         Parser parserOrden = new OrderParser();
         Parser parserGrupo = new GroupChoiceParser();
-        agregarPreguntasDeArchivo(preguntasTotales, RUTA_MC, parserMultipleChoice);
         agregarPreguntasDeArchivo(preguntasTotales, RUTA_VOF, parserVerdaderoFalso);
+        agregarPreguntasDeArchivo(preguntasTotales, RUTA_MC, parserMultipleChoice);
         agregarPreguntasDeArchivo(preguntasTotales, RUTA_ORDEN, parserOrden);
         agregarPreguntasDeArchivo(preguntasTotales, RUTA_GRUPO, parserGrupo);
         return preguntasTotales;
