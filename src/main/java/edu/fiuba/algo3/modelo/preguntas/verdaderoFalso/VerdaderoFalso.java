@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
-import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
-
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
 import java.util.ArrayList;
 
@@ -14,32 +17,33 @@ public class VerdaderoFalso implements Pregunta {
 
     private String enunciado;
     private PuntajeVerdaderoFalso puntaje;
-    private RespuestaIncorrectaVerdaderoFalso respuestasIncorrectas;
-    private RespuestaCorrectaVerdaderoFalso respuestasCorrectas;
+    private OpcionIncorrectaVerdaderoFalso respuestasIncorrectas;
+    private OpcionCorrectaVerdaderoFalso respuestasCorrectas;
 
 
     public VerdaderoFalso(String enunciado,boolean respuestaCorrecta,PuntajeVerdaderoFalso puntaje) {
         this.enunciado = enunciado;
-        this.respuestasCorrectas = new RespuestaCorrectaVerdaderoFalso(respuestaCorrecta);
-        this.respuestasIncorrectas = new RespuestaIncorrectaVerdaderoFalso(!respuestaCorrecta);
+        this.respuestasCorrectas = new OpcionCorrectaVerdaderoFalso(respuestaCorrecta);
+        this.respuestasIncorrectas = new OpcionIncorrectaVerdaderoFalso(!respuestaCorrecta);
         this.puntaje = puntaje;
     }
 
     @Override
-    public Resultado evaluar(ArrayList<Respuesta> respuestasJugador) {
-        if (respuestasJugador.size() != CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO){
-            throw new CantidadErroneaDeRespuestasParaPreguntaException();
-        }
+    public Resultado responder(RespuestaAutoEvaluable respuestasJugador) {
+
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO);
-        evaluarRespuestasJugador(respuestasJugador,unResultado);
+        respuestasJugador.evaluar(unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasJugador(ArrayList<Respuesta> respuestasJugador,Resultado unResultado){
-        for (Respuesta respuesta: respuestasJugador){
-            respuesta.evaluar(unResultado);
-        }
-        puntaje.evaluar(unResultado);
+    @Override
+    public Resultado responder(RespuestaComparable respuestasUsuario) {
+        return new ResultadoClasico(0);
+    }
+
+    @Override
+    public void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada) {
+        puntaje.puedeUsarModificador(modificador,modificadoresDeLaJugada);
     }
 
 }

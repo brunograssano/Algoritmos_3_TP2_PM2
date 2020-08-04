@@ -1,20 +1,45 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
 
-public class ResultadoClasico extends Resultado {
+import edu.fiuba.algo3.modelo.preguntas.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
+import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
 
-    static final int PUNTOS_CLASICO = 1;
-    
+public class ResultadoClasico implements Resultado {
+
+    private EstadoResultadoClasico estado;
+
     public ResultadoClasico(int unaCantidadDeRespuesasCorrectasTotales) {
-        super(unaCantidadDeRespuesasCorrectasTotales);
+        estado = new EstadoCorrectoClasico(unaCantidadDeRespuesasCorrectasTotales);
+    }
+
+
+    @Override
+    public void sumarRespuestaCorrecta() {
+        estado.agregarPunto(new PuntoPositivo());
     }
 
     @Override
-    public void calcular() {
-
-        if(respuestasIncorrectas == 0 && respuestasCorrectasTotales == respuestasCorrectas){
-            puntos = PUNTOS_CLASICO;
-        }
+    public void sumarRespuestaIncorrecta() {
+        estado = new EstadoIncorrecto();
     }
+
+    @Override
+    public Punto obtenerPuntos() {
+        return estado.obtenerPuntos();
+    }
+
+    @Override
+    public void aplicarMultiplicador(Multiplicador multiplicador) {
+        estado.multiplicarPuntos(multiplicador);
+    }
+
+    @Override
+    public void aplicaExclusividad(AnalizadorExclusividad analizador) {
+        estado.verSiAplicaExclusividad(this,analizador);
+    }
+
+
 }

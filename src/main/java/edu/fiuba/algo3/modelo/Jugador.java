@@ -1,24 +1,34 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
+import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
 
 import java.util.ArrayList;
 
 public class Jugador {
     private String nombre;
-    private int puntos;
+    private Puntuacion puntos;
+    private ArrayList<Modificador> modificadores;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.puntos = 0;
+        puntos = new Puntuacion();
+        modificadores = new ArrayList<Modificador>();
+        modificadores.add(new MultiplicadorJugador(this,2));
+        modificadores.add(new MultiplicadorJugador(this,3));
     }
 
-    public void sumarPuntos(int unosPuntos){
-        puntos += unosPuntos;
+    public void sumarPuntos(Punto unosPuntos){
+        puntos.agregarPunto(unosPuntos);
     }
 
     public int obtenerPuntos(){
-        return puntos;
+        return puntos.valorNumerico();
     }
 
+    public void pierdeModificador(Modificador modificador) {
+        modificadores.remove(modificador);
+    }
 }

@@ -2,8 +2,13 @@ package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
 import java.util.ArrayList;
 
@@ -16,10 +21,10 @@ public class MultipleChoice implements Pregunta {
     private String enunciado;
     private int respuestasTotales;
     private PuntajeChoice puntaje;
-    private ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas;
-    private ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas;
+    private ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas;
+    private ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas;
 
-    public MultipleChoice(String enunciado, ArrayList<RespuestaCorrectaMultipleChoice> respuestasCorrectas, ArrayList<RespuestaIncorrectaMultipleChoice> respuestasIncorrectas, PuntajeChoice puntaje){
+    public MultipleChoice(String enunciado, ArrayList<OpcionCorrectaMultipleChoice> respuestasCorrectas, ArrayList<OpcionIncorrectaMultipleChoice> respuestasIncorrectas, PuntajeChoice puntaje){
         respuestasTotales = respuestasCorrectas.size() + respuestasIncorrectas.size();
         if(respuestasTotales < CANT_OPCIONES_MIN || respuestasTotales > CANT_OPCIONES_MAX || respuestasCorrectas.size() < RESPUESTAS_CORRECTAS_MIN ) {
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
@@ -32,20 +37,21 @@ public class MultipleChoice implements Pregunta {
     }
 
     @Override
-    public Resultado evaluar(ArrayList<Respuesta> respuestasJugador) {
-        if (respuestasJugador.size() < 1 || respuestasJugador.size() > CANT_OPCIONES_MAX){
-            throw new CantidadErroneaDeRespuestasParaPreguntaException();
-        }
+    public Resultado responder(RespuestaAutoEvaluable respuestasJugador) {
         Resultado unResultado = puntaje.obtenerResultado(respuestasCorrectas.size());
-        evaluarRespuestasJugador(respuestasJugador, unResultado);
+        respuestasJugador.evaluar(unResultado);
         return unResultado;
     }
 
-    private void evaluarRespuestasJugador(ArrayList<Respuesta> respuestasJugador,Resultado unResultado){
-        for (Respuesta respuesta: respuestasJugador){
-            respuesta.evaluar(unResultado);
-        }
-        puntaje.evaluar(unResultado);
+    @Override
+    public Resultado responder(RespuestaComparable respuestasUsuario) {
+        //Arreglar este return
+        return new ResultadoClasico(0);
+    }
+
+    @Override
+    public void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada) {
+        puntaje.puedeUsarModificador(modificador,modificadoresDeLaJugada);
     }
 
 }
