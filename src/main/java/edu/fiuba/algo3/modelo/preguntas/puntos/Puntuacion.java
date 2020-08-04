@@ -25,7 +25,7 @@ public class Puntuacion implements Punto {
 
     public void multiplicar(int factor) {
         ArrayList<Punto> puntosIniciales = (ArrayList<Punto>) puntos.clone();
-        for(int i=1; i < factor ; i++){
+        for(int i = 1; i < factor ; i++){
             puntos.addAll(puntosIniciales);
         }
     }
