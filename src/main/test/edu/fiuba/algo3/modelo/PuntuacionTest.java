@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNegativo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNulo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
+import edu.fiuba.algo3.modelo.puntos.PuntoNegativo;
+import edu.fiuba.algo3.modelo.puntos.PuntoNulo;
+import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +13,7 @@ public class PuntuacionTest {
     @Test
     public void test01CreoUnaPuntuacionVaciaYPidosuValorNumericoDaCero(){
         Puntuacion puntos = new Puntuacion();
-        assertEquals(0,puntos.valorNumerico());
+        assertEquals(0,puntos.representar());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class PuntuacionTest {
         for (int i=0;i<10;i++) {
             puntos.agregarPunto(new PuntoPositivo());
         }
-        assertEquals(10,puntos.valorNumerico());
+        assertEquals(10,puntos.representar());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class PuntuacionTest {
         for (int i=0;i<50;i++) {
             puntos.agregarPunto(new PuntoNegativo());
         }
-        assertEquals(50,puntos.valorNumerico());
+        assertEquals(50,puntos.representar());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class PuntuacionTest {
         puntuacion.agregarPunto(new PuntoPositivo());
         puntos.agregarPunto(puntuacion);
 
-        assertEquals(1,puntos.valorNumerico());
+        assertEquals(1,puntos.representar());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class PuntuacionTest {
         for (int i=0;i<20;i++) {
             puntos.agregarPunto(new PuntoNulo());
         }
-        assertEquals(0,puntos.valorNumerico());
+        assertEquals(0,puntos.representar());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class PuntuacionTest {
         for (int i=0;i<15;i++) {
             puntos.agregarPunto(new PuntoNegativo());
         }
-        assertEquals(-15,puntos.valorNumerico());
+        assertEquals(-15,puntos.representar());
     }
 
 }
