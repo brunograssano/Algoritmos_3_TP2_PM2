@@ -70,8 +70,6 @@ public class MultiplicadorJugadorTest {
 
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
-        ArrayList<Modificador> modificadoresDeLaJugada = new ArrayList();
-
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
 
         Resultado unResultado = unPuntaje.obtenerResultado(2,unJugador);
@@ -96,8 +94,6 @@ public class MultiplicadorJugadorTest {
         int unFactor = 3;
 
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
-
-        ArrayList<Modificador> modificadoresDeLaJugada = new ArrayList();
 
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
 
@@ -151,6 +147,30 @@ public class MultiplicadorJugadorTest {
         puntos = unMultiplicador.usarEnPuntos(puntos,unJugador);
 
         assertEquals(-20,puntos.representar());
+    }
+    @Test
+    public void test07CreoUnMultiplicadorLoAplicoEnUnResultadoIncorrectoSuValorSigueSiendoCeroPuntos(){
+
+        Jugador unJugador = new Jugador("Juan");
+
+        int unFactor = 3;
+
+        MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
+
+        PuntajeClasico unPuntaje = new PuntajeClasico();
+
+        Resultado unResultado = unPuntaje.obtenerResultado(2,unJugador);
+        Resultado otroResultado = unPuntaje.obtenerResultado(2,unJugador);
+
+        unResultado.sumarRespuestaCorrecta();
+        unResultado.sumarRespuestaIncorrecta();
+
+        unMultiplicador.aplicar(unResultado,otroResultado);
+
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0,puntosRepresentados.representar());
     }
 
 }

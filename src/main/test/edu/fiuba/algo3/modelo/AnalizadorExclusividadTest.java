@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.Excepciones.CantidadDeSituacionesExclusividadErroneaException;
 import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
 import edu.fiuba.algo3.modelo.modificadores.UsuarioRespondioBien;
 import edu.fiuba.algo3.modelo.modificadores.UsuarioSeEquivoco;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AnalizadorExclusividadTest {
 
@@ -138,5 +140,13 @@ public class AnalizadorExclusividadTest {
         puntosJugadores.add(puntosRepresentados2.representar());
 
         assertEquals(puntosEsperados,puntosJugadores);
+    }
+    @Test
+    public void test04CreoUnAnalizadorDeExclusividadYIntentoAnalizarSinSituacionesLanzaExcepcion(){
+        AnalizadorExclusividad analizador = new AnalizadorExclusividad();
+        assertThrows(CantidadDeSituacionesExclusividadErroneaException.class,
+                ()->{
+                    analizador.analizarSituacion();}
+        );
     }
 }
