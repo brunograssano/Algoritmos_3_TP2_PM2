@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.modificadores;
+package edu.fiuba.algo3.modelo.modificadores;
 
 public interface SituacionesExclusividad {
     void compararCon(UsuarioRespondioBien situacionDelRival);

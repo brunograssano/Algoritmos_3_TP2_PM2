@@ -5,4 +5,5 @@ public interface RespuestaComparable {
     boolean esIgual(RespuestaGroupChoice unaRespuesta);
 
     boolean esIgual(RespuestaOrderedChoice unaRespuesta);
+
 }

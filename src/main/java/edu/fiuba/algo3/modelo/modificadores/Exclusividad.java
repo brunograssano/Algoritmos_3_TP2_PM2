@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.modificadores;
+package edu.fiuba.algo3.modelo.modificadores;
 
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -35,7 +35,7 @@ public class Exclusividad implements Modificador {
     }
 
     @Override
-    public void aplicar(Jugador jugador, Resultado resultadoJugador1, Resultado resultadoJugador2) {
+    public void aplicar(Resultado resultadoJugador1, Resultado resultadoJugador2) {
         AnalizadorExclusividad analizador = new AnalizadorExclusividad();
         resultadoJugador1.aplicaExclusividad(analizador);
         resultadoJugador2.aplicaExclusividad(analizador);

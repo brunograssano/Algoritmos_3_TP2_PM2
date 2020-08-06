@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.modificadores;
+package edu.fiuba.algo3.modelo.modificadores;
 
 
 import java.util.Stack;

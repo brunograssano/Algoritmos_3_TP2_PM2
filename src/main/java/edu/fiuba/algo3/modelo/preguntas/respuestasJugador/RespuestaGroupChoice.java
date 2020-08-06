@@ -2,9 +2,11 @@ package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
 
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
-public class RespuestaGroupChoice implements RespuestaComparable {
+public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
 
     private Grupo grupo1Respuesta;
     private Grupo grupo2Respuesta;
@@ -35,5 +37,16 @@ public class RespuestaGroupChoice implements RespuestaComparable {
     @Override
     public boolean esIgual(RespuestaOrderedChoice unaRespuesta) {
     return false;
+    }
+
+
+    @Override
+    public Resultado evaluarEnBaseAPregunta(PreguntaAutoEvaluable pregunta, Jugador unJugador) {
+        return null;//excepcion
+    }
+
+    @Override
+    public Resultado evaluarEnBaseAPregunta(PreguntaComparable pregunta, Jugador unJugador) {
+        return pregunta.responder(this,unJugador);
     }
 }

@@ -1,19 +1,21 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNegativo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.puntos.Punto;
+import edu.fiuba.algo3.modelo.puntos.Puntuacion;
+import edu.fiuba.algo3.modelo.puntos.PuntoNegativo;
+import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
 
 public class ResultadoPenalizable implements Resultado {
 
     private Puntuacion puntos;
+    private Jugador jugador;
 
-    public ResultadoPenalizable(){
+    public ResultadoPenalizable(Jugador unJugador){
         puntos = new Puntuacion();
+        jugador = unJugador;
     }
 
     @Override
@@ -33,11 +35,11 @@ public class ResultadoPenalizable implements Resultado {
 
     @Override
     public void aplicarMultiplicador(Multiplicador multiplicador) {
-        multiplicador.usarEnPuntos(puntos);
+        puntos = multiplicador.usarEnPuntos(puntos,jugador);
     }
 
     @Override
     public void aplicaExclusividad(AnalizadorExclusividad analizador) {
-        //Ver que hacemos aca
     }
+
 }

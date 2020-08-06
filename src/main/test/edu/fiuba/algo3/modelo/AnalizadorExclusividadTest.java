@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.UsuarioRespondioBien;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.UsuarioSeEquivoco;
+import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.UsuarioRespondioBien;
+import edu.fiuba.algo3.modelo.modificadores.UsuarioSeEquivoco;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoParcial;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,18 +13,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AnalizadorExclusividadTest {
 
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
+
     @Test
     public void test01CreoUnAnalizadorDeExclusividadAmbosUsuariosRespondenBienNingunoSumaPuntos(){
-
         AnalizadorExclusividad unAnalizador = new AnalizadorExclusividad();
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
 
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
 
-        ResultadoParcial otroResultado = new ResultadoParcial();
+        ResultadoParcial otroResultado = new ResultadoParcial(jugador);
 
         otroResultado.sumarRespuestaCorrecta();
         otroResultado.sumarRespuestaCorrecta();
@@ -42,24 +48,28 @@ public class AnalizadorExclusividadTest {
         unAnalizador.analizarSituacion();
 
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
-        puntosJugadores.add(unResultado.obtenerPuntos().valorNumerico());
-        puntosJugadores.add(otroResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados1 = new PuntuacionRepresentable();
+        PuntuacionRepresentable puntosRepresentados2 = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados1);
+        otroResultado.obtenerPuntos().valorNumerico(puntosRepresentados2);
+
+        puntosJugadores.add(puntosRepresentados1.representar());
+        puntosJugadores.add(puntosRepresentados2.representar());
 
         assertEquals(puntosEsperados,puntosJugadores);
     }
     @Test
     public void test02CreoUnAnalizadorDeExclusividadAmbosUsuariosRespondenMalNingunoSumaPuntos(){
-
         AnalizadorExclusividad unAnalizador = new AnalizadorExclusividad();
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
 
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaIncorrecta();
 
-        ResultadoParcial otroResultado = new ResultadoParcial();
+        ResultadoParcial otroResultado = new ResultadoParcial(jugador);
 
         otroResultado.sumarRespuestaCorrecta();
         otroResultado.sumarRespuestaCorrecta();
@@ -79,23 +89,27 @@ public class AnalizadorExclusividadTest {
         unAnalizador.analizarSituacion();
 
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
-        puntosJugadores.add(unResultado.obtenerPuntos().valorNumerico());
-        puntosJugadores.add(otroResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados1 = new PuntuacionRepresentable();
+        PuntuacionRepresentable puntosRepresentados2 = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados1);
+        otroResultado.obtenerPuntos().valorNumerico(puntosRepresentados2);
+
+        puntosJugadores.add(puntosRepresentados1.representar());
+        puntosJugadores.add(puntosRepresentados2.representar());
 
         assertEquals(puntosEsperados,puntosJugadores);
     }
     @Test
     public void test03CreoUnAnalizadorDeExclusividadUnoRespondeBienElOtroMalEntoncesElQueRespondeBienDuplicaPuntos(){
-
         AnalizadorExclusividad unAnalizador = new AnalizadorExclusividad();
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
 
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
 
-        ResultadoParcial otroResultado = new ResultadoParcial();
+        ResultadoParcial otroResultado = new ResultadoParcial(jugador);
 
         otroResultado.sumarRespuestaCorrecta();
         otroResultado.sumarRespuestaCorrecta();
@@ -115,8 +129,13 @@ public class AnalizadorExclusividadTest {
         unAnalizador.analizarSituacion();
 
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
-        puntosJugadores.add(unResultado.obtenerPuntos().valorNumerico());
-        puntosJugadores.add(otroResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados1 = new PuntuacionRepresentable();
+        PuntuacionRepresentable puntosRepresentados2 = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados1);
+        otroResultado.obtenerPuntos().valorNumerico(puntosRepresentados2);
+
+        puntosJugadores.add(puntosRepresentados1.representar());
+        puntosJugadores.add(puntosRepresentados2.representar());
 
         assertEquals(puntosEsperados,puntosJugadores);
     }

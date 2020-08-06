@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.matchers.Or;
 
@@ -13,6 +14,12 @@ import java.util.ArrayList;
 
 
 public class PreguntaOrdenTest {
+
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
 
     @Test
     public void test01CreoUnaPreguntaOrdenSeOrdenaCorrectamenteYSeDevuelveUnPunto(){
@@ -40,9 +47,12 @@ public class PreguntaOrdenTest {
         Orden ordenCorrecto = new Orden(opcionesJugador);
         RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(ordenCorrecto);
 
-        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
+        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC,jugador);
 
-        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1, puntosRepresentados.representar());
     }
 
     @Test
@@ -71,8 +81,11 @@ public class PreguntaOrdenTest {
         Orden ordenCorrecto = new Orden(opcionesJugador);
         RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(ordenCorrecto);
 
-        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC);
+        Resultado resultado = preguntaOrden.responder(respuestaJugadorOC,jugador);
 
-        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 }
