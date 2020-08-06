@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
 
+import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
@@ -25,6 +25,6 @@ public class RespuestaVerdaderoFalso implements RespuestaAutoEvaluable,Respuesta
 
     @Override
     public Resultado evaluarEnBaseAPregunta(PreguntaComparable pregunta, Jugador unJugador) {
-        return null;//lanzo excepcion
+        throw new RespuestaNoAptaParaPreguntaException();
     }
 }

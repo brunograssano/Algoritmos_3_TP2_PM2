@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
 
+import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
@@ -31,7 +32,7 @@ public class RespuestaOrderedChoice implements RespuestaComparable,Respuesta {
 
     @Override
     public Resultado evaluarEnBaseAPregunta(PreguntaAutoEvaluable pregunta, Jugador unJugador) {
-        return null;//excepcion
+        throw new RespuestaNoAptaParaPreguntaException();
     }
 
     @Override

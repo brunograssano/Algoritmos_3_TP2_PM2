@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
-import edu.fiuba.algo3.modelo.puntos.Punto;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
