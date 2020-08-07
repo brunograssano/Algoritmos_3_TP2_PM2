@@ -2,24 +2,19 @@ package edu.fiuba.algo3.modelo.preguntas.orderedChoice;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.*;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
-import java.util.ArrayList;
+public class OrderedChoice extends Pregunta implements PreguntaComparable {
 
-public class OrderedChoice implements Pregunta, PreguntaComparable {
-
-    private String enunciado;
     private RespuestaOrderedChoice respuestaCorrecta;
-    private PuntajeClasico puntaje;
+    static final int CANT_RESPUESTAS_CORRECTAS_TOTALES = 1;
 
     public OrderedChoice(String enunciado, RespuestaOrderedChoice respuestaCorrecta) {
-        this.enunciado = enunciado;
+        super(enunciado,new PuntajeClasico());
         this.respuestaCorrecta = respuestaCorrecta;
-        puntaje = new PuntajeClasico();
     }
 
     @Override
@@ -29,19 +24,13 @@ public class OrderedChoice implements Pregunta, PreguntaComparable {
 
     @Override
     public Resultado responder(RespuestaComparable respuestaJugador, Jugador unJugador) {
-        Resultado unResultado = puntaje.obtenerResultado(1, unJugador);
+        Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_CORRECTAS_TOTALES, unJugador);
         if(respuestaJugador.esIgual(respuestaCorrecta)){
             unResultado.sumarRespuestaCorrecta();
         }else{
             unResultado.sumarRespuestaIncorrecta();
         }
         return unResultado;
-    }
-
-
-    @Override
-    public void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada) {
-        puntaje.puedeUsarModificador(modificador,modificadoresDeLaJugada);
     }
 
 }

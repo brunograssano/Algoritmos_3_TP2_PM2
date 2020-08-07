@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
@@ -28,7 +30,6 @@ public class RespuestaMultipleChoice implements RespuestaAutoEvaluable,Respuesta
             opcion.evaluar(unResultado);
         }
     }
-
 
     @Override
     public Resultado evaluarEnBaseAPregunta(PreguntaAutoEvaluable pregunta, Jugador unJugador) {
