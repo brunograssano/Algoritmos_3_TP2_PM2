@@ -50,36 +50,4 @@ public class VistaInicio extends StackPane{
         super.getChildren().add(cajaPrincipal);
     }
 
-   /* public void GenerarPantalla(Stage stage) {
-
-
-        StackPane layout = new StackPane();
-        Background fonditoGris = new Background(new BackgroundFill(Color.web(GRIS), CornerRadii.EMPTY, Insets.EMPTY));
-        layout.setBackground(fonditoGris);
-
-        VBox cajaPrincipal = new VBox(70);
-        cajaPrincipal.setAlignment(Pos.CENTER);
-
-        Label label = new Label("AlgoHoot");
-        label.setFont(Font.font("comic sans ms",80));
-        label.setTextFill(Color.web(VIOLETA));
-        cajaPrincipal.getChildren().add(label);
-
-
-        ToggleButton button = new ToggleButton();
-        button.setText("Iniciar partida :^)");
-        button.setFont(Font.font("comic sans ms", 20));
-        button.setTextFill(Color.web(GRIS));
-        Background unFondito = new Background(new BackgroundFill(Color.web(VIOLETA), new CornerRadii(9), new Insets(1)));
-        button.setBackground(unFondito);
-        cajaPrincipal.getChildren().add(button);
-
-
-        layout.getChildren().add(cajaPrincipal);
-
-        var scene = new Scene(layout, 800, 600);
-        stage.setScene(scene);
-        stage.show();
-    }*/
-
 }

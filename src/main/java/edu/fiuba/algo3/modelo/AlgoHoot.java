@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
@@ -10,26 +11,20 @@ import java.util.Stack;
 
 public class AlgoHoot {
 
-
     private static AlgoHoot algohoot = new AlgoHoot();
     private ArrayList<Pregunta> preguntas;
     private Stack<Jugada> jugadas;
     private Jugador jugador1;
     private Jugador jugador2;
 
-
     private AlgoHoot(){
         jugadas = new Stack<>();
+        LectorJson lector = new LectorJson();
+        this.preguntas = lector.generarPreguntas();
     }
 
     public static AlgoHoot getInstance(){
         return algohoot;
-    }
-
-    public void agregarPreguntas(ArrayList<Pregunta> preguntas){
-        //llamada al lector, este devuelve el array
-        //verificar si esta vacio, se encarga el lector?
-        this.preguntas = preguntas;
     }
 
     public void agregarJugadores(String nombreJugador1,String nombreJugador2){
