@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.ControladorNombresJugadores;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -36,17 +37,6 @@ public class VistaPedirNombres extends StackPane{
         nombre.setTextFill(Color.web(VIOLETA));
         nombreJuego.getChildren().add(nombre);
 
-        VBox botonConfirmado = new VBox(0);
-        botonConfirmado.setAlignment(Pos.BOTTOM_CENTER);
-        ToggleButton unBoton = new ToggleButton();
-        unBoton.setText("Empezar Partida");
-        unBoton.setFont(Font.font("comic sans ms", 20));
-        unBoton.setTextFill(Color.web(GRIS));
-        Background unFondito = new Background(new BackgroundFill(Color.web(VIOLETA), new CornerRadii(9), new Insets(1)));
-        unBoton.setBackground(unFondito);
-        botonConfirmado.getChildren().add(unBoton);
-
-
         VBox cajaJugadores = new VBox(10);
         cajaJugadores.setAlignment(Pos.CENTER);
 
@@ -67,6 +57,18 @@ public class VistaPedirNombres extends StackPane{
         TextField campoNombreJugador2 = new TextField();
         campoNombreJugador2.setMaxWidth(200);
         cajaJugadores.getChildren().add(campoNombreJugador2);
+
+
+        VBox botonConfirmado = new VBox(0);
+        botonConfirmado.setAlignment(Pos.BOTTOM_CENTER);
+        ToggleButton unBoton = new ToggleButton();
+        unBoton.setText("Empezar Partida");
+        unBoton.setFont(Font.font("comic sans ms", 20));
+        unBoton.setTextFill(Color.web(GRIS));
+        unBoton.setOnAction(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2));
+        Background unFondito = new Background(new BackgroundFill(Color.web(VIOLETA), new CornerRadii(9), new Insets(1)));
+        unBoton.setBackground(unFondito);
+        botonConfirmado.getChildren().add(unBoton);
 
 
         super.getChildren().add(nombreJuego);

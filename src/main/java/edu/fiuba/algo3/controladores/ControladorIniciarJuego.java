@@ -2,7 +2,6 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.vistas.VistaPedirNombres;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
