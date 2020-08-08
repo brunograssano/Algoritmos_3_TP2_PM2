@@ -1,18 +1,20 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.puntos.Punto;
+import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
 
 public class ResultadoParcial implements Resultado {
 
     private EstadoResultadoParcial estado;
+    private Jugador jugador;
 
-    public ResultadoParcial(){
+    public ResultadoParcial(Jugador unJugador){
         estado = new EstadoCorrectoParcial();
+        jugador = unJugador;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class ResultadoParcial implements Resultado {
 
     @Override
     public void aplicarMultiplicador(Multiplicador multiplicador) {
-        estado.multiplicarPuntos(multiplicador);
+        estado.multiplicarPuntos(multiplicador,jugador);
     }
 
     @Override
