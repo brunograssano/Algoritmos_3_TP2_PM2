@@ -1,17 +1,8 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.vistas.VistaInicio;
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -27,9 +18,15 @@ public class App extends Application {
     static String AMARILLO = "FBD87F";
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stagePrincipal) {
 
-
+        //llamada a lector
+        //crear (singleton) algohoot
+        //ponerle las preguntas ---> crea todas las jugadas
+        //pedir nombres
+        //jugar
+        //fin
+        /*
         StackPane layout = new StackPane();
         Background fonditoGris = new Background(new BackgroundFill(Color.web(GRIS), CornerRadii.EMPTY, Insets.EMPTY));
         layout.setBackground(fonditoGris);
@@ -77,10 +74,17 @@ public class App extends Application {
         layout.getChildren().add(nombreJuego);
         layout.getChildren().add(cajaJugadores);
         layout.getChildren().add(botonConfirmado);
+        */
 
-        var scene = new Scene(layout, 800, 600);
-        stage.setScene(scene);
-        stage.show();
+        VistaInicio vistaInicio = new VistaInicio(stagePrincipal);
+
+        Scene sceneInicio = new Scene(vistaInicio,800,600);
+
+
+        //var scene = new Scene(layout, 800, 600);
+
+        stagePrincipal.setScene(sceneInicio);
+        stagePrincipal.show();
     }
 
     public static void main(String[] args) {
