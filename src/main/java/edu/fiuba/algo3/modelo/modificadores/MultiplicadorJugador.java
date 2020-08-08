@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.modelo.preguntas.modificadores;
+package edu.fiuba.algo3.modelo.modificadores;
 
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
+import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
@@ -36,18 +36,19 @@ public class MultiplicadorJugador implements Modificador,Multiplicador{
         throw new ModificadorNoAptoParaPreguntaException();
     }
 
+
+
     @Override
-    public void aplicar(Jugador jugador,Resultado resultadoJugador1, Resultado resultadoJugador2) {
-        if(this.jugador == jugador){
-            resultadoJugador1.aplicarMultiplicador(this);
-        }
-        else{
-            resultadoJugador2.aplicarMultiplicador(this);
-        }
+    public void aplicar(Resultado resultadoJugador1, Resultado resultadoJugador2) {
+        resultadoJugador1.aplicarMultiplicador(this);
+        resultadoJugador2.aplicarMultiplicador(this);
     }
 
-    public void usarEnPuntos(Puntuacion puntos) {
-        puntos.multiplicar(factor);
+    public Puntuacion usarEnPuntos(Puntuacion puntos, Jugador unJugador) {
+        if(jugador == unJugador) {
+            return puntos.multiplicar(factor);
+        }
+        return puntos;
     }
 
 }

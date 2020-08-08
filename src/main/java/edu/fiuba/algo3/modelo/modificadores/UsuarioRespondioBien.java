@@ -1,6 +1,5 @@
-package edu.fiuba.algo3.modelo.preguntas.modificadores;
+package edu.fiuba.algo3.modelo.modificadores;
 
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 public class UsuarioRespondioBien implements SituacionesExclusividad {

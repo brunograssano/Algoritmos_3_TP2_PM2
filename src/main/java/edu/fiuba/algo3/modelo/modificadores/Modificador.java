@@ -1,6 +1,5 @@
-package edu.fiuba.algo3.modelo.preguntas.modificadores;
+package edu.fiuba.algo3.modelo.modificadores;
 
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
@@ -16,5 +15,5 @@ public interface Modificador {
 
     void usarEnPuntaje(PuntajeParcial puntajeParcial, ArrayList<Modificador> modificadoresDeLaJugada);
 
-    void aplicar(Jugador jugador,Resultado resultadoJugador1, Resultado resultadoJugador2);
+    void aplicar(Resultado resultadoJugador1, Resultado resultadoJugador2);
 }

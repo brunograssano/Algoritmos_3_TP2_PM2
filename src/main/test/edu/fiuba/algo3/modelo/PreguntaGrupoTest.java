@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,6 +14,12 @@ import java.util.ArrayList;
 
 
 public class PreguntaGrupoTest {
+
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
 
     @Test
     public void test01SeRespondeCorrectamenteUnaPreguntaGroupChoiceYDevuelve1Punto() {
@@ -57,9 +64,12 @@ public class PreguntaGrupoTest {
 
 
         RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        assertEquals(1, resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1, puntosRepresentados.representar());
     }
 
     @Test
@@ -98,9 +108,12 @@ public class PreguntaGrupoTest {
 
 
         RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        assertEquals(0, resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -138,9 +151,12 @@ public class PreguntaGrupoTest {
         Grupo grupo2Jugador = new Grupo("Reptiles", respuestaGrupo2Jugador);
 
         RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        assertEquals(0, resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -186,9 +202,12 @@ public class PreguntaGrupoTest {
         Grupo grupo2Jugador = new Grupo("Tipado dinamico", respuestaGrupo2Jugador);
 
         RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        assertEquals(0, resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
 }
