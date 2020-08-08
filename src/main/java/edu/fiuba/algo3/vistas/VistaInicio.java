@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.ControladorIniciarJuego;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -40,6 +41,7 @@ public class VistaInicio extends StackPane{
         button.setText("Iniciar partida");
         button.setFont(Font.font("comic sans ms", 20));
         button.setTextFill(Color.web(GRIS));
+        button.setOnAction(new ControladorIniciarJuego(stagePrincipal));
         Background unFondito = new Background(new BackgroundFill(Color.web(VIOLETA), new CornerRadii(9), new Insets(1)));
         button.setBackground(unFondito);
         cajaPrincipal.getChildren().add(button);
