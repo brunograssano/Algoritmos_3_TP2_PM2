@@ -1,0 +1,38 @@
+[
+	{
+		"ORDER": {
+			"enunciado" : "Colocar los siguientes lenguajes en orden de creacion",
+			"respuestasEnOrden": [
+				"Fortran",
+				"C",
+				"Java",
+				"Brainfuck"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar las siguientes redes en orden inverso de creacion",
+			"respuestasEnOrden": [
+				"Instagram",
+				"Twitter",
+				"Facebook",
+				"Myspace"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden los siguientes numeros binarios",
+			"respuestasEnOrden": [
+				"00000001",
+				"00000111",
+				"00010010",
+				"10000001"
+			]
+		}
+	}
+
+]
