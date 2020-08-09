@@ -28,9 +28,7 @@ public class OrderedChoice extends Pregunta implements PreguntaComparable {
 
     @Override
     public ArrayList<Opcion> respuestas() {
-        ArrayList<Opcion> opciones = new ArrayList<>();
-        opciones.addAll(respuestaCorrecta.respuestas());
-        return opciones;
+        return(new ArrayList<>(respuestaCorrecta.respuestas()));
     }
 
     @Override
