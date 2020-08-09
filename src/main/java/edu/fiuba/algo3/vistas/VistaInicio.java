@@ -1,16 +1,15 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorIniciarJuego;
-import javafx.application.Application;
+import edu.fiuba.algo3.vistas.botones.BotonInicio;
+import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class VistaInicio extends StackPane{
     static String VIOLETA = "9370DB";
@@ -32,21 +31,15 @@ public class VistaInicio extends StackPane{
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        Label label = new Label("AlgoHoot");
-        label.setFont(Font.font("comic sans ms",80));
-        label.setTextFill(Color.web(VIOLETA));
-        cajaPrincipal.getChildren().add(label);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal();
+        cajaPrincipal.getChildren().add(textoAlgoHootInicio);
 
-        ToggleButton button = new ToggleButton();
-        button.setText("Iniciar partida");
-        button.setFont(Font.font("comic sans ms", 20));
-        button.setTextFill(Color.web(GRIS));
-        button.setOnAction(new ControladorIniciarJuego(stagePrincipal));
-        Background unFondito = new Background(new BackgroundFill(Color.web(VIOLETA), new CornerRadii(9), new Insets(1)));
-        button.setBackground(unFondito);
-        cajaPrincipal.getChildren().add(button);
+        BotonInicio botonInicio = new BotonInicio(new ControladorIniciarJuego(stagePrincipal));
+        cajaPrincipal.getChildren().add(botonInicio);
 
-
+        stage.setTitle("AlgoHoot");
+        stage.centerOnScreen();
+        stage.setResizable(false);
         super.getChildren().add(cajaPrincipal);
     }
 

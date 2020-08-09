@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
@@ -11,6 +12,7 @@ import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
 
@@ -43,6 +45,16 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         respuestasJugador.evaluar(unResultado);
         return unResultado;
     }
+
+    @Override
+    public ArrayList<Opcion> respuestas() {
+        ArrayList<Opcion> opciones = new ArrayList<>();
+        opciones.addAll(respuestasCorrectas);
+        opciones.addAll(respuestasIncorrectas);
+        Collections.shuffle(opciones);
+        return opciones;
+    }
+
 
 }
 

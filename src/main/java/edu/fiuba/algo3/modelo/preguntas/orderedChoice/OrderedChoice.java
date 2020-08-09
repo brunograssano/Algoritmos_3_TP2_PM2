@@ -3,9 +3,12 @@ package edu.fiuba.algo3.modelo.preguntas.orderedChoice;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
+import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.*;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
+import java.util.ArrayList;
 
 public class OrderedChoice extends Pregunta implements PreguntaComparable {
 
@@ -20,6 +23,11 @@ public class OrderedChoice extends Pregunta implements PreguntaComparable {
     @Override
     public Resultado responder(Respuesta respuestasUsuario, Jugador unJugador) {
         return respuestasUsuario.evaluarEnBaseAPregunta(this,unJugador);
+    }
+
+    @Override
+    public ArrayList<Opcion> respuestas() {
+        return null;
     }
 
     @Override

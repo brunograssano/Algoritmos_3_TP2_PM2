@@ -2,9 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
@@ -41,5 +40,13 @@ public class Jugada {
 
     public void agregarModificador(Modificador modificador) {
         pregunta.verificarModificador(modificador,modificadoresJugadas);
+    }
+
+    public String textoPregunta() {
+        return pregunta.textoPregunta();
+    }
+
+    public ArrayList<Opcion> respuestasAPregunta() {
+        return pregunta.respuestas();
     }
 }

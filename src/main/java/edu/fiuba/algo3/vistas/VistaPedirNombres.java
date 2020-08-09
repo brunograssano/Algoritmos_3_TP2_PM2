@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorNombresJugadores;
+import edu.fiuba.algo3.vistas.botones.BotonInicio;
+import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -32,10 +32,8 @@ public class VistaPedirNombres extends StackPane{
 
         VBox nombreJuego = new VBox(0);
         nombreJuego.setAlignment(Pos.TOP_CENTER);
-        Label nombre = new Label("AlgoHoot");
-        nombre.setFont(Font.font("comic sans ms",80));
-        nombre.setTextFill(Color.web(VIOLETA));
-        nombreJuego.getChildren().add(nombre);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal();
+        nombreJuego.getChildren().add(textoAlgoHootInicio);
 
         VBox cajaJugadores = new VBox(10);
         cajaJugadores.setAlignment(Pos.CENTER);
@@ -46,7 +44,7 @@ public class VistaPedirNombres extends StackPane{
         cajaJugadores.getChildren().add(labelJugador1);
 
         TextField campoNombreJugador1 = new TextField();
-        campoNombreJugador1.setMaxWidth(200);
+        campoNombreJugador1.setMaxWidth(300);
         cajaJugadores.getChildren().add(campoNombreJugador1);
 
         Label labelJugador2 = new Label("Ingrese el nombre del Jugador 2");
@@ -55,21 +53,14 @@ public class VistaPedirNombres extends StackPane{
         cajaJugadores.getChildren().add(labelJugador2);
 
         TextField campoNombreJugador2 = new TextField();
-        campoNombreJugador2.setMaxWidth(200);
+        campoNombreJugador2.setMaxWidth(300);
         cajaJugadores.getChildren().add(campoNombreJugador2);
-
 
         VBox botonConfirmado = new VBox(0);
         botonConfirmado.setAlignment(Pos.BOTTOM_CENTER);
-        ToggleButton unBoton = new ToggleButton();
-        unBoton.setText("Empezar Partida");
-        unBoton.setFont(Font.font("comic sans ms", 20));
-        unBoton.setTextFill(Color.web(GRIS));
-        unBoton.setOnAction(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2));
-        Background unFondito = new Background(new BackgroundFill(Color.web(VIOLETA), new CornerRadii(9), new Insets(1)));
-        unBoton.setBackground(unFondito);
-        botonConfirmado.getChildren().add(unBoton);
 
+        BotonInicio botonInicio = new BotonInicio(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2));
+        botonConfirmado.getChildren().add(botonInicio);
 
         super.getChildren().add(nombreJuego);
         super.getChildren().add(cajaJugadores);
