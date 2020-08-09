@@ -36,7 +36,7 @@ public class VistaGanador extends StackPane {
 
         ControladorGanador controladorGanador = new ControladorGanador();
         Label textoGanador = new Label(controladorGanador.obtenerResultadoFinal());
-        textoGanador.setFont(Font.font("comic sans ms",40));
+        textoGanador.setFont(Font.font("montserrat",40));
         textoGanador.setTextFill(Color.web(VIOLETA));
 
         BotonTerminarJuego botonTerminarJuego = new BotonTerminarJuego(new ControladorTerminarJuego());

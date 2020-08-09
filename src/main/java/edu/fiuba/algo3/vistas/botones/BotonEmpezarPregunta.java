@@ -16,7 +16,7 @@ public class BotonEmpezarPregunta extends Button {
 
     public BotonEmpezarPregunta(Stage stage){
         super.setText("Ir a la pregunta");
-        super.setFont(Font.font("comic sans ms", 20));
+        super.setFont(Font.font("montserrat", 20));
         super.setTextFill(Color.BLACK);
         super.setOnAction(new ControladorSiguientePregunta(stage));
         Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));

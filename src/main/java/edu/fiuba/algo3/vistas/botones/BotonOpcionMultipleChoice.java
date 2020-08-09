@@ -30,7 +30,7 @@ public class BotonOpcionMultipleChoice extends CheckBox {
     public BotonOpcionMultipleChoice(Opcion opcion,ControladorEnviarMultipleChoice controladorRespondioUsuario) {
         this.opcion = opcion;
         super.setText(opcion.obtenerTexto());
-        super.setFont(Font.font("comic sans ms", 25));
+        super.setFont(Font.font("montserrat", 25));
         super.setTextFill(Color.BLACK);
         Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
         super.setBackground(unFondito);

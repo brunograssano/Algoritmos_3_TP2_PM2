@@ -17,7 +17,7 @@ public class BotonEnviarRespuesta extends Button {
 
     public BotonEnviarRespuesta(EventHandler<ActionEvent> controlador){
         super.setText("Enviar respuesta");
-        super.setFont(Font.font("comic sans ms", 20));
+        super.setFont(Font.font("montserrat", 20));
         super.setTextFill(Color.WHITE);
         super.setOnAction(controlador);
         Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));

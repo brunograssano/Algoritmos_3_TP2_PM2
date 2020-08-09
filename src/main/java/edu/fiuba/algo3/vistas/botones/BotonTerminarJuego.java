@@ -18,7 +18,7 @@ public class BotonTerminarJuego extends Button {
 
     public BotonTerminarJuego(EventHandler<ActionEvent> controlador){
         super.setText("Salir del juego");
-        super.setFont(Font.font("comic sans ms", 20));
+        super.setFont(Font.font("montserrat", 20));
         super.setTextFill(Color.BLACK);
         super.setOnAction(controlador);
         Background unFondo = new Background(new BackgroundFill(Color.web(ROJO), new CornerRadii(20), new Insets(1)));

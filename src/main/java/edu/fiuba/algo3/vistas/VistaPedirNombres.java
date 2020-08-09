@@ -45,7 +45,7 @@ public class VistaPedirNombres extends StackPane{
         cajaJugadores.setAlignment(Pos.CENTER);
 
         Label labelJugador1 = new Label("Ingrese el nombre del Jugador 1");
-        labelJugador1.setFont(Font.font("comic sans ms",20));
+        labelJugador1.setFont(Font.font("montserrat",20));
         labelJugador1.setTextFill(Color.web(VIOLETA));
         cajaJugadores.getChildren().add(labelJugador1);
 
@@ -54,7 +54,7 @@ public class VistaPedirNombres extends StackPane{
         cajaJugadores.getChildren().add(campoNombreJugador1);
 
         Label labelJugador2 = new Label("Ingrese el nombre del Jugador 2");
-        labelJugador2.setFont(Font.font("comic sans ms",20));
+        labelJugador2.setFont(Font.font("montserrat",20));
         labelJugador2.setTextFill(Color.web(VIOLETA));
         cajaJugadores.getChildren().add(labelJugador2);
 

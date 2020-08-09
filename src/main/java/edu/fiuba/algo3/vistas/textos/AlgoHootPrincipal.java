@@ -9,7 +9,7 @@ public class AlgoHootPrincipal extends Label{
 
     public AlgoHootPrincipal(String color){
         super("AlgoHoot");
-        super.setFont(Font.font("comic sans ms",80));
+        super.setFont(Font.font("montserrat",80));
         super.setTextFill(Color.web(color));
     }
 }

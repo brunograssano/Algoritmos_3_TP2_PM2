@@ -8,7 +8,7 @@ public class TextoPregunta extends Label {
 
     public TextoPregunta(String enunciado){
         super(enunciado);
-        super.setFont(Font.font("comic sans ms",35));
+        super.setFont(Font.font("montserrat",35));
         super.setTextFill(Color.BLACK);
     }
 }

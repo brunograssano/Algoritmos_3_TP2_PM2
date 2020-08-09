@@ -8,7 +8,7 @@ public class TextoJugador extends Label {
 
     public TextoJugador(String nombre){
         super(nombre);
-        super.setFont(Font.font("comic sans ms",40));
+        super.setFont(Font.font("montserrat",40));
         super.setTextFill(Color.BLACK);
     }
 }
