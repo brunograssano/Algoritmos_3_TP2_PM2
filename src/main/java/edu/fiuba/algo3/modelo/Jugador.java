@@ -35,4 +35,17 @@ public class Jugador {
     public String obtenerNombre() {
         return nombre;
     }
+
+    public Jugador compararYObtenerGanador(Jugador otroJugador){
+        return jugadorConMasPuntos(otroJugador);
+    }
+
+    private Jugador jugadorConMasPuntos(Jugador otroJugador){
+        if(this.obtenerPuntos() > otroJugador.obtenerPuntos()){
+            return this;
+        }else if(this.obtenerPuntos() < otroJugador.obtenerPuntos()){
+            return otroJugador;
+        }
+        return null;
+    }
 }

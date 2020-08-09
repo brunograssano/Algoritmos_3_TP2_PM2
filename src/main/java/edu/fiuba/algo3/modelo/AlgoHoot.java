@@ -61,5 +61,9 @@ public class AlgoHoot {
     public Jugador obtenerJugador2() {
         return jugador2;
     }
+
+    public Jugador obtenerJugadorGanador() {
+        return jugador1.compararYObtenerGanador(jugador2);
+    }
 }
 
