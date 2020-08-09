@@ -28,4 +28,8 @@ public class Grupo {
     private boolean tieneMismoNombre(String unNombre){
         return nombreGrupo.equals(unNombre);
     }
+
+    public ArrayList<OpcionSimple> respuestas(){
+        return respuestasDelGrupo;
+    }
 }
