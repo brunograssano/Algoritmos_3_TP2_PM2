@@ -54,5 +54,12 @@ public class AlgoHoot {
         jugadaActual.agregarModificador(modificador);
     }
 
+    public Jugador obtenerJugador1() {
+        return jugador1;
+    }
+
+    public Jugador obtenerJugador2() {
+        return jugador2;
+    }
 }
 

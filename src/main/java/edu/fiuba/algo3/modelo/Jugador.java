@@ -31,4 +31,8 @@ public class Jugador {
     public void pierdeModificador(Modificador modificador) {
         modificadores.remove(modificador);
     }
+
+    public String obtenerNombre() {
+        return nombre;
+    }
 }

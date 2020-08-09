@@ -5,6 +5,8 @@ import edu.fiuba.algo3.vistas.botones.BotonInicio;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -25,8 +27,10 @@ public class VistaInicio extends StackPane{
         super();
         this.stage = stagePrincipal;
 
-        Background fonditoGris = new Background(new BackgroundFill(Color.web(GRIS), CornerRadii.EMPTY, Insets.EMPTY));
-        super.setBackground(fonditoGris);
+        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoInicio.png");
+        BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null,BackgroundPosition.CENTER,null);
+        Background fondo = new Background(fondoImagen);
+        super.setBackground(fondo);
 
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);
