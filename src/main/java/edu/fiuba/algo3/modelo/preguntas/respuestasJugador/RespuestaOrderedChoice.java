@@ -4,8 +4,11 @@ import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
+import java.util.ArrayList;
 
 public class RespuestaOrderedChoice implements RespuestaComparable,Respuesta {
 
@@ -37,5 +40,9 @@ public class RespuestaOrderedChoice implements RespuestaComparable,Respuesta {
     @Override
     public Resultado evaluarEnBaseAPregunta(PreguntaComparable pregunta, Jugador unJugador) {
         return pregunta.responder(this,unJugador);
+    }
+
+    public ArrayList<OpcionSimple> respuestas(){
+        return ordenRespuesta.respuestas();
     }
 }

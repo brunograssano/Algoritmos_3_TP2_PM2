@@ -19,4 +19,8 @@ public class Orden {
     private boolean poseeMismoOrden(ArrayList<OpcionSimple> unOrdenRespuestas){
         return respuestasOrdenadas.equals(unOrdenRespuestas);
     }
+
+    public ArrayList<OpcionSimple> respuestas (){
+        return respuestasOrdenadas;
+    }
 }

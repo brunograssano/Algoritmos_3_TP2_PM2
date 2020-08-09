@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.*;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrderedChoice extends Pregunta implements PreguntaComparable {
 
@@ -27,7 +28,9 @@ public class OrderedChoice extends Pregunta implements PreguntaComparable {
 
     @Override
     public ArrayList<Opcion> respuestas() {
-        return null;
+        ArrayList<Opcion> opciones = new ArrayList<>();
+        opciones.addAll(respuestaCorrecta.respuestas());
+        return opciones;
     }
 
     @Override
