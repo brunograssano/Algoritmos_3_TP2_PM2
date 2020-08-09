@@ -36,7 +36,6 @@ public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
         }
         else{
             AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2);
-            Jugada jugadaSiguiente = AlgoHoot.getInstance().pedirJugada();
             VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
             Scene scene = new Scene(vistaTransicion,800,600);
             stage.setScene(scene);
