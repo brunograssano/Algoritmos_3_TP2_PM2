@@ -49,4 +49,8 @@ public class Jugada {
     public ArrayList<Opcion> respuestasAPregunta() {
         return pregunta.respuestas();
     }
+
+    public Pregunta obtenerPregunta() {
+        return pregunta;
+    }
 }
