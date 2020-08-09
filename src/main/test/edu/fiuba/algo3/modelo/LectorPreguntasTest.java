@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
@@ -9,10 +10,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdad
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -75,38 +73,72 @@ public class LectorPreguntasTest {
         assertEquals(1, jugador1.obtenerPuntos());
     }
 
-    //@Test
-    //public void test03GeneroPreguntaOrderedChoiceYUnJugadorDebePoderResponderla() {
+    @Test
+    public void test03GeneroPreguntaOrderedChoiceYUnJugadorDebePoderResponderla() {
 
-    //    LectorJson lector = new LectorJson();
-    //    ArrayList<Pregunta> preguntas = lector.generarPreguntas();
-    //    Jugador jugador1 = new Jugador("Pedro");
-    //    Jugador jugador2 = new Jugador("Juan");
+        LectorJson lector = new LectorJson();
+        ArrayList<Pregunta> preguntas = lector.generarPreguntas();
+        Jugador jugador1 = new Jugador("Pedro");
+        Jugador jugador2 = new Jugador("Juan");
 
-    //    Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(6)); //primer multiplechoice en la lista
-
-    //    OpcionSimple primerRespuestaJugador1 = new OpcionSimple("Fortran"); //Está fallando porque son objetos diferentes, y orden compara objetos
-    //    OpcionSimple segundaRespuestaJugador1 = new OpcionSimple("C");
-    //    OpcionSimple tercerRespuestaJugador1 = new OpcionSimple("Java");
-    //    OpcionSimple cuartaRespuestaJugador1 = new OpcionSimple("Brainfuck");
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(17)); //primer orderedchoice en la lista
 
 
-    //    ArrayList<OpcionSimple> respuestasOrderJugador1 = new ArrayList<>();
 
-    //    respuestasOrderJugador1.add(primerRespuestaJugador1);
-    //    respuestasOrderJugador1.add(segundaRespuestaJugador1);
-    //    respuestasOrderJugador1.add(tercerRespuestaJugador1);
-    //    respuestasOrderJugador1.add(cuartaRespuestaJugador1);
+        OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
+        OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
+        OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
+        OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
 
-    //    Orden ordenJugador1 = new Orden(respuestasOrderJugador1);
-    //    RespuestaOrderedChoice respuestaJugador1 = new RespuestaOrderedChoice(ordenJugador1);
-    //    RespuestaOrderedChoice respuestaJugador2 = new RespuestaOrderedChoice(ordenJugador1);
 
-    //    jugada.procesarJugada(respuestaJugador1,respuestaJugador2);
+        ArrayList<OpcionSimple> respuestasOrderJugador1 = new ArrayList<>();
 
-    //    assertEquals(1, jugador1.obtenerPuntos());
-    //}
+        respuestasOrderJugador1.add(primerRespuestaJugador1);
+        respuestasOrderJugador1.add(segundaRespuestaJugador1);
+        respuestasOrderJugador1.add(tercerRespuestaJugador1);
+        respuestasOrderJugador1.add(cuartaRespuestaJugador1);
 
+        Orden ordenJugador1 = new Orden(respuestasOrderJugador1);
+        RespuestaOrderedChoice respuestaJugador1 = new RespuestaOrderedChoice(ordenJugador1);
+        RespuestaOrderedChoice respuestaJugador2 = new RespuestaOrderedChoice(ordenJugador1);
+
+        jugada.procesarJugada(respuestaJugador1,respuestaJugador2);
+
+        assertEquals(1, jugador1.obtenerPuntos());
+    }
+
+    @Test
+    public void test04GeneroPreguntaGroupChoiceYUnJugadorDebePoderResponderla() {
+
+        LectorJson lector = new LectorJson();
+        ArrayList<Pregunta> preguntas = lector.generarPreguntas();
+        Jugador jugador1 = new Jugador("Pedro");
+        Jugador jugador2 = new Jugador("Juan");
+
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(23)); //primer groupchoice en la lista
+
+        OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
+        OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
+        OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
+        OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
+
+        ArrayList<OpcionSimple> respuestasPrimerGrupo = new ArrayList<>() ;
+        respuestasPrimerGrupo.add(primerRespuestaJugador1);
+        respuestasPrimerGrupo.add(segundaRespuestaJugador1);
+
+        ArrayList<OpcionSimple> respuestasSegundoGrupo = new ArrayList<>();
+        respuestasSegundoGrupo.add(tercerRespuestaJugador1);
+        respuestasSegundoGrupo.add(cuartaRespuestaJugador1);
+
+        Grupo grupo1Jugador1 = new Grupo("Frutas",respuestasPrimerGrupo);
+        Grupo grupo2Jugador1 = new Grupo("Verduras",respuestasSegundoGrupo);
+        RespuestaGroupChoice respuestaJugador1 = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
+        RespuestaGroupChoice respuestaJugador2 = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
+
+        jugada.procesarJugada(respuestaJugador1,respuestaJugador2);
+
+        assertEquals(1, jugador1.obtenerPuntos());
+    }
 }
 
 
