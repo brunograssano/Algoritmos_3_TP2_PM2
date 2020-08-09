@@ -3,11 +3,10 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Or;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
@@ -44,8 +43,8 @@ public class PreguntaOrdenTest {
         opcionesJugador.add(opcion2);
         opcionesJugador.add(opcion3);
         opcionesJugador.add(opcion4);
-        Orden ordenCorrecto = new Orden(opcionesJugador);
-        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(ordenCorrecto);
+
+        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(opcionesJugador);
 
         Resultado resultado = preguntaOrden.responder(respuestaJugadorOC,jugador);
 
@@ -78,8 +77,8 @@ public class PreguntaOrdenTest {
         opcionesJugador.add(opcion3);
         opcionesJugador.add(opcion4);
         opcionesJugador.add(opcion2);
-        Orden ordenCorrecto = new Orden(opcionesJugador);
-        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(ordenCorrecto);
+
+        RespuestaOrderedChoice respuestaJugadorOC = new RespuestaOrderedChoice(opcionesJugador);
 
         Resultado resultado = preguntaOrden.responder(respuestaJugadorOC,jugador);
 

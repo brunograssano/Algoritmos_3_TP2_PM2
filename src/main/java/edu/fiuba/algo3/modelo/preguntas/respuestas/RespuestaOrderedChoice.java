@@ -1,18 +1,21 @@
-package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
+package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
 import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
+import java.util.ArrayList;
 
 public class RespuestaOrderedChoice implements RespuestaComparable,Respuesta {
 
     private Orden ordenRespuesta;
 
-    public RespuestaOrderedChoice(Orden respuestasJugador){
-        ordenRespuesta = respuestasJugador;
+    public RespuestaOrderedChoice(ArrayList<OpcionSimple> respuestas){
+        ordenRespuesta = new Orden(respuestas);
     }
 
     @Override

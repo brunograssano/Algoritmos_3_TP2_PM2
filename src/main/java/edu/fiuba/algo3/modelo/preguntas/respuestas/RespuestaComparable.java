@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
+package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
 public interface RespuestaComparable {
 

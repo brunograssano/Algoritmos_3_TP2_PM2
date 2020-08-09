@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
+package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
@@ -7,7 +7,10 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
+import java.util.ArrayList;
 
 public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
 
@@ -17,13 +20,13 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
     static final int RESPUESTAS_MIN_GRUPO = 2;
     static final int RESPUESTAS_MAX_GRUPO = 6;
 
-    public RespuestaGroupChoice(Grupo respuestasGrupo1, Grupo respuestasGrupo2){
-        respuestasTotalesJugador = respuestasGrupo1.cantidadElementos() + respuestasGrupo2.cantidadElementos();
+    public RespuestaGroupChoice(String nombreGrupo1, ArrayList<OpcionSimple> respuestasGrupo1, String nombreGrupo2, ArrayList<OpcionSimple> respuestasGrupo2){
+        respuestasTotalesJugador = respuestasGrupo1.size() + respuestasGrupo2.size();
         if (respuestasTotalesJugador < RESPUESTAS_MIN_GRUPO || respuestasTotalesJugador > RESPUESTAS_MAX_GRUPO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        grupo1Respuesta = respuestasGrupo1;
-        grupo2Respuesta = respuestasGrupo2;
+        grupo1Respuesta = new Grupo(nombreGrupo1,respuestasGrupo1);
+        grupo2Respuesta = new Grupo(nombreGrupo2,respuestasGrupo2);
     }
 
     @Override

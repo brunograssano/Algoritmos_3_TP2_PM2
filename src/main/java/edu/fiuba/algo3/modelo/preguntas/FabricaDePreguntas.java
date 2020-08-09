@@ -13,8 +13,8 @@ import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 
 import java.util.ArrayList;
@@ -47,12 +47,11 @@ public class FabricaDePreguntas {
     }
 
     public static Pregunta CrearOrden(String enunciado, ArrayList<OpcionSimple> respuestasOrdenadas) {
-        Orden orden = new Orden(respuestasOrdenadas);
-        RespuestaOrderedChoice respuestaCorrecta = new RespuestaOrderedChoice(orden);
+        RespuestaOrderedChoice respuestaCorrecta = new RespuestaOrderedChoice(respuestasOrdenadas);
         return new OrderedChoice(enunciado, respuestaCorrecta);
     }
-    public static Pregunta CrearGrupo(String enunciado, Grupo grupo1, Grupo grupo2){
-        RespuestaGroupChoice respuestaCorrecta = new RespuestaGroupChoice(grupo1, grupo2);
+    public static Pregunta CrearGrupo(String enunciado, String nombreGrupo1, ArrayList<OpcionSimple> respuestasGrupo1 ,String nombreGrupo2, ArrayList<OpcionSimple> respuestasGrupo2){
+        RespuestaGroupChoice respuestaCorrecta = new RespuestaGroupChoice(nombreGrupo1, respuestasGrupo1, nombreGrupo2, respuestasGrupo2);
         return new GroupChoice(enunciado, respuestaCorrecta);
     }
 }

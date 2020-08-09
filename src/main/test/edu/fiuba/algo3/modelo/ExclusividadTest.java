@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.modificadores.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
@@ -11,11 +10,10 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultip
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -153,7 +151,7 @@ public class ExclusividadTest {
 
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Exclusividad(jugador1));}
+                ()-> jugada.agregarModificador(new Exclusividad(jugador1))
         );
     }
 
@@ -548,7 +546,7 @@ public class ExclusividadTest {
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new Exclusividad(jugador1));}
+                ()-> jugada.agregarModificador(new Exclusividad(jugador1))
         );
     }
 
@@ -583,11 +581,8 @@ public class ExclusividadTest {
         respuestasJugador2.add(respuestaOrden4);
         respuestasJugador2.add(respuestaOrden3);
 
-        Orden ordenJugador1 = new Orden(respuestasJugador1);
-        Orden ordenJugador2 = new Orden(respuestasJugador2);
-
-        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(ordenJugador1);
-        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(ordenJugador2);
+        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(respuestasJugador1);
+        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(respuestasJugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -634,11 +629,8 @@ public class ExclusividadTest {
         respuestasJugador2.add(respuestaOrden4);
         respuestasJugador2.add(respuestaOrden3);
 
-        Orden ordenJugador1 = new Orden(respuestasJugador1);
-        Orden ordenJugador2 = new Orden(respuestasJugador2);
-
-        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(ordenJugador1);
-        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(ordenJugador2);
+        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(respuestasJugador1);
+        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(respuestasJugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -667,7 +659,6 @@ public class ExclusividadTest {
 
         ArrayList<OpcionSimple> respuestasOrdenadas = new ArrayList<>();
 
-
         respuestasOrdenadas.add(respuestaOrden1);
         respuestasOrdenadas.add(respuestaOrden2);
         respuestasOrdenadas.add(respuestaOrden3);
@@ -687,11 +678,8 @@ public class ExclusividadTest {
         respuestasJugador2.add(respuestaOrden3);
         respuestasJugador2.add(respuestaOrden4);
 
-        Orden ordenJugador1 = new Orden(respuestasJugador1);
-        Orden ordenJugador2 = new Orden(respuestasJugador2);
-
-        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(ordenJugador1);
-        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(ordenJugador2);
+        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(respuestasJugador1);
+        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(respuestasJugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -738,11 +726,8 @@ public class ExclusividadTest {
         respuestasJugador2.add(respuestaOrden4);
         respuestasJugador2.add(respuestaOrden3);
 
-        Orden ordenJugador1 = new Orden(respuestasJugador1);
-        Orden ordenJugador2 = new Orden(respuestasJugador2);
-
-        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(ordenJugador1);
-        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(ordenJugador2);
+        RespuestaOrderedChoice respuestasJugador1OC = new RespuestaOrderedChoice(respuestasJugador1);
+        RespuestaOrderedChoice respuestasJugador2OC = new RespuestaOrderedChoice(respuestasJugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -780,10 +765,7 @@ public class ExclusividadTest {
         grupo2Respuesta.add(respuesta2Grupo2);
         grupo2Respuesta.add(respuesta3Grupo2);
 
-        Grupo grupo1 = new Grupo("Tipado estatico",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Tipado dinamico",grupo2Respuesta);
-
-        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado, "Tipado estatico", grupo1Respuesta,"Tipado dinamico", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador1 = new ArrayList<>();
         ArrayList<OpcionSimple> respuestaGrupo2Jugador1 = new ArrayList<>();
@@ -805,13 +787,9 @@ public class ExclusividadTest {
         respuestaGrupo2Jugador2.add(respuesta2Grupo2);
         respuestaGrupo2Jugador2.add(respuesta3Grupo1);
 
-        Grupo grupo1Jugador1 = new Grupo("Tipado estatico", respuestaGrupo1Jugador1);
-        Grupo grupo2Jugador1 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador1);
-        Grupo grupo1Jugador2 = new Grupo("Tipado estatico", respuestaGrupo1Jugador2);
-        Grupo grupo2Jugador2 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador2);
 
-        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
-        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice(grupo1Jugador2, grupo2Jugador2);
+        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador1,"Tipado dinamico", respuestaGrupo2Jugador1);
+        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador2,"Tipado dinamico", respuestaGrupo2Jugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -851,10 +829,7 @@ public class ExclusividadTest {
         grupo2Respuesta.add(respuesta2Grupo2);
         grupo2Respuesta.add(respuesta3Grupo2);
 
-        Grupo grupo1 = new Grupo("Tipado estatico",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Tipado dinamico",grupo2Respuesta);
-
-        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado, "Tipado estatico", grupo1Respuesta, "Tipado dinamico", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador1 = new ArrayList<>();
         ArrayList<OpcionSimple> respuestaGrupo2Jugador1 = new ArrayList<>();
@@ -876,13 +851,8 @@ public class ExclusividadTest {
         respuestaGrupo2Jugador2.add(respuesta2Grupo2);
         respuestaGrupo2Jugador2.add(respuesta3Grupo1);
 
-        Grupo grupo1Jugador1 = new Grupo("Tipado estatico", respuestaGrupo1Jugador1);
-        Grupo grupo2Jugador1 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador1);
-        Grupo grupo1Jugador2 = new Grupo("Tipado estatico", respuestaGrupo1Jugador2);
-        Grupo grupo2Jugador2 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador2);
-
-        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
-        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice(grupo1Jugador2, grupo2Jugador2);
+        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador1,"Tipado dinamico", respuestaGrupo2Jugador1);
+        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador2,"Tipado dinamico", respuestaGrupo2Jugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -922,10 +892,7 @@ public class ExclusividadTest {
         grupo2Respuesta.add(respuesta2Grupo2);
         grupo2Respuesta.add(respuesta3Grupo2);
 
-        Grupo grupo1 = new Grupo("Tipado estatico",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Tipado dinamico",grupo2Respuesta);
-
-        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado,"Tipado estatico", grupo1Respuesta, "Tipado dinamico", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador1 = new ArrayList<>();
         ArrayList<OpcionSimple> respuestaGrupo2Jugador1 = new ArrayList<>();
@@ -947,13 +914,9 @@ public class ExclusividadTest {
         respuestaGrupo2Jugador2.add(respuesta2Grupo2);
         respuestaGrupo2Jugador2.add(respuesta3Grupo2);
 
-        Grupo grupo1Jugador1 = new Grupo("Tipado estatico", respuestaGrupo1Jugador1);
-        Grupo grupo2Jugador1 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador1);
-        Grupo grupo1Jugador2 = new Grupo("Tipado estatico", respuestaGrupo1Jugador2);
-        Grupo grupo2Jugador2 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador2);
 
-        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
-        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice(grupo1Jugador2, grupo2Jugador2);
+        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador1,"Tipado dinamico", respuestaGrupo2Jugador1);
+        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador2,"Tipado dinamico", respuestaGrupo2Jugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
@@ -990,10 +953,7 @@ public class ExclusividadTest {
         grupo2Respuesta.add(respuesta2Grupo2);
         grupo2Respuesta.add(respuesta3Grupo1);
 
-        Grupo grupo1 = new Grupo("Tipado estatico",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Tipado dinamico",grupo2Respuesta);
-
-        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta pregunta = FabricaDePreguntas.CrearGrupo(enunciado,"Tipado estatico", grupo1Respuesta,"Tipado dinamico", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador1 = new ArrayList<>();
         ArrayList<OpcionSimple> respuestaGrupo2Jugador1 = new ArrayList<>();
@@ -1015,13 +975,9 @@ public class ExclusividadTest {
         respuestaGrupo2Jugador2.add(respuesta2Grupo2);
         respuestaGrupo2Jugador2.add(respuesta3Grupo2);
 
-        Grupo grupo1Jugador1 = new Grupo("Tipado estatico", respuestaGrupo1Jugador1);
-        Grupo grupo2Jugador1 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador1);
-        Grupo grupo1Jugador2 = new Grupo("Tipado estatico", respuestaGrupo1Jugador2);
-        Grupo grupo2Jugador2 = new Grupo("Tipado dinamico", respuestaGrupo2Jugador2);
 
-        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
-        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice(grupo1Jugador2, grupo2Jugador2);
+        RespuestaGroupChoice respuestasJugador1GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador1,"Tipado dinamico", respuestaGrupo2Jugador1);
+        RespuestaGroupChoice respuestasJugador2GC = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador2,"Tipado dinamico", respuestaGrupo2Jugador2);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
