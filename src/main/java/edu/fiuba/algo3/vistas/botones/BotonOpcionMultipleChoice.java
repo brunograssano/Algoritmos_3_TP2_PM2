@@ -40,7 +40,7 @@ public class BotonOpcionMultipleChoice extends CheckBox {
                 controladorRespondioUsuario.agregarOpcion(opcion);
             }
             else{
-                controladorRespondioUsuario.eliminarOpcion();
+                controladorRespondioUsuario.eliminarOpcion(opcion);
             }
         });
     }

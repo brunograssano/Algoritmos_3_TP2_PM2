@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.VistaMultipleChoice;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
+import edu.fiuba.algo3.vistas.VistaVerdaderoFalso;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,7 +31,9 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
     private void determinarTipoPregunta(Pregunta pregunta) {
         //Vista de pregunta, inicializamos en los if
         if(pregunta instanceof VerdaderoFalso){
-            //creamos vista de v o f
+            VistaVerdaderoFalso vistaPregunta = new VistaVerdaderoFalso(stage);
+            Scene scene = new Scene(vistaPregunta,800,600);
+            stage.setScene(scene);
         }
         else if(pregunta instanceof MultipleChoice){
             VistaMultipleChoice vistaPregunta = new VistaMultipleChoice(stage);
