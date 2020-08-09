@@ -39,7 +39,7 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
 
     @Override
     public ArrayList<Opcion> respuestas() {
-        return null;
+        return(new ArrayList<>(respuestaCorrecta.respuestas()));
     }
 
 }

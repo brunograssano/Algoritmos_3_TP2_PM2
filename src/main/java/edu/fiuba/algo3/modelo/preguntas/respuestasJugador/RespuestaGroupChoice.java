@@ -7,7 +7,10 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
+import java.util.ArrayList;
 
 public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
 
@@ -48,5 +51,12 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
     @Override
     public Resultado evaluarEnBaseAPregunta(PreguntaComparable pregunta, Jugador unJugador) {
         return pregunta.responder(this,unJugador);
+    }
+
+    public ArrayList<OpcionSimple> respuestas(){
+        ArrayList<OpcionSimple> respuestas = new ArrayList<>();
+        respuestas.addAll(grupo1Respuesta.respuestas());
+        respuestas.addAll(grupo2Respuesta.respuestas());
+        return respuestas;
     }
 }

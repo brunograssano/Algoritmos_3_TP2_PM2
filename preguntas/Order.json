@@ -15,6 +15,7 @@
 		"ORDER": {
 			"enunciado" : "Colocar las siguientes redes en orden inverso de creacion",
 			"respuestasEnOrden": [
+				"TikTok",
 				"Instagram",
 				"Twitter",
 				"Facebook",
@@ -33,6 +34,42 @@
 				"10000001"
 			]
 		}
-	}
+	},
 
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden apropiado el uso de los siguientes comandos",
+			"respuestasEnOrden": [
+				"git clone",
+				"git branch dev",
+				"git add",
+				"git commit",
+				"git push"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden de creacion las siguientes distribuciones de linux",
+			"respuestasEnOrden": [
+				"Debian",
+				"Mandrake",
+				"Arch",
+				"Ubuntu",
+				"PoP OS!"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden inverso las siguientes velocidades",
+			"respuestasEnOrden": [
+				"256 KBps",
+				"256 Kbps",
+				"1024 b/s"
+			]
+		}
+	}
 ]
