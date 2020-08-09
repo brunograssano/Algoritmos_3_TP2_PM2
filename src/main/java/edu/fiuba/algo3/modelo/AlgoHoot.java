@@ -17,8 +17,11 @@ public class AlgoHoot {
     private Jugador jugador1;
     private Jugador jugador2;
 
+    private Stack<Respuesta> respuestasJugadores;
+
     private AlgoHoot(){
         jugadas = new Stack<>();
+        respuestasJugadores = new Stack<>();
         LectorJson lector = new LectorJson();
         this.preguntas = lector.generarPreguntas();
     }
@@ -44,7 +47,17 @@ public class AlgoHoot {
         return jugadas.peek();
     }
 
-    public void jugar(Respuesta respuestaJugador1, Respuesta respuestaJugador2){
+    public void procesarTurno(Respuesta unaRespuesta){
+        if(respuestasJugadores.size()==1){
+            Respuesta respuestaJugador1 = respuestasJugadores.pop();
+            jugar(respuestaJugador1,unaRespuesta);
+        }
+        else{
+            respuestasJugadores.push(unaRespuesta);
+        }
+    }
+
+    private void jugar(Respuesta respuestaJugador1, Respuesta respuestaJugador2){
         Jugada jugadaActual = jugadas.pop();
         jugadaActual.procesarJugada(respuestaJugador1,respuestaJugador2);
     }

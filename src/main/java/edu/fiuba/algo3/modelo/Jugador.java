@@ -41,11 +41,10 @@ public class Jugador {
     }
 
     private Jugador jugadorConMasPuntos(Jugador otroJugador){
-        if(this.obtenerPuntos() > otroJugador.obtenerPuntos()){
-            return this;
-        }else if(this.obtenerPuntos() < otroJugador.obtenerPuntos()){
-            return otroJugador;
+        Jugador aux = this;
+        if(this.obtenerPuntos() < otroJugador.obtenerPuntos()){
+            aux = otroJugador;
         }
-        return null;
+        return aux;
     }
 }
