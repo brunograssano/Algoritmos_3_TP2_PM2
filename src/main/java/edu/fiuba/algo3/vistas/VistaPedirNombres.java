@@ -38,7 +38,7 @@ public class VistaPedirNombres extends StackPane{
 
         VBox nombreJuego = new VBox(0);
         nombreJuego.setAlignment(Pos.TOP_CENTER);
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal();
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
         nombreJuego.getChildren().add(textoAlgoHootInicio);
 
         VBox cajaJugadores = new VBox(10);

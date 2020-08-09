@@ -32,7 +32,7 @@ public class VistaGanador extends StackPane {
         VBox cajaPrincipal = new VBox(180);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal();
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
 
         ControladorGanador controladorGanador = new ControladorGanador();
         Label textoGanador = new Label(controladorGanador.obtenerResultadoFinal());

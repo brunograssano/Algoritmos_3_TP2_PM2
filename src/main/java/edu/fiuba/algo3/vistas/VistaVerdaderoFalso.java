@@ -41,11 +41,8 @@ public class VistaVerdaderoFalso extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        VBox cajaPrincipal = new VBox(70);
+        VBox cajaPrincipal = new VBox(90);
         cajaPrincipal.setAlignment(Pos.CENTER);
-
-        AlgoHootPrincipal textoAlgoHoot = new AlgoHootPrincipal();
-        cajaPrincipal.getChildren().add(textoAlgoHoot);
 
         armarPregunta(cajaPrincipal);
 
@@ -54,9 +51,10 @@ public class VistaVerdaderoFalso extends StackPane {
 
     private void armarPregunta(VBox cajaPrincipal) {
         Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
-        cajaPrincipal.getChildren().add(new EncabezadoPantalla());
+        cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
         ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
-        HBox cajaAgrupadoraDeOpciones = new HBox(10);
+        HBox cajaAgrupadoraDeOpciones = new HBox(25);
+        cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
         for(Opcion opcion:opciones) {
             BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,(OpcionEvaluable) opcion));

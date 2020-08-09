@@ -9,8 +9,8 @@ import javafx.scene.layout.HBox;
 
 public class EncabezadoPantalla extends HBox {
 
-    public EncabezadoPantalla(){
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal();
+    public EncabezadoPantalla(String colorLogo){
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(colorLogo);
         Jugador jugador1 = AlgoHoot.getInstance().obtenerJugador1();
         Jugador jugador2 = AlgoHoot.getInstance().obtenerJugador2();
         CajaJugador cajaJugador1 = new CajaJugador(jugador1);

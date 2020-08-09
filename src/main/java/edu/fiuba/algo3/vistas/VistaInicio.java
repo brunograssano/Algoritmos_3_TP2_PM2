@@ -35,7 +35,7 @@ public class VistaInicio extends StackPane{
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal();
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
         cajaPrincipal.getChildren().add(textoAlgoHootInicio);
 
         BotonInicio botonInicio = new BotonInicio(new ControladorIniciarJuego(stagePrincipal));

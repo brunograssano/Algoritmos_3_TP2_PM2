@@ -7,9 +7,9 @@ import javafx.scene.text.Font;
 public class AlgoHootPrincipal extends Label{
     static String VIOLETA = "9370DB";
 
-    public AlgoHootPrincipal(){
+    public AlgoHootPrincipal(String color){
         super("AlgoHoot");
         super.setFont(Font.font("comic sans ms",80));
-        super.setTextFill(Color.web(VIOLETA));
+        super.setTextFill(Color.web(color));
     }
 }

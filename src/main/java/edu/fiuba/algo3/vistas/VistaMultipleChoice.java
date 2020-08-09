@@ -55,7 +55,7 @@ public class VistaMultipleChoice extends StackPane {
 
     private void armarPregunta(VBox cajaPrincipal) {
         Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
-        cajaPrincipal.getChildren().add(new EncabezadoPantalla());
+        cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
         ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
         VBox cajaAgrupadoraDeOpciones = new VBox();
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
