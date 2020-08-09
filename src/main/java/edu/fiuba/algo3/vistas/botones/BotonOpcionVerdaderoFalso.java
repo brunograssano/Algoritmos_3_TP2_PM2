@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
+import edu.fiuba.algo3.controladores.ControladorEnviarVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -26,6 +27,7 @@ public class BotonOpcionVerdaderoFalso extends Button {
         super.setText(opcion.obtenerTexto());
         super.setFont(Font.font("comic sans ms", 25));
         super.setTextFill(Color.BLACK);
+        super.setOnAction(controladorRespondioUsuario);
         Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
         super.setBackground(unFondito);
     }
