@@ -16,8 +16,8 @@ import org.json.simple.parser.ParseException;
 
 public class LectorJson implements LectorPreguntas {
 
-    private static final String RUTA_VOF     =    "\\preguntas\\VoF.json";
-    private static final String RUTA_MC      =    "\\preguntas\\MC.json";
+    private static final String RUTA_VOF     =    "/preguntas/VoF.json";
+    private static final String RUTA_MC      =    "/preguntas/MC.json";
     private static final String RUTA_ORDEN   =    "\\preguntas\\Order.json";
     private static final String RUTA_GRUPO   =    "\\preguntas\\Group.json";
 
