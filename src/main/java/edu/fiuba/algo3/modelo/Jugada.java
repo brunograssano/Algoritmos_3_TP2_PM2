@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class Jugada {
 
-    Jugador jugador1;
-    Jugador jugador2;
+    private Jugador jugador1;
+    private Jugador jugador2;
 
-    ArrayList<Modificador> modificadoresJugadas;
+    private ArrayList<Modificador> modificadoresJugadas;
 
-    Pregunta pregunta;
+    private Pregunta pregunta;
 
     public Jugada(Jugador unJugador,Jugador otroJugador,Pregunta unaPregunta){
         pregunta = unaPregunta;

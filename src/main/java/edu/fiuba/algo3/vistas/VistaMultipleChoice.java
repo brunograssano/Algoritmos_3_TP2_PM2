@@ -46,10 +46,7 @@ public class VistaMultipleChoice extends StackPane {
         super.setBackground(fondo);
 
         VBox cajaPrincipal = new VBox(70);
-        cajaPrincipal.setAlignment(Pos.CENTER);
-
-        AlgoHootPrincipal textoAlgoHoot = new AlgoHootPrincipal();
-        cajaPrincipal.getChildren().add(textoAlgoHoot);
+        cajaPrincipal.setAlignment(Pos.TOP_CENTER);
 
         armarPregunta(cajaPrincipal);
 
@@ -61,6 +58,7 @@ public class VistaMultipleChoice extends StackPane {
         cajaPrincipal.getChildren().add(new EncabezadoPantalla());
         ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
         VBox cajaAgrupadoraDeOpciones = new VBox();
+        cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
         ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage);
         for(Opcion opcion:opciones) {

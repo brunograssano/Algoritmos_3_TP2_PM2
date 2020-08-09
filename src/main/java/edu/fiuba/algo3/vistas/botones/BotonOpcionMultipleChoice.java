@@ -30,19 +30,17 @@ public class BotonOpcionMultipleChoice extends CheckBox {
     public BotonOpcionMultipleChoice(Opcion opcion,ControladorEnviarMultipleChoice controladorRespondioUsuario) {
         this.opcion = opcion;
         super.setText(opcion.obtenerTexto());
-        super.setFont(Font.font("comic sans ms", 20));
+        super.setFont(Font.font("comic sans ms", 25));
         super.setTextFill(Color.BLACK);
-        Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(20), new Insets(1)));
+        Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
         super.setBackground(unFondito);
 
-        super.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            public void changed(ObservableValue<? extends Boolean> valorObservado, Boolean valorViejo, Boolean valorNuevo) {
-                if(valorNuevo){
-                    controladorRespondioUsuario.agregarOpcion(opcion);
-                }
-                else{
-                    controladorRespondioUsuario.elimiarOpcion(opcion);
-                }
+        super.selectedProperty().addListener((valorObservado, valorViejo, valorNuevo) -> {
+            if(valorNuevo){
+                controladorRespondioUsuario.agregarOpcion(opcion);
+            }
+            else{
+                controladorRespondioUsuario.elimiarOpcion(opcion);
             }
         });
     }

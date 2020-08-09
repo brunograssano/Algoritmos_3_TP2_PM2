@@ -13,10 +13,6 @@ public class App extends Application {
     @Override
     public void start(Stage stagePrincipal) {
 
-        //llamada a lector
-        //crear (singleton) algohoot
-        //ponerle las preguntas ---> crea todas las jugadas
-        //pedir nombres
         //jugar
         //fin
 
