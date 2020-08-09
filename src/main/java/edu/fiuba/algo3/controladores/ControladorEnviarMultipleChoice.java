@@ -41,7 +41,7 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
         }
     }
 
-    public void elimiarOpcion(Opcion opcion) {
+    public void eliminarOpcion(Opcion opcion) {
         respuestasUsuario.remove(opcion);
     }
 
