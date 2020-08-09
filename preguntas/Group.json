@@ -33,11 +33,29 @@
 
 	{
 		"GROUP": {
+			"enunciado" : "Cuales son de tipado estatico y cuales de tipado dinamico?",
+			"labelGrupo1" : "Estatico",
+			"labelGrupo2" : "Dinamico",
+			"respuestasGrupo1": [
+				"Ada",
+				"D",
+				"Kotlin",
+				"Rust"
+			],
+			"respuestasGrupo2": [
+				"Lua",
+				"Perl"
+			]
+		}
+	},
+
+	{
+		"GROUP": {
 			"enunciado" : "Cuales son modelos de GPUS y cuales de CPUS?",
 			"labelGrupo1" : "GPUs",
 			"labelGrupo2" : "CPUs",
 			"respuestasGrupo1": [
-				"gtx 2080",
+				"RTX 2080ti",
 				"Rx 580"
 			],
 			"respuestasGrupo2": [
@@ -45,5 +63,40 @@
 				"Xeon 1231v3"
 			]
 		}
+	},
+	{
+		"GROUP": {
+			"enunciado" : "Cuales son modelos de GPUS y cuales de CPUS?",
+			"labelGrupo1" : "GPUs",
+			"labelGrupo2" : "CPUs",
+			"respuestasGrupo1": [
+				"gtx 1060",
+				"Rx 550"
+			],
+			"respuestasGrupo2": [
+				"Ryzen R5 3600",
+				"Core i7 4770",
+				"Celeron",
+				"Phenom II x4 955 BE"
+			]
+		}
+	},
+	{
+		"GROUP": {
+			"enunciado" : "Cuales son perifericos de entrada y cuales de salida?",
+			"labelGrupo1" : "Entrada",
+			"labelGrupo2" : "Salida",
+			"respuestasGrupo1": [
+				"Lector de Huella",
+				"Volante USB",
+				"Controlador MIDI",
+				"Joystick"
+			],
+			"respuestasGrupo2": [
+				"Proyector Digital",
+				"Fax"
+			]
+		}
 	}
+
 ]
