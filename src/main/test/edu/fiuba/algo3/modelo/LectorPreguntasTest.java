@@ -50,7 +50,7 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(3)); //primer multiplechoice en la lista
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(10)); //primer multiplechoice en la lista
 
         OpcionCorrectaMultipleChoice primerRespuestaJugador1 = new OpcionCorrectaMultipleChoice("BrainFuck");
         OpcionCorrectaMultipleChoice segundaRespuestaJugador1 = new OpcionCorrectaMultipleChoice("Clojure");
