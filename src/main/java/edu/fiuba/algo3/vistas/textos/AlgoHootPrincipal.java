@@ -11,5 +11,6 @@ public class AlgoHootPrincipal extends Label{
         super("AlgoHoot");
         super.setFont(Font.font("montserrat",80));
         super.setTextFill(Color.web(color));
+        super.setWrapText(true);
     }
 }

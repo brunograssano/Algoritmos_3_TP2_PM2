@@ -28,7 +28,7 @@ public class VistaInicio extends StackPane{
         this.stage = stagePrincipal;
 
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoInicio.png");
-        BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null,BackgroundPosition.CENTER,null);
+        BackgroundImage fondoImagen = new BackgroundImage(imagen,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
@@ -43,7 +43,6 @@ public class VistaInicio extends StackPane{
 
         stage.setTitle("AlgoHoot");
         stage.centerOnScreen();
-        stage.setResizable(false);
         super.getChildren().add(cajaPrincipal);
     }
 
