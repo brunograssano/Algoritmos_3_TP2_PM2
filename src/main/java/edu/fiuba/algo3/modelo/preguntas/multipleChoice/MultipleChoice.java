@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
@@ -51,7 +52,7 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         ArrayList<Opcion> opciones = new ArrayList<>();
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
-        Collections.shuffle(opciones);
+        Desordenador.desordenar(opciones);
         return opciones;
     }
 
