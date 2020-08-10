@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
+import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+
 public interface RespuestaComparable {
 
-    boolean esIgual(RespuestaGroupChoice unaRespuesta);
+    void compararContra(RespuestaGroupChoice unaRespuesta, Resultado unResultado);
 
-    boolean esIgual(RespuestaOrderedChoice unaRespuesta);
+    void compararContra(RespuestaOrderedChoice unaRespuesta, Resultado unResultado);
 
 }

@@ -21,11 +21,7 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
     @Override
     public Resultado responder(RespuestaComparable respuestasJugador, Jugador unJugador) {
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_CORRECTAS_TOTALES,unJugador);
-        if(respuestasJugador.esIgual(respuestaCorrecta)){
-            unResultado.sumarRespuestaCorrecta();
-        }else{
-            unResultado.sumarRespuestaIncorrecta();
-        }
+        respuestasJugador.compararContra(respuestaCorrecta,unResultado);
         return unResultado;
     }
 

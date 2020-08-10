@@ -30,8 +30,10 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
     }
 
     @Override
-    public boolean esIgual(RespuestaGroupChoice unaRespuesta) {
-        return unaRespuesta.gruposSonIguales(grupo1Respuesta, grupo2Respuesta);
+    public void compararContra(RespuestaGroupChoice unaRespuesta, Resultado unResultado) {
+        if(unaRespuesta.gruposSonIguales(grupo1Respuesta, grupo2Respuesta)){
+            unResultado.sumarRespuestaCorrecta();
+        }
     }
 
     private boolean gruposSonIguales(Grupo grupo1, Grupo grupo2) {
@@ -39,8 +41,7 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
     }
 
     @Override
-    public boolean esIgual(RespuestaOrderedChoice unaRespuesta) {
-    return false;
+    public void compararContra(RespuestaOrderedChoice unaRespuesta, Resultado unResultado) {
     }
 
     @Override

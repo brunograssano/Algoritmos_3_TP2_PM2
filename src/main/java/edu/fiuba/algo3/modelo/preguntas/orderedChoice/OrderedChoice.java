@@ -25,11 +25,7 @@ public class OrderedChoice extends Pregunta implements PreguntaComparable {
     @Override
     public Resultado responder(RespuestaComparable respuestaJugador, Jugador unJugador) {
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_CORRECTAS_TOTALES, unJugador);
-        if(respuestaJugador.esIgual(respuestaCorrecta)){
-            unResultado.sumarRespuestaCorrecta();
-        }else{
-            unResultado.sumarRespuestaIncorrecta();
-        }
+        respuestaJugador.compararContra(respuestaCorrecta, unResultado);
         return unResultado;
     }
 
