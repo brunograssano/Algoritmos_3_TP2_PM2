@@ -13,7 +13,7 @@
 
 	{
 		"ORDER": {
-			"enunciado" : "Colocar las siguientes redes en orden inverso de creacion",
+			"enunciado" : "Colocar las siguientes redes en orden descendente de creacion",
 			"respuestasEnOrden": [
 				"TikTok",
 				"Instagram",
@@ -64,7 +64,7 @@
 
 	{
 		"ORDER": {
-			"enunciado" : "Colocar en orden inverso las siguientes velocidades",
+			"enunciado" : "Colocar en orden descendiente las siguientes velocidades",
 			"respuestasEnOrden": [
 				"256 KBps",
 				"256 Kbps",
