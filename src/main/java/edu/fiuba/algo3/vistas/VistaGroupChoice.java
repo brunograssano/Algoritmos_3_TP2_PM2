@@ -60,23 +60,17 @@ public class VistaGroupChoice extends StackPane{
         ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
 
         VBox cajaSpinners = new VBox();
-        VBox cajaAgrupadoraDeOpcionesGrupo1 = new VBox();
-        VBox cajaAgrupadoraDeOpcionesGrupo2 = new VBox();
 
         cajaSpinners.setAlignment(Pos.CENTER);
-        cajaAgrupadoraDeOpcionesGrupo1.setAlignment(Pos.CENTER_LEFT);
-        cajaAgrupadoraDeOpcionesGrupo2.setAlignment(Pos.CENTER_RIGHT);
 
         ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(stage);
         for(Opcion opcion:opciones) {
-            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(nombresGrupos,opcion,controladorRespondioUsuario);
+            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(opcion,controladorRespondioUsuario);
             cajaSpinners.getChildren().add(boton);
         }
 
         cajaPrincipal.getChildren().add(new CajaPregunta());
         cajaPrincipal.getChildren().add(cajaSpinners);
-        cajaPrincipal.getChildren().add(cajaAgrupadoraDeOpcionesGrupo1);
-        cajaPrincipal.getChildren().add(cajaAgrupadoraDeOpcionesGrupo2);
         cajaPrincipal.getChildren().add(new BotonEnviarRespuesta(controladorRespondioUsuario));
     }
 }
