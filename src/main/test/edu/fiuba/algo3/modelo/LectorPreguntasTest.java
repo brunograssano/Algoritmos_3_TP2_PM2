@@ -28,7 +28,7 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(0)); //primer VoF en la lista
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(19)); //primer VoF en la lista
 
         OpcionCorrectaVerdaderoFalso respuestaJugador1 = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
         OpcionIncorrectaVerdaderoFalso respuestaJugador2 = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
@@ -48,7 +48,7 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(10)); //primer multiplechoice en la lista
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(0)); //primer multiplechoice en la lista
 
         OpcionCorrectaMultipleChoice primerRespuestaJugador1 = new OpcionCorrectaMultipleChoice("BrainFuck");
         OpcionCorrectaMultipleChoice segundaRespuestaJugador1 = new OpcionCorrectaMultipleChoice("Clojure");
@@ -81,7 +81,7 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(17)); //primer orderedchoice en la lista
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(7)); //primer orderedchoice en la lista
 
 
 
@@ -115,7 +115,7 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(23)); //primer groupchoice en la lista
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(13)); //primer groupchoice en la lista
 
         OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
         OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));

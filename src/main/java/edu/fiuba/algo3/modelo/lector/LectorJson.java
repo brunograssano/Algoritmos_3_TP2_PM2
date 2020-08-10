@@ -34,10 +34,10 @@ public class LectorJson implements LectorPreguntas {
         Parser parserMultipleChoice = new MultipleChoiceParser();
         Parser parserOrden = new OrderParser();
         Parser parserGrupo = new GroupChoiceParser();
-        agregarPreguntasDeArchivo(preguntasTotales, RUTA_VOF, parserVerdaderoFalso);
         agregarPreguntasDeArchivo(preguntasTotales, RUTA_MC, parserMultipleChoice);
         agregarPreguntasDeArchivo(preguntasTotales, RUTA_ORDEN, parserOrden);
         agregarPreguntasDeArchivo(preguntasTotales, RUTA_GRUPO, parserGrupo);
+        agregarPreguntasDeArchivo(preguntasTotales, RUTA_VOF, parserVerdaderoFalso);
         return preguntasTotales;
     }
 

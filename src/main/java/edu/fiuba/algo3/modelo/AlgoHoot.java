@@ -39,7 +39,7 @@ public class AlgoHoot {
     }
 
     private void crearJugadas(){
-        Collections.shuffle(preguntas);
+        Desordenador.desordenar(preguntas);
         for(Pregunta pregunta:preguntas) {
             jugadas.push(new Jugada(jugador1,jugador2,pregunta));
         }
