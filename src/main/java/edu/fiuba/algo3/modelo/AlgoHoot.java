@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
+import edu.fiuba.algo3.modelo.turnos.Turno;
+import edu.fiuba.algo3.modelo.turnos.TurnoPrimerJugador;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,11 +19,11 @@ public class AlgoHoot {
     private Jugador jugador1;
     private Jugador jugador2;
 
-    private Stack<Respuesta> respuestasJugadores;
+    private Turno turno;
 
     private AlgoHoot(){
+        turno = new TurnoPrimerJugador();
         jugadas = new Stack<>();
-        respuestasJugadores = new Stack<>();
         LectorJson lector = new LectorJson();
         this.preguntas = lector.generarPreguntas();
     }
@@ -48,16 +50,10 @@ public class AlgoHoot {
     }
 
     public void procesarTurno(Respuesta unaRespuesta){
-        if(respuestasJugadores.size()==1){
-            Respuesta respuestaJugador1 = respuestasJugadores.pop();
-            jugar(respuestaJugador1,unaRespuesta);
-        }
-        else{
-            respuestasJugadores.push(unaRespuesta);
-        }
+        turno = turno.procesarTurno(unaRespuesta);
     }
 
-    private void jugar(Respuesta respuestaJugador1, Respuesta respuestaJugador2){
+    public void jugar(Respuesta respuestaJugador1, Respuesta respuestaJugador2){
         Jugada jugadaActual = jugadas.pop();
         jugadaActual.procesarJugada(respuestaJugador1,respuestaJugador2);
     }
