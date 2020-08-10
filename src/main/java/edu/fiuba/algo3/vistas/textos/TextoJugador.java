@@ -10,5 +10,6 @@ public class TextoJugador extends Label {
         super(nombre);
         super.setFont(Font.font("montserrat",40));
         super.setTextFill(Color.BLACK);
+        super.setWrapText(true);
     }
 }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
+import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
@@ -8,6 +9,7 @@ import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -29,7 +31,7 @@ public class VistaOrderedChoice extends StackPane {
     public VistaOrderedChoice(Stage stagePrincipal) {
         super();
         this.stage = stagePrincipal;
-        ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage);
+        ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage);
 
         Image imagen = new Image("file:"+ System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoPreguntasVioleta.png");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,null);
@@ -55,15 +57,16 @@ public class VistaOrderedChoice extends StackPane {
     }
 
 
-    private void armarPregunta(VBox cajaPregunta, ControladorEnviarMultipleChoice controller) {
-        //Le pido lajugada a algo cunt
+    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador) {
+        //Le pido la jugada a algohoot
         Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
         ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
 
-        VBox cajaOpciones = new VBox();
+        VBox cajaOpciones = new VBox(5);
         cajaOpciones.setAlignment(Pos.CENTER);
         for(Opcion opcion:opciones){
-            //agregar boton de la flechita loca lpm que me pario KKKK
+            OpcionOrderedChoice opcionOrdenable = new OpcionOrderedChoice(opcion,opciones.size(), controlador);
+            cajaOpciones.getChildren().add(opcionOrdenable);
         }
         cajaPregunta.getChildren().add(new CajaPregunta());
         cajaPregunta.getChildren().add(cajaOpciones);
