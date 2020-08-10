@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.VistaMultipleChoice;
+import edu.fiuba.algo3.vistas.VistaOrderedChoice;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.VistaVerdaderoFalso;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
@@ -41,10 +42,12 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
             stage.setScene(scene);
         }
         else if(pregunta instanceof GroupChoice){
-            //creamos vista de grupo
+        //creamos vista group
         }
         else{
-            //creamos vista de orden
+            VistaOrderedChoice vistaPregunta = new VistaOrderedChoice(stage);
+            Scene scene = new Scene(vistaPregunta,800,600);
+            stage.setScene(scene);
         }
 
         //Scene scene = new Scene(vistaPregunta,800,600);

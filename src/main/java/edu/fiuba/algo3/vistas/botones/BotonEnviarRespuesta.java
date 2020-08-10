@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas.botones;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -11,7 +12,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class BotonEnviarRespuesta extends Button {
-
 
     static String VERDE = "33FF96";
 
