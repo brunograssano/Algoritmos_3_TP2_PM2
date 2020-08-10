@@ -5,15 +5,14 @@ import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
-import edu.fiuba.algo3.vistas.VistaMultipleChoice;
-import edu.fiuba.algo3.vistas.VistaOrderedChoice;
-import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
-import edu.fiuba.algo3.vistas.VistaVerdaderoFalso;
+import edu.fiuba.algo3.vistas.*;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.EmptyStackException;
 
 public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
@@ -25,8 +24,15 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Pregunta pregunta = AlgoHoot.getInstance().pedirJugada().obtenerPregunta();
-        determinarTipoPregunta(pregunta);
+        try {
+            Pregunta pregunta = AlgoHoot.getInstance().pedirJugada().obtenerPregunta();
+            determinarTipoPregunta(pregunta);
+        }catch (EmptyStackException exception){
+            VistaGanador vistaGanador = new VistaGanador(stage);
+            Scene scene = new Scene(vistaGanador,800,600);
+            stage.setScene(scene);
+        }
+
     }
 
     private void determinarTipoPregunta(Pregunta pregunta) {

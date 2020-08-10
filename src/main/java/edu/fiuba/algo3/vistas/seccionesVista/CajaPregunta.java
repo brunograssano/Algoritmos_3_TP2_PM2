@@ -8,17 +8,26 @@ import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.util.EmptyStackException;
 
 public class CajaPregunta extends VBox {
 
     public CajaPregunta(){
-        Jugada jugada = AlgoHoot.getInstance().pedirJugada();
-        Pregunta pregunta = jugada.obtenerPregunta();
-        determinarTipoPregunta(pregunta);
-        TextoPregunta enunciado = new TextoPregunta(pregunta.textoPregunta());
-        super.getChildren().add(enunciado);
-        super.setAlignment(Pos.CENTER);
+        try{
+            Jugada jugada = AlgoHoot.getInstance().pedirJugada();
+            Pregunta pregunta = jugada.obtenerPregunta();
+            determinarTipoPregunta(pregunta);
+            TextoPregunta enunciado = new TextoPregunta(pregunta.textoPregunta());
+            super.getChildren().add(enunciado);
+            super.setAlignment(Pos.CENTER);
+        }catch (EmptyStackException exception){
+            Label texto = new Label("Se terminaron las preguntas, se determinara el ganador");
+            super.getChildren().add(texto);
+        }
     }
 
     private void determinarTipoPregunta(Pregunta pregunta) {
