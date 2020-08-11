@@ -19,14 +19,19 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
 
     private Stage stage;
     private ArrayList<OpcionOrderedChoice> opcionesVista;
-    private ArrayList<OpcionSimple> opcionesSimples;
+    private ArrayList<OpcionSimple> opcionesCorrectas;
+    private ArrayList<OpcionSimple> opcionesJugador;
+
 
     public ControladorEnviarOrderedChoice(Stage escenario){
         stage = escenario;
-        opcionesSimples = new ArrayList<>();
+        opcionesJugador = new ArrayList<>();
     }
     public void agregarOpcionesSeleccionadas(ArrayList<OpcionOrderedChoice> opciones){
         opcionesVista = opciones;
+    }
+    public void agregarOpcionesCorrectas(ArrayList<OpcionSimple> opcionesCorrectas){
+        this.opcionesCorrectas = opcionesCorrectas;
     }
     @Override
     public void handle(ActionEvent actionEvent) {
@@ -40,7 +45,7 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
         }
         else{
             convertirOpcionesSimples();
-            Orden ordenRespuesta = new Orden(opcionesSimples);
+            Orden ordenRespuesta = new Orden(opcionesJugador);
             RespuestaOrderedChoice respuestaDeUnJugador = new RespuestaOrderedChoice(ordenRespuesta);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
             VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
@@ -52,7 +57,7 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
 
     private void convertirOpcionesSimples() {
 
-        ArrayList <OpcionSimple> opcionesSimples = new ArrayList<>();
+        ArrayList <OpcionSimple> opcionesSeleccionadas = new ArrayList<>();
         opcionesVista.sort(new Comparator<OpcionOrderedChoice>() {
             @Override
             public int compare(OpcionOrderedChoice opcion1, OpcionOrderedChoice opcion2) {
@@ -65,18 +70,12 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
             }
         });
         for (OpcionOrderedChoice opcion : opcionesVista) {
-            OpcionSimple opcionAux = new OpcionSimple(opcion.getEnunciadoOpcion());
-            opcionesSimples.add(opcionAux);
+
+            OpcionSimple opcionAux = opcionesCorrectas.get(opcion.getNumeroOrden() - 1);
+            opcionesSeleccionadas.add(opcionAux);
         }
-        this.opcionesSimples = opcionesSimples;
+        this.opcionesJugador = opcionesSeleccionadas;
     }
-        //ALTO! No esta permitido bajar y ver el siguiente metodo
-
-
-
-
-
-
 
         private boolean seRepiteOpcionSeleccionada() {
 

@@ -2,8 +2,10 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
+import edu.fiuba.algo3.modelo.Desordenador;
 import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
@@ -31,6 +33,14 @@ public class VistaOrderedChoice extends StackPane {
     public VistaOrderedChoice(Stage stagePrincipal) {
         super();
         this.stage = stagePrincipal;
+
+        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
+        ArrayList<Opcion> opciones =  (jugadaActual.respuestasAPregunta());
+        ArrayList<OpcionSimple> opcionesSimples = new ArrayList<OpcionSimple>();
+        for(Opcion opcion : opciones){
+            opcionesSimples.add((OpcionSimple) opcion);
+        }
+
         ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage);
 
         Image imagen = new Image("file:"+ System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoPreguntasVioleta.png");
@@ -44,9 +54,9 @@ public class VistaOrderedChoice extends StackPane {
 
 
         VBox cajaPregunta = new VBox(2);
-        armarPregunta(cajaPregunta, controladorRespondioUsuario);
+        armarPregunta(cajaPregunta, controladorRespondioUsuario, opciones);
         VBox cajaInferior = new VBox();
-        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1));
+        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1), opcionesSimples);
         cajaInferior.getChildren().add(botonEnviar);
         cajaInferior.setAlignment(Pos.CENTER);
 
@@ -57,15 +67,14 @@ public class VistaOrderedChoice extends StackPane {
     }
 
 
-    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador) {
-        //Le pido la jugada a algohoot
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
-        ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
+    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<Opcion> opciones)  {
 
+        Desordenador.desordenar(opciones);
         VBox cajaOpciones = new VBox(5);
         cajaOpciones.setAlignment(Pos.CENTER);
-        for(Opcion opcion:opciones){
-            OpcionOrderedChoice opcionOrdenable = new OpcionOrderedChoice(opcion,opciones.size(), controlador);
+
+        for(Opcion opcion : opciones){
+            OpcionOrderedChoice opcionOrdenable = new OpcionOrderedChoice(opcion, opciones.size(), controlador);
             cajaOpciones.getChildren().add(opcionOrdenable);
         }
         cajaOpciones.setAlignment(Pos.CENTER_LEFT);
