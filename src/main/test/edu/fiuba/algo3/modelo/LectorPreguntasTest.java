@@ -83,13 +83,10 @@ public class LectorPreguntasTest {
 
         Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(7)); //primer orderedchoice en la lista
 
-
-
         OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
         OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
         OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
         OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
-
 
         ArrayList<OpcionSimple> respuestasOrderJugador1 = new ArrayList<>();
 

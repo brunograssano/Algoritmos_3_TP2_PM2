@@ -12,6 +12,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.EmptyStackException;
+
 public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
     private Stage stage;
@@ -22,8 +24,15 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Pregunta pregunta = AlgoHoot.getInstance().pedirJugada().obtenerPregunta();
-        determinarTipoPregunta(pregunta);
+        try {
+            Pregunta pregunta = AlgoHoot.getInstance().pedirJugada().obtenerPregunta();
+            determinarTipoPregunta(pregunta);
+        }catch (EmptyStackException exception){
+            VistaGanador vistaGanador = new VistaGanador(stage);
+            Scene scene = new Scene(vistaGanador,800,600);
+            stage.setScene(scene);
+        }
+
     }
 
     private void determinarTipoPregunta(Pregunta pregunta) {

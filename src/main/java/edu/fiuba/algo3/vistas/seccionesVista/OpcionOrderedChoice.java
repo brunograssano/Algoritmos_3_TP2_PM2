@@ -18,10 +18,14 @@ public class OpcionOrderedChoice extends HBox {
 
     private final static String AMARILLO = "FBD87F";
     private final static int PRIMER_POSICION = 1;
+    private final static int VALOR_INICIAL_SPINNER = 1;
+    private Label label;
+    private Spinner<Integer> spinner;
+
     public OpcionOrderedChoice(Opcion opcion, int cantidadOpciones, ControladorEnviarOrderedChoice controlador){
 
         Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(PRIMER_POSICION, cantidadOpciones, 2);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(PRIMER_POSICION, cantidadOpciones, VALOR_INICIAL_SPINNER);
 
         Spinner<Integer> spinner = new Spinner<>();
         spinner.setValueFactory(valueFactory);
@@ -34,9 +38,16 @@ public class OpcionOrderedChoice extends HBox {
         label.setBackground(unFondito);
         label.setFont(Font.font("montserrat", 25));
         label.setTextFill(Color.BLACK);
-
+        this.label = label;
+        this.spinner = spinner;
         super.setAlignment(Pos.CENTER);
         super.setSpacing(2);
         super.getChildren().addAll(spinner, label);
+    }
+    public int getNumeroOrden(){
+        return spinner.getValue();
+    }
+    public String getEnunciadoOpcion(){
+        return label.getText();
     }
 }
