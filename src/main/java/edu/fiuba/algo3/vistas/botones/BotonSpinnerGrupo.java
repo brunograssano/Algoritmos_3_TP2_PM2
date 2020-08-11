@@ -27,7 +27,7 @@ public class BotonSpinnerGrupo extends HBox {
 
         Spinner<String> spinner = new Spinner<>();
         SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(nombresGruposPosibles);
-        valueFactory.setValue("February"); //valor por defecto
+        valueFactory.setValue("Grupo1"); //valor por defecto
         spinner.setValueFactory(valueFactory);
         spinner.setMaxWidth(350);
         spinner.setMaxHeight(50);
