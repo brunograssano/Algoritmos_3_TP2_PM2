@@ -23,16 +23,13 @@ public class BotonSpinnerGrupo extends HBox {
     public BotonSpinnerGrupo(Opcion opcion, ControladorEnviarGroupChoice controlador) {
 
 
-        ObservableList<String> nombresGruposPosibles = FXCollections.observableArrayList(
-                "January", "February", "March", "April",
-                "May", "June", "July", "August",
-                "September", "October", "November", "December"); //estos strings deberian recibirse por parametro.
+        ObservableList<String> nombresGruposPosibles = FXCollections.observableArrayList("Grupo1", "Grupo2"); //estos strings deberian recibirse por parametro.
 
         Spinner<String> spinner = new Spinner<>();
         SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(nombresGruposPosibles);
         valueFactory.setValue("February"); //valor por defecto
         spinner.setValueFactory(valueFactory);
-        spinner.setMaxWidth(50);
+        spinner.setMaxWidth(350);
         spinner.setMaxHeight(50);
         spinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
 
