@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuesta;
+import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
+import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
@@ -42,13 +42,13 @@ public class VistaOrderedChoice extends StackPane {
         //Para que se vean las rayas de la grilla y debuggear mais fasil
         //grilla.setGridLinesVisible(true);
 
-        VBox cajaInferior = new VBox();
-        BotonEnviarRespuesta botonEnviar = new BotonEnviarRespuesta(controladorRespondioUsuario);
-        cajaInferior.getChildren().add(botonEnviar);
-        cajaInferior.setAlignment(Pos.CENTER);
 
         VBox cajaPregunta = new VBox(2);
         armarPregunta(cajaPregunta, controladorRespondioUsuario);
+        VBox cajaInferior = new VBox();
+        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1));
+        cajaInferior.getChildren().add(botonEnviar);
+        cajaInferior.setAlignment(Pos.CENTER);
 
         grilla.add(new EncabezadoPantalla(GRIS),1,0);
         grilla.add(cajaPregunta,1,1);
@@ -68,6 +68,7 @@ public class VistaOrderedChoice extends StackPane {
             OpcionOrderedChoice opcionOrdenable = new OpcionOrderedChoice(opcion,opciones.size(), controlador);
             cajaOpciones.getChildren().add(opcionOrdenable);
         }
+        cajaOpciones.setAlignment(Pos.CENTER_LEFT);
         cajaPregunta.getChildren().add(new CajaPregunta());
         cajaPregunta.getChildren().add(cajaOpciones);
     }
