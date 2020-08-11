@@ -1,18 +1,34 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
 
-public interface Pregunta {
+public abstract class Pregunta {
 
-    Resultado responder(RespuestaAutoEvaluable respuestasUsuario);
+    protected Puntaje puntaje;
+    protected String enunciado;
 
-    Resultado responder(RespuestaComparable respuestasUsuario);
+    public Pregunta(String enunciado,Puntaje puntaje){
+        this.enunciado = enunciado;
+        this.puntaje = puntaje;
+    }
 
-    void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada);
+    public abstract Resultado responder(Respuesta respuestasUsuario, Jugador unJugador);
+
+    public void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada) {
+        puntaje.puedeUsarModificador(modificador,modificadoresDeLaJugada);
+    }
+
+    public String textoPregunta() {
+        return enunciado;
+    }
+
+    public abstract ArrayList<Opcion> respuestas();
 
 }

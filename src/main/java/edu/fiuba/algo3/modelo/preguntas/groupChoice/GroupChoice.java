@@ -1,49 +1,41 @@
 package edu.fiuba.algo3.modelo.preguntas.groupChoice;
 
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
+import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaComparable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 
 import java.util.ArrayList;
 
 
-public class GroupChoice implements Pregunta {
+public class GroupChoice extends Pregunta implements PreguntaComparable {
 
     private RespuestaGroupChoice respuestaCorrecta;
-    private String enunciado;
-    private PuntajeClasico puntaje;
+    static final int CANT_RESPUESTAS_CORRECTAS_TOTALES = 1;
 
     public GroupChoice(String enunciado, RespuestaGroupChoice respuestaCorrecta){
-
-        this.enunciado = enunciado;
+        super(enunciado,new PuntajeClasico());
         this.respuestaCorrecta = respuestaCorrecta;
-        puntaje = new PuntajeClasico();
     }
 
     @Override
-    public Resultado responder(RespuestaComparable respuestasJugador) {
-        Resultado unResultado = puntaje.obtenerResultado(1);
-
-        if(respuestasJugador.esIgual(respuestaCorrecta)){
-            unResultado.sumarRespuestaCorrecta();
-        }else{
-            unResultado.sumarRespuestaIncorrecta();
-        }
+    public Resultado responder(RespuestaComparable respuestasJugador, Jugador unJugador) {
+        Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_CORRECTAS_TOTALES,unJugador);
+        respuestasJugador.compararContra(respuestaCorrecta,unResultado);
         return unResultado;
     }
 
     @Override
-    public Resultado responder(RespuestaAutoEvaluable respuestasUsuario) {
-        return new ResultadoClasico(0);
+    public Resultado responder(Respuesta respuestasUsuario, Jugador unJugador) {
+        return respuestasUsuario.evaluarEnBaseAPregunta(this,unJugador);
     }
 
     @Override
-    public void verificarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada) {
-        puntaje.puedeUsarModificador(modificador, modificadoresDeLaJugada);
+    public ArrayList<Opcion> respuestas() {
+        return(new ArrayList<>(respuestaCorrecta.respuestas()));
     }
+
 }

@@ -3,15 +3,13 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.modificadores.MultiplicadorJugador;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -89,7 +87,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));}
+                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador2,3))
         );
     }
 
@@ -117,7 +115,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
+                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
         );
     }
 
@@ -145,7 +143,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
+                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
         );
     }
 
@@ -167,17 +165,14 @@ public class MultiplicadoresTest {
         grupo2OpcionesCorrectas.add(opcion1Grupo2);
         grupo2OpcionesCorrectas.add(opcion2Grupo2);
 
-        Grupo grupo1 = new Grupo("Mamiferos",grupo1OpcionesCorrectas);
-        Grupo grupo2 = new Grupo("Reptiles",grupo2OpcionesCorrectas);
-
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado,"Mamiferos", grupo1OpcionesCorrectas,"Reptiles", grupo2OpcionesCorrectas);
 
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaGrupo);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
+                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
         );
     }
 
@@ -205,7 +200,7 @@ public class MultiplicadoresTest {
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaOrden);
 
         assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{jugada.agregarModificador(new MultiplicadorJugador(jugador1,3));}
+                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
         );
     }
 

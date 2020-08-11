@@ -1,24 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
-import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RespuestaGroupChoiceTest {
 
     @Test
-    public void test01CreoUnaRespuestaGroupChoiceYLaComparoConUnaIgual(){
+    public void test01CreoUnaRespuestaGroupChoiceYLaComparoConUnaIgualYSuma1Punto() {
         OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
         OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
         OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
@@ -32,18 +26,19 @@ public class RespuestaGroupChoiceTest {
         grupo2Respuesta.add(opcion1Grupo2);
         grupo2Respuesta.add(opcion2Grupo2);
 
-        Grupo grupo1 = new Grupo("Mamiferos",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Reptiles",grupo2Respuesta);
+        RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice("Mamiferos", grupo1Respuesta, "Reptiles", grupo2Respuesta);
+        RespuestaGroupChoice otraRespuesta = new RespuestaGroupChoice("Mamiferos", grupo1Respuesta, "Reptiles", grupo2Respuesta);
 
-        RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1, grupo2);
-        RespuestaGroupChoice otraRespuesta = new RespuestaGroupChoice(grupo1, grupo2);
+        Jugador unJugador = new Jugador("jorgito");
+        ResultadoClasico unResultado = new ResultadoClasico(1, unJugador);
+        unaRespuesta.compararContra(otraRespuesta,unResultado);
+        unJugador.sumarPuntos(unResultado.obtenerPuntos());
 
-        assertEquals(true, unaRespuesta.esIgual(otraRespuesta));
-
+        assertEquals(unJugador.obtenerPuntos(),1);
     }
 
     @Test
-    public void test02CreoUnaRespuestaGroupChoiceYLaComparoConUnaDistinta(){
+    public void test02CreoUnaRespuestaGroupChoiceYLaComparoConUnaDistintaYSuma0Puntos(){
 
         OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
         OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
@@ -57,9 +52,6 @@ public class RespuestaGroupChoiceTest {
         opcionesGrupo1Respuesta1.add(opcion2Grupo1);
         opcionesGrupo2Respuesta1.add(opcion1Grupo2);
         opcionesGrupo2Respuesta1.add(opcion2Grupo2);
-
-        Grupo grupo1Respuesta1 = new Grupo("Mamiferos",opcionesGrupo1Respuesta1);
-        Grupo grupo2Respuesta1 = new Grupo("Reptiles",opcionesGrupo2Respuesta1);
 
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta2 = new ArrayList<>();
         ArrayList<OpcionSimple> opcionesGrupo2Respuesta2 = new ArrayList<>();
@@ -69,18 +61,19 @@ public class RespuestaGroupChoiceTest {
         opcionesGrupo2Respuesta2.add(opcion1Grupo1);
         opcionesGrupo2Respuesta2.add(opcion2Grupo1);
 
-        Grupo grupo1Respuesta2 = new Grupo("Mamiferos",opcionesGrupo1Respuesta2);
-        Grupo grupo2Respuesta2 = new Grupo("Reptiles",opcionesGrupo2Respuesta2);
+        RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice("Mamiferos",opcionesGrupo1Respuesta1, "Reptiles", opcionesGrupo2Respuesta1);
+        RespuestaGroupChoice otraRespuesta = new RespuestaGroupChoice("Mamiferos",opcionesGrupo1Respuesta2, "Reptiles", opcionesGrupo2Respuesta2);
 
+        Jugador unJugador = new Jugador("jorgito");
+        ResultadoClasico unResultado = new ResultadoClasico(1, unJugador);
+        unaRespuesta.compararContra(otraRespuesta,unResultado);
+        unJugador.sumarPuntos(unResultado.obtenerPuntos());
 
-        RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1Respuesta1, grupo2Respuesta1);
-        RespuestaGroupChoice otraRespuesta = new RespuestaGroupChoice(grupo1Respuesta2, grupo2Respuesta2);
-
-        assertEquals(false, unaRespuesta.esIgual(otraRespuesta));
+        assertEquals(unJugador.obtenerPuntos(),0);
     }
 
     @Test
-    public void test03CreoUnaRespuestaGroupChoiceYLaComparoConUnaRespuestaGroupChoiceOrderedChoice(){
+    public void test03CreoUnaRespuestaGroupChoiceYLaComparoConUnaRespuestaOrderedChoiceYSuma0Puntos(){
 
         OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
         OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
@@ -95,20 +88,18 @@ public class RespuestaGroupChoiceTest {
         opcionesGrupo2Respuesta1.add(opcion1Grupo2);
         opcionesGrupo2Respuesta1.add(opcion2Grupo2);
 
-        Grupo grupo1Respuesta1 = new Grupo("Mamiferos",opcionesGrupo1Respuesta1);
-        Grupo grupo2Respuesta1 = new Grupo("Reptiles",opcionesGrupo2Respuesta1);
-        Orden unOrden = new Orden(opcionesGrupo1Respuesta1);
+        RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice("Mamiferos", opcionesGrupo1Respuesta1,"Reptiles", opcionesGrupo2Respuesta1);
+        RespuestaOrderedChoice otraRespuesta = new RespuestaOrderedChoice(opcionesGrupo1Respuesta1);
+        Jugador unJugador = new Jugador("jorgito");
+        ResultadoClasico unResultado = new ResultadoClasico(1, unJugador);
+        unaRespuesta.compararContra(otraRespuesta,unResultado);
+        unJugador.sumarPuntos(unResultado.obtenerPuntos());
 
-        RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1Respuesta1, grupo2Respuesta1);
-
-        RespuestaOrderedChoice otraRespuesta = new RespuestaOrderedChoice(unOrden);
-
-        assertEquals(false, unaRespuesta.esIgual(otraRespuesta));
-
+        assertEquals(unJugador.obtenerPuntos(),0);
     }
 
     @Test
-    public void test04AlIntentarCrearUnaRespuestaGroupChoiceConMasDe6OpcionesSeDebeLanzarExcepcion(){
+    public void test04AlIntentarCrearUnaRespuestaGroupChoiceConMasDe5OpcionesSeDebeLanzarExcepcion(){
 
         OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
         OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
@@ -116,46 +107,35 @@ public class RespuestaGroupChoiceTest {
         OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
 
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
-        ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
-
         opcionesGrupo1Respuesta1.add(opcion1Grupo1);
         opcionesGrupo1Respuesta1.add(opcion2Grupo1);
+
+        ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
         opcionesGrupo2Respuesta1.add(opcion1Grupo2);
         opcionesGrupo2Respuesta1.add(opcion1Grupo2);
         opcionesGrupo2Respuesta1.add(opcion1Grupo2);
         opcionesGrupo2Respuesta1.add(opcion1Grupo2);
         opcionesGrupo2Respuesta1.add(opcion2Grupo2);
-
-        Grupo grupo1Respuesta1 = new Grupo("Mamiferos",opcionesGrupo1Respuesta1);
-        Grupo grupo2Respuesta1 = new Grupo("Reptiles",opcionesGrupo2Respuesta1);
 
 
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{
-                    RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1Respuesta1, grupo2Respuesta1);}
+                ()->{ RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice("Mamiferos",opcionesGrupo1Respuesta1,"Reptiles", opcionesGrupo2Respuesta1);}
         );
     }
 
     @Test
-    public void test05AlIntentarCrearUnaRespuestaGroupChoiceConMenosDe1OpcionSeDebeLanzarExcepcion(){
+    public void test05AlIntentarCrearUnaRespuestaGroupChoiceConMenosDe2OpcionesSeDebeLanzarExcepcion(){
 
-        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
-        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
-        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
-        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
+        OpcionSimple unicaOpcion = new OpcionSimple("Gatito");
+
 
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
+        opcionesGrupo1Respuesta1.add(unicaOpcion);
+
         ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
 
-        opcionesGrupo1Respuesta1.add(opcion1Grupo1);
-
-        Grupo grupo1Respuesta1 = new Grupo("Mamiferos",opcionesGrupo1Respuesta1);
-        Grupo grupo2Respuesta1 = new Grupo("Reptiles",opcionesGrupo2Respuesta1);
-
-
         assertThrows(CantidadErroneaDeRespuestasParaPreguntaException.class,
-                ()->{
-                    RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice(grupo1Respuesta1, grupo2Respuesta1);}
+                ()->{ RespuestaGroupChoice unaRespuesta = new RespuestaGroupChoice("Mamiferos",opcionesGrupo1Respuesta1,"Reptiles", opcionesGrupo2Respuesta1);}
         );
     }
 }

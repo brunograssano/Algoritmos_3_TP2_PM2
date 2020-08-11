@@ -1,15 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PreguntasVerdaderoFalsoTest {
+
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
+
 
     @Test
     public void test01CreoUnaPreguntaVerdaderoFalsoSeEligeLaCorrectaYDevuelve1Punto(){
@@ -23,9 +31,12 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso,jugador);
 
-        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1,puntosRepresentados.representar());
 
     }
 
@@ -41,9 +52,12 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso,jugador);
 
-        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0,puntosRepresentados.representar());
     }
 
     @Test
@@ -58,9 +72,12 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso,jugador);
 
-        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1,puntosRepresentados.representar());
 
     }
 
@@ -76,9 +93,12 @@ public class PreguntasVerdaderoFalsoTest {
 
         RespuestaVerdaderoFalso respuestaVerdaderoFalso = new RespuestaVerdaderoFalso(respuestaJugador);
 
-        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso);
+        Resultado resultado = preguntaVerdaderoFalso.responder(respuestaVerdaderoFalso,jugador);
 
-        assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(-1,puntosRepresentados.representar());
 
     }
 

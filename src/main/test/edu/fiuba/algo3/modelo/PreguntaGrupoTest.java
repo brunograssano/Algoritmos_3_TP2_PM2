@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,6 +12,12 @@ import java.util.ArrayList;
 
 
 public class PreguntaGrupoTest {
+
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
 
     @Test
     public void test01SeRespondeCorrectamenteUnaPreguntaGroupChoiceYDevuelve1Punto() {
@@ -37,29 +42,27 @@ public class PreguntaGrupoTest {
         grupo2Respuesta.add(opcion2Grupo2);
         grupo2Respuesta.add(opcion3Grupo2);
 
-        Grupo grupo1 = new Grupo("Tipado estatico", grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Tipado dinamico", grupo2Respuesta);
 
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado,"Tipado estatico", grupo1Respuesta, "Tipado dinamico", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador = new ArrayList<>();
-        ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
-
         respuestaGrupo1Jugador.add(opcion1Grupo1);
         respuestaGrupo1Jugador.add(opcion2Grupo1);
         respuestaGrupo1Jugador.add(opcion3Grupo1);
-        Grupo grupo1Jugador = new Grupo("Tipado estatico",respuestaGrupo1Jugador);
 
+        ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion2Grupo2);
         respuestaGrupo2Jugador.add(opcion3Grupo2);
-        Grupo grupo2Jugador = new Grupo("Tipado dinamico",respuestaGrupo2Jugador);
 
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice("Tipado estatico", respuestaGrupo1Jugador,"Tipado dinamico", respuestaGrupo2Jugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        assertEquals(1, resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1, puntosRepresentados.representar());
     }
 
     @Test
@@ -80,27 +83,23 @@ public class PreguntaGrupoTest {
         grupo2Respuesta.add(opcion1Grupo2);
         grupo2Respuesta.add(opcion2Grupo2);
 
-        Grupo grupo1 = new Grupo("Mamiferos",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Reptiles",grupo2Respuesta);
-
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado,"Mamiferos", grupo1Respuesta,"Reptiles", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador = new ArrayList<>();
-        ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
-
         respuestaGrupo1Jugador.add(opcion1Grupo1);
         respuestaGrupo1Jugador.add(opcion2Grupo2);
-        Grupo grupo1Jugador = new Grupo("Mamiferos", respuestaGrupo1Jugador);
 
+        ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion1Grupo2);
-        Grupo grupo2Jugador = new Grupo("Reptiles", respuestaGrupo2Jugador);
 
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice("Mamiferos", respuestaGrupo1Jugador,"Reptiles", respuestaGrupo2Jugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
 
-        assertEquals(0, resultado.obtenerPuntos().valorNumerico());
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -122,25 +121,23 @@ public class PreguntaGrupoTest {
         grupo1Respuesta.add(opcion1Grupo2);
         grupo2Respuesta.add(opcion2Grupo2);
 
-        Grupo grupo1 = new Grupo("Mamiferos",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Reptiles",grupo2Respuesta);
-
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado,"Mamiferos", grupo1Respuesta,"Reptiles", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador = new ArrayList<>();
-        ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
-
         respuestaGrupo1Jugador.add(opcion1Grupo1);
         respuestaGrupo1Jugador.add(opcion2Grupo2);
-        Grupo grupo1Jugador = new Grupo("Mamiferos", respuestaGrupo1Jugador);
+
+        ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
         respuestaGrupo2Jugador.add(opcion1Grupo2);
         respuestaGrupo2Jugador.add(opcion1Grupo2);
-        Grupo grupo2Jugador = new Grupo("Reptiles", respuestaGrupo2Jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice("Mamiferos", respuestaGrupo1Jugador,"Reptiles" ,respuestaGrupo2Jugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
 
-        assertEquals(0, resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -157,20 +154,16 @@ public class PreguntaGrupoTest {
 
 
         ArrayList<OpcionSimple> grupo1Respuesta = new ArrayList<>();
-        ArrayList<OpcionSimple> grupo2Respuesta = new ArrayList<>();
-
-
         grupo1Respuesta.add(opcion1Grupo1);
         grupo1Respuesta.add(opcion2Grupo1);
         grupo1Respuesta.add(opcion3Grupo1);
+
+        ArrayList<OpcionSimple> grupo2Respuesta = new ArrayList<>();
         grupo2Respuesta.add(opcion1Grupo2);
         grupo2Respuesta.add(opcion2Grupo2);
         grupo2Respuesta.add(opcion3Grupo2);
 
-        Grupo grupo1 = new Grupo("Tipado estatico",grupo1Respuesta);
-        Grupo grupo2 = new Grupo("Tipado dinamico",grupo2Respuesta);
-
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado, grupo1, grupo2);
+        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado,"Tipado estatico", grupo1Respuesta,"Tipado dinamico", grupo2Respuesta);
 
         ArrayList<OpcionSimple> respuestaGrupo1Jugador = new ArrayList<>();
         ArrayList<OpcionSimple> respuestaGrupo2Jugador = new ArrayList<>();
@@ -182,13 +175,15 @@ public class PreguntaGrupoTest {
         respuestaGrupo1Jugador.add(opcion2Grupo2);
         respuestaGrupo1Jugador.add(opcion3Grupo2);
 
-        Grupo grupo1Jugador = new Grupo("Tipado estatico", respuestaGrupo1Jugador);
-        Grupo grupo2Jugador = new Grupo("Tipado dinamico", respuestaGrupo2Jugador);
 
-        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice(grupo1Jugador, grupo2Jugador);
-        Resultado resultado = preguntaGrupo.responder(respuestasJugador);
 
-        assertEquals(0, resultado.obtenerPuntos().valorNumerico());
+        RespuestaGroupChoice respuestasJugador = new RespuestaGroupChoice("Tipado estatico",respuestaGrupo1Jugador,"Tipado dinamico", respuestaGrupo2Jugador);
+        Resultado resultado = preguntaGrupo.responder(respuestasJugador,jugador);
+
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
 }

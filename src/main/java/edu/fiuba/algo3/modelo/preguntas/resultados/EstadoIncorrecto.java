@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.UsuarioSeEquivoco;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNulo;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.UsuarioSeEquivoco;
+import edu.fiuba.algo3.modelo.puntos.Punto;
+import edu.fiuba.algo3.modelo.puntos.PuntoNulo;
 
 public class EstadoIncorrecto implements EstadoResultadoParcial,EstadoResultadoClasico {
 
@@ -25,7 +25,7 @@ public class EstadoIncorrecto implements EstadoResultadoParcial,EstadoResultadoC
     }
 
     @Override
-    public void multiplicarPuntos(Multiplicador multiplicador) {
+    public void multiplicarPuntos(Multiplicador multiplicador, Jugador unJugador) {
 
     }
 

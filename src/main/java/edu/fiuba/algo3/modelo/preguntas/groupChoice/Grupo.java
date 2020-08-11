@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.groupChoice;
 
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
 
@@ -16,7 +15,7 @@ public class Grupo {
     }
 
     public boolean esIgual(Grupo otroGrupo){
-        return (otroGrupo.contieneMismasRespuestas(respuestasDelGrupo) && otroGrupo.tieneMismoNombre(nombreGrupo));
+        return (otroGrupo.contieneMismasRespuestas(respuestasDelGrupo));
     }
     public int cantidadElementos(){
         return respuestasDelGrupo.size();
@@ -26,7 +25,7 @@ public class Grupo {
         return (respuestasDelGrupo.containsAll(unasRespuestas) && unasRespuestas.containsAll(respuestasDelGrupo));
     }
 
-    private boolean tieneMismoNombre(String unNombre){
-        return nombreGrupo.equals(unNombre);
+    public ArrayList<OpcionSimple> respuestas(){
+        return respuestasDelGrupo;
     }
 }
