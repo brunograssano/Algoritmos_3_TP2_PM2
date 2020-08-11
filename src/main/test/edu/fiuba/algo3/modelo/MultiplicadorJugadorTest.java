@@ -1,19 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNegativo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoNulo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Puntuacion;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.puntos.PuntoNegativo;
+import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 
 
@@ -73,19 +70,20 @@ public class MultiplicadorJugadorTest {
 
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
-        ArrayList<Modificador> modificadoresDeLaJugada = new ArrayList();
-
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
 
-        Resultado unResultado = unPuntaje.obtenerResultado(2);
-        Resultado otroResultado = unPuntaje.obtenerResultado(2);
+        Resultado unResultado = unPuntaje.obtenerResultado(2,unJugador);
+        Resultado otroResultado = unPuntaje.obtenerResultado(2,unJugador);
 
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
 
-        unMultiplicador.aplicar(unJugador,unResultado,otroResultado);
+        unMultiplicador.aplicar(unResultado,otroResultado);
 
-        assertEquals(4,unResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(4,puntosRepresentados.representar());
     }
 
     @Test
@@ -97,19 +95,20 @@ public class MultiplicadorJugadorTest {
 
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
-        ArrayList<Modificador> modificadoresDeLaJugada = new ArrayList();
-
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
 
-        Resultado unResultado = unPuntaje.obtenerResultado(2);
-        Resultado otroResultado = unPuntaje.obtenerResultado(2);
+        Resultado unResultado = unPuntaje.obtenerResultado(2,unJugador);
+        Resultado otroResultado = unPuntaje.obtenerResultado(2,unJugador);
 
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
 
-        unMultiplicador.aplicar(unJugador,unResultado,otroResultado);
+        unMultiplicador.aplicar(unResultado,otroResultado);
 
-        assertEquals(6,unResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(6,puntosRepresentados.representar());
     }
 
     @Test
@@ -126,9 +125,9 @@ public class MultiplicadorJugadorTest {
             puntos.agregarPunto(new PuntoPositivo());
         }
 
-        unMultiplicador.usarEnPuntos(puntos);
+        puntos = unMultiplicador.usarEnPuntos(puntos,unJugador);
 
-        assertEquals(30,puntos.valorNumerico());
+        assertEquals(30,puntos.representar());
     }
 
     @Test
@@ -145,9 +144,33 @@ public class MultiplicadorJugadorTest {
             puntos.agregarPunto(new PuntoNegativo());
         }
 
-        unMultiplicador.usarEnPuntos(puntos);
+        puntos = unMultiplicador.usarEnPuntos(puntos,unJugador);
 
-        assertEquals(-20,puntos.valorNumerico());
+        assertEquals(-20,puntos.representar());
+    }
+    @Test
+    public void test07CreoUnMultiplicadorLoAplicoEnUnResultadoIncorrectoSuValorSigueSiendoCeroPuntos(){
+
+        Jugador unJugador = new Jugador("Juan");
+
+        int unFactor = 3;
+
+        MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
+
+        PuntajeClasico unPuntaje = new PuntajeClasico();
+
+        Resultado unResultado = unPuntaje.obtenerResultado(2,unJugador);
+        Resultado otroResultado = unPuntaje.obtenerResultado(2,unJugador);
+
+        unResultado.sumarRespuestaCorrecta();
+        unResultado.sumarRespuestaIncorrecta();
+
+        unMultiplicador.aplicar(unResultado,otroResultado);
+
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0,puntosRepresentados.representar());
     }
 
 }

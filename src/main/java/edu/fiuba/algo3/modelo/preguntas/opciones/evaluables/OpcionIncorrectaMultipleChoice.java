@@ -16,4 +16,9 @@ public class OpcionIncorrectaMultipleChoice implements OpcionEvaluable {
         unResultado.sumarRespuestaIncorrecta();
     }
 
+    @Override
+    public String obtenerTexto() {
+        return textoRespuesta;
+    }
+
 }

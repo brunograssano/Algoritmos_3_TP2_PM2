@@ -1,0 +1,103 @@
+[
+	{
+		"MC": {
+			"puntaje": "clasico",
+			"enunciado" : "Cuales de los siguientes son lenguajes de programacion?",
+			"respuestasCorrectas": [
+				"BrainFuck",
+				"Clojure"
+			],
+			"respuestasIncorrectas": [
+				"BrainFrick",
+				"HeartFuck"
+			]
+		}
+	},
+
+	{
+		"MC": {
+			"puntaje": "parcial",
+			"enunciado" : "Cuales de los siguientes son unidades validas?",
+			"respuestasCorrectas": [
+				"Mebibyte",
+				"Megabyte",
+				"Kilobit"
+			],
+			"respuestasIncorrectas": [
+				"MasterByte"
+			]
+		}
+	},
+
+	{
+		"MC": {
+			"puntaje": "penalizable",
+			"enunciado" : "Cuales de los siguientes son perifericos de salida?",
+			"respuestasCorrectas": [
+				"Monitor",
+				"Parlantes"
+			],
+			"respuestasIncorrectas": [
+				"Mouse",
+				"Webcam"
+			]
+		}
+	},
+	{
+		"MC": {
+			"puntaje": "penalizable",
+			"enunciado" : "Cuales de las siguientes son sets de instrucciones de procesadores?",
+			"respuestasCorrectas": [
+				"ARM64",
+				"RISCV",
+				"x86"
+			],
+			"respuestasIncorrectas": [
+				"PNP27",
+				"RISCB"
+			]
+		}
+	},
+
+	{
+		"MC": {
+			"puntaje": "clasico",
+			"enunciado" : "Seleccionar los títulos de libros de computación que NO existen",
+			"respuestasCorrectas": [
+				"Structure and Interpretation of Refrigerator Programs",
+				"The C-- Programming Language ANSI Edition",
+				"Bug Complete 2"
+			],
+			"respuestasIncorrectas": [
+				"Code Complete 2",
+				"Automate the Boring Stuff with Python"
+			]
+		}
+	},
+	{
+		"MC": {
+			"puntaje": "clasico",
+			"enunciado" : "Seleccionar cuales marcas producen memoria ram",
+			"respuestasCorrectas": [
+				"Kingston",
+				"G-skill"
+			],
+			"respuestasIncorrectas": [
+				"Princeton"
+			]
+		}
+	},
+	{
+		"MC": {
+			"puntaje": "penalizable",
+			"enunciado" : "Seleccionar cuales marcas producen Power Supplies",
+			"respuestasCorrectas": [
+				"Seasonic",
+				"EVGA"
+			],
+			"respuestasIncorrectas": [
+				"Anter"
+			]
+		}
+	}
+]

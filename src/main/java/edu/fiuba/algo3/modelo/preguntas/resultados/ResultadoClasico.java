@@ -1,18 +1,20 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.Multiplicador;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.MultiplicadorJugador;
-import edu.fiuba.algo3.modelo.preguntas.puntos.Punto;
-import edu.fiuba.algo3.modelo.preguntas.puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.Multiplicador;
+import edu.fiuba.algo3.modelo.puntos.Punto;
+import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
 
 public class ResultadoClasico implements Resultado {
 
     private EstadoResultadoClasico estado;
+    private Jugador jugador;
 
-    public ResultadoClasico(int unaCantidadDeRespuesasCorrectasTotales) {
+    public ResultadoClasico(int unaCantidadDeRespuesasCorrectasTotales, Jugador unJugador) {
         estado = new EstadoCorrectoClasico(unaCantidadDeRespuesasCorrectasTotales);
+        jugador = unJugador;
     }
 
 
@@ -33,7 +35,7 @@ public class ResultadoClasico implements Resultado {
 
     @Override
     public void aplicarMultiplicador(Multiplicador multiplicador) {
-        estado.multiplicarPuntos(multiplicador);
+        estado.multiplicarPuntos(multiplicador,jugador);
     }
 
     @Override

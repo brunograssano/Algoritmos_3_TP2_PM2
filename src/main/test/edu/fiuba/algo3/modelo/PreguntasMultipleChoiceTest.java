@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMult
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,6 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PreguntasMultipleChoiceTest {
+
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
+
 
     @Test
     public void test01CreoUnaPreguntaMultipleChoiceClasicoSeEligenLasCorrectasYDevuelveUnPunto(){
@@ -42,9 +50,12 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta3);
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1, puntosRepresentados.representar());
     }
 
     @Test
@@ -72,9 +83,12 @@ public class PreguntasMultipleChoiceTest {
         respuestasJugador.add(respuestaCorrecta3);
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -119,9 +133,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(3,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(3, puntosRepresentados.representar());
     }
 
     @Test
@@ -149,9 +166,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(2,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(2, puntosRepresentados.representar());
     }
 
     @Test
@@ -182,9 +202,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -219,9 +242,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(0,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0, puntosRepresentados.representar());
     }
 
     @Test
@@ -252,9 +278,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(3,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(3, puntosRepresentados.representar());
     }
 
     @Test
@@ -286,9 +315,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(-2,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(-2, puntosRepresentados.representar());
     }
 
     @Test
@@ -323,9 +355,12 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(1, puntosRepresentados.representar());
     }
 
     @Test
@@ -360,8 +395,11 @@ public class PreguntasMultipleChoiceTest {
 
         RespuestaMultipleChoice respuestaMultipleChoice = new RespuestaMultipleChoice(respuestasJugador);
 
-        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice);
+        Resultado resultado = preguntaMultipleChoice.responder(respuestaMultipleChoice,jugador);
 
-        assertEquals(-1,resultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        resultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(-1, puntosRepresentados.representar());
     }
 }

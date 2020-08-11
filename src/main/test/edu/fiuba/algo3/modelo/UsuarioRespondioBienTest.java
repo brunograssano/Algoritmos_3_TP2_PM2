@@ -1,18 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.modificadores.UsuarioRespondioBien;
-import edu.fiuba.algo3.modelo.preguntas.modificadores.UsuarioSeEquivoco;
+import edu.fiuba.algo3.modelo.modificadores.UsuarioRespondioBien;
+import edu.fiuba.algo3.modelo.modificadores.UsuarioSeEquivoco;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoParcial;
+import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UsuarioRespondioBienTest {
 
+    Jugador jugador;
+
+    public void setUp(){
+        jugador = new Jugador("Prueba");
+    }
+
     @Test
     public void test01CreoUnUsuarioRespondioBienAlGanarExclusividadSeDuplicanLosPuntos(){
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
@@ -21,13 +28,16 @@ public class UsuarioRespondioBienTest {
 
         unaSituacion.ganoExclusividad();
 
-        assertEquals(6,unResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(6,puntosRepresentados.representar());
     }
 
     @Test
     public void test02CreoUnUsuarioRespondioBienAlPerderPuntuacionSePierdenLosPuntos(){
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
@@ -36,17 +46,20 @@ public class UsuarioRespondioBienTest {
 
         unaSituacion.pierdoPuntuacion();
 
-        assertEquals(0,unResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0,puntosRepresentados.representar());
     }
 
     @Test
     public void test03CreoUnUsuarioRespondioBienLoComparoConUnoQueSeEquivocoEntoncesSeDuplicanLosPuntos(){
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
-        ResultadoParcial otroResultado = new ResultadoParcial();
+        ResultadoParcial otroResultado = new ResultadoParcial(jugador);
         otroResultado.sumarRespuestaIncorrecta();
 
         UsuarioRespondioBien unaSituacion = new UsuarioRespondioBien(unResultado);
@@ -54,17 +67,20 @@ public class UsuarioRespondioBienTest {
 
         unaSituacion.compararCon(otraSituacion);
 
-        assertEquals(6,unResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(6,puntosRepresentados.representar());
     }
 
     @Test
     public void test04CreoUnUsuarioRespondioBienLoComparoConUnoQueRespondioBienEntoncesPierdoLosPuntos(){
 
-        ResultadoParcial unResultado = new ResultadoParcial();
+        ResultadoParcial unResultado = new ResultadoParcial(jugador);
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
         unResultado.sumarRespuestaCorrecta();
-        ResultadoParcial otroResultado = new ResultadoParcial();
+        ResultadoParcial otroResultado = new ResultadoParcial(jugador);
         otroResultado.sumarRespuestaCorrecta();
 
         UsuarioRespondioBien unaSituacion = new UsuarioRespondioBien(unResultado);
@@ -72,7 +88,10 @@ public class UsuarioRespondioBienTest {
 
         unaSituacion.compararCon(otraSituacion);
 
-        assertEquals(0,unResultado.obtenerPuntos().valorNumerico());
+        PuntuacionRepresentable puntosRepresentados = new PuntuacionRepresentable();
+        unResultado.obtenerPuntos().valorNumerico(puntosRepresentados);
+
+        assertEquals(0,puntosRepresentados.representar());
     }
 
 }
