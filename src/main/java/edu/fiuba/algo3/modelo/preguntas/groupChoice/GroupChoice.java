@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.*;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
@@ -24,11 +24,7 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
     @Override
     public Resultado responder(RespuestaComparable respuestasJugador, Jugador unJugador) {
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_CORRECTAS_TOTALES,unJugador);
-        if(respuestasJugador.esIgual(respuestaCorrecta)){
-            unResultado.sumarRespuestaCorrecta();
-        }else{
-            unResultado.sumarRespuestaIncorrecta();
-        }
+        respuestasJugador.compararContra(respuestaCorrecta,unResultado);
         return unResultado;
     }
 

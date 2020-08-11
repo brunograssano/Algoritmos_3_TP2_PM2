@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
+package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
@@ -20,18 +20,20 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
     static final int RESPUESTAS_MIN_GRUPO = 2;
     static final int RESPUESTAS_MAX_GRUPO = 6;
 
-    public RespuestaGroupChoice(Grupo respuestasGrupo1, Grupo respuestasGrupo2){
-        respuestasTotalesJugador = respuestasGrupo1.cantidadElementos() + respuestasGrupo2.cantidadElementos();
+    public RespuestaGroupChoice(String nombreGrupo1, ArrayList<OpcionSimple> respuestasGrupo1, String nombreGrupo2, ArrayList<OpcionSimple> respuestasGrupo2){
+        respuestasTotalesJugador = respuestasGrupo1.size() + respuestasGrupo2.size();
         if (respuestasTotalesJugador < RESPUESTAS_MIN_GRUPO || respuestasTotalesJugador > RESPUESTAS_MAX_GRUPO){
             throw new CantidadErroneaDeRespuestasParaPreguntaException();
         }
-        grupo1Respuesta = respuestasGrupo1;
-        grupo2Respuesta = respuestasGrupo2;
+        grupo1Respuesta = new Grupo(nombreGrupo1,respuestasGrupo1);
+        grupo2Respuesta = new Grupo(nombreGrupo2,respuestasGrupo2);
     }
 
     @Override
-    public boolean esIgual(RespuestaGroupChoice unaRespuesta) {
-        return unaRespuesta.gruposSonIguales(grupo1Respuesta, grupo2Respuesta);
+    public void compararContra(RespuestaGroupChoice unaRespuesta, Resultado unResultado) {
+        if(unaRespuesta.gruposSonIguales(grupo1Respuesta, grupo2Respuesta)){
+            unResultado.sumarRespuestaCorrecta();
+        }
     }
 
     private boolean gruposSonIguales(Grupo grupo1, Grupo grupo2) {
@@ -39,8 +41,7 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
     }
 
     @Override
-    public boolean esIgual(RespuestaOrderedChoice unaRespuesta) {
-    return false;
+    public void compararContra(RespuestaOrderedChoice unaRespuesta, Resultado unResultado) {
     }
 
     @Override

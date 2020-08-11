@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
+package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;

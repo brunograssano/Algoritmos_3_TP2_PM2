@@ -7,8 +7,8 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;

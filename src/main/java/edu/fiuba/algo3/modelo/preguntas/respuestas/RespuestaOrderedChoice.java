@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo.preguntas.respuestasJugador;
+package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
+import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
@@ -12,20 +13,26 @@ import java.util.ArrayList;
 
 public class RespuestaOrderedChoice implements RespuestaComparable,Respuesta {
 
+    private static final int RESPUESTAS_MIN_ORDER = 2;
+    private static final int RESPUESTAS_MAX_ORDER = 5;
     private Orden ordenRespuesta;
 
-    public RespuestaOrderedChoice(Orden respuestasJugador){
-        ordenRespuesta = respuestasJugador;
+    public RespuestaOrderedChoice(ArrayList<OpcionSimple> respuestas){
+        if(respuestas.size() < RESPUESTAS_MIN_ORDER || respuestas.size() > RESPUESTAS_MAX_ORDER){
+            throw new CantidadErroneaDeRespuestasParaPreguntaException();
+        }
+        ordenRespuesta = new Orden(respuestas);
     }
 
     @Override
-    public boolean esIgual(RespuestaOrderedChoice unaRespuesta) {
-        return unaRespuesta.ordenesSonIguales(ordenRespuesta);
+    public void compararContra(RespuestaOrderedChoice unaRespuesta, Resultado unResultado) {
+        if (unaRespuesta.ordenesSonIguales(ordenRespuesta)){
+            unResultado.sumarRespuestaCorrecta();
+        }
     }
 
     @Override
-    public boolean esIgual(RespuestaGroupChoice unaRespuesta) {
-        return false;
+    public void compararContra(RespuestaGroupChoice unaRespuesta, Resultado unResultado) {
     }
 
     private boolean ordenesSonIguales(Orden unOrden){

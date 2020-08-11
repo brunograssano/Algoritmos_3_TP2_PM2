@@ -42,8 +42,16 @@ public class OrdenTest {
         unasOpcionesOrdenadas.add(opcion4);
         unasOpcionesOrdenadas.add(opcion5);
 
+        ArrayList<OpcionSimple> otrasOpcionesOrdenadas = new ArrayList<>();
+        otrasOpcionesOrdenadas.add(opcion1);
+        otrasOpcionesOrdenadas.add(opcion2);
+        otrasOpcionesOrdenadas.add(opcion3);
+        otrasOpcionesOrdenadas.add(opcion4);
+        otrasOpcionesOrdenadas.add(opcion5);
+
+
         Orden unOrden = new Orden(unasOpcionesOrdenadas);
-        Orden otroOrden = new Orden(unasOpcionesOrdenadas);
+        Orden otroOrden = new Orden(otrasOpcionesOrdenadas);
 
         assert(unOrden.esIgual(otroOrden) && otroOrden.esIgual(unOrden));
     }
