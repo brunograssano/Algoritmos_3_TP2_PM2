@@ -27,11 +27,6 @@ public class GroupChoiceParser implements Parser {
         jGrupo1.forEach(jsRespuesta-> respuestasGrupo1.add(new OpcionSimple((String) jsRespuesta )));
         jGrupo2.forEach(jsRespuesta-> respuestasGrupo2.add(new OpcionSimple((String) jsRespuesta )));
 
-
-        Grupo grupo1 = new Grupo(labelGrupo1, respuestasGrupo1);
-        Grupo grupo2 = new Grupo(labelGrupo2, respuestasGrupo2);
-
-        return FabricaDePreguntas.CrearGrupo(enunciado,grupo1, grupo2);
-
+        return FabricaDePreguntas.CrearGrupo(enunciado,labelGrupo1, respuestasGrupo1, labelGrupo2, respuestasGrupo2);
     }
 }

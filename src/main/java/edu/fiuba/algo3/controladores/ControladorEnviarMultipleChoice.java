@@ -3,7 +3,7 @@ package edu.fiuba.algo3.controladores;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

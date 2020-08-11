@@ -10,7 +10,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdad
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.*;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -88,16 +88,15 @@ public class LectorPreguntasTest {
         OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
         OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
 
-        ArrayList<OpcionSimple> respuestasOrderJugador1 = new ArrayList<>();
+        ArrayList<OpcionSimple> respuestasOrderJugador = new ArrayList<>();
 
-        respuestasOrderJugador1.add(primerRespuestaJugador1);
-        respuestasOrderJugador1.add(segundaRespuestaJugador1);
-        respuestasOrderJugador1.add(tercerRespuestaJugador1);
-        respuestasOrderJugador1.add(cuartaRespuestaJugador1);
+        respuestasOrderJugador.add(primerRespuestaJugador1);
+        respuestasOrderJugador.add(segundaRespuestaJugador1);
+        respuestasOrderJugador.add(tercerRespuestaJugador1);
+        respuestasOrderJugador.add(cuartaRespuestaJugador1);
 
-        Orden ordenJugador1 = new Orden(respuestasOrderJugador1);
-        RespuestaOrderedChoice respuestaJugador1 = new RespuestaOrderedChoice(ordenJugador1);
-        RespuestaOrderedChoice respuestaJugador2 = new RespuestaOrderedChoice(ordenJugador1);
+        RespuestaOrderedChoice respuestaJugador1 = new RespuestaOrderedChoice(respuestasOrderJugador);
+        RespuestaOrderedChoice respuestaJugador2 = new RespuestaOrderedChoice(respuestasOrderJugador);
 
         jugada.procesarJugada(respuestaJugador1,respuestaJugador2);
 
@@ -127,10 +126,8 @@ public class LectorPreguntasTest {
         respuestasSegundoGrupo.add(tercerRespuestaJugador1);
         respuestasSegundoGrupo.add(cuartaRespuestaJugador1);
 
-        Grupo grupo1Jugador1 = new Grupo("Frutas",respuestasPrimerGrupo);
-        Grupo grupo2Jugador1 = new Grupo("Verduras",respuestasSegundoGrupo);
-        RespuestaGroupChoice respuestaJugador1 = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
-        RespuestaGroupChoice respuestaJugador2 = new RespuestaGroupChoice(grupo1Jugador1, grupo2Jugador1);
+        RespuestaGroupChoice respuestaJugador1 = new RespuestaGroupChoice("Frutas",respuestasPrimerGrupo,"Verduras", respuestasSegundoGrupo);
+        RespuestaGroupChoice respuestaJugador2 = new RespuestaGroupChoice("Frutas",respuestasPrimerGrupo,"Verduras", respuestasSegundoGrupo);
 
         jugada.procesarJugada(respuestaJugador1,respuestaJugador2);
 

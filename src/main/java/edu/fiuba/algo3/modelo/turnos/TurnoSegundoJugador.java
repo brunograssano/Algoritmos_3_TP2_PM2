@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.turnos;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 
 public class TurnoSegundoJugador implements Turno {
 

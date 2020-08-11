@@ -15,7 +15,7 @@ public class Grupo {
     }
 
     public boolean esIgual(Grupo otroGrupo){
-        return (otroGrupo.contieneMismasRespuestas(respuestasDelGrupo) && otroGrupo.tieneMismoNombre(nombreGrupo));
+        return (otroGrupo.contieneMismasRespuestas(respuestasDelGrupo));
     }
     public int cantidadElementos(){
         return respuestasDelGrupo.size();
@@ -23,10 +23,6 @@ public class Grupo {
 
     private boolean contieneMismasRespuestas(ArrayList<OpcionSimple> unasRespuestas){
         return (respuestasDelGrupo.containsAll(unasRespuestas) && unasRespuestas.containsAll(respuestasDelGrupo));
-    }
-
-    private boolean tieneMismoNombre(String unNombre){
-        return nombreGrupo.equals(unNombre);
     }
 
     public ArrayList<OpcionSimple> respuestas(){
