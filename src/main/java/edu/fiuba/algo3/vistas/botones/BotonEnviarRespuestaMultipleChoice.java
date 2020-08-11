@@ -11,11 +11,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class BotonEnviarRespuesta extends Button {
+public class BotonEnviarRespuestaMultipleChoice extends Button {
 
     static String VERDE = "33FF96";
 
-    public BotonEnviarRespuesta(EventHandler<ActionEvent> controlador){
+    public BotonEnviarRespuestaMultipleChoice(EventHandler<ActionEvent> controlador){
         super.setText("Enviar respuesta");
         super.setFont(Font.font("montserrat", 20));
         super.setTextFill(Color.WHITE);

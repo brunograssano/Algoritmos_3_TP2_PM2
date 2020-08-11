@@ -8,7 +8,8 @@ import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestasJugador.Respuesta;
-import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuesta;
+import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
+import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
@@ -71,6 +72,6 @@ public class VistaGroupChoice extends StackPane{
 
         cajaPrincipal.getChildren().add(new CajaPregunta());
         cajaPrincipal.getChildren().add(cajaSpinners);
-        cajaPrincipal.getChildren().add(new BotonEnviarRespuesta(controladorRespondioUsuario));
+        cajaPrincipal.getChildren().add(new BotonEnviarRespuestaMultipleChoice(controladorRespondioUsuario));
     }
 }
