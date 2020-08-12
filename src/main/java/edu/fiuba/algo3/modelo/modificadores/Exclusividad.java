@@ -24,12 +24,15 @@ public class Exclusividad implements Modificador {
 
     @Override
     public void usarEnPuntaje(PuntajeClasico puntajeClasico, ArrayList<Modificador> modificadoresDeLaJugada) {
-        modificadoresDeLaJugada.add(this);
-        jugador.pierdeModificador(this);
+        seUsoExclusividadEnPreguntaValida(modificadoresDeLaJugada);
     }
 
     @Override
     public void usarEnPuntaje(PuntajeParcial puntajeParcial, ArrayList<Modificador> modificadoresDeLaJugada) {
+        seUsoExclusividadEnPreguntaValida(modificadoresDeLaJugada);
+    }
+
+    private void seUsoExclusividadEnPreguntaValida(ArrayList<Modificador> modificadoresDeLaJugada){
         modificadoresDeLaJugada.add(this);
         jugador.pierdeModificador(this);
     }
