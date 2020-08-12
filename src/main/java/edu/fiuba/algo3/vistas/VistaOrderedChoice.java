@@ -36,9 +36,9 @@ public class VistaOrderedChoice extends StackPane {
 
         Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
         ArrayList<Opcion> opciones =  (jugadaActual.respuestasAPregunta());
-        ArrayList<OpcionSimple> opcionesSimples = new ArrayList<OpcionSimple>();
+        ArrayList<OpcionSimple> opcionesSimplesCorrectas = new ArrayList<OpcionSimple>();
         for(Opcion opcion : opciones){
-            opcionesSimples.add((OpcionSimple) opcion);
+            opcionesSimplesCorrectas.add((OpcionSimple) opcion);
         }
 
         ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage);
@@ -56,7 +56,7 @@ public class VistaOrderedChoice extends StackPane {
         VBox cajaPregunta = new VBox(2);
         armarPregunta(cajaPregunta, controladorRespondioUsuario, opciones);
         VBox cajaInferior = new VBox();
-        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1), opcionesSimples);
+        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1), opcionesSimplesCorrectas);
         cajaInferior.getChildren().add(botonEnviar);
         cajaInferior.setAlignment(Pos.CENTER);
 
