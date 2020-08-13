@@ -2,7 +2,6 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
@@ -11,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -57,6 +57,7 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
     private void convertirOpcionesSimples() {
 
         ArrayList <OpcionSimple> opcionesSeleccionadas = new ArrayList<>();
+
         opcionesVista.sort(new Comparator<OpcionOrderedChoice>() {
             @Override
             public int compare(OpcionOrderedChoice opcion1, OpcionOrderedChoice opcion2) {
@@ -69,9 +70,11 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
             }
         });
         for (OpcionOrderedChoice opcion : opcionesVista) {
-
-            OpcionSimple opcionAux = opcionesCorrectas.get(opcion.getNumeroOrden() - 1);
-            opcionesSeleccionadas.add(opcionAux);
+            for (OpcionSimple opcionCorrecta : opcionesCorrectas){
+                if(opcion.getEnunciadoOpcion().equals(opcionCorrecta.obtenerTexto())) {
+                    opcionesSeleccionadas.add(opcionCorrecta);
+                }
+            }
         }
         this.opcionesJugador = opcionesSeleccionadas;
     }
