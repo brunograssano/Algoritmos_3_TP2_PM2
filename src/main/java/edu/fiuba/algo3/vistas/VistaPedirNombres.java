@@ -72,7 +72,7 @@ public class VistaPedirNombres extends StackPane{
         grilla.add(nombreJuego,1,0);
         grilla.add(cajaJugadores,1,1);
         grilla.add(botonConfirmado,1,2);
-        grilla.setGridLinesVisible(true);
+        //grilla.setGridLinesVisible(true);
 
         super.getChildren().add(grilla);
     }

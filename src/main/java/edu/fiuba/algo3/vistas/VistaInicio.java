@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorIniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonInicio;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -32,6 +33,8 @@ public class VistaInicio extends StackPane{
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
@@ -43,7 +46,11 @@ public class VistaInicio extends StackPane{
 
         stage.setTitle("AlgoHoot");
         stage.centerOnScreen();
-        super.getChildren().add(cajaPrincipal);
+
+        grilla.add(cajaPrincipal,1,1);
+        //grilla.setGridLinesVisible(true);
+
+        super.getChildren().add(grilla);
     }
 
 }
