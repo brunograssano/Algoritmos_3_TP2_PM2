@@ -2,11 +2,10 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.Desordenador;
+import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;

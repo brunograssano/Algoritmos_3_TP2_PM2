@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.puntos.Punto;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 
@@ -15,7 +15,7 @@ public class Jugador {
     public Jugador(String nombre) {
         this.nombre = nombre;
         puntos = new Puntuacion();
-        modificadores = new ArrayList<Modificador>();
+        modificadores = new ArrayList<>();
         modificadores.add(new MultiplicadorJugador(this,2));
         modificadores.add(new MultiplicadorJugador(this,3));
     }
@@ -36,15 +36,11 @@ public class Jugador {
         return nombre;
     }
 
-    public Jugador compararYObtenerGanador(Jugador otroJugador){
-        return jugadorConMasPuntos(otroJugador);
+    public Jugador compararYObtenerGanador(Jugador jugadorContrario){
+        if(this.obtenerPuntos() < jugadorContrario.obtenerPuntos()){
+            return jugadorContrario;
+        }
+        return this;
     }
 
-    private Jugador jugadorConMasPuntos(Jugador otroJugador){
-        Jugador aux = this;
-        if(this.obtenerPuntos() < otroJugador.obtenerPuntos()){
-            aux = otroJugador;
-        }
-        return aux;
-    }
 }

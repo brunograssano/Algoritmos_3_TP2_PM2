@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoPenalizable;
-import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 

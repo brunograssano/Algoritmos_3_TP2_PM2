@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas.resultados;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.modificadores.Multiplicador;
-import edu.fiuba.algo3.modelo.modificadores.UsuarioRespondioBien;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.UsuarioRespondioBien;
 import edu.fiuba.algo3.modelo.puntos.Punto;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
-import edu.fiuba.algo3.modelo.Desordenador;
+import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
@@ -12,7 +12,6 @@ import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
 

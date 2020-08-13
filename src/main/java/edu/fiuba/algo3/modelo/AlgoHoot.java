@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
@@ -8,7 +9,6 @@ import edu.fiuba.algo3.modelo.turnos.Turno;
 import edu.fiuba.algo3.modelo.turnos.TurnoPrimerJugador;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Stack;
 
 public class AlgoHoot {
