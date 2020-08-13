@@ -15,8 +15,8 @@ public class AlgoHootTest {
     @Test
     public void test01LePediAlAlgoHootUnaJugadaVoFRespondenBienAmbosJugadoresAmbosGananPuntos(){
 
-        Desordenador.setCriterio(new CriterioNoDesordena());
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno");
+
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNoDesordena());
 
         OpcionCorrectaVerdaderoFalso unaOpcionCorrecta = new OpcionCorrectaVerdaderoFalso(true);
         RespuestaVerdaderoFalso unaRespuestaCorrecta = new RespuestaVerdaderoFalso(unaOpcionCorrecta);
@@ -34,8 +34,7 @@ public class AlgoHootTest {
     @Test
     public void test02LePediAlAlgoHootUnaJugadaVoFRespondeBienUnoUsaExclusividadGanaElDobleDePuntos(){
 
-        Desordenador.setCriterio(new CriterioNoDesordena());
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno");
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNoDesordena());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 
@@ -58,8 +57,8 @@ public class AlgoHootTest {
     @Test
     public void test03LePidoAlAlgoHootUnGanadorEsteEsElJugadorConMasPuntos(){
 
-        Desordenador.setCriterio(new CriterioNoDesordena());
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno");
+        
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNoDesordena());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 

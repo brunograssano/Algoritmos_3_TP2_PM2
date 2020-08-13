@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
+import edu.fiuba.algo3.modelo.desordenador.CriterioDeDesorden;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
@@ -39,11 +40,12 @@ public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
         return unResultado;
     }
 
-    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(CriterioDeDesorden unCriterio){
         ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.add(respuestaCorrecta);
         opciones.add(respuestaIncorrecta);
-        Desordenador.desordenar(opciones);
+        Desordenador desordenador = new Desordenador(unCriterio);
+        desordenador.desordenar(opciones);
         return opciones;
     }
 
@@ -52,7 +54,6 @@ public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
         ArrayList<Opcion> opciones = new ArrayList<>();
         opciones.add(respuestaCorrecta);
         opciones.add(respuestaIncorrecta);
-        Desordenador.desordenar(opciones);
         return opciones;
     }
 

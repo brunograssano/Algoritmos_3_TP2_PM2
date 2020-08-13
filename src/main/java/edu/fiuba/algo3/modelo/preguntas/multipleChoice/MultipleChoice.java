@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
+import edu.fiuba.algo3.modelo.desordenador.CriterioDeDesorden;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
@@ -49,11 +50,12 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
 
 
     //Este metodo se puede poner en la interfaz de PreguntaAutoEvaluable
-    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(CriterioDeDesorden unCriterio){
         ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
-        Desordenador.desordenar(opciones);
+        Desordenador desordenador = new Desordenador(unCriterio);
+        desordenador.desordenar(opciones);
         return opciones;
     }
 
@@ -63,7 +65,6 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         ArrayList<Opcion> opciones = new ArrayList<>();
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
-        Desordenador.desordenar(opciones);
         return opciones;
     }
 

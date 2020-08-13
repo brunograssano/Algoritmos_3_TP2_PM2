@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 public class Desordenador {
 
-    private static CriterioDeDesorden criterio = new CriterioNormal();
+    private CriterioDeDesorden criterio;
 
-    public static void desordenar(ArrayList listaADesordenar){
+    public Desordenador (CriterioDeDesorden unCriterio){
+        criterio = unCriterio;
+    }
+
+    public void desordenar(ArrayList listaADesordenar){
         criterio.desordenar(listaADesordenar);
     }
 
-    public static void setCriterio(CriterioDeDesorden unCriterio){
-        criterio = unCriterio;
-    }
 }

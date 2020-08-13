@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorEnviarVerdaderoFalso;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
@@ -47,7 +48,7 @@ public class VistaVerdaderoFalso extends StackPane {
 
     private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado,VerdaderoFalso unaPregunta) {
         cajaEncabezado.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
+        ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta(new CriterioNormal());
         HBox cajaAgrupadoraDeOpciones = new HBox(100);
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
