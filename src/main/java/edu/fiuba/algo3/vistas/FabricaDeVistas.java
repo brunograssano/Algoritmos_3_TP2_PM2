@@ -13,7 +13,7 @@ public class FabricaDeVistas {
     public static StackPane CrearVistaDePregunta(Pregunta unaPregunta, Stage stage){
         StackPane vistaPregunta;
         if(unaPregunta instanceof VerdaderoFalso){
-            vistaPregunta = new VistaVerdaderoFalso(stage);
+            vistaPregunta = new VistaVerdaderoFalso((VerdaderoFalso) unaPregunta,stage);
         }
         else if(unaPregunta instanceof MultipleChoice){
             vistaPregunta = new VistaMultipleChoice((MultipleChoice) unaPregunta, stage);
