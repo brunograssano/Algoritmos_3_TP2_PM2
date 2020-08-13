@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Excepciones.CantidadDeSituacionesExclusividadErroneaException;
-import edu.fiuba.algo3.modelo.modificadores.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.modificadores.UsuarioRespondioBien;
-import edu.fiuba.algo3.modelo.modificadores.UsuarioSeEquivoco;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.UsuarioRespondioBien;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.UsuarioSeEquivoco;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoParcial;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
@@ -47,8 +46,6 @@ public class AnalizadorExclusividadTest {
         unAnalizador.agregarSituacion(unaSituacion);
         unAnalizador.agregarSituacion(otraSituacion);
 
-        unAnalizador.analizarSituacion();
-
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
         PuntuacionRepresentable puntosRepresentados1 = new PuntuacionRepresentable();
         PuntuacionRepresentable puntosRepresentados2 = new PuntuacionRepresentable();
@@ -88,8 +85,6 @@ public class AnalizadorExclusividadTest {
         unAnalizador.agregarSituacion(unaSituacion);
         unAnalizador.agregarSituacion(otraSituacion);
 
-        unAnalizador.analizarSituacion();
-
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
         PuntuacionRepresentable puntosRepresentados1 = new PuntuacionRepresentable();
         PuntuacionRepresentable puntosRepresentados2 = new PuntuacionRepresentable();
@@ -128,8 +123,6 @@ public class AnalizadorExclusividadTest {
         unAnalizador.agregarSituacion(unaSituacion);
         unAnalizador.agregarSituacion(otraSituacion);
 
-        unAnalizador.analizarSituacion();
-
         ArrayList<Integer> puntosJugadores = new ArrayList<>();
         PuntuacionRepresentable puntosRepresentados1 = new PuntuacionRepresentable();
         PuntuacionRepresentable puntosRepresentados2 = new PuntuacionRepresentable();
@@ -141,12 +134,5 @@ public class AnalizadorExclusividadTest {
 
         assertEquals(puntosEsperados,puntosJugadores);
     }
-    @Test
-    public void test04CreoUnAnalizadorDeExclusividadYIntentoAnalizarSinSituacionesLanzaExcepcion(){
-        AnalizadorExclusividad analizador = new AnalizadorExclusividad();
-        assertThrows(CantidadDeSituacionesExclusividadErroneaException.class,
-                ()->{
-                    analizador.analizarSituacion();}
-        );
-    }
+
 }

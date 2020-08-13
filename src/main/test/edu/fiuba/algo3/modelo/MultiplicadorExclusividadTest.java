@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.modificadores.MultiplicadorExclusividad;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorExclusividad;
 import edu.fiuba.algo3.modelo.puntos.PuntoNegativo;
 import edu.fiuba.algo3.modelo.puntos.PuntoNulo;
 import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;

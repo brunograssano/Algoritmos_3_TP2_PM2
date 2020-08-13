@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo.modificadores;
+package edu.fiuba.algo3.modelo.modificadores.exclusividad;
 
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorExclusividad;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 public class UsuarioRespondioBien implements SituacionesExclusividad {
