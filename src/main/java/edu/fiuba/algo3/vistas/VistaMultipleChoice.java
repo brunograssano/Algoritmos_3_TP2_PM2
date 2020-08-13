@@ -7,6 +7,8 @@ import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -33,29 +35,39 @@ public class VistaMultipleChoice extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        VBox cajaPrincipal = new VBox(70);
-        cajaPrincipal.setAlignment(Pos.TOP_CENTER);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
 
-        armarPregunta(cajaPrincipal,preguntaMultipleChoice);
-
-        super.getChildren().add(cajaPrincipal);
-    }
-
-    private void armarPregunta(VBox cajaPrincipal,MultipleChoice preguntaMultipleChoice) {
-
-        cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<OpcionEvaluable> opciones = preguntaMultipleChoice.respuestasAPregunta();
-        VBox cajaAgrupadoraDeOpciones = new VBox();
-        cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
+        VBox cajaPregunta = new VBox(2);
+        cajaPregunta.setAlignment(Pos.TOP_CENTER);
 
         ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage);
+        armarPregunta(cajaPregunta,preguntaMultipleChoice,controladorRespondioUsuario);
+        //grilla.setGridLinesVisible(true);
+
+        VBox cajaInferior = new VBox();
+        BotonEnviarRespuestaMultipleChoice botonEnviar = new BotonEnviarRespuestaMultipleChoice(controladorRespondioUsuario);
+        cajaInferior.getChildren().add(botonEnviar);
+        cajaInferior.setAlignment(Pos.CENTER);
+
+        grilla.add(new EncabezadoPantalla(GRIS),1,0);
+        grilla.add(cajaPregunta,1,1);
+        grilla.add(cajaInferior,1,2);
+
+        super.getChildren().add(grilla);
+    }
+
+    private void armarPregunta(VBox cajaPregunta,MultipleChoice preguntaMultipleChoice,ControladorEnviarMultipleChoice controlador) {
+        ArrayList<OpcionEvaluable> opciones = preguntaMultipleChoice.respuestasAPregunta();
+
+        VBox cajaAgrupadoraDeOpciones = new VBox();
+        cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER_LEFT);
+
         for(OpcionEvaluable opcion:opciones) {
-            BotonOpcionMultipleChoice boton = new BotonOpcionMultipleChoice(opcion,controladorRespondioUsuario);
+            BotonOpcionMultipleChoice boton = new BotonOpcionMultipleChoice(opcion,controlador);
             cajaAgrupadoraDeOpciones.getChildren().add(boton);
         }
 
-        cajaPrincipal.getChildren().add(new CajaPregunta());
-        cajaPrincipal.getChildren().add(cajaAgrupadoraDeOpciones);
-        cajaPrincipal.getChildren().add(new BotonEnviarRespuestaMultipleChoice(controladorRespondioUsuario));
+        cajaPregunta.getChildren().add(new CajaPregunta());
+        cajaPregunta.getChildren().add(cajaAgrupadoraDeOpciones);
     }
 }
