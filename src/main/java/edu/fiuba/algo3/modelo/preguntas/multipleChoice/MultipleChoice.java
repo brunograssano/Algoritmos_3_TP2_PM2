@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
@@ -46,6 +47,17 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         return unResultado;
     }
 
+
+    //Este metodo se puede poner en la interfaz de PreguntaAutoEvaluable
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
+        ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
+        opciones.addAll(respuestasCorrectas);
+        opciones.addAll(respuestasIncorrectas);
+        Desordenador.desordenar(opciones);
+        return opciones;
+    }
+
+    //Se borra
     @Override
     public ArrayList<Opcion> respuestas() {
         ArrayList<Opcion> opciones = new ArrayList<>();
@@ -54,7 +66,6 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         Desordenador.desordenar(opciones);
         return opciones;
     }
-
 
 }
 

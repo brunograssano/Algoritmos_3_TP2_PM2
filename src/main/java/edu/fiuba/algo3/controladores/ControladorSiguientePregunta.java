@@ -6,10 +6,10 @@ import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.*;
-import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.util.EmptyStackException;
@@ -27,7 +27,7 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
         try {
             Pregunta pregunta = AlgoHoot.getInstance().pedirJugada().obtenerPregunta();
             determinarTipoPregunta(pregunta);
-        }catch (EmptyStackException exception){
+        }catch (EmptyStackException exception){ //Ver mejor forma de arreglar esto
             VistaGanador vistaGanador = new VistaGanador(stage);
             Scene scene = new Scene(vistaGanador,800,600);
             stage.setScene(scene);
@@ -36,14 +36,22 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
     }
 
     private void determinarTipoPregunta(Pregunta pregunta) {
-        //Vista de pregunta, inicializamos en los if
+
+        // Esto se borra y pasa a ser el llamado a la fabrica
+
+
+        //StackPane vistaPregunta = FabricaDeVistas.CrearVistaDePregunta(pregunta, stage);
+        //Scene scene = new Scene(vistaPregunta,800,600);
+        //stage.setScene(scene);
+
+        //Se borra
         if(pregunta instanceof VerdaderoFalso){
             VistaVerdaderoFalso vistaPregunta = new VistaVerdaderoFalso(stage);
             Scene scene = new Scene(vistaPregunta,800,600);
             stage.setScene(scene);
         }
         else if(pregunta instanceof MultipleChoice){
-            VistaMultipleChoice vistaPregunta = new VistaMultipleChoice(stage);
+            StackPane vistaPregunta = FabricaDeVistas.CrearVistaDePregunta(pregunta, stage);
             Scene scene = new Scene(vistaPregunta,800,600);
             stage.setScene(scene);
         }
@@ -58,8 +66,6 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
             stage.setScene(scene);
         }
 
-        //Scene scene = new Scene(vistaPregunta,800,600);
-        //stage.setScene(scene);
     }
     
 }

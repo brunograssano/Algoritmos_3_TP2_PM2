@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
@@ -41,11 +40,11 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
         }
     }
 
-    public void eliminarOpcion(Opcion opcion) {
+    public void eliminarOpcion(OpcionEvaluable opcion) {
         respuestasUsuario.remove(opcion);
     }
 
-    public void agregarOpcion(Opcion opcion) {
-        respuestasUsuario.add((OpcionEvaluable) opcion); //Hacer double dispatch
+    public void agregarOpcion(OpcionEvaluable opcion) {
+        respuestasUsuario.add(opcion);
     }
 }

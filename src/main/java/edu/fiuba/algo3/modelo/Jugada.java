@@ -42,10 +42,12 @@ public class Jugada {
         pregunta.verificarModificador(modificador,modificadoresJugadas);
     }
 
+    //Este metodo se borra
     public String textoPregunta() {
         return pregunta.textoPregunta();
     }
 
+    //Este metodo se borra, junto con la interfaz Opcion
     public ArrayList<Opcion> respuestasAPregunta() {
         return pregunta.respuestas();
     }

@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.Jugada;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
@@ -25,7 +24,7 @@ public class VistaMultipleChoice extends StackPane {
 
     private Stage stage;
 
-    public VistaMultipleChoice(Stage stagePrincipal) {
+    public VistaMultipleChoice(MultipleChoice preguntaMultipleChoice, Stage stagePrincipal) {
         super();
         this.stage = stagePrincipal;
 
@@ -37,20 +36,20 @@ public class VistaMultipleChoice extends StackPane {
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.TOP_CENTER);
 
-        armarPregunta(cajaPrincipal);
+        armarPregunta(cajaPrincipal,preguntaMultipleChoice);
 
         super.getChildren().add(cajaPrincipal);
     }
 
-    private void armarPregunta(VBox cajaPrincipal) {
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
+    private void armarPregunta(VBox cajaPrincipal,MultipleChoice preguntaMultipleChoice) {
+
         cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
+        ArrayList<OpcionEvaluable> opciones = preguntaMultipleChoice.respuestasAPregunta();
         VBox cajaAgrupadoraDeOpciones = new VBox();
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
         ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage);
-        for(Opcion opcion:opciones) {
+        for(OpcionEvaluable opcion:opciones) {
             BotonOpcionMultipleChoice boton = new BotonOpcionMultipleChoice(opcion,controladorRespondioUsuario);
             cajaAgrupadoraDeOpciones.getChildren().add(boton);
         }
