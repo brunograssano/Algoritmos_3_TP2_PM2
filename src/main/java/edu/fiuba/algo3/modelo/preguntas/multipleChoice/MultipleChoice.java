@@ -50,12 +50,11 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
 
 
     //Este metodo se puede poner en la interfaz de PreguntaAutoEvaluable
-    public ArrayList<OpcionEvaluable> respuestasAPregunta(CriterioDeDesorden unCriterio){
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
         ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
-        Desordenador desordenador = new Desordenador(unCriterio);
-        desordenador.desordenar(opciones);
+
         return opciones;
     }
 

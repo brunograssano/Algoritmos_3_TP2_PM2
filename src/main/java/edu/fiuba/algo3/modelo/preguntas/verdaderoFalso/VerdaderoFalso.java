@@ -40,12 +40,10 @@ public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
         return unResultado;
     }
 
-    public ArrayList<OpcionEvaluable> respuestasAPregunta(CriterioDeDesorden unCriterio){
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
         ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.add(respuestaCorrecta);
         opciones.add(respuestaIncorrecta);
-        Desordenador desordenador = new Desordenador(unCriterio);
-        desordenador.desordenar(opciones);
         return opciones;
     }
 
