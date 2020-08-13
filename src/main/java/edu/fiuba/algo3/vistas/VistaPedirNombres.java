@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorNombresJugadores;
 import edu.fiuba.algo3.vistas.botones.BotonInicio;
+import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,13 +30,12 @@ public class VistaPedirNombres extends StackPane{
 
         this.stage = stage;
 
-        //Background fonditoGris = new Background(new BackgroundFill(Color.web(GRIS), CornerRadii.EMPTY, Insets.EMPTY));
-        //super.setBackground(fonditoGris);
-
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoInicio.png");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null,BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
+
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
 
         VBox nombreJuego = new VBox(0);
         nombreJuego.setAlignment(Pos.TOP_CENTER);
@@ -68,9 +69,12 @@ public class VistaPedirNombres extends StackPane{
         BotonInicio botonInicio = new BotonInicio(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2));
         botonConfirmado.getChildren().add(botonInicio);
 
-        super.getChildren().add(nombreJuego);
-        super.getChildren().add(cajaJugadores);
-        super.getChildren().add(botonConfirmado);
+        grilla.add(nombreJuego,1,0);
+        grilla.add(cajaJugadores,1,1);
+        grilla.add(botonConfirmado,1,2);
+        grilla.setGridLinesVisible(true);
+
+        super.getChildren().add(grilla);
     }
 
 }
