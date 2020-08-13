@@ -11,6 +11,7 @@ import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionVerdaderoFalso;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -36,6 +37,9 @@ public class VistaVerdaderoFalso extends StackPane {
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
+
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+
         VBox cajaEncabezado = new VBox(100);
         cajaEncabezado.setAlignment(Pos.TOP_CENTER);
         VBox cajaPrincipal = new VBox(100);
@@ -43,8 +47,13 @@ public class VistaVerdaderoFalso extends StackPane {
 
         armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta);
 
-        super.getChildren().add(cajaEncabezado);
-        super.getChildren().add(cajaPrincipal);
+        //grilla.setGridLinesVisible(true);
+
+        grilla.add(cajaEncabezado,1,0);
+        grilla.add(cajaPrincipal,1,1);
+
+
+        super.getChildren().add(grilla);
     }
 
     private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado,VerdaderoFalso unaPregunta) {
