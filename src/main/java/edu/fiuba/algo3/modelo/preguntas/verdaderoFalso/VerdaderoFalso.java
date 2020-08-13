@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
@@ -36,6 +37,14 @@ public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
         Resultado unResultado = puntaje.obtenerResultado(CANT_RESPUESTAS_VALIDAS_VERDADERO_FALSO,unJugador);
         respuestasJugador.evaluar(unResultado);
         return unResultado;
+    }
+
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
+        ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
+        opciones.add(respuestaCorrecta);
+        opciones.add(respuestaIncorrecta);
+        Desordenador.desordenar(opciones);
+        return opciones;
     }
 
     @Override

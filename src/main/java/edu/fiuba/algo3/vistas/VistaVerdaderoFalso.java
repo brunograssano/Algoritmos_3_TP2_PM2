@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionVerdaderoFalso;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
@@ -25,7 +26,7 @@ public class VistaVerdaderoFalso extends StackPane {
     static String AMARILLO = "FBD87F";
     private Stage stage;
 
-    public VistaVerdaderoFalso(Stage stage){
+    public VistaVerdaderoFalso(VerdaderoFalso unaPregunta,Stage stage){
         super();
         this.stage = stage;
 
@@ -38,29 +39,28 @@ public class VistaVerdaderoFalso extends StackPane {
         VBox cajaPrincipal = new VBox(100);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        armarPregunta(cajaPrincipal,cajaEncabezado);
+        armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta);
 
         super.getChildren().add(cajaEncabezado);
         super.getChildren().add(cajaPrincipal);
     }
 
-    private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado) {
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
+    private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado,VerdaderoFalso unaPregunta) {
         cajaEncabezado.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
+        ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
         HBox cajaAgrupadoraDeOpciones = new HBox(100);
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
-        for(Opcion opcion:opciones) {
+        for(OpcionEvaluable opcion:opciones) {
             if (opcion.obtenerTexto() == "Verdadero"){
-                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,(OpcionEvaluable) opcion));
+                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
 
-        for(Opcion opcion:opciones) {
+        for(OpcionEvaluable opcion:opciones) {
             if (opcion.obtenerTexto() == "Falso"){
-                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,(OpcionEvaluable) opcion));
+                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }

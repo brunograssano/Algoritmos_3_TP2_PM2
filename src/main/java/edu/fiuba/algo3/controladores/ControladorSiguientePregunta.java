@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+
 import java.util.EmptyStackException;
 
 public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
@@ -46,7 +47,7 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
         //Se borra
         if(pregunta instanceof VerdaderoFalso){
-            VistaVerdaderoFalso vistaPregunta = new VistaVerdaderoFalso(stage);
+            StackPane vistaPregunta = FabricaDeVistas.CrearVistaDePregunta(pregunta, stage);
             Scene scene = new Scene(vistaPregunta,800,600);
             stage.setScene(scene);
         }
