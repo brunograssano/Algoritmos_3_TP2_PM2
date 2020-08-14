@@ -3,6 +3,7 @@ package edu.fiuba.algo3.controladores;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,8 +35,8 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
         else{
             RespuestaMultipleChoice respuestaDeUnJugador = new RespuestaMultipleChoice(respuestasUsuario);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
-            Scene scene = new Scene(vistaTransicion,800,600);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage));
+            Scene scene = new Scene(contenedor,800,600);
             stage.setScene(scene);
         }
     }

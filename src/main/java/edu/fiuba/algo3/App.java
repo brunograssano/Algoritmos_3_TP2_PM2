@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaInicio;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,15 +13,14 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     @Override
-    public void start(Stage stagePrincipal) {
+    public void start(Stage stage) {
 
-        VistaInicio vistaInicio = new VistaInicio(stagePrincipal);
-        Scene sceneInicio = new Scene(vistaInicio,800,600);
-
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, new VistaInicio(stage));
+        Scene sceneInicio = new Scene(contenedorPrincipal,800,600);
         Image icono = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/Icono.png");
-        stagePrincipal.getIcons().add(icono);
-        stagePrincipal.setScene(sceneInicio);
-        stagePrincipal.show();
+        stage.getIcons().add(icono);
+        stage.setScene(sceneInicio);
+        stage.show();
     }
 
     public static void main(String[] args) {

@@ -28,7 +28,7 @@ public class VistaInicio extends StackPane{
         super();
         this.stage = stagePrincipal;
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoInicio.png");
+        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoInicio2.png");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
