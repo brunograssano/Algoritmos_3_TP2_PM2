@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
@@ -69,7 +70,8 @@ public class VistaOrderedChoice extends StackPane {
 
     private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<Opcion> opciones)  {
 
-        Desordenador.desordenar(opciones);
+        Desordenador desordenador = new Desordenador(new CriterioNormal());
+        desordenador.desordenar(opciones);
         VBox cajaOpciones = new VBox(5);
         cajaOpciones.setAlignment(Pos.CENTER);
 

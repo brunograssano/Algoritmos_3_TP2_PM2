@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.vistas.VistaPedirNombres;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import javafx.event.ActionEvent;
@@ -35,7 +36,7 @@ public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
             nombresSinCompletar.show();
         }
         else{
-            AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2);
+            AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2,new CriterioNormal());
             VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
             Scene scene = new Scene(vistaTransicion,800,600);
             stage.setScene(scene);

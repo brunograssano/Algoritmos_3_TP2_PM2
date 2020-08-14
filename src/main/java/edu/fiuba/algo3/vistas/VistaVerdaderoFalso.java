@@ -3,12 +3,15 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorEnviarVerdaderoFalso;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
+import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionVerdaderoFalso;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -34,6 +37,9 @@ public class VistaVerdaderoFalso extends StackPane {
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
+
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+
         VBox cajaEncabezado = new VBox(100);
         cajaEncabezado.setAlignment(Pos.TOP_CENTER);
         VBox cajaPrincipal = new VBox(100);
@@ -41,13 +47,20 @@ public class VistaVerdaderoFalso extends StackPane {
 
         armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta);
 
-        super.getChildren().add(cajaEncabezado);
-        super.getChildren().add(cajaPrincipal);
+        //grilla.setGridLinesVisible(true);
+
+        grilla.add(cajaEncabezado,1,0);
+        grilla.add(cajaPrincipal,1,1);
+
+
+        super.getChildren().add(grilla);
     }
 
     private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado,VerdaderoFalso unaPregunta) {
         cajaEncabezado.getChildren().add(new EncabezadoPantalla(GRIS));
         ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
+        Desordenador desordenador = new Desordenador(new CriterioNormal());
+        desordenador.desordenar(opciones);
         HBox cajaAgrupadoraDeOpciones = new HBox(100);
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
