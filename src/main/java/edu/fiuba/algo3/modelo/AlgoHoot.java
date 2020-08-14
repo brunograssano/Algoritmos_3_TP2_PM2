@@ -26,7 +26,6 @@ public class AlgoHoot {
     private Turno turno;
 
     private AlgoHoot(){
-        turno = new TurnoPrimerJugador();
         jugadas = new Stack<>();
         LectorJson lector = new LectorJson();
         this.preguntas = lector.generarPreguntas();
@@ -39,6 +38,7 @@ public class AlgoHoot {
     public void agregarJugadores(String nombreJugador1,String nombreJugador2,CriterioDeDesorden unCriterio){
         jugador1 = new Jugador(nombreJugador1);
         jugador2 = new Jugador(nombreJugador2);
+        turno = new TurnoPrimerJugador(jugador1);
         crearJugadas(unCriterio);
     }
 
@@ -55,7 +55,7 @@ public class AlgoHoot {
     }
 
     public void procesarTurno(Respuesta unaRespuesta){
-        turno = turno.procesarTurno(unaRespuesta);
+        turno = turno.procesarTurno(unaRespuesta,jugador1,jugador2);
         determinarSiTerminoElJuego();
     }
 
@@ -91,6 +91,10 @@ public class AlgoHoot {
 
     public boolean terminoElJuego() {
         return turno.terminoElJuego();
+    }
+
+    public String nombreDelJugadorEnTurno() {
+        return turno.nombreDelJugador();
     }
 }
 
