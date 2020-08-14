@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugada;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
@@ -33,8 +34,8 @@ public class VistaOrderedChoice extends StackPane {
         super();
         this.stage = stagePrincipal;
 
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
-        ArrayList<Opcion> opciones =  (jugadaActual.respuestasAPregunta());
+        Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
+        ArrayList<Opcion> opciones =  (pregunta.respuestas());
         ArrayList<OpcionSimple> opcionesSimplesCorrectas = new ArrayList<OpcionSimple>();
         for(Opcion opcion : opciones){
             opcionesSimplesCorrectas.add((OpcionSimple) opcion);

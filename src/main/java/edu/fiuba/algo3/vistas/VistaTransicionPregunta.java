@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.vistas.botones.BotonEmpezarPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
@@ -26,12 +27,12 @@ public class VistaTransicionPregunta extends StackPane {
         cajaPrincipal.setAlignment(Pos.TOP_CENTER);
         EncabezadoPantalla cajaJugadoresYAlgoHoot = new EncabezadoPantalla(VIOLETA);
 
-        CajaPregunta cajaPregunta = new CajaPregunta();
+        CajaPregunta cajaCentral = new CajaPregunta();
 
         BotonEmpezarPregunta botonEmpezarPregunta = new BotonEmpezarPregunta(stage);
 
         cajaPrincipal.getChildren().add(cajaJugadoresYAlgoHoot);
-        cajaPrincipal.getChildren().add(cajaPregunta);
+        cajaPrincipal.getChildren().add(cajaCentral);
         cajaPrincipal.getChildren().add(botonEmpezarPregunta);
 
         super.getChildren().add(cajaPrincipal);

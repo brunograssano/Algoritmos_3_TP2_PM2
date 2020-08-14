@@ -11,7 +11,7 @@ public class ControladorGanador {
         Jugador jugadorGanador = AlgoHoot.getInstance().obtenerJugadorGanador();
         String nombreGanador = jugadorGanador.obtenerNombre();
         String puntosGanador = String.valueOf(jugadorGanador.obtenerPuntos());
-        textoResultado = "Gano el jugador "+nombreGanador+" con "+puntosGanador;
+        textoResultado = "Gano el jugador "+nombreGanador+" con "+puntosGanador +" puntos";
         return textoResultado;
     }
 }

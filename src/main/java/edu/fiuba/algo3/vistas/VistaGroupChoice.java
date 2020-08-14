@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugada;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
@@ -43,9 +44,9 @@ public class VistaGroupChoice extends StackPane{
     }
 
     private void armarPregunta(VBox cajaPrincipal) {
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
+        Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
         cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
+        ArrayList<Opcion> opciones = pregunta.respuestas();
 
         VBox cajaSpinners = new VBox();
 

@@ -16,4 +16,9 @@ public class TurnoSegundoJugador implements Turno {
         AlgoHoot.getInstance().jugar(respuestaDelJugador1, respuestaDelJugador2);
         return new TurnoPrimerJugador();
     }
+
+    @Override
+    public boolean terminoElJuego() {
+        return false;
+    }
 }

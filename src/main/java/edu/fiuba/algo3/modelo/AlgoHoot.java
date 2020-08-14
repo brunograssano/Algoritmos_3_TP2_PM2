@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.turnos.TerminoJuego;
 import edu.fiuba.algo3.modelo.turnos.Turno;
 import edu.fiuba.algo3.modelo.turnos.TurnoPrimerJugador;
 
@@ -13,6 +14,7 @@ import java.util.Stack;
 
 public class AlgoHoot {
 
+    private static int NO_HAY_JUGADAS = 0;
     private static AlgoHoot algohoot = new AlgoHoot();
     private ArrayList<Pregunta> preguntas;
     private Stack<Jugada> jugadas;
@@ -45,17 +47,26 @@ public class AlgoHoot {
         }
     }
 
-    public Jugada pedirJugada(){
-        return jugadas.peek();
+    public Pregunta pedirPreguntaActual(){
+        return jugadas.peek().obtenerPregunta();
     }
 
     public void procesarTurno(Respuesta unaRespuesta){
         turno = turno.procesarTurno(unaRespuesta);
+        determinarSiTerminoElJuego();
     }
 
     public void jugar(Respuesta respuestaJugador1, Respuesta respuestaJugador2){
-        Jugada jugadaActual = jugadas.pop();
-        jugadaActual.procesarJugada(respuestaJugador1,respuestaJugador2);
+        if(jugadas.size() != NO_HAY_JUGADAS) {
+            Jugada jugadaActual = jugadas.pop();
+            jugadaActual.procesarJugada(respuestaJugador1, respuestaJugador2);
+        }
+    }
+
+    private void determinarSiTerminoElJuego(){
+        if(jugadas.size() == NO_HAY_JUGADAS){
+            turno = new TerminoJuego();
+        }
     }
 
     public void usarModificador(Modificador modificador){
@@ -73,6 +84,10 @@ public class AlgoHoot {
 
     public Jugador obtenerJugadorGanador() {
         return jugador1.compararYObtenerGanador(jugador2);
+    }
+
+    public boolean terminoElJuego() {
+        return turno.terminoElJuego();
     }
 }
 
