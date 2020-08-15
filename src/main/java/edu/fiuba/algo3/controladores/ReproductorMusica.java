@@ -8,11 +8,11 @@ import javafx.scene.media.Media;
 import java.io.File;
 import java.net.URI;
 
-public class ControladorReproductorMusica {
+public class ReproductorMusica {
 
     private AudioClip temaEscuchandose;
 
-    public ControladorReproductorMusica(){
+    public ReproductorMusica(){
         String direccion = "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3";
         temaEscuchandose = reproducirTema(direccion);
     }
