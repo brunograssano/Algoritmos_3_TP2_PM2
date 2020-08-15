@@ -27,7 +27,7 @@ public class VistaGroupChoice extends StackPane{
 
     private Stage stage;
 
-    public VistaGroupChoice(GroupChoice pregunta, Stage stagePrincipal) {
+    public VistaGroupChoice(GroupChoice pregunta, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {
         super();
         this.stage = stagePrincipal;
 
@@ -42,7 +42,7 @@ public class VistaGroupChoice extends StackPane{
         VBox cajaInferior = new VBox(20);
 
         ArrayList<String> nombresGrupos = pregunta.nombresGrupos();
-        ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(nombresGrupos, stage);
+        ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(nombresGrupos, stage, contenedorPrincipal);
         armarPregunta(nombresGrupos, cajaPregunta, pregunta, controladorRespondioUsuario);
 
         BotonEnviarRespuestaGroupChoice botonEnviar = new BotonEnviarRespuestaGroupChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1));

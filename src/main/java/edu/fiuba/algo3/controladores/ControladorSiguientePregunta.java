@@ -32,33 +32,8 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
         }
         else{
             Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
-            determinarTipoPregunta(pregunta);
+            contenedorPrincipal.setCentro(FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
         }
     }
 
-    private void determinarTipoPregunta(Pregunta pregunta) {
-
-
-        //ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
-        //Scene scene = new Scene(contenedor,800,600);
-        //stage.setScene(scene);
-
-        //Se borra
-        if(pregunta instanceof VerdaderoFalso){
-            contenedorPrincipal.setCentro( FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
-        }
-        else if(pregunta instanceof MultipleChoice){
-            contenedorPrincipal.setCentro( FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
-        }
-        else if(pregunta instanceof GroupChoice){
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
-            Scene scene = new Scene(contenedor, 800, 600);
-            stage.setScene(scene);
-        }
-        else{
-            contenedorPrincipal.setCentro(new VistaOrderedChoice(stage,contenedorPrincipal));
-        }
-
-    }
-    
 }

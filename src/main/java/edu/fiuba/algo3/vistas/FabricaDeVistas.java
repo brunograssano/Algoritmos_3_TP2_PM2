@@ -19,7 +19,7 @@ public class FabricaDeVistas {
             vistaPregunta = new VistaMultipleChoice((MultipleChoice) unaPregunta, stage, contenedorPrincipal);
         }
         else if(unaPregunta instanceof GroupChoice){
-            vistaPregunta = new VistaGroupChoice((GroupChoice)unaPregunta , stage);
+            vistaPregunta = new VistaGroupChoice((GroupChoice) unaPregunta , stage, contenedorPrincipal);
         }
         else{
             vistaPregunta = new VistaOrderedChoice(stage,contenedorPrincipal);
