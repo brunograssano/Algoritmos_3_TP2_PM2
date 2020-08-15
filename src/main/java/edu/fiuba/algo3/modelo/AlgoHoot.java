@@ -68,7 +68,7 @@ public class AlgoHoot {
 
     private void determinarSiTerminoElJuego(){
         if(jugadas.size() == NO_HAY_JUGADAS){
-            turno = new TerminoJuego();
+            turno = new TerminoJuego(obtenerJugadorGanador());
         }
     }
 

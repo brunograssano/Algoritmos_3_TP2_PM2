@@ -7,10 +7,9 @@ import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import java.util.ArrayList;
 
-public class TurnoSegundoJugador implements Turno {
+public class TurnoSegundoJugador extends Turno {
 
     private Respuesta respuestaDelJugador1;
-    private Jugador jugadorDelTurno;
 
     public TurnoSegundoJugador(Respuesta unaRespuesta, Jugador jugador2) {
         respuestaDelJugador1 = unaRespuesta;
@@ -28,18 +27,4 @@ public class TurnoSegundoJugador implements Turno {
         return false;
     }
 
-    @Override
-    public String nombreDelJugador() {
-        return jugadorDelTurno.obtenerNombre();
-    }
-
-    @Override
-    public ArrayList<MultiplicadorJugador> multiplicadoresJugador() {
-        return jugadorDelTurno.multiplicadores();
-    }
-
-    @Override
-    public ArrayList<Exclusividad> exclusividadesJugador() {
-        return jugadorDelTurno.exclusividades();
-    }
 }

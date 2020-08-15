@@ -6,16 +6,23 @@ import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import java.util.ArrayList;
 
-public interface Turno {
-    Turno procesarTurno(Respuesta unaRespuesta, Jugador jugador1, Jugador jugador2);
+public abstract class Turno {
 
-    boolean terminoElJuego();
+    protected Jugador jugadorDelTurno;
 
-    // TODO pasar esto a clase abstracta? (se repite el codigo de los metodos de abajo)
+    abstract public Turno procesarTurno(Respuesta unaRespuesta, Jugador jugador1, Jugador jugador2);
 
-    String nombreDelJugador();
+    abstract public boolean terminoElJuego();
 
-    ArrayList<MultiplicadorJugador> multiplicadoresJugador();
+    public String nombreDelJugador(){
+        return jugadorDelTurno.obtenerNombre();
+    }
 
-    ArrayList<Exclusividad> exclusividadesJugador();
+    public ArrayList<MultiplicadorJugador> multiplicadoresJugador(){
+        return jugadorDelTurno.multiplicadores();
+    }
+
+    public ArrayList<Exclusividad> exclusividadesJugador(){
+        return jugadorDelTurno.exclusividades();
+    }
 }
