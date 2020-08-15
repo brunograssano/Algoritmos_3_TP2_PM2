@@ -49,7 +49,7 @@ public class VistaOrderedChoice extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
         //Para que se vean las rayas de la grilla y debuggear mais fasil
         //grilla.setGridLinesVisible(true);
 

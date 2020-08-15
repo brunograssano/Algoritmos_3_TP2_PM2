@@ -35,7 +35,7 @@ public class VistaPedirNombres extends StackPane{
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
         VBox nombreJuego = new VBox(0);
         nombreJuego.setAlignment(Pos.TOP_CENTER);

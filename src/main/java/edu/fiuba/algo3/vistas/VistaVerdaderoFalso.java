@@ -38,7 +38,7 @@ public class VistaVerdaderoFalso extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
         VBox cajaEncabezado = new VBox(100);
         cajaEncabezado.setAlignment(Pos.TOP_CENTER);

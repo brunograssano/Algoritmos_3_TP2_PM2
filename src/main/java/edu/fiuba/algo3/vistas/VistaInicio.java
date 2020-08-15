@@ -33,7 +33,7 @@ public class VistaInicio extends StackPane{
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);

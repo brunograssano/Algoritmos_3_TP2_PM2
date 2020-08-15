@@ -37,7 +37,7 @@ public class VistaMultipleChoice extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
         VBox cajaPregunta = new VBox(2);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
