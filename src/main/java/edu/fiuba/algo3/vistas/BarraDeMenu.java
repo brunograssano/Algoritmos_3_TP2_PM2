@@ -31,7 +31,8 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionMusicaComun = new MenuItem("Musica Kahoot original");
         MenuItem opcionMusicaTrance = new MenuItem("Musica Kahoot Trance");
 
-        opcionMusicaComun.setOnAction(new ControladorMusica("media:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/musica/classic.mp3"));
+        opcionMusicaComun.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3"));
+        opcionMusicaTrance.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\trance.mp3"));
 
         menuArchivo.getItems().addAll(opcionSalir);
         menuMusica.getItems().addAll(opcionSinMusica,opcionMusicaComun,opcionMusicaTrance);

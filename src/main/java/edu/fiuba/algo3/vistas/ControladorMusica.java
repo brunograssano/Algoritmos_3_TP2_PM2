@@ -20,7 +20,7 @@ public class ControladorMusica implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // TODO ver bien como hacer que tome la direccion a la musica
-        File dir = new File(System.getProperty("user.dir") + "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3");
+        File dir = new File(System.getProperty("user.dir") + direccion);
         URI path = dir.toURI();
         String direccionParaMedia = path.toString();
         Media musica = new Media(direccionParaMedia);
