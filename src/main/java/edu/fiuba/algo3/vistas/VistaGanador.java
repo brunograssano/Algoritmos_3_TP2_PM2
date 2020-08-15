@@ -2,8 +2,6 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorGanador;
 import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.vistas.botones.BotonEmpezarPregunta;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Pos;

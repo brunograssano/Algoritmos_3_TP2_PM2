@@ -10,7 +10,6 @@ import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -19,12 +18,8 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class VistaMultipleChoice extends StackPane {
-    static String VIOLETA = "9370DB";
+
     static String GRIS = "D8DDEF";
-    static String VERDE = "33FF96";
-    static String AZUL = "0083E0";
-    static String ROJO = "EF2D56";
-    static String AMARILLO = "FBD87F";
 
     private Stage stage;
 
@@ -37,7 +32,7 @@ public class VistaMultipleChoice extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
         VBox cajaPregunta = new VBox(2);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);

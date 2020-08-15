@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.preguntas.respuestas;
 
-
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.RespuestaNoAptaParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -9,9 +8,7 @@ import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
 

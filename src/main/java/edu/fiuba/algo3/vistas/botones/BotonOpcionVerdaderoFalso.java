@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vistas.botones;
 
-import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
 import edu.fiuba.algo3.controladores.ControladorEnviarVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import javafx.geometry.Insets;

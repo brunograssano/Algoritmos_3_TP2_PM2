@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerd
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PreguntasVerdaderoFalsoTest {
 

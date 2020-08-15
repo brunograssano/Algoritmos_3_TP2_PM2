@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.lector;
 
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

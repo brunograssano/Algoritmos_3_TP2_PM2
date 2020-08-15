@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vistas.seccionesVista;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
@@ -9,10 +8,7 @@ import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import edu.fiuba.algo3.vistas.textos.TextoSeTerminaronPreguntas;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-
-import java.util.EmptyStackException;
 
 public class CajaPregunta extends VBox {
 

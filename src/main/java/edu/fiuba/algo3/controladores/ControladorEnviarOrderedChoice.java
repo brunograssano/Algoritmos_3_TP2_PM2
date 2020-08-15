@@ -9,13 +9,10 @@ import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.Comparator;
-
 
 public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent> {
 

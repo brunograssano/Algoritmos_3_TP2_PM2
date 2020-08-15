@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vistas.seccionesVista;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.modificadores.multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
@@ -10,7 +9,6 @@ import edu.fiuba.algo3.vistas.botones.BotonMultiplicador;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-
 import java.util.ArrayList;
 
 public class CajaModificadores extends HBox {
