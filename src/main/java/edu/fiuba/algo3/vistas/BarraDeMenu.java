@@ -7,7 +7,8 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
-    //MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
+
+    private MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
 
     public BarraDeMenu(Stage stage) {
 
@@ -23,6 +24,10 @@ public class BarraDeMenu extends MenuBar {
         opcionSalir.setOnAction(new ControladorTerminarJuego());
         opcionAcercaDe.setOnAction(new ControladorAcercaDeAyuda());
         opcionAyudaJuego.setOnAction(new ControladorAyudaDelJuego());
+
+        opcionPantallaCompleta.setOnAction(new ControladorOpcionPantallaCompleta(stage,opcionPantallaCompleta));
+
+        opcionPantallaCompleta.setDisable(true);
 
         ReproductorMusica unReproductor = new ReproductorMusica();
         MenuItem opcionSinMusica = new MenuItem("Sin música");
@@ -53,12 +58,12 @@ public class BarraDeMenu extends MenuBar {
         menuMusica.getItems().addAll(opcionMusicaTrap,opcionMusicaDisco,opcionMusicaFantasy,opcionMusicaReggae,opcionMusicaSpace);
 
         menuAyuda.getItems().addAll(opcionAcercaDe,opcionAyudaJuego);
-        //menuVer.getItems().addAll(opcionPantallaCompleta);
+        menuVer.getItems().addAll(opcionPantallaCompleta);
 
         this.getMenus().addAll(menuArchivo, menuVer, menuMusica, menuAyuda);
     }
 
-    //public void aplicacionMaximizada() {
-    //   opcionPantallaCompleta.setDisable(false);
-    //}
+    public void aplicacionMaximizada() {
+       opcionPantallaCompleta.setDisable(false);
+    }
 }
