@@ -104,5 +104,13 @@ public class AlgoHoot {
     public ArrayList<Exclusividad> exclusividadesJugador() {
         return turno.exclusividadesJugador();
     }
+
+    public Integer jugadasRestantes(){
+        return jugadas.size();
+    }
+
+    public Integer preguntasTotales(){
+        return preguntas.size();
+    }
 }
 
