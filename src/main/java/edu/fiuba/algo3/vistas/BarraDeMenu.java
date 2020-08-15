@@ -40,6 +40,7 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionMusicaFantasy = new MenuItem("Música Kahoot Fantasy");
         MenuItem opcionMusicaReggae = new MenuItem("Música Kahoot Reggae");
         MenuItem opcionMusicaSpace = new MenuItem("Música Kahoot Space");
+        MenuItem opcionMusicaDivertida = new MenuItem("Música Kahoot Divertida :)");
 
         opcionSinMusica.setOnAction(new ControladorMusica("",unReproductor));
         opcionMusicaComun.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3",unReproductor));
@@ -51,11 +52,12 @@ public class BarraDeMenu extends MenuBar {
         opcionMusicaFantasy.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\fantasy.mp3",unReproductor));
         opcionMusicaReggae.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\reggae.mp3",unReproductor));
         opcionMusicaSpace.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\space.mp3",unReproductor));
+        opcionMusicaDivertida.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\earrape.mp3",unReproductor));
 
 
         menuArchivo.getItems().addAll(opcionSalir);
         menuMusica.getItems().addAll(opcionSinMusica,opcionMusicaComun,opcionMusicaTrance,opcionMusicaHalloween,opcionMusica8bits);
-        menuMusica.getItems().addAll(opcionMusicaTrap,opcionMusicaDisco,opcionMusicaFantasy,opcionMusicaReggae,opcionMusicaSpace);
+        menuMusica.getItems().addAll(opcionMusicaTrap,opcionMusicaDisco,opcionMusicaFantasy,opcionMusicaReggae,opcionMusicaSpace,opcionMusicaDivertida);
 
         menuAyuda.getItems().addAll(opcionAcercaDe,opcionAyudaJuego);
         menuVer.getItems().addAll(opcionPantallaCompleta);
