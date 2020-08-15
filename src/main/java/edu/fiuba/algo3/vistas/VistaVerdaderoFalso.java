@@ -48,7 +48,7 @@ public class VistaVerdaderoFalso extends StackPane {
     }
 
     private void armarPregunta(VBox cajaPrincipal, VBox cajaEncabezado, VerdaderoFalso unaPregunta, ContenedorPrincipal contenedorPrincipal) {
-        cajaEncabezado.getChildren().add(new EncabezadoPantalla(GRIS));
+        cajaEncabezado.getChildren().add(new EncabezadoPantalla());
         ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
         Desordenador desordenador = new Desordenador(new CriterioNormal());
         desordenador.desordenar(opciones);

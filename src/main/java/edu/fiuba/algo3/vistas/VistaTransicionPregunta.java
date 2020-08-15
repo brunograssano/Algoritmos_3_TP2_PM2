@@ -25,7 +25,7 @@ public class VistaTransicionPregunta extends StackPane {
 
         VBox cajaPrincipal = new VBox(20);
         cajaPrincipal.setAlignment(Pos.TOP_CENTER);
-        EncabezadoPantalla cajaJugadores = new EncabezadoPantalla(GRIS);
+        EncabezadoPantalla cajaJugadores = new EncabezadoPantalla();
 
         CajaPregunta cajaCentral = new CajaPregunta();
 
