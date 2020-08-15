@@ -28,4 +28,8 @@ public class Grupo {
     public ArrayList<OpcionSimple> respuestas(){
         return respuestasDelGrupo;
     }
+
+    public String nombreGrupo() {
+        return nombreGrupo;
+    }
 }
