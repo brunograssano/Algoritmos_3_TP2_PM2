@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -23,9 +24,8 @@ public class ControladorMusica implements EventHandler<ActionEvent> {
         URI path = dir.toURI();
         String direccionParaMedia = path.toString();
         Media musica = new Media(direccionParaMedia);
-        MediaPlayer mediaPlayer = new MediaPlayer(musica);
+        AudioClip mediaPlayer = new AudioClip(musica.getSource());
         mediaPlayer.play();
-        mediaPlayer.setVolume(2);
-        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setVolume(5);
     }
 }
