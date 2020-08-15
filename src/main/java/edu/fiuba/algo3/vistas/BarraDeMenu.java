@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.ControladorAcercaDeAyuda;
-import edu.fiuba.algo3.controladores.ControladorAyudaDelJuego;
-import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
+import edu.fiuba.algo3.controladores.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
@@ -27,12 +24,14 @@ public class BarraDeMenu extends MenuBar {
         opcionAcercaDe.setOnAction(new ControladorAcercaDeAyuda());
         opcionAyudaJuego.setOnAction(new ControladorAyudaDelJuego());
 
+        ControladorReproductorMusica unReproductor = new ControladorReproductorMusica();
         MenuItem opcionSinMusica = new MenuItem("Sin musica");
         MenuItem opcionMusicaComun = new MenuItem("Musica Kahoot original");
         MenuItem opcionMusicaTrance = new MenuItem("Musica Kahoot Trance");
 
-        opcionMusicaComun.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3"));
-        opcionMusicaTrance.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\trance.mp3"));
+        opcionSinMusica.setOnAction(new ControladorMusica("",unReproductor));
+        opcionMusicaComun.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3",unReproductor));
+        opcionMusicaTrance.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\trance.mp3",unReproductor));
 
         menuArchivo.getItems().addAll(opcionSalir);
         menuMusica.getItems().addAll(opcionSinMusica,opcionMusicaComun,opcionMusicaTrance);
