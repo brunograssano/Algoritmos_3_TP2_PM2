@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -15,19 +16,25 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class BotonSpinnerGrupo extends HBox {
 
     private final static String AMARILLO = "FBD87F";
-    private final static int PRIMER_POSICION = 1;
+    private final OpcionSimple opcionSpinner;
+    private final Spinner<String> spinner;
 
-    public BotonSpinnerGrupo(Opcion opcion, ControladorEnviarGroupChoice controlador) {
+    public BotonSpinnerGrupo(ArrayList<String> nombresGrupos, OpcionSimple opcion, ControladorEnviarGroupChoice controlador) {
 
 
-        ObservableList<String> nombresGruposPosibles = FXCollections.observableArrayList("Grupo1", "Grupo2"); //estos strings deberian recibirse por parametro.
+        ObservableList<String> nombresGruposPosibles = FXCollections.observableArrayList(); //estos strings deberian recibirse por parametro.
+        nombresGruposPosibles.addAll(nombresGrupos);
 
-        Spinner<String> spinner = new Spinner<>();
+        spinner = new Spinner<>();
+        opcionSpinner = opcion;
+
         SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(nombresGruposPosibles);
-        valueFactory.setValue("Grupo1"); //valor por defecto
+        valueFactory.setValue(nombresGruposPosibles.get(0)); //valor por defecto
         spinner.setValueFactory(valueFactory);
         spinner.setMaxWidth(350);
         spinner.setMaxHeight(50);
@@ -44,4 +51,8 @@ public class BotonSpinnerGrupo extends HBox {
         super.setSpacing(2);
         super.getChildren().addAll(spinner, label);
     }
+    public String getGrupoOpcion(){
+        return spinner.getValue();
+    }
+    public OpcionSimple getOpcionSpinner() { return opcionSpinner;}
 }

@@ -51,11 +51,9 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
             contenedorPrincipal.setCentro( FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
         }
         else if(pregunta instanceof GroupChoice){
-            VistaGroupChoice vistaPregunta = new VistaGroupChoice(stage);
-            contenedorPrincipal.setCentro( vistaPregunta);
-            //ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, vistaPregunta);
-            //Scene scene = new Scene(contenedor, 800, 600);
-            //stage.setScene(scene);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
+            Scene scene = new Scene(contenedor, 800, 600);
+            stage.setScene(scene);
         }
         else{
             contenedorPrincipal.setCentro(new VistaOrderedChoice(stage,contenedorPrincipal));

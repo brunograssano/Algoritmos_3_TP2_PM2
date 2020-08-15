@@ -1,14 +1,15 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.Jugada;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
+import edu.fiuba.algo3.modelo.desordenador.Desordenador;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -26,7 +27,7 @@ public class VistaGroupChoice extends StackPane{
 
     private Stage stage;
 
-    public VistaGroupChoice(Stage stagePrincipal) {
+    public VistaGroupChoice(GroupChoice pregunta, Stage stagePrincipal) {
         super();
         this.stage = stagePrincipal;
 
@@ -35,31 +36,43 @@ public class VistaGroupChoice extends StackPane{
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        VBox cajaPrincipal = new VBox(70);
-        cajaPrincipal.setAlignment(Pos.TOP_CENTER);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(800, 600);
+        VBox cajaPregunta = new VBox(2);
+        cajaPregunta.setAlignment(Pos.TOP_CENTER);
+        VBox cajaInferior = new VBox(20);
 
-        armarPregunta(cajaPrincipal);
+        ArrayList<String> nombresGrupos = pregunta.nombresGrupos();
+        ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(nombresGrupos, stage);
+        armarPregunta(nombresGrupos, cajaPregunta, pregunta, controladorRespondioUsuario);
 
-        super.getChildren().add(cajaPrincipal);
+        BotonEnviarRespuestaGroupChoice botonEnviar = new BotonEnviarRespuestaGroupChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1));
+
+        cajaInferior.getChildren().add(botonEnviar);
+        cajaInferior.setAlignment(Pos.CENTER);
+
+        grilla.add(new EncabezadoPantalla(GRIS),1,0);
+        grilla.add(cajaPregunta,1,1);
+        grilla.add(cajaInferior,1,2);
+
+        super.getChildren().add(grilla);
     }
 
-    private void armarPregunta(VBox cajaPrincipal) {
-        Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
-        cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<Opcion> opciones = pregunta.respuestas();
+    private void armarPregunta(ArrayList<String> nombresGrupos,VBox cajaPregunta, GroupChoice preguntaGroupChoice, ControladorEnviarGroupChoice controlador) {
 
-        VBox cajaSpinners = new VBox();
+        ArrayList<OpcionSimple> opciones = preguntaGroupChoice.respuestasAPregunta();
+        Desordenador desordenador = new Desordenador(new CriterioNormal());
+        desordenador.desordenar(opciones);
 
+
+        VBox cajaSpinners = new VBox(10);
         cajaSpinners.setAlignment(Pos.CENTER);
 
-        ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(stage);
-        for(Opcion opcion:opciones) {
-            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(opcion,controladorRespondioUsuario);
+        for(OpcionSimple opcion:opciones) {
+            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(nombresGrupos,opcion,controlador);
             cajaSpinners.getChildren().add(boton);
         }
 
-        cajaPrincipal.getChildren().add(new CajaPregunta());
-        cajaPrincipal.getChildren().add(cajaSpinners);
-        cajaPrincipal.getChildren().add(new BotonEnviarRespuestaMultipleChoice(controladorRespondioUsuario));
+        cajaPregunta.getChildren().add(new CajaPregunta());
+        cajaPregunta.getChildren().add(cajaSpinners);
     }
 }

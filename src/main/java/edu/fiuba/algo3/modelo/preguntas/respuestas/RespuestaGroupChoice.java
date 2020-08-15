@@ -11,6 +11,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
 
@@ -54,10 +55,17 @@ public class RespuestaGroupChoice implements RespuestaComparable,Respuesta {
         return pregunta.responder(this,unJugador);
     }
 
-    public ArrayList<OpcionSimple> respuestas(){
+    public ArrayList<OpcionSimple> respuestasAPregunta(){
         ArrayList<OpcionSimple> respuestas = new ArrayList<>();
         respuestas.addAll(grupo1Respuesta.respuestas());
         respuestas.addAll(grupo2Respuesta.respuestas());
         return respuestas;
+    }
+
+    public ArrayList<String> nombresGrupos() {
+        ArrayList<String> nombresGrupos = new ArrayList<>();
+        nombresGrupos.add(grupo1Respuesta.nombreGrupo());
+        nombresGrupos.add(grupo2Respuesta.nombreGrupo());
+        return nombresGrupos;
     }
 }
