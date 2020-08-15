@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
@@ -10,6 +11,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdad
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
 import org.junit.jupiter.api.Test;
 
@@ -81,12 +83,13 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(7)); //primer orderedchoice en la lista
+        OrderedChoice preguntaOrderedChoice = (OrderedChoice) preguntas.get(7);
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntaOrderedChoice); //primer orderedchoice en la lista
 
-        OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
-        OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
-        OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
-        OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
+        OpcionSimple primerRespuestaJugador1 =  preguntaOrderedChoice.respuestasAPregunta().get(0);
+        OpcionSimple segundaRespuestaJugador1 = preguntaOrderedChoice.respuestasAPregunta().get(1);
+        OpcionSimple tercerRespuestaJugador1 =  preguntaOrderedChoice.respuestasAPregunta().get(2);
+        OpcionSimple cuartaRespuestaJugador1 =  preguntaOrderedChoice.respuestasAPregunta().get(3);
 
         ArrayList<OpcionSimple> respuestasOrderJugador = new ArrayList<>();
 
@@ -111,12 +114,13 @@ public class LectorPreguntasTest {
         Jugador jugador1 = new Jugador("Pedro");
         Jugador jugador2 = new Jugador("Juan");
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(13)); //primer groupchoice en la lista
+        GroupChoice preguntaGroupChoice = (GroupChoice) preguntas.get(13);
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntaGroupChoice); //primer groupchoice en la lista
 
-        OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
-        OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
-        OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
-        OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
+        OpcionSimple primerRespuestaJugador1 =  preguntaGroupChoice.respuestasAPregunta().get(0);
+        OpcionSimple segundaRespuestaJugador1 = preguntaGroupChoice.respuestasAPregunta().get(1);
+        OpcionSimple tercerRespuestaJugador1 =  preguntaGroupChoice.respuestasAPregunta().get(2);
+        OpcionSimple cuartaRespuestaJugador1 =  preguntaGroupChoice.respuestasAPregunta().get(3);
 
         ArrayList<OpcionSimple> respuestasPrimerGrupo = new ArrayList<>() ;
         respuestasPrimerGrupo.add(primerRespuestaJugador1);
