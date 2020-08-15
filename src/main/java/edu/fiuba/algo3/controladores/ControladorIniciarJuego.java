@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.controladores;
 
+import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaPedirNombres;
+import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -17,8 +19,8 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        VistaPedirNombres vistaPedirNombres = new VistaPedirNombres(stage);
-        Scene scene = new Scene(vistaPedirNombres,800,600);
+        ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaPedirNombres(stage));
+        Scene scene = new Scene(contenedor,800,600);
         stage.setScene(scene);
     }
 }

@@ -29,6 +29,10 @@ public abstract class Pregunta {
         return enunciado;
     }
 
+    public Puntaje tipoPuntaje(){
+        return puntaje;
+    }
+
     public abstract ArrayList<Opcion> respuestas();
 
 }

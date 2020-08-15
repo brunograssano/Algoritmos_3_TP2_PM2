@@ -28,7 +28,6 @@ public class BotonOpcionMultipleChoice extends CheckBox {
         super.setTextFill(Color.BLACK);
         Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
         super.setBackground(unFondito);
-
         super.selectedProperty().addListener((valorObservado, valorViejo, valorNuevo) -> {
             if(valorNuevo){
                 controladorRespondioUsuario.agregarOpcion(opcion);

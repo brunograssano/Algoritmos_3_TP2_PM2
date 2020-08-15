@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.turnos.TerminoJuego;
@@ -26,7 +28,6 @@ public class AlgoHoot {
     private Turno turno;
 
     private AlgoHoot(){
-        turno = new TurnoPrimerJugador();
         jugadas = new Stack<>();
         LectorJson lector = new LectorJson();
         this.preguntas = lector.generarPreguntas();
@@ -39,6 +40,7 @@ public class AlgoHoot {
     public void agregarJugadores(String nombreJugador1,String nombreJugador2,CriterioDeDesorden unCriterio){
         jugador1 = new Jugador(nombreJugador1);
         jugador2 = new Jugador(nombreJugador2);
+        turno = new TurnoPrimerJugador(jugador1);
         crearJugadas(unCriterio);
     }
 
@@ -55,7 +57,7 @@ public class AlgoHoot {
     }
 
     public void procesarTurno(Respuesta unaRespuesta){
-        turno = turno.procesarTurno(unaRespuesta);
+        turno = turno.procesarTurno(unaRespuesta,jugador1,jugador2);
         determinarSiTerminoElJuego();
     }
 
@@ -91,6 +93,18 @@ public class AlgoHoot {
 
     public boolean terminoElJuego() {
         return turno.terminoElJuego();
+    }
+
+    public String nombreDelJugadorEnTurno() {
+        return turno.nombreDelJugador();
+    }
+
+    public ArrayList<MultiplicadorJugador> multiplicadoresJugador() {
+        return turno.multiplicadoresJugador();
+    }
+
+    public ArrayList<Exclusividad> exclusividadesJugador() {
+        return turno.exclusividadesJugador();
     }
 }
 

@@ -35,32 +35,31 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
     private void determinarTipoPregunta(Pregunta pregunta) {
 
-        // Esto se borra y pasa a ser el llamado a la fabrica
 
-
-        //StackPane vistaPregunta = FabricaDeVistas.CrearVistaDePregunta(pregunta, stage);
-        //Scene scene = new Scene(vistaPregunta,800,600);
+        //ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
+        //Scene scene = new Scene(contenedor,800,600);
         //stage.setScene(scene);
 
         //Se borra
         if(pregunta instanceof VerdaderoFalso){
-            StackPane vistaPregunta = FabricaDeVistas.CrearVistaDePregunta(pregunta, stage);
-            Scene scene = new Scene(vistaPregunta,800,600);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
+            Scene scene = new Scene(contenedor,800,600);
             stage.setScene(scene);
         }
         else if(pregunta instanceof MultipleChoice){
-            StackPane vistaPregunta = FabricaDeVistas.CrearVistaDePregunta(pregunta, stage);
-            Scene scene = new Scene(vistaPregunta,800,600);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
+            Scene scene = new Scene(contenedor,800,600);
             stage.setScene(scene);
         }
         else if(pregunta instanceof GroupChoice){
-            VistaGroupChoice vistaPregunta = new VistaGroupChoice((GroupChoice) pregunta, stage);
-            Scene scene = new Scene(vistaPregunta, 800, 600);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
+            Scene scene = new Scene(contenedor, 800, 600);
             stage.setScene(scene);
         }
         else{
             VistaOrderedChoice vistaPregunta = new VistaOrderedChoice(stage);
-            Scene scene = new Scene(vistaPregunta,800,600);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, vistaPregunta);
+            Scene scene = new Scene(contenedor,800,600);
             stage.setScene(scene);
         }
 

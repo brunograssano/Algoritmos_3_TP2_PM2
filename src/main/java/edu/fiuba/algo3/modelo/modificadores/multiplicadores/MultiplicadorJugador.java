@@ -24,7 +24,7 @@ public class MultiplicadorJugador implements Modificador, Multiplicador {
     @Override
     public void usarEnPuntaje(PuntajePenalizable puntajePenalizable, ArrayList<Modificador> modificadoresDeLaJugada) {
         modificadoresDeLaJugada.add(this);
-        jugador.pierdeModificador(this);
+        jugador.pierdeMultiplicador(this);
     }
 
     @Override
@@ -52,4 +52,7 @@ public class MultiplicadorJugador implements Modificador, Multiplicador {
         return puntos;
     }
 
+    public int factor() {
+        return factor;
+    }
 }

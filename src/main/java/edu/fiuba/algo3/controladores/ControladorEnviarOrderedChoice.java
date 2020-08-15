@@ -3,6 +3,7 @@ package edu.fiuba.algo3.controladores;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
 import javafx.event.ActionEvent;
@@ -47,8 +48,8 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
             convertirOpcionesSimples();
             RespuestaOrderedChoice respuestaDeUnJugador = new RespuestaOrderedChoice(opcionesJugador);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
-            Scene scene = new Scene(vistaTransicion,800,600);
+            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage));
+            Scene scene = new Scene(contenedor,800,600);
             stage.setScene(scene);
         }
 
