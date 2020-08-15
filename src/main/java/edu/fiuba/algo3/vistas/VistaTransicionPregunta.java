@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.vistas.botones.BotonEmpezarPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaModificadores;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
@@ -15,9 +16,7 @@ public class VistaTransicionPregunta extends StackPane {
     static String VIOLETA = "9370DB";
 
     public VistaTransicionPregunta(Stage stage, ContenedorPrincipal contenedorPrincipal) {
-        super();
         this.stage = stage;
-
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);

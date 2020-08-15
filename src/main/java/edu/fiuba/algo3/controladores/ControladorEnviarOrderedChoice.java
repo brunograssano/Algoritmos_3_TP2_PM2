@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
+import edu.fiuba.algo3.vistas.VistaGanador;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
 import javafx.event.ActionEvent;
@@ -51,7 +52,11 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
             convertirOpcionesSimples();
             RespuestaOrderedChoice respuestaDeUnJugador = new RespuestaOrderedChoice(opcionesJugador);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
+            if(AlgoHoot.getInstance().terminoElJuego()){
+                contenedorPrincipal.setCentro(new VistaGanador(stage));
+            }else{
+                contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
+            }
         }
 
     }

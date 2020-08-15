@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
+import edu.fiuba.algo3.vistas.VistaGanador;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
 import javafx.event.ActionEvent;
@@ -40,7 +41,11 @@ public class ControladorEnviarGroupChoice implements EventHandler<ActionEvent> {
         agregarOpcionesSeleccionadas(spinnerGrupos);
         RespuestaGroupChoice respuestaDeUnJugador =  new RespuestaGroupChoice(nombresGrupo.get(0), respuestasUsuario.get(nombresGrupo.get(0)), nombresGrupo.get(1), respuestasUsuario.get(nombresGrupo.get(1)));
         AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-        contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
+        if(AlgoHoot.getInstance().terminoElJuego()){
+            contenedorPrincipal.setCentro(new VistaGanador(stage));
+        }else{
+            contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
+        }
     }
 
     public void agregarSpinnersGrupo(ArrayList<BotonSpinnerGrupo> spinnerGrupos){
