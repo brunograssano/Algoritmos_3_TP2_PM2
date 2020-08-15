@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.puntos.Punto;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
-
 import java.util.ArrayList;
 
 public class Jugador {

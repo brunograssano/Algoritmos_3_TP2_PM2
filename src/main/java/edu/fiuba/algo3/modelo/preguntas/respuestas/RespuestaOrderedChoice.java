@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
 import java.util.ArrayList;
 
 public class RespuestaOrderedChoice implements RespuestaComparable,Respuesta {

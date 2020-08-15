@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
-import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -12,7 +11,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
 import java.util.ArrayList;
 
 public class BotonEnviarRespuestaGroupChoice extends Button {

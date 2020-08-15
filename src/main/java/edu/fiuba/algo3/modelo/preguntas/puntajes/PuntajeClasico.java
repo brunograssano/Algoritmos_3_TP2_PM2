@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.preguntas.multipleChoice.PuntajeChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.PuntajeVerdaderoFalso;
-
 import java.util.ArrayList;
 
 public class PuntajeClasico implements PuntajeChoice, PuntajeVerdaderoFalso {

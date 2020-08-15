@@ -4,23 +4,14 @@ import edu.fiuba.algo3.controladores.ControladorIniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonInicio;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.File;
-
 public class VistaInicio extends StackPane{
+
     static String VIOLETA = "9370DB";
-    static String GRIS = "D8DDEF";
-    static String VERDE = "33FF96";
-    static String AZUL = "0083E0";
-    static String ROJO = "EF2D56";
-    static String AMARILLO = "FBD87F";
 
     private Stage stage;
 

@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorModificador;
-import edu.fiuba.algo3.modelo.modificadores.multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

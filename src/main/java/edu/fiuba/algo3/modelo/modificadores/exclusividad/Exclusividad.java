@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.modificadores.exclusividad;
 import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;

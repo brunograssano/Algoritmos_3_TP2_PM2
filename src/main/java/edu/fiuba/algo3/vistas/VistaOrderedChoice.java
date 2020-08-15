@@ -4,7 +4,6 @@ import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
-import edu.fiuba.algo3.modelo.Jugada;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
@@ -17,18 +16,11 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-
 import java.util.ArrayList;
 
 public class VistaOrderedChoice extends StackPane {
-    static String VIOLETA = "9370DB";
-    static String GRIS = "D8DDEF";
-    static String VERDE = "33FF96";
-    static String AZUL = "0083E0";
-    static String ROJO = "EF2D56";
-    static String AMARILLO = "FBD87F";
 
+    static String GRIS = "D8DDEF";
     private Stage stage;
 
     public VistaOrderedChoice(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {

@@ -4,15 +4,12 @@ import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaExcept
 import edu.fiuba.algo3.modelo.preguntas.*;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

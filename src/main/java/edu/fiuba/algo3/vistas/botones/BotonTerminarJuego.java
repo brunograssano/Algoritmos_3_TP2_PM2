@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vistas.botones;
 
-import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -10,7 +9,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 public class BotonTerminarJuego extends Button {
 

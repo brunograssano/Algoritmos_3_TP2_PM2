@@ -8,9 +8,7 @@ import edu.fiuba.algo3.vistas.VistaGanador;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 
 public class ControladorEnviarVerdaderoFalso implements EventHandler<ActionEvent> {
 
