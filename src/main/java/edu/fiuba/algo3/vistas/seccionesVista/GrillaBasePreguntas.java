@@ -9,7 +9,7 @@ public class GrillaBasePreguntas extends GridPane {
     private static int DISTANCIA_BORDE_SUPERIOR_PUNTAJES = 20;
     private static int TAM_BORDES_LATERALES_PREGUNTA = 5;
     private static int TAM_ENCABEZADO = 110;
-    private static int TAM_SECCION_PREGUNTA = 400;
+    private static int TAM_SECCION_PREGUNTA = 375;
     private static int TAM_BOTON_ENVIAR = 50;
     private static int DISTANCIA_FILAS = 10;
 
