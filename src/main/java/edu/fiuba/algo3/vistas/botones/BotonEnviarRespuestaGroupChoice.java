@@ -29,7 +29,7 @@ public class BotonEnviarRespuestaGroupChoice extends Button {
         for(Node opcion : opcionesGrupo ){
             spinnersGrupo.add((BotonSpinnerGrupo) opcion);
         }
-        controlador.agregarOpcionesSeleccionadas(spinnersGrupo);
+        controlador.agregarSpinnersGrupo(spinnersGrupo);
         super.setOnAction(controlador);
         Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));
         super.setBackground(unFondo);

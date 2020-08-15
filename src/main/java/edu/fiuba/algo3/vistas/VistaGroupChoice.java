@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
-import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
-import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
@@ -62,7 +59,7 @@ public class VistaGroupChoice extends StackPane{
 
     private void armarPregunta(ArrayList<String> nombresGrupos,VBox cajaPregunta, GroupChoice preguntaGroupChoice, ControladorEnviarGroupChoice controlador) {
 
-        ArrayList<Opcion> opciones = preguntaGroupChoice.respuestas();
+        ArrayList<OpcionSimple> opciones = preguntaGroupChoice.respuestasAPregunta();
         Desordenador desordenador = new Desordenador(new CriterioNormal());
         desordenador.desordenar(opciones);
 
@@ -70,7 +67,7 @@ public class VistaGroupChoice extends StackPane{
         VBox cajaSpinners = new VBox(10);
         cajaSpinners.setAlignment(Pos.CENTER);
 
-        for(Opcion opcion:opciones) {
+        for(OpcionSimple opcion:opciones) {
             BotonSpinnerGrupo boton = new BotonSpinnerGrupo(nombresGrupos,opcion,controlador);
             cajaSpinners.getChildren().add(boton);
         }

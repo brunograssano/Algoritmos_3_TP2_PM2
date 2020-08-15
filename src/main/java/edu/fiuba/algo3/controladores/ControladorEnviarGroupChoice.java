@@ -19,6 +19,7 @@ import java.util.HashMap;
 public class ControladorEnviarGroupChoice implements EventHandler<ActionEvent> {
 
     private final HashMap<String, ArrayList<OpcionSimple>> respuestasUsuario;
+    ArrayList<BotonSpinnerGrupo> spinnerGrupos;
     private final ArrayList<String> nombresGrupo;
     private final Stage stage;
 
@@ -32,11 +33,16 @@ public class ControladorEnviarGroupChoice implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        agregarOpcionesSeleccionadas(spinnerGrupos);
         RespuestaGroupChoice respuestaDeUnJugador =  new RespuestaGroupChoice(nombresGrupo.get(0), respuestasUsuario.get(nombresGrupo.get(0)), nombresGrupo.get(1), respuestasUsuario.get(nombresGrupo.get(1)));
         AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
         VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
         Scene scene = new Scene(vistaTransicion,800,600);
         stage.setScene(scene);
+    }
+
+    public void agregarSpinnersGrupo(ArrayList<BotonSpinnerGrupo> spinnerGrupos){
+        this.spinnerGrupos = spinnerGrupos;
     }
 
     public void agregarOpcionesSeleccionadas(ArrayList<BotonSpinnerGrupo> spinnersGrupo) {
