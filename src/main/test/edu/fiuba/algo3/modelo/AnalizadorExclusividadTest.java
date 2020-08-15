@@ -6,11 +6,8 @@ import edu.fiuba.algo3.modelo.modificadores.exclusividad.UsuarioSeEquivoco;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoParcial;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AnalizadorExclusividadTest {
 

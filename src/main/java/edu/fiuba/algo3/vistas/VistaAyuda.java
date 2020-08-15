@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
-
 public class VistaAyuda extends StackPane {
     public VistaAyuda() {
         super();

@@ -2,10 +2,8 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorNombresJugadores;
 import edu.fiuba.algo3.vistas.botones.BotonInicio;
-import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,12 +16,6 @@ import javafx.stage.Stage;
 public class VistaPedirNombres extends StackPane{
 
     static String VIOLETA = "9370DB";
-    static String GRIS = "D8DDEF";
-    static String VERDE = "33FF96";
-    static String AZUL = "0083E0";
-    static String ROJO = "EF2D56";
-    static String AMARILLO = "FBD87F";
-
     private Stage stage;
 
     public VistaPedirNombres(Stage stage, ContenedorPrincipal contenedorPrincipal) {

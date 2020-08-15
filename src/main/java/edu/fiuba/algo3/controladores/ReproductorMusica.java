@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.controladores;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
-
 import java.io.File;
 import java.net.URI;
 

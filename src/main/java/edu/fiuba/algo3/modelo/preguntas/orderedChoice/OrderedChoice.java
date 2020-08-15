@@ -6,11 +6,11 @@ import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaComparable;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class OrderedChoice extends Pregunta implements PreguntaComparable {
 

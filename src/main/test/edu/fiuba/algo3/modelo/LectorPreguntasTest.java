@@ -3,18 +3,18 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

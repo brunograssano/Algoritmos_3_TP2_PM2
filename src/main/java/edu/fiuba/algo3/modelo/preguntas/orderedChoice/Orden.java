@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas.orderedChoice;
 
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-
 import java.util.ArrayList;
 
 public class Orden {

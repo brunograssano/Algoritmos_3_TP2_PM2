@@ -1,19 +1,16 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
-import edu.fiuba.algo3.modelo.desordenador.CriterioDeDesorden;
-import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
 import java.util.ArrayList;
 
 public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {

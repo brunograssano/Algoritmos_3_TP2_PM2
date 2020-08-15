@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
@@ -11,10 +9,7 @@ import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 

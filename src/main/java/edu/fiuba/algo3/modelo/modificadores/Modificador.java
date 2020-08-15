@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
 import java.util.ArrayList;
 
 public interface Modificador {

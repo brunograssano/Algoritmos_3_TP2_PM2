@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 public class ControladorGanador {
 
-
     public String obtenerResultadoFinal(){
         String textoResultado = "";
         Jugador jugadorGanador = AlgoHoot.getInstance().obtenerJugadorGanador();
