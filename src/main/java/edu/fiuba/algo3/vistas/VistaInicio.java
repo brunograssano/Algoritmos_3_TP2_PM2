@@ -11,12 +11,12 @@ import javafx.stage.Stage;
 
 public class VistaInicio extends StackPane{
 
+    private static final String GRIS = "D8DDEF";
     static String VIOLETA = "9370DB";
 
     private Stage stage;
 
     public VistaInicio(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {
-        super();
         this.stage = stagePrincipal;
 
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
@@ -29,17 +29,16 @@ public class VistaInicio extends StackPane{
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(GRIS);
         cajaPrincipal.getChildren().add(textoAlgoHootInicio);
 
         BotonInicio botonInicio = new BotonInicio(new ControladorIniciarJuego(stagePrincipal,contenedorPrincipal));
         cajaPrincipal.getChildren().add(botonInicio);
 
-        stage.setTitle("AlgoHoot");
+        stage.setTitle("AlgoHoot!");
         stage.centerOnScreen();
 
         grilla.add(cajaPrincipal,1,1);
-        //grilla.setGridLinesVisible(true);
 
         super.getChildren().add(grilla);
     }
