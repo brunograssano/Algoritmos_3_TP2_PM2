@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 public class VistaInicio extends StackPane{
 
     private static final String GRIS = "D8DDEF";
-    static String VIOLETA = "9370DB";
 
     private Stage stage;
 

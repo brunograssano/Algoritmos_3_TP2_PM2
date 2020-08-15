@@ -18,7 +18,7 @@ public class App extends Application {
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
         contenedorPrincipal.setCentro(new VistaInicio(stage,contenedorPrincipal));
 
-        Scene sceneInicio = new Scene(contenedorPrincipal,800,600);
+        Scene sceneInicio = new Scene(contenedorPrincipal,1280, 720);
         sceneInicio.setOnKeyPressed(new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu()));
 
         Image icono = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/Icono.png");

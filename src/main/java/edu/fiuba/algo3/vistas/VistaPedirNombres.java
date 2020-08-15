@@ -15,13 +15,9 @@ import javafx.stage.Stage;
 
 public class VistaPedirNombres extends StackPane{
 
-    static String VIOLETA = "9370DB";
-    private Stage stage;
+    private static final String GRIS = "D8DDEF";
 
     public VistaPedirNombres(Stage stage, ContenedorPrincipal contenedorPrincipal) {
-
-        this.stage = stage;
-
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null,BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
@@ -31,7 +27,7 @@ public class VistaPedirNombres extends StackPane{
 
         VBox nombreJuego = new VBox(0);
         nombreJuego.setAlignment(Pos.TOP_CENTER);
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(GRIS);
         nombreJuego.getChildren().add(textoAlgoHootInicio);
 
         VBox cajaJugadores = new VBox(10);
@@ -39,7 +35,7 @@ public class VistaPedirNombres extends StackPane{
 
         Label labelJugador1 = new Label("Ingrese el nombre del Jugador 1");
         labelJugador1.setFont(Font.font("montserrat",20));
-        labelJugador1.setTextFill(Color.web(VIOLETA));
+        labelJugador1.setTextFill(Color.web(GRIS));
         cajaJugadores.getChildren().add(labelJugador1);
 
         TextField campoNombreJugador1 = new TextField();
@@ -48,7 +44,7 @@ public class VistaPedirNombres extends StackPane{
 
         Label labelJugador2 = new Label("Ingrese el nombre del Jugador 2");
         labelJugador2.setFont(Font.font("montserrat",20));
-        labelJugador2.setTextFill(Color.web(VIOLETA));
+        labelJugador2.setTextFill(Color.web(GRIS));
         cajaJugadores.getChildren().add(labelJugador2);
 
         TextField campoNombreJugador2 = new TextField();
@@ -64,7 +60,6 @@ public class VistaPedirNombres extends StackPane{
         grilla.add(nombreJuego,1,0);
         grilla.add(cajaJugadores,1,1);
         grilla.add(botonConfirmado,1,2);
-        //grilla.setGridLinesVisible(true);
 
         super.getChildren().add(grilla);
     }
