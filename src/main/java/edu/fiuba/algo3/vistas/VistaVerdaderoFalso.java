@@ -29,7 +29,7 @@ public class VistaVerdaderoFalso extends StackPane {
     static String AMARILLO = "FBD87F";
     private Stage stage;
 
-    public VistaVerdaderoFalso(VerdaderoFalso unaPregunta,Stage stage){
+    public VistaVerdaderoFalso(VerdaderoFalso unaPregunta, Stage stage, ContenedorPrincipal contenedorPrincipal){
         super();
         this.stage = stage;
 
@@ -45,7 +45,7 @@ public class VistaVerdaderoFalso extends StackPane {
         VBox cajaPrincipal = new VBox(100);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta);
+        armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta,contenedorPrincipal);
 
         //grilla.setGridLinesVisible(true);
 
@@ -56,7 +56,7 @@ public class VistaVerdaderoFalso extends StackPane {
         super.getChildren().add(grilla);
     }
 
-    private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado,VerdaderoFalso unaPregunta) {
+    private void armarPregunta(VBox cajaPrincipal, VBox cajaEncabezado, VerdaderoFalso unaPregunta, ContenedorPrincipal contenedorPrincipal) {
         cajaEncabezado.getChildren().add(new EncabezadoPantalla(GRIS));
         ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
         Desordenador desordenador = new Desordenador(new CriterioNormal());
@@ -66,14 +66,14 @@ public class VistaVerdaderoFalso extends StackPane {
 
         for(OpcionEvaluable opcion:opciones) {
             if (opcion.obtenerTexto() == "Verdadero"){
-                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion));
+                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
 
         for(OpcionEvaluable opcion:opciones) {
             if (opcion.obtenerTexto() == "Falso"){
-                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion));
+                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }

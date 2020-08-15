@@ -11,16 +11,15 @@ import javafx.stage.Stage;
 public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
 
     private Stage stage;
-
-    public ControladorIniciarJuego(Stage stage){
+    private ContenedorPrincipal contenedorPrincipal;
+    public ControladorIniciarJuego(Stage stage, ContenedorPrincipal contenedorPrincipal){
         this.stage = stage;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaPedirNombres(stage));
-        Scene scene = new Scene(contenedor,800,600);
-        stage.setScene(scene);
+        contenedorPrincipal.setCentro(new VistaPedirNombres(stage,contenedorPrincipal));
     }
 }

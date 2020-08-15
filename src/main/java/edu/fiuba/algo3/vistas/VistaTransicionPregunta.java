@@ -14,7 +14,7 @@ public class VistaTransicionPregunta extends StackPane {
     private Stage stage;
     static String VIOLETA = "9370DB";
 
-    public VistaTransicionPregunta(Stage stage) {
+    public VistaTransicionPregunta(Stage stage, ContenedorPrincipal contenedorPrincipal) {
         super();
         this.stage = stage;
 
@@ -29,7 +29,7 @@ public class VistaTransicionPregunta extends StackPane {
 
         CajaPregunta cajaCentral = new CajaPregunta();
 
-        BotonEmpezarPregunta botonEmpezarPregunta = new BotonEmpezarPregunta(stage);
+        BotonEmpezarPregunta botonEmpezarPregunta = new BotonEmpezarPregunta(stage,contenedorPrincipal);
 
         CajaModificadores cajaModificadores = new CajaModificadores();
 

@@ -18,9 +18,12 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
     private ArrayList<OpcionEvaluable> respuestasUsuario;
     private Stage stage;
 
-    public ControladorEnviarMultipleChoice(Stage stage){
+    private ContenedorPrincipal contenedorPrincipal;
+
+    public ControladorEnviarMultipleChoice(Stage stage,ContenedorPrincipal contenedorPrincipal){
         respuestasUsuario = new ArrayList<>();
         this.stage = stage;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
 
@@ -35,9 +38,10 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
         else{
             RespuestaMultipleChoice respuestaDeUnJugador = new RespuestaMultipleChoice(respuestasUsuario);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage));
-            Scene scene = new Scene(contenedor,800,600);
-            stage.setScene(scene);
+            //ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage, contenedorPrincipal));
+            contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
+            //Scene scene = new Scene(contenedorPrincipal,800,600);
+            //stage.setScene(scene);
         }
     }
 

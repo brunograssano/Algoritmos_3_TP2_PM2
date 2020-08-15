@@ -31,7 +31,7 @@ public class VistaOrderedChoice extends StackPane {
 
     private Stage stage;
 
-    public VistaOrderedChoice(Stage stagePrincipal) {
+    public VistaOrderedChoice(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {
         super();
         this.stage = stagePrincipal;
 
@@ -42,7 +42,7 @@ public class VistaOrderedChoice extends StackPane {
             opcionesSimplesCorrectas.add((OpcionSimple) opcion);
         }
 
-        ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage);
+        ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage,contenedorPrincipal);
 
         Image imagen = new Image("file:"+ System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoPreguntasVioleta.png");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,null);

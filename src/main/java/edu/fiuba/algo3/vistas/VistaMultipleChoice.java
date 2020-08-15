@@ -28,7 +28,7 @@ public class VistaMultipleChoice extends StackPane {
 
     private Stage stage;
 
-    public VistaMultipleChoice(MultipleChoice preguntaMultipleChoice, Stage stagePrincipal) {
+    public VistaMultipleChoice(MultipleChoice preguntaMultipleChoice, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {
         super();
         this.stage = stagePrincipal;
 
@@ -42,7 +42,7 @@ public class VistaMultipleChoice extends StackPane {
         VBox cajaPregunta = new VBox(2);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
 
-        ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage);
+        ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage,contenedorPrincipal);
         armarPregunta(cajaPregunta,preguntaMultipleChoice,controladorRespondioUsuario);
         //grilla.setGridLinesVisible(true);
 

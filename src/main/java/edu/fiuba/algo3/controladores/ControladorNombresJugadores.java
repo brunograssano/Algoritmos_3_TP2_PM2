@@ -18,11 +18,13 @@ public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
     private Stage stage;
     private TextField textoJugador1;
     private TextField textoJugador2;
+    private ContenedorPrincipal contenedorPrincipal;
 
-    public ControladorNombresJugadores(Stage stage, TextField textoJugador1,TextField textoJugador2){
+    public ControladorNombresJugadores(Stage stage, TextField textoJugador1, TextField textoJugador2, ContenedorPrincipal contenedorPrincipal){
         this.stage = stage;
         this.textoJugador1 = textoJugador1;
         this.textoJugador2 = textoJugador2;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
 
@@ -38,9 +40,7 @@ public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
         }
         else{
             AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2,new CriterioNormal());
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage));
-            Scene scene = new Scene(contenedor,800,600);
-            stage.setScene(scene);
+            contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
         }
     }
 

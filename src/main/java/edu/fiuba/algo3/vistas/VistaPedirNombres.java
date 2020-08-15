@@ -26,7 +26,7 @@ public class VistaPedirNombres extends StackPane{
 
     private Stage stage;
 
-    public VistaPedirNombres(Stage stage) {
+    public VistaPedirNombres(Stage stage, ContenedorPrincipal contenedorPrincipal) {
 
         this.stage = stage;
 
@@ -66,7 +66,7 @@ public class VistaPedirNombres extends StackPane{
         VBox botonConfirmado = new VBox(0);
         botonConfirmado.setAlignment(Pos.BOTTOM_CENTER);
 
-        BotonInicio botonInicio = new BotonInicio(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2));
+        BotonInicio botonInicio = new BotonInicio(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2,contenedorPrincipal));
         botonConfirmado.getChildren().add(botonInicio);
 
         grilla.add(nombreJuego,1,0);

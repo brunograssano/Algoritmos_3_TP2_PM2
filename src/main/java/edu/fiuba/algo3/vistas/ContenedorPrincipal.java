@@ -15,16 +15,18 @@ public class ContenedorPrincipal extends BorderPane {
 
     BarraDeMenu menuBar;
 
-    public ContenedorPrincipal(Stage stage, StackPane centro) {
+    public ContenedorPrincipal(Stage stage) {
         this.setMenu(stage);
-        this.setCenter(centro);
         this.setConsola();
-
     }
 
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
+    }
+
+    public void setCentro(StackPane centro){
+        this.setCenter(centro);
     }
 
     private void setConsola() {

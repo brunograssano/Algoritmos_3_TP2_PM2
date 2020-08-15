@@ -22,18 +22,21 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
     private ArrayList<OpcionOrderedChoice> opcionesVista;
     private ArrayList<OpcionSimple> opcionesCorrectas;
     private ArrayList<OpcionSimple> opcionesJugador;
+    private ContenedorPrincipal contenedorPrincipal;
 
-
-    public ControladorEnviarOrderedChoice(Stage escenario){
+    public ControladorEnviarOrderedChoice(Stage escenario, ContenedorPrincipal contenedorPrincipal){
         stage = escenario;
         opcionesJugador = new ArrayList<>();
+        this.contenedorPrincipal = contenedorPrincipal;
     }
     public void agregarOpcionesSeleccionadas(ArrayList<OpcionOrderedChoice> opciones){
         opcionesVista = opciones;
     }
+
     public void agregarOpcionesCorrectas(ArrayList<OpcionSimple> opcionesCorrectas){
         this.opcionesCorrectas = opcionesCorrectas;
     }
+
     @Override
     public void handle(ActionEvent actionEvent) {
 
@@ -48,9 +51,7 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
             convertirOpcionesSimples();
             RespuestaOrderedChoice respuestaDeUnJugador = new RespuestaOrderedChoice(opcionesJugador);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage));
-            Scene scene = new Scene(contenedor,800,600);
-            stage.setScene(scene);
+            contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
         }
 
     }

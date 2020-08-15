@@ -10,19 +10,19 @@ import javafx.stage.Stage;
 public class FabricaDeVistas {
 
 
-    public static StackPane CrearVistaDePregunta(Pregunta unaPregunta, Stage stage){
+    public static StackPane CrearVistaDePregunta(Pregunta unaPregunta, Stage stage, ContenedorPrincipal contenedorPrincipal){
         StackPane vistaPregunta;
         if(unaPregunta instanceof VerdaderoFalso){
-            vistaPregunta = new VistaVerdaderoFalso((VerdaderoFalso) unaPregunta,stage);
+            vistaPregunta = new VistaVerdaderoFalso((VerdaderoFalso) unaPregunta, stage, contenedorPrincipal);
         }
         else if(unaPregunta instanceof MultipleChoice){
-            vistaPregunta = new VistaMultipleChoice((MultipleChoice) unaPregunta, stage);
+            vistaPregunta = new VistaMultipleChoice((MultipleChoice) unaPregunta, stage, contenedorPrincipal);
         }
         else if(unaPregunta instanceof GroupChoice){
             vistaPregunta = new VistaGroupChoice(stage);
         }
         else{
-            vistaPregunta = new VistaOrderedChoice(stage);
+            vistaPregunta = new VistaOrderedChoice(stage,contenedorPrincipal);
         }
         return vistaPregunta;
     }

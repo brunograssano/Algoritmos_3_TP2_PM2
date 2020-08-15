@@ -14,11 +14,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, new VistaInicio(stage));
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
+        contenedorPrincipal.setCentro(new VistaInicio(stage,contenedorPrincipal));
         Scene sceneInicio = new Scene(contenedorPrincipal,800,600);
+
         Image icono = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/Icono.png");
         stage.getIcons().add(icono);
+
         stage.setScene(sceneInicio);
         stage.show();
     }

@@ -15,18 +15,18 @@ public class ControladorEnviarVerdaderoFalso implements EventHandler<ActionEvent
 
     private OpcionEvaluable respuestasUsuario;
     private Stage stage;
+    private ContenedorPrincipal contenedorPrincipal;
 
-    public ControladorEnviarVerdaderoFalso(Stage stage, OpcionEvaluable unaOpcion){
+    public ControladorEnviarVerdaderoFalso(Stage stage, OpcionEvaluable unaOpcion, ContenedorPrincipal contenedorPrincipal){
         respuestasUsuario = unaOpcion;
         this.stage = stage;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         RespuestaVerdaderoFalso respuestaDeUnJugador = new RespuestaVerdaderoFalso(respuestasUsuario);
         AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-        ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, new VistaTransicionPregunta(stage));
-        Scene scene = new Scene(contenedor,800,600);
-        stage.setScene(scene);
+        contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
     }
 }

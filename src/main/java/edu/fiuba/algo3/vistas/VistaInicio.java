@@ -24,7 +24,7 @@ public class VistaInicio extends StackPane{
 
     private Stage stage;
 
-    public VistaInicio(Stage stagePrincipal) {
+    public VistaInicio(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {
         super();
         this.stage = stagePrincipal;
 
@@ -41,7 +41,7 @@ public class VistaInicio extends StackPane{
         AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
         cajaPrincipal.getChildren().add(textoAlgoHootInicio);
 
-        BotonInicio botonInicio = new BotonInicio(new ControladorIniciarJuego(stagePrincipal));
+        BotonInicio botonInicio = new BotonInicio(new ControladorIniciarJuego(stagePrincipal,contenedorPrincipal));
         cajaPrincipal.getChildren().add(botonInicio);
 
         stage.setTitle("AlgoHoot");

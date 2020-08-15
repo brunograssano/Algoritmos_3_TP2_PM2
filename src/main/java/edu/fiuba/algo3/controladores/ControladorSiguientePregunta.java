@@ -16,8 +16,11 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
     private Stage stage;
 
-    public ControladorSiguientePregunta(Stage stage) {
+    private ContenedorPrincipal contenedorPrincipal;
+
+    public ControladorSiguientePregunta(Stage stage, ContenedorPrincipal contenedorPrincipal) {
         this.stage = stage;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
     @Override
@@ -42,26 +45,20 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
         //Se borra
         if(pregunta instanceof VerdaderoFalso){
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
-            Scene scene = new Scene(contenedor,800,600);
-            stage.setScene(scene);
+            contenedorPrincipal.setCentro( FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
         }
         else if(pregunta instanceof MultipleChoice){
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, FabricaDeVistas.CrearVistaDePregunta(pregunta, stage));
-            Scene scene = new Scene(contenedor,800,600);
-            stage.setScene(scene);
+            contenedorPrincipal.setCentro( FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
         }
         else if(pregunta instanceof GroupChoice){
             VistaGroupChoice vistaPregunta = new VistaGroupChoice(stage);
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, vistaPregunta);
-            Scene scene = new Scene(contenedor, 800, 600);
-            stage.setScene(scene);
+            contenedorPrincipal.setCentro( vistaPregunta);
+            //ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, vistaPregunta);
+            //Scene scene = new Scene(contenedor, 800, 600);
+            //stage.setScene(scene);
         }
         else{
-            VistaOrderedChoice vistaPregunta = new VistaOrderedChoice(stage);
-            ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, vistaPregunta);
-            Scene scene = new Scene(contenedor,800,600);
-            stage.setScene(scene);
+            contenedorPrincipal.setCentro(new VistaOrderedChoice(stage,contenedorPrincipal));
         }
 
     }
