@@ -27,7 +27,6 @@ public class ReproductorMusica {
     }
 
     private AudioClip reproducirTema(String direccion){
-        // TODO ver bien como hacer que tome la direccion a la musica
         File dir = new File(System.getProperty("user.dir") + direccion);
         URI path = dir.toURI();
         String direccionParaMedia = path.toString();

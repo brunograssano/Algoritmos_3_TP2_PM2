@@ -65,14 +65,14 @@ public class VistaVerdaderoFalso extends StackPane {
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
         for(OpcionEvaluable opcion:opciones) {
-            if (opcion.obtenerTexto() == "Verdadero"){
+            if (opcion.obtenerTexto().equals("Verdadero")){
                 BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
 
         for(OpcionEvaluable opcion:opciones) {
-            if (opcion.obtenerTexto() == "Falso"){
+            if (opcion.obtenerTexto().equals("Falso")){
                 BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }

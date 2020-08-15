@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.seccionesVista;
 
 import edu.fiuba.algo3.controladores.*;
 import javafx.scene.control.Menu;
@@ -8,10 +8,9 @@ import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
-    private MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
+    MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
 
     public BarraDeMenu(Stage stage) {
-
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuMusica = new Menu("Música");
@@ -24,11 +23,23 @@ public class BarraDeMenu extends MenuBar {
         opcionSalir.setOnAction(new ControladorTerminarJuego());
         opcionAcercaDe.setOnAction(new ControladorAcercaDeAyuda());
         opcionAyudaJuego.setOnAction(new ControladorAyudaDelJuego());
-
         opcionPantallaCompleta.setOnAction(new ControladorOpcionPantallaCompleta(stage,opcionPantallaCompleta));
 
-        opcionPantallaCompleta.setDisable(true);
+        agregarMusicas(menuMusica);
 
+        menuArchivo.getItems().addAll(opcionSalir);
+
+        menuAyuda.getItems().addAll(opcionAcercaDe,opcionAyudaJuego);
+        menuVer.getItems().addAll(opcionPantallaCompleta);
+
+        this.getMenus().addAll(menuArchivo, menuVer, menuMusica, menuAyuda);
+    }
+
+    public void aplicacionMaximizada() {
+        opcionPantallaCompleta.setDisable(false);
+    }
+
+    private void agregarMusicas(Menu menuMusica){
         ReproductorMusica unReproductor = new ReproductorMusica();
         MenuItem opcionSinMusica = new MenuItem("Sin música");
         MenuItem opcionMusicaComun = new MenuItem("Música Kahoot original");
@@ -54,18 +65,9 @@ public class BarraDeMenu extends MenuBar {
         opcionMusicaSpace.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\space.mp3",unReproductor));
         opcionMusicaDivertida.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\earrape.mp3",unReproductor));
 
-
-        menuArchivo.getItems().addAll(opcionSalir);
         menuMusica.getItems().addAll(opcionSinMusica,opcionMusicaComun,opcionMusicaTrance,opcionMusicaHalloween,opcionMusica8bits);
         menuMusica.getItems().addAll(opcionMusicaTrap,opcionMusicaDisco,opcionMusicaFantasy,opcionMusicaReggae,opcionMusicaSpace,opcionMusicaDivertida);
-
-        menuAyuda.getItems().addAll(opcionAcercaDe,opcionAyudaJuego);
-        menuVer.getItems().addAll(opcionPantallaCompleta);
-
-        this.getMenus().addAll(menuArchivo, menuVer, menuMusica, menuAyuda);
+       
     }
 
-    public void aplicacionMaximizada() {
-       opcionPantallaCompleta.setDisable(false);
-    }
 }

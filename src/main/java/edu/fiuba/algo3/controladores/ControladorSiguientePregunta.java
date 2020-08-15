@@ -25,15 +25,8 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        if(AlgoHoot.getInstance().terminoElJuego()){
-            VistaGanador vistaGanador = new VistaGanador(stage);
-            Scene scene = new Scene(vistaGanador,800,600);
-            stage.setScene(scene);
-        }
-        else{
-            Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
-            contenedorPrincipal.setCentro(FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
-        }
+        Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
+        contenedorPrincipal.setCentro(FabricaDeVistas.CrearVistaDePregunta(pregunta, stage, contenedorPrincipal));
     }
 
 }
