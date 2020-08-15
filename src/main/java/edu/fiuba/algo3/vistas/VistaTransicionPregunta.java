@@ -13,7 +13,8 @@ import javafx.stage.Stage;
 public class VistaTransicionPregunta extends StackPane {
 
     private Stage stage;
-    static String VIOLETA = "9370DB";
+
+    static String GRIS = "D8DDEF";
 
     public VistaTransicionPregunta(Stage stage, ContenedorPrincipal contenedorPrincipal) {
         this.stage = stage;
@@ -24,7 +25,7 @@ public class VistaTransicionPregunta extends StackPane {
 
         VBox cajaPrincipal = new VBox(20);
         cajaPrincipal.setAlignment(Pos.TOP_CENTER);
-        EncabezadoPantalla cajaJugadores = new EncabezadoPantalla(VIOLETA);
+        EncabezadoPantalla cajaJugadores = new EncabezadoPantalla(GRIS);
 
         CajaPregunta cajaCentral = new CajaPregunta();
 
