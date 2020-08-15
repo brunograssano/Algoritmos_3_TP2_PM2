@@ -76,6 +76,12 @@
 			"enunciado":"Son \"lenguajes dinamicos\" aquellos que en la informatica no contienen palabras derivadas del latin",
 			"enunciadoEsCorrecto": false
 		}
+	},
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"Git es un invento del creador del Linux Kernel, Linus Torvalds",
+			"enunciadoEsCorrecto": true
+		}
 	}
-
 ]
