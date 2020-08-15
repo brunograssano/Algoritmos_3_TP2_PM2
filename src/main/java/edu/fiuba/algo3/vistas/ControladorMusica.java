@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
+import java.net.URI;
 
 
 public class ControladorMusica implements EventHandler<ActionEvent> {
@@ -17,8 +19,10 @@ public class ControladorMusica implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // TODO ver bien como hacer que tome la direccion a la musica
-        String dir = "file:"+System.getProperty("user.dir") + "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3";
-        Media musica = new Media(dir);
+        File dir = new File(System.getProperty("user.dir") + "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3");
+        URI path = dir.toURI();
+        String direccionParaMedia = path.toString();
+        Media musica = new Media(direccionParaMedia);
         MediaPlayer mediaPlayer = new MediaPlayer(musica);
         mediaPlayer.play();
         mediaPlayer.setVolume(2);
