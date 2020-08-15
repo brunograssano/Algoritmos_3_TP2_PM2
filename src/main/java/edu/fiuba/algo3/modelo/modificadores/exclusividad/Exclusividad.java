@@ -36,7 +36,7 @@ public class Exclusividad implements Modificador {
 
     private void seUsoExclusividadEnPreguntaValida(ArrayList<Modificador> modificadoresDeLaJugada){
         modificadoresDeLaJugada.add(this);
-        jugador.pierdeModificador(this);
+        jugador.pierdeExclusividad(this);
     }
 
     @Override

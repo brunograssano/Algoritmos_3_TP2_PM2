@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.turnos.TerminoJuego;
@@ -95,6 +97,14 @@ public class AlgoHoot {
 
     public String nombreDelJugadorEnTurno() {
         return turno.nombreDelJugador();
+    }
+
+    public ArrayList<MultiplicadorJugador> multiplicadoresJugador() {
+        return turno.multiplicadoresJugador();
+    }
+
+    public ArrayList<Exclusividad> exclusividadesJugador() {
+        return turno.exclusividadesJugador();
     }
 }
 

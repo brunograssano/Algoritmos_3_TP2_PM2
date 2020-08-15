@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo.turnos;
 
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
+
+import java.util.ArrayList;
 
 public class TurnoPrimerJugador implements Turno {
 
@@ -24,5 +28,15 @@ public class TurnoPrimerJugador implements Turno {
     @Override
     public String nombreDelJugador() {
         return jugadorDelTurno.obtenerNombre();
+    }
+
+    @Override
+    public ArrayList<MultiplicadorJugador> multiplicadoresJugador() {
+        return jugadorDelTurno.multiplicadores();
+    }
+
+    @Override
+    public ArrayList<Exclusividad> exclusividadesJugador() {
+        return jugadorDelTurno.exclusividades();
     }
 }
