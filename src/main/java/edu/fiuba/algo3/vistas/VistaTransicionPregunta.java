@@ -23,7 +23,7 @@ public class VistaTransicionPregunta extends StackPane {
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        VBox cajaPrincipal = new VBox(0);
+        VBox cajaPrincipal = new VBox(20);
         cajaPrincipal.setAlignment(Pos.TOP_CENTER);
         EncabezadoPantalla cajaJugadores = new EncabezadoPantalla(VIOLETA);
 
