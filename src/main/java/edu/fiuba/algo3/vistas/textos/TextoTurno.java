@@ -7,10 +7,10 @@ import javafx.scene.text.Font;
 
 public class TextoTurno extends Label {
 
-    public TextoTurno(String color) {
+    public TextoTurno() {
             super("Turno de "+ AlgoHoot.getInstance().nombreDelJugadorEnTurno());
             super.setFont(Font.font("montserrat",40));
-            super.setTextFill(Color.web(color));
+            super.setTextFill(Color.BLACK);
             super.setWrapText(true);
     }
 }

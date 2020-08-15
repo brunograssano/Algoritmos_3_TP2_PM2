@@ -53,7 +53,7 @@ public class VistaOrderedChoice extends StackPane {
         cajaInferior.getChildren().add(botonEnviar);
         cajaInferior.setAlignment(Pos.CENTER);
 
-        grilla.add(new EncabezadoPantalla(GRIS),1,0);
+        grilla.add(new EncabezadoPantalla(),1,0);
         grilla.add(cajaPregunta,1,1);
         grilla.add(cajaInferior,1,2);
         super.getChildren().add(grilla);

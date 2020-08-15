@@ -5,13 +5,14 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.vistas.textos.TextoContadorPreguntas;
 import edu.fiuba.algo3.vistas.textos.TextoTurno;
 import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class EncabezadoPantalla extends HBox {
 
-    public EncabezadoPantalla(String colorLogo){
-        TextoTurno textoDelTurno = new TextoTurno(colorLogo);
-        TextoContadorPreguntas textoContadorPreguntas = new TextoContadorPreguntas(colorLogo);
+    public EncabezadoPantalla(){
+        TextoTurno textoDelTurno = new TextoTurno();
+        TextoContadorPreguntas textoContadorPreguntas = new TextoContadorPreguntas();
         CajaTurno cajaTurno = new CajaTurno(textoDelTurno,textoContadorPreguntas);
 
         Jugador jugador1 = AlgoHoot.getInstance().obtenerJugador1();

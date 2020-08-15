@@ -7,10 +7,10 @@ import javafx.scene.text.Font;
 
 public class TextoContadorPreguntas extends Label {
 
-    public TextoContadorPreguntas(String color) {
+    public TextoContadorPreguntas() {
         super("Quedan "+ AlgoHoot.getInstance().jugadasRestantes()+ " preguntas de "+AlgoHoot.getInstance().preguntasTotales()+" totales");
         super.setFont(Font.font("montserrat",20));
-        super.setTextFill(Color.web(color));
+        super.setTextFill(Color.BLACK);
         super.setWrapText(true);
     }
 
