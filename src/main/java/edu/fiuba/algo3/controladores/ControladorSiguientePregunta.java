@@ -54,7 +54,7 @@ public class ControladorSiguientePregunta implements EventHandler<ActionEvent> {
             stage.setScene(scene);
         }
         else if(pregunta instanceof GroupChoice){
-            VistaGroupChoice vistaPregunta = new VistaGroupChoice(stage);
+            VistaGroupChoice vistaPregunta = new VistaGroupChoice((GroupChoice) pregunta, stage);
             Scene scene = new Scene(vistaPregunta, 800, 600);
             stage.setScene(scene);
         }
