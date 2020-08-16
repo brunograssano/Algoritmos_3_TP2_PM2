@@ -17,7 +17,7 @@ public class BotonExclusividad extends Button {
     static String AMARILLO = "FBD87F";
 
     public BotonExclusividad(ArrayList<Exclusividad> exclusividades) {
-        super.setText("Exclusividad");
+        super.setText("Usar Exclusividad");
         super.setFont(Font.font("montserrat", 20));
         super.setTextFill(Color.BLACK);
         Exclusividad exclusividad = exclusividades.get(0);
