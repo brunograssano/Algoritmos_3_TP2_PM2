@@ -6,13 +6,14 @@ import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionVerdaderoFalso;
-import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 public class VistaVerdaderoFalso extends StackPane {
@@ -38,16 +39,14 @@ public class VistaVerdaderoFalso extends StackPane {
 
         armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta,contenedorPrincipal);
 
-        //grilla.setGridLinesVisible(true);
-
         grilla.add(cajaEncabezado,1,0);
         grilla.add(cajaPrincipal,1,1);
-
 
         super.getChildren().add(grilla);
     }
 
     private void armarPregunta(VBox cajaPrincipal, VBox cajaEncabezado, VerdaderoFalso unaPregunta, ContenedorPrincipal contenedorPrincipal) {
+
         cajaEncabezado.getChildren().add(new EncabezadoPantalla());
         ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
         Desordenador desordenador = new Desordenador(new CriterioNormal());
@@ -61,15 +60,15 @@ public class VistaVerdaderoFalso extends StackPane {
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
-
         for(OpcionEvaluable opcion:opciones) {
             if (opcion.obtenerTexto().equals("Falso")){
                 BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
+                boton.setMinSize(200,75);
+                boton.setMaxSize(200,75);
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
-
-        cajaPrincipal.getChildren().add(new CajaPregunta());
+        cajaPrincipal.getChildren().add(new TextoPregunta(unaPregunta.textoPregunta()));
         cajaPrincipal.getChildren().add(cajaAgrupadoraDeOpciones);
     }
 

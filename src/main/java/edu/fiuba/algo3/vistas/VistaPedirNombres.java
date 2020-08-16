@@ -57,9 +57,9 @@ public class VistaPedirNombres extends StackPane{
         BotonInicio botonInicio = new BotonInicio(new ControladorNombresJugadores(stage,campoNombreJugador1,campoNombreJugador2,contenedorPrincipal));
         botonConfirmado.getChildren().add(botonInicio);
 
-        grilla.add(nombreJuego,1,0);
-        grilla.add(cajaJugadores,1,1);
-        grilla.add(botonConfirmado,1,2);
+        grilla.add(nombreJuego,0,0);
+        grilla.add(cajaJugadores,0,1);
+        grilla.add(botonConfirmado,0,2);
 
         super.getChildren().add(grilla);
     }

@@ -9,5 +9,5 @@ import java.util.ArrayList;
 public interface PreguntaComparable {
     Resultado responder(RespuestaComparable respuestasJugador, Jugador unJugador);
 
-    ArrayList<OpcionSimple> respuestasAPregunta();
+    ArrayList<OpcionSimple> respuestasPregunta();
 }

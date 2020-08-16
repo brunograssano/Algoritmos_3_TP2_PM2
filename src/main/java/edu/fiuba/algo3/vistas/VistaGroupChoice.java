@@ -3,13 +3,13 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
-import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -24,6 +24,7 @@ public class VistaGroupChoice extends StackPane{
     private Stage stage;
 
     public VistaGroupChoice(GroupChoice pregunta, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {
+
         super();
         this.stage = stagePrincipal;
 
@@ -33,7 +34,8 @@ public class VistaGroupChoice extends StackPane{
         super.setBackground(fondo);
 
         GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
-        VBox cajaPregunta = new VBox(2);
+
+        VBox cajaPregunta = new VBox(30);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
         VBox cajaInferior = new VBox(20);
 
@@ -46,19 +48,18 @@ public class VistaGroupChoice extends StackPane{
         cajaInferior.getChildren().add(botonEnviar);
         cajaInferior.setAlignment(Pos.CENTER);
 
-        grilla.add(new EncabezadoPantalla(),1,0);
-        grilla.add(cajaPregunta,1,1);
-        grilla.add(cajaInferior,1,2);
+        grilla.add(new EncabezadoPantalla(),0,0);
+        grilla.add(cajaPregunta,0,1);
+        grilla.add(cajaInferior,0,2);
 
         super.getChildren().add(grilla);
     }
 
     private void armarPregunta(ArrayList<String> nombresGrupos,VBox cajaPregunta, GroupChoice preguntaGroupChoice, ControladorEnviarGroupChoice controlador) {
 
-        ArrayList<OpcionSimple> opciones = preguntaGroupChoice.respuestasAPregunta();
+        ArrayList<OpcionSimple> opciones = preguntaGroupChoice.respuestasPregunta();
         Desordenador desordenador = new Desordenador(new CriterioNormal());
         desordenador.desordenar(opciones);
-
 
         VBox cajaSpinners = new VBox(10);
         cajaSpinners.setAlignment(Pos.CENTER);
@@ -66,9 +67,8 @@ public class VistaGroupChoice extends StackPane{
         for(OpcionSimple opcion:opciones) {
             BotonSpinnerGrupo boton = new BotonSpinnerGrupo(nombresGrupos,opcion,controlador);
             cajaSpinners.getChildren().add(boton);
-        }
+        }      cajaPregunta.getChildren().add(new TextoPregunta(preguntaGroupChoice.textoPregunta()));
 
-        cajaPregunta.getChildren().add(new CajaPregunta());
         cajaPregunta.getChildren().add(cajaSpinners);
     }
 }

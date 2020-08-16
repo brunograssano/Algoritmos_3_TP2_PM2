@@ -6,14 +6,15 @@ import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
-import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
+import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 public class VistaOrderedChoice extends StackPane {
@@ -23,11 +24,7 @@ public class VistaOrderedChoice extends StackPane {
     public VistaOrderedChoice(OrderedChoice pregunta, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {
         this.stage = stagePrincipal;
 
-        ArrayList<OpcionSimple> opciones =  (pregunta.respuestasAPregunta());
-        ArrayList<OpcionSimple> opcionesSimplesCorrectas = new ArrayList<>();
-        for(OpcionSimple opcion : opciones){
-            opcionesSimplesCorrectas.add(opcion);
-        }
+        ArrayList<OpcionSimple> opcionesCorrectas =  (pregunta.respuestasPregunta());
 
         ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage,contenedorPrincipal);
 
@@ -38,21 +35,22 @@ public class VistaOrderedChoice extends StackPane {
 
         GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
-        VBox cajaPregunta = new VBox(2);
-        armarPregunta(cajaPregunta, controladorRespondioUsuario, opciones);
+        VBox cajaPregunta = new VBox(30);
+        armarPregunta(cajaPregunta, controladorRespondioUsuario, opcionesCorrectas, pregunta.textoPregunta());
         VBox cajaInferior = new VBox();
-        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1), opcionesSimplesCorrectas);
+
+        BotonEnviarRespuestaOrderedChoice botonEnviar = new BotonEnviarRespuestaOrderedChoice(controladorRespondioUsuario, (VBox) cajaPregunta.getChildren().get(1), opcionesCorrectas);
         cajaInferior.getChildren().add(botonEnviar);
         cajaInferior.setAlignment(Pos.CENTER);
 
-        grilla.add(new EncabezadoPantalla(),1,0);
-        grilla.add(cajaPregunta,1,1);
-        grilla.add(cajaInferior,1,2);
+        grilla.add(new EncabezadoPantalla(),0,0);
+        grilla.add(cajaPregunta,0,1);
+        grilla.add(cajaInferior,0,2);
         super.getChildren().add(grilla);
     }
 
 
-    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<OpcionSimple> opciones)  {
+    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<OpcionSimple> opciones, String textoPregunta)  {
 
         Desordenador desordenador = new Desordenador(new CriterioNormal());
         desordenador.desordenar(opciones);
@@ -64,7 +62,7 @@ public class VistaOrderedChoice extends StackPane {
             cajaOpciones.getChildren().add(opcionOrdenable);
         }
         cajaOpciones.setAlignment(Pos.CENTER_LEFT);
-        cajaPregunta.getChildren().add(new CajaPregunta());
+        cajaPregunta.getChildren().add(new TextoPregunta(textoPregunta));
         cajaPregunta.getChildren().add(cajaOpciones);
     }
 }

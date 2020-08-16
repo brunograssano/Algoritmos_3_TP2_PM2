@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas.botones;
 import edu.fiuba.algo3.controladores.ControladorSiguientePregunta;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -22,5 +23,6 @@ public class BotonEmpezarPregunta extends Button {
         super.setOnAction(new ControladorSiguientePregunta(stage,contenedorPrincipal));
         Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));
         super.setBackground(unFondo);
+        super.setAlignment(Pos.CENTER);
     }
 }

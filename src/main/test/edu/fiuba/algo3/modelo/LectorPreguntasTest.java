@@ -86,10 +86,10 @@ public class LectorPreguntasTest {
         OrderedChoice preguntaOrderedChoice = (OrderedChoice) preguntas.get(7);
         Jugada jugada = new Jugada(jugador1,jugador2, preguntaOrderedChoice); //primer orderedchoice en la lista
 
-        OpcionSimple primerRespuestaJugador1 =  preguntaOrderedChoice.respuestasAPregunta().get(0);
-        OpcionSimple segundaRespuestaJugador1 = preguntaOrderedChoice.respuestasAPregunta().get(1);
-        OpcionSimple tercerRespuestaJugador1 =  preguntaOrderedChoice.respuestasAPregunta().get(2);
-        OpcionSimple cuartaRespuestaJugador1 =  preguntaOrderedChoice.respuestasAPregunta().get(3);
+        OpcionSimple primerRespuestaJugador1 =  preguntaOrderedChoice.respuestasPregunta().get(0);
+        OpcionSimple segundaRespuestaJugador1 = preguntaOrderedChoice.respuestasPregunta().get(1);
+        OpcionSimple tercerRespuestaJugador1 =  preguntaOrderedChoice.respuestasPregunta().get(2);
+        OpcionSimple cuartaRespuestaJugador1 =  preguntaOrderedChoice.respuestasPregunta().get(3);
 
         ArrayList<OpcionSimple> respuestasOrderJugador = new ArrayList<>();
 
@@ -117,10 +117,10 @@ public class LectorPreguntasTest {
         GroupChoice preguntaGroupChoice = (GroupChoice) preguntas.get(13);
         Jugada jugada = new Jugada(jugador1,jugador2, preguntaGroupChoice); //primer groupchoice en la lista
 
-        OpcionSimple primerRespuestaJugador1 =  preguntaGroupChoice.respuestasAPregunta().get(0);
-        OpcionSimple segundaRespuestaJugador1 = preguntaGroupChoice.respuestasAPregunta().get(1);
-        OpcionSimple tercerRespuestaJugador1 =  preguntaGroupChoice.respuestasAPregunta().get(2);
-        OpcionSimple cuartaRespuestaJugador1 =  preguntaGroupChoice.respuestasAPregunta().get(3);
+        OpcionSimple primerRespuestaJugador1 =  preguntaGroupChoice.respuestasPregunta().get(0);
+        OpcionSimple segundaRespuestaJugador1 = preguntaGroupChoice.respuestasPregunta().get(1);
+        OpcionSimple tercerRespuestaJugador1 =  preguntaGroupChoice.respuestasPregunta().get(2);
+        OpcionSimple cuartaRespuestaJugador1 =  preguntaGroupChoice.respuestasPregunta().get(3);
 
         ArrayList<OpcionSimple> respuestasPrimerGrupo = new ArrayList<>() ;
         respuestasPrimerGrupo.add(primerRespuestaJugador1);

@@ -25,7 +25,7 @@ public class BotonOpcionVerdaderoFalso extends Button {
         super.setFont(Font.font("montserrat", 35));
         super.setTextFill(Color.BLACK);
         super.setOnAction(controladorRespondioUsuario);
-        Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
+        Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(5), new Insets(1)));
         super.setBackground(unFondito);
     }
 }

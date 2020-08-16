@@ -23,7 +23,6 @@ public class App extends Application {
 
         Image icono = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/Icono.png");
         stage.getIcons().add(icono);
-
         stage.setScene(sceneInicio);
         stage.setMinWidth(1280);
         stage.setMinHeight(720);

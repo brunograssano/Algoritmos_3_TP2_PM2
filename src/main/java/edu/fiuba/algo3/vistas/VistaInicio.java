@@ -37,7 +37,7 @@ public class VistaInicio extends StackPane{
         stage.setTitle("AlgoHoot!");
         stage.centerOnScreen();
 
-        grilla.add(cajaPrincipal,1,1);
+        grilla.add(cajaPrincipal,0,1);
 
         super.getChildren().add(grilla);
     }

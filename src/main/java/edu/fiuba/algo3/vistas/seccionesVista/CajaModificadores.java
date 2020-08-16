@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.vistas.botones.BotonExclusividad;
 import edu.fiuba.algo3.vistas.botones.BotonMultiplicador;
 import edu.fiuba.algo3.vistas.textos.TextoSinExclusividad;
 import edu.fiuba.algo3.vistas.textos.TextoSinMultiplicadores;

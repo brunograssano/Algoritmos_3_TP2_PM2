@@ -17,7 +17,7 @@ public class BotonEnviarRespuestaMultipleChoice extends Button {
     public BotonEnviarRespuestaMultipleChoice(EventHandler<ActionEvent> controlador){
         super.setText("Enviar respuesta");
         super.setFont(Font.font("montserrat", 20));
-        super.setTextFill(Color.WHITE);
+        super.setTextFill(Color.BLACK);
         super.setOnAction(controlador);
         Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));
         super.setBackground(unFondo);

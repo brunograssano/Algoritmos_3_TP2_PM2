@@ -3,13 +3,13 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
-import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
-import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -27,14 +27,14 @@ public class VistaMultipleChoice extends StackPane {
         super();
         this.stage = stagePrincipal;
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoMC.jpg");
+        Image imagen = new Image("file:" + System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoMC.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
         GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
-        VBox cajaPregunta = new VBox(2);
+        VBox cajaPregunta = new VBox(30);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
 
         ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage,contenedorPrincipal);
@@ -45,9 +45,9 @@ public class VistaMultipleChoice extends StackPane {
         cajaInferior.getChildren().add(botonEnviar);
         cajaInferior.setAlignment(Pos.CENTER);
 
-        grilla.add(new EncabezadoPantalla(),1,0);
-        grilla.add(cajaPregunta,1,1);
-        grilla.add(cajaInferior,1,2);
+        grilla.add(new EncabezadoPantalla(),0,0);
+        grilla.add(cajaPregunta,0,1);
+        grilla.add(cajaInferior,0,2);
 
         super.getChildren().add(grilla);
     }
@@ -65,7 +65,7 @@ public class VistaMultipleChoice extends StackPane {
             cajaAgrupadoraDeOpciones.getChildren().add(boton);
         }
 
-        cajaPregunta.getChildren().add(new CajaPregunta());
+        cajaPregunta.getChildren().add(new TextoPregunta(preguntaMultipleChoice.textoPregunta()));
         cajaPregunta.getChildren().add(cajaAgrupadoraDeOpciones);
     }
 }

@@ -33,8 +33,9 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
         return respuestasUsuario.evaluarEnBaseAPregunta(this,unJugador);
     }
 
-    public ArrayList<OpcionSimple> respuestasAPregunta() {
-        return(new ArrayList<>(respuestaCorrecta.respuestasAPregunta()));
+    @Override
+    public ArrayList<OpcionSimple> respuestasPregunta() {
+        return (new ArrayList<>(respuestaCorrecta.respuestasAPregunta()));
     }
 
     public ArrayList<String> nombresGrupos() {

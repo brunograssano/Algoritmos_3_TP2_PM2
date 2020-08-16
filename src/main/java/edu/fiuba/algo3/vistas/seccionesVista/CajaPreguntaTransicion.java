@@ -10,9 +10,11 @@ import edu.fiuba.algo3.vistas.textos.TextoSeTerminaronPreguntas;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
-public class CajaPregunta extends VBox {
+public class CajaPreguntaTransicion extends VBox {
 
-    public CajaPregunta(){
+    private static final double ESPACIADO_CAJA_PREGUNTA = 25;
+
+    public CajaPreguntaTransicion(){
         if(AlgoHoot.getInstance().terminoElJuego()){
             super.getChildren().add(new TextoSeTerminaronPreguntas());
         }
@@ -21,6 +23,7 @@ public class CajaPregunta extends VBox {
             determinarTipoPregunta(pregunta);
             TextoPregunta enunciado = new TextoPregunta(pregunta.textoPregunta());
             super.getChildren().add(enunciado);
+            super.setSpacing(ESPACIADO_CAJA_PREGUNTA);
             super.setAlignment(Pos.CENTER);
         }
     }

@@ -20,7 +20,7 @@ public class BotonEnviarRespuestaGroupChoice extends Button {
     public BotonEnviarRespuestaGroupChoice(ControladorEnviarGroupChoice controlador, VBox cajaOpciones) {
         super.setText("Enviar respuesta");
         super.setFont(Font.font("montserrat", 20));
-        super.setTextFill(Color.WHITE);
+        super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opcionesGrupo =  cajaOpciones.getChildren();
         ArrayList<BotonSpinnerGrupo> spinnersGrupo = new ArrayList<>();
