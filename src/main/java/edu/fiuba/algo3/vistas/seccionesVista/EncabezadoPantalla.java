@@ -15,6 +15,7 @@ public class EncabezadoPantalla extends HBox {
     private static String AZUL = "0083E0";
     private static String AMARILLO = "FBD87F";
     private static String ROJO = "EF2D56";
+
     public EncabezadoPantalla(){
         TextoTurno textoDelTurno = new TextoTurno();
         TextoContadorPreguntas textoContadorPreguntas = new TextoContadorPreguntas();
@@ -27,9 +28,9 @@ public class EncabezadoPantalla extends HBox {
 
         super.setAlignment(Pos.TOP_CENTER);
         super.setSpacing(100);
+        super.getChildren().add(cajaJugador1);
         super.getChildren().add(cajaTurno);
         super.getChildren().add(cajaJugador2);
-        super.getChildren().add(cajaJugador1);
     }
 
 }
