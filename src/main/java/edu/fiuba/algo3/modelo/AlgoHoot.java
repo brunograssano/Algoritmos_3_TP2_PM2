@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
 import edu.fiuba.algo3.modelo.lector.LectorJson;
+import edu.fiuba.algo3.modelo.lector.LectorPreguntas;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
@@ -25,7 +26,7 @@ public class AlgoHoot {
 
     private AlgoHoot(){
         jugadas = new Stack<>();
-        LectorJson lector = new LectorJson();
+        LectorPreguntas lector = new LectorJson();
         this.preguntas = lector.generarPreguntas();
     }
 
