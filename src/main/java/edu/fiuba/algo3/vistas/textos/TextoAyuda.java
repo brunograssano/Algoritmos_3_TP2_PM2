@@ -15,7 +15,7 @@ public class TextoAyuda extends Label {
                 "Por ultimo, hay que tener en cuenta los modificadores, tenes dos multiplicadores, un x2 y un x3 " +
                 "para usar en las preguntas penalizables. Tambien tenes dos exclusividades, que al usarla obtenes el doble de puntos" +
                 " si solo un jugador respondio correctamente. (en preguntas con puntaje clasico y parcial)");
-        super.setFont(Font.font("montserrat",20));
+        super.setFont(Font.font("montserrat",18));
         super.setTextFill(Color.BLACK);
         super.setWrapText(true);
     }
