@@ -38,7 +38,7 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
             RespuestaMultipleChoice respuestaDeUnJugador = new RespuestaMultipleChoice(respuestasUsuario);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
             if(AlgoHoot.getInstance().terminoElJuego()){
-                contenedorPrincipal.setCentro(new VistaGanador(stage));
+                contenedorPrincipal.setCentro(new VistaGanador(stage,contenedorPrincipal));
             }else{
                 contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
             }

@@ -37,7 +37,7 @@ public class ControladorEnviarGroupChoice implements EventHandler<ActionEvent> {
         RespuestaGroupChoice respuestaDeUnJugador =  new RespuestaGroupChoice(nombresGrupo.get(0), respuestasUsuario.get(nombresGrupo.get(0)), nombresGrupo.get(1), respuestasUsuario.get(nombresGrupo.get(1)));
         AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
         if(AlgoHoot.getInstance().terminoElJuego()){
-            contenedorPrincipal.setCentro(new VistaGanador(stage));
+            contenedorPrincipal.setCentro(new VistaGanador(stage,contenedorPrincipal));
         }else{
             contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
         }

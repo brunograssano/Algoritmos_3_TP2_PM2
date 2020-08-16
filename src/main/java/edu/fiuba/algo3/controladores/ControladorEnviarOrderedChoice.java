@@ -50,7 +50,7 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
             RespuestaOrderedChoice respuestaDeUnJugador = new RespuestaOrderedChoice(opcionesJugador);
             AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
             if(AlgoHoot.getInstance().terminoElJuego()){
-                contenedorPrincipal.setCentro(new VistaGanador(stage));
+                contenedorPrincipal.setCentro(new VistaGanador(stage,contenedorPrincipal));
             }else{
                 contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
             }

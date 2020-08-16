@@ -27,7 +27,7 @@ public class ControladorEnviarVerdaderoFalso implements EventHandler<ActionEvent
         RespuestaVerdaderoFalso respuestaDeUnJugador = new RespuestaVerdaderoFalso(respuestasUsuario);
         AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
         if(AlgoHoot.getInstance().terminoElJuego()){
-            contenedorPrincipal.setCentro(new VistaGanador(stage));
+            contenedorPrincipal.setCentro(new VistaGanador(stage,contenedorPrincipal));
         }else{
             contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
         }

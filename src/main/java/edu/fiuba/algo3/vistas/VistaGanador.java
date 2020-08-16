@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorGanador;
+import edu.fiuba.algo3.controladores.ControladorReiniciarJuego;
 import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
+import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
@@ -18,7 +20,7 @@ public class VistaGanador extends StackPane {
     private static final String GRIS = "D8DDEF";
     private Stage stage;
 
-    public VistaGanador(Stage stage){
+    public VistaGanador(Stage stage,ContenedorPrincipal contenedorPrincipal){
 
         this.stage = stage;
         ControladorGanador controladorGanador = new ControladorGanador();
@@ -46,8 +48,12 @@ public class VistaGanador extends StackPane {
         cajaGanador.getChildren().add(textoGanador);
         //textoGanador.setAlignment(Pos.CENTER);
 
-        VBox cajaInferior = new VBox();
+        VBox cajaInferior = new VBox(20);
         cajaInferior.setAlignment(Pos.CENTER);
+
+        BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage,contenedorPrincipal));
+        cajaInferior.getChildren().add(botonReiniciarJuego);
+
         BotonTerminarJuego botonTerminarJuego = new BotonTerminarJuego(new ControladorTerminarJuego());
         cajaInferior.getChildren().add(botonTerminarJuego);
 
