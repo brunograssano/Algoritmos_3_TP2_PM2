@@ -22,7 +22,6 @@ public class AlgoHoot {
     private Stack<Jugada> jugadas;
     private Jugador jugador1;
     private Jugador jugador2;
-
     private Turno turno;
 
     private AlgoHoot(){

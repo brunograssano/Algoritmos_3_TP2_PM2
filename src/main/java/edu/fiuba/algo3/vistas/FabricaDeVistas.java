@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 public class FabricaDeVistas {
 
-
     public static StackPane CrearVistaDePregunta(Pregunta unaPregunta, Stage stage, ContenedorPrincipal contenedorPrincipal){
         StackPane vistaPregunta;
         if(unaPregunta instanceof VerdaderoFalso){

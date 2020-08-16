@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.vistas.botones.BotonEmpezarPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaModificadores;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;

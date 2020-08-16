@@ -6,8 +6,9 @@ import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
 import edu.fiuba.algo3.vistas.botones.BotonMultiplicador;
+import edu.fiuba.algo3.vistas.textos.TextoSinExclusividad;
+import edu.fiuba.algo3.vistas.textos.TextoSinMultiplicadores;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import java.util.ArrayList;
 
@@ -28,8 +29,7 @@ public class CajaModificadores extends HBox {
 
     private void crearBotonExclusividad(ArrayList<Exclusividad> exclusividades){
         if(exclusividades.isEmpty()){
-            // TODO agregar formato
-            Label textoSinExclusividad = new Label("Se quedo sin exclusividad");
+            TextoSinExclusividad textoSinExclusividad = new TextoSinExclusividad();
             super.getChildren().add(textoSinExclusividad);
         }
         else{
@@ -39,9 +39,8 @@ public class CajaModificadores extends HBox {
 
     private void crearBotonesMultiplicador(ArrayList<MultiplicadorJugador> multiplicadores){
         if(multiplicadores.isEmpty()){
-            // TODO agregar formato
-            Label textoSinExclusividad = new Label("Se quedo sin multiplicadores");
-            super.getChildren().add(textoSinExclusividad);
+            TextoSinMultiplicadores textoSinMultiplicadores = new TextoSinMultiplicadores();
+            super.getChildren().add(textoSinMultiplicadores);
         }
         else{
             for (MultiplicadorJugador multiplicador:multiplicadores) {

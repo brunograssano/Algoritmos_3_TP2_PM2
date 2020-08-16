@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class VistaOrderedChoice extends StackPane {
 
-    static String GRIS = "D8DDEF";
     private Stage stage;
 
     public VistaOrderedChoice(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {
