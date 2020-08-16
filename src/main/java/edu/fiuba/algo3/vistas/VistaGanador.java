@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.ControladorGanador;
 import edu.fiuba.algo3.controladores.ControladorReiniciarJuego;
 import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
+import edu.fiuba.algo3.modelo.AlgoHoot;
+import edu.fiuba.algo3.modelo.FinJuego;
 import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
@@ -23,7 +24,6 @@ public class VistaGanador extends StackPane {
     public VistaGanador(Stage stage,ContenedorPrincipal contenedorPrincipal){
 
         this.stage = stage;
-        ControladorGanador controladorGanador = new ControladorGanador();
 
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
@@ -42,7 +42,11 @@ public class VistaGanador extends StackPane {
 
         VBox cajaGanador = new VBox();
         cajaGanador.setAlignment(Pos.CENTER);
-        Label textoGanador = new Label(controladorGanador.obtenerResultadoFinal());
+
+        FinJuego resultadoFinal = AlgoHoot.getInstance().obtenerJugadorGanador();
+        String textoResultado = resultadoFinal.resultadoJuego();
+        Label textoGanador = new Label(textoResultado);
+
         textoGanador.setFont(Font.font("montserrat",40));
         textoGanador.setTextFill(Color.web(GRIS));
         cajaGanador.getChildren().add(textoGanador);

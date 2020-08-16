@@ -46,11 +46,13 @@ public class Jugador {
         return nombre;
     }
 
-    public Jugador compararYObtenerGanador(Jugador jugadorContrario){
+    public FinJuego compararYObtenerGanador(Jugador jugadorContrario){
         if(this.obtenerPuntos() < jugadorContrario.obtenerPuntos()){
-            return jugadorContrario;
+            return new GanadorJuego(jugadorContrario);
+        }else if (this.obtenerPuntos() > jugadorContrario.obtenerPuntos()){
+            return new GanadorJuego(this);
         }
-        return this;
+        return new JuegoEmpatado();
     }
 
     public ArrayList<MultiplicadorJugador> multiplicadores() {

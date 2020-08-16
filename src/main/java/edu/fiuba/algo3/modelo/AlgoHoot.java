@@ -67,7 +67,7 @@ public class AlgoHoot {
 
     private void determinarSiTerminoElJuego(){
         if(jugadas.size() == NO_HAY_JUGADAS){
-            turno = new TerminoJuego(obtenerJugadorGanador());
+            turno = new TerminoJuego();
         }
     }
 
@@ -84,8 +84,8 @@ public class AlgoHoot {
         return jugador2;
     }
 
-    public Jugador obtenerJugadorGanador() {
-        return jugador1.compararYObtenerGanador(jugador2);
+    public FinJuego obtenerJugadorGanador() {
+        return  jugador1.compararYObtenerGanador(jugador2);
     }
 
     public boolean terminoElJuego() {
