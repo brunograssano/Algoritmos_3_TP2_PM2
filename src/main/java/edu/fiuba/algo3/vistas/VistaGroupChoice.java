@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;

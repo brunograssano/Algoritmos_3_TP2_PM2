@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -21,7 +22,7 @@ public class FabricaDeVistas {
             vistaPregunta = new VistaGroupChoice((GroupChoice) unaPregunta , stage, contenedorPrincipal);
         }
         else{
-            vistaPregunta = new VistaOrderedChoice(stage,contenedorPrincipal);
+            vistaPregunta = new VistaOrderedChoice((OrderedChoice) unaPregunta,stage,contenedorPrincipal);
         }
         return vistaPregunta;
     }

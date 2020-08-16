@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoPenalizable;

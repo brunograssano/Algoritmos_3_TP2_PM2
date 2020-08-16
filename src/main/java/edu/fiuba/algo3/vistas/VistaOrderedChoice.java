@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
-import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
@@ -22,15 +20,13 @@ public class VistaOrderedChoice extends StackPane {
 
     private Stage stage;
 
-    public VistaOrderedChoice(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {
-        super();
+    public VistaOrderedChoice(OrderedChoice pregunta, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {
         this.stage = stagePrincipal;
 
-        Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
-        ArrayList<Opcion> opciones =  (pregunta.respuestas());
-        ArrayList<OpcionSimple> opcionesSimplesCorrectas = new ArrayList<OpcionSimple>();
-        for(Opcion opcion : opciones){
-            opcionesSimplesCorrectas.add((OpcionSimple) opcion);
+        ArrayList<OpcionSimple> opciones =  (pregunta.respuestasAPregunta());
+        ArrayList<OpcionSimple> opcionesSimplesCorrectas = new ArrayList<>();
+        for(OpcionSimple opcion : opciones){
+            opcionesSimplesCorrectas.add(opcion);
         }
 
         ControladorEnviarOrderedChoice controladorRespondioUsuario = new ControladorEnviarOrderedChoice(stage,contenedorPrincipal);
@@ -41,9 +37,6 @@ public class VistaOrderedChoice extends StackPane {
         super.setBackground(fondo);
 
         GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
-        //Para que se vean las rayas de la grilla y debuggear mais fasil
-        //grilla.setGridLinesVisible(true);
-
 
         VBox cajaPregunta = new VBox(2);
         armarPregunta(cajaPregunta, controladorRespondioUsuario, opciones);
@@ -59,14 +52,14 @@ public class VistaOrderedChoice extends StackPane {
     }
 
 
-    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<Opcion> opciones)  {
+    private void armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<OpcionSimple> opciones)  {
 
         Desordenador desordenador = new Desordenador(new CriterioNormal());
         desordenador.desordenar(opciones);
         VBox cajaOpciones = new VBox(5);
         cajaOpciones.setAlignment(Pos.CENTER);
 
-        for(Opcion opcion : opciones){
+        for(OpcionSimple opcion : opciones){
             OpcionOrderedChoice opcionOrdenable = new OpcionOrderedChoice(opcion, opciones.size(), controlador);
             cajaOpciones.getChildren().add(opcionOrdenable);
         }

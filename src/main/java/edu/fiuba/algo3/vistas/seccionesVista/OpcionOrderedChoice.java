@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vistas.seccionesVista;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -22,7 +22,7 @@ public class OpcionOrderedChoice extends HBox {
     private Label label;
     private Spinner<Integer> spinner;
 
-    public OpcionOrderedChoice(Opcion opcion, int cantidadOpciones, ControladorEnviarOrderedChoice controlador){
+    public OpcionOrderedChoice(OpcionSimple opcion, int cantidadOpciones, ControladorEnviarOrderedChoice controlador){
 
         Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(PRIMER_POSICION, cantidadOpciones, VALOR_INICIAL_SPINNER);

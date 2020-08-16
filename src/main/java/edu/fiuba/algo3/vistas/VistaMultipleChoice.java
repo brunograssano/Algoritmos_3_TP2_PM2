@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
 import edu.fiuba.algo3.modelo.desordenador.CriterioNormal;
 import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
@@ -39,7 +39,6 @@ public class VistaMultipleChoice extends StackPane {
 
         ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage,contenedorPrincipal);
         armarPregunta(cajaPregunta,preguntaMultipleChoice,controladorRespondioUsuario);
-        //grilla.setGridLinesVisible(true);
 
         VBox cajaInferior = new VBox();
         BotonEnviarRespuestaMultipleChoice botonEnviar = new BotonEnviarRespuestaMultipleChoice(controladorRespondioUsuario);

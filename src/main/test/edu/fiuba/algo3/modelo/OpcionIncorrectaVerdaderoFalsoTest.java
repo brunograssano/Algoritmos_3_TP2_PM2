@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntos.Punto;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
 import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoPenalizable;

@@ -4,10 +4,7 @@ import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaExcept
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
@@ -52,15 +49,6 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
 
-        return opciones;
-    }
-
-    //Se borra
-    @Override
-    public ArrayList<Opcion> respuestas() {
-        ArrayList<Opcion> opciones = new ArrayList<>();
-        opciones.addAll(respuestasCorrectas);
-        opciones.addAll(respuestasIncorrectas);
         return opciones;
     }
 

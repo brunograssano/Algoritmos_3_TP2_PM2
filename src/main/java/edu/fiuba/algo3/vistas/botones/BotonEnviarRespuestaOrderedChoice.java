@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

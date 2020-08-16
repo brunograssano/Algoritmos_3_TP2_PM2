@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class Jugada {
         pregunta = unaPregunta;
         jugador1 = unJugador;
         jugador2 = otroJugador;
-        modificadoresJugadas = new ArrayList<Modificador>();
+        modificadoresJugadas = new ArrayList<>();
     }
 
     public void procesarJugada(Respuesta respuestasJugador1, Respuesta respuestasJugador2){
@@ -39,16 +38,6 @@ public class Jugada {
 
     public void agregarModificador(Modificador modificador) {
         pregunta.verificarModificador(modificador,modificadoresJugadas);
-    }
-
-    //Este metodo se borra
-    public String textoPregunta() {
-        return pregunta.textoPregunta();
-    }
-
-    //Este metodo se borra, junto con la interfaz Opcion
-    public ArrayList<Opcion> respuestasAPregunta() {
-        return pregunta.respuestas();
     }
 
     public Pregunta obtenerPregunta() {

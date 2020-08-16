@@ -1,15 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
@@ -136,7 +135,7 @@ public class ExclusividadTest {
     }
 
     @Test
-    public void test05AlIntentarAplicarExclusividadEnUnaPreguntaVoFPenalizableSeDebeLanzarExcepcion(){
+    public void test05AlIntentarAplicarExclusividadEnUnaPreguntaVoFPenalizableSeContinuaSinCambios(){
 
         String enunciado = "Slack acepta videollamadas";
 
@@ -149,10 +148,18 @@ public class ExclusividadTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
+        jugada.agregarModificador(new Exclusividad(jugador1));
 
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new Exclusividad(jugador1))
-        );
+        OpcionCorrectaVerdaderoFalso respuestaJugador1 = new OpcionCorrectaVerdaderoFalso(respuestaALaPreguntaVoF);
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = new OpcionCorrectaVerdaderoFalso(respuestaALaPreguntaVoF);
+
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
+
+        jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
+
+        assertEquals(1,jugador1.obtenerPuntos());
+        assertEquals(1,jugador2.obtenerPuntos());
     }
 
 
@@ -518,7 +525,7 @@ public class ExclusividadTest {
     }
 
     @Test
-    public void test14AlIntentarAplicarExclusividadEnUnaPreguntaMCPenalizableSeDebeLanzarExcepcion(){
+    public void test14AlIntentarAplicarExclusividadEnUnaPreguntaMCPenalizableSeContinuaSinAlterarLosResultados(){
 
         String enunciado = "Cuales de estos son postres?";
 
@@ -540,14 +547,25 @@ public class ExclusividadTest {
 
         Pregunta pregunta = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
 
+        ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador2 = new ArrayList<>();
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador2.add(respuestaCorrecta1);
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
+
         Jugador jugador1 = new Jugador("Joaquin");
         Jugador jugador2 = new Jugador("Bruno");
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new Exclusividad(jugador1))
-        );
+        jugada.agregarModificador(new Exclusividad(jugador1));
+        jugada.agregarModificador(new Exclusividad(jugador2));
+
+        jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
+
+        assertEquals(1,jugador1.obtenerPuntos());
+        assertEquals(1,jugador2.obtenerPuntos());
     }
 
     @Test

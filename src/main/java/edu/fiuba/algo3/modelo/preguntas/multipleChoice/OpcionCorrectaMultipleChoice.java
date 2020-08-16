@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.preguntas.opciones.evaluables;
+package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
 
 public class OpcionCorrectaMultipleChoice implements OpcionEvaluable {
@@ -17,7 +17,6 @@ public class OpcionCorrectaMultipleChoice implements OpcionEvaluable {
         unResultado.sumarRespuestaCorrecta();
     }
 
-    @Override
     public String obtenerTexto() {
         return textoRespuesta;
     }

@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.preguntas.opciones;
+package edu.fiuba.algo3.modelo.preguntas;
 
-public class OpcionSimple implements Opcion{
+public class OpcionSimple{
 
     private String enunciado;
 
@@ -8,7 +8,6 @@ public class OpcionSimple implements Opcion{
         enunciado = unEnunciado;
     }
 
-    @Override
     public String obtenerTexto() {
         return enunciado;
     }

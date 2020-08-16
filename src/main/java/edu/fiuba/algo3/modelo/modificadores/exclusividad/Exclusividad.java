@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.modificadores.exclusividad;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
@@ -20,7 +19,6 @@ public class Exclusividad implements Modificador {
 
     @Override
     public void usarEnPuntaje(PuntajePenalizable puntajePenalizable, ArrayList<Modificador> modificadoresDeLaJugada) {
-        throw new ModificadorNoAptoParaPreguntaException();
     }
 
     @Override

@@ -1,19 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultiplicadoresTest {
 
@@ -74,7 +73,7 @@ public class MultiplicadoresTest {
     }
 
     @Test
-    public void test03IntentoAgregarUnMultiplicadorEnUnVoFClasicoYTiraExcepcion(){
+    public void test03IntentoAgregarUnMultiplicadorEnUnVoFClasicoYRespondiendoNoSeVeAlteradoElResultadoEsperado(){
 
         String enunciado = "Slack acepta videollamadas";
         boolean enunciadoNoEsCorrecto = false;
@@ -85,14 +84,22 @@ public class MultiplicadoresTest {
         Jugador jugador2 = new Jugador("Bruno");
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
+        jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));
 
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador2,3))
-        );
+        OpcionIncorrectaVerdaderoFalso respuestaJugador1 = new OpcionIncorrectaVerdaderoFalso(!enunciadoNoEsCorrecto);
+        OpcionCorrectaVerdaderoFalso respuestaJugador2 = new OpcionCorrectaVerdaderoFalso(enunciadoNoEsCorrecto);
+
+        RespuestaVerdaderoFalso respuestasJugador1VoF = new RespuestaVerdaderoFalso(respuestaJugador1);
+        RespuestaVerdaderoFalso respuestasJugador2VoF = new RespuestaVerdaderoFalso(respuestaJugador2);
+
+        jugada.procesarJugada(respuestasJugador1VoF,respuestasJugador2VoF);
+
+        assertEquals(0,jugador1.obtenerPuntos());
+        assertEquals(1,jugador2.obtenerPuntos());
     }
 
     @Test
-    public void test04IntentoAgregarUnMultiplicadorEnUnMultipleChoiceClasicoYTiraExcepcion(){
+    public void test04IntentoAgregarUnMultiplicadorEnUnMultipleChoiceClasicoYRespondiendoNoSeVeAlteradoElResultadoEsperado(){
 
         String enunciado = "Cuales de estos son postres?";
 
@@ -114,13 +121,26 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
-        );
+        jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));
+
+        ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador2 = new ArrayList<>();
+
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador2.add(respuestaCorrecta1);
+        respuestasJugador2.add(respuestaCorrecta2);
+
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
+
+        jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
+
+        assertEquals(0,jugador1.obtenerPuntos());
+        assertEquals(1,jugador2.obtenerPuntos());
     }
 
     @Test
-    public void test05IntentoAgregarUnMultiplicadorEnUnMultipleChoiceParcialYTiraExcepcion(){
+    public void test05IntentoAgregarUnMultiplicadorEnUnMultipleChoiceParcialYRespondiendoNoSeVeAlteradoElResultadoEsperado(){
 
         String enunciado = "Cuales de estos son postres?";
 
@@ -142,66 +162,22 @@ public class MultiplicadoresTest {
 
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
-        );
-    }
+        jugada.agregarModificador(new MultiplicadorJugador(jugador2,3));
 
-    @Test
-    public void test06IntentoAgregarMultiplicadorEnPreguntaDeGrupoYLanzaExepcion() {
+        ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
+        ArrayList<OpcionEvaluable> respuestasJugador2 = new ArrayList<>();
 
-        String enunciado = "Agrupar los segun mamiferos y reptiles";
+        respuestasJugador1.add(respuestaCorrecta1);
+        respuestasJugador2.add(respuestaCorrecta1);
+        respuestasJugador2.add(respuestaCorrecta2);
 
-        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
-        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
-        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
-        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
+        RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
+        RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
 
-        ArrayList<OpcionSimple> grupo1OpcionesCorrectas = new ArrayList<>();
-        ArrayList<OpcionSimple> grupo2OpcionesCorrectas = new ArrayList<>();
+        jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
 
-        grupo1OpcionesCorrectas.add(opcion1Grupo1);
-        grupo1OpcionesCorrectas.add(opcion2Grupo1);
-        grupo2OpcionesCorrectas.add(opcion1Grupo2);
-        grupo2OpcionesCorrectas.add(opcion2Grupo2);
-
-        Pregunta preguntaGrupo = FabricaDePreguntas.CrearGrupo(enunciado,"Mamiferos", grupo1OpcionesCorrectas,"Reptiles", grupo2OpcionesCorrectas);
-
-        Jugador jugador1 = new Jugador("Joaquin");
-        Jugador jugador2 = new Jugador("Bruno");
-        Jugada jugada = new Jugada(jugador1, jugador2, preguntaGrupo);
-
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
-        );
-    }
-
-    @Test
-    public void test07IntentoAgregarMultiplicadorEnPreguntaDeOrdenYLanzaExepcion() {
-
-        String enunciado = "Ordenar de menor a mayor";
-
-        OpcionSimple opcionOrden1 = new OpcionSimple("1");
-        OpcionSimple opcionOrden2 = new OpcionSimple("2");
-        OpcionSimple opcionOrden3 = new OpcionSimple("3");
-        OpcionSimple opcionOrden4 = new OpcionSimple("4");
-
-        ArrayList<OpcionSimple> respuestasOrdenadas = new ArrayList<>();
-
-        respuestasOrdenadas.add(opcionOrden1);
-        respuestasOrdenadas.add(opcionOrden2);
-        respuestasOrdenadas.add(opcionOrden3);
-        respuestasOrdenadas.add(opcionOrden4);
-
-        Pregunta preguntaOrden = FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
-
-        Jugador jugador1 = new Jugador("Joaquin");
-        Jugador jugador2 = new Jugador("Bruno");
-        Jugada jugada = new Jugada(jugador1, jugador2, preguntaOrden);
-
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()-> jugada.agregarModificador(new MultiplicadorJugador(jugador1,3))
-        );
+        assertEquals(1,jugador1.obtenerPuntos());
+        assertEquals(2,jugador2.obtenerPuntos());
     }
 
 

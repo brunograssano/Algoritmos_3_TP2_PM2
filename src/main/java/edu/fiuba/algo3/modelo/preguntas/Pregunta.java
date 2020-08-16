@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
@@ -31,7 +30,5 @@ public abstract class Pregunta {
     public Puntaje tipoPuntaje(){
         return puntaje;
     }
-
-    public abstract ArrayList<Opcion> respuestas();
 
 }
