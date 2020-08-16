@@ -25,6 +25,8 @@ public class App extends Application {
         stage.getIcons().add(icono);
 
         stage.setScene(sceneInicio);
+        stage.setMinWidth(1280);
+        stage.setMinHeight(720);
         stage.show();
     }
 
