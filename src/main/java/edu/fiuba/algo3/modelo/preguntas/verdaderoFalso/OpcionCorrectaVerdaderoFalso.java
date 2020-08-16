@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 
 public class OpcionCorrectaVerdaderoFalso implements OpcionEvaluable {
     private String textoRespuesta;

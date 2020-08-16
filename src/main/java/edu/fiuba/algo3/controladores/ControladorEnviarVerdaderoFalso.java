@@ -2,7 +2,7 @@ package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaGanador;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;

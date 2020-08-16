@@ -2,10 +2,10 @@ package edu.fiuba.algo3.modelo.modificadores.exclusividad;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeParcial;
+import edu.fiuba.algo3.modelo.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 
 import java.util.ArrayList;
 

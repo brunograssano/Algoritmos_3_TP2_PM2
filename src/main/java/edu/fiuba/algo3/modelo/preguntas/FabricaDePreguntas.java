@@ -5,11 +5,11 @@ import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionCorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeParcial;
+import edu.fiuba.algo3.modelo.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import java.util.ArrayList;
 

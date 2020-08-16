@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.preguntas.resultados;
+package edu.fiuba.algo3.modelo.resultados;
 
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
 import edu.fiuba.algo3.modelo.Jugador;

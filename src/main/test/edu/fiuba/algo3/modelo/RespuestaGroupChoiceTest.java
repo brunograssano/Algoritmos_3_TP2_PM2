@@ -2,9 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoClasico;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.resultados.ResultadoClasico;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;

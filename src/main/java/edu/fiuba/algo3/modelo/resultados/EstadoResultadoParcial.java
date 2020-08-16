@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.modelo.preguntas.resultados;
+package edu.fiuba.algo3.modelo.resultados;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.puntos.Punto;
 
-public interface EstadoResultadoClasico {
+public interface EstadoResultadoParcial {
 
     void agregarPunto(Punto unPunto);
 

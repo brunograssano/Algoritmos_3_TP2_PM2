@@ -10,10 +10,10 @@ import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFa
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaGroupChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 

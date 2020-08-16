@@ -5,9 +5,9 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 import java.util.ArrayList;
 
 public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
