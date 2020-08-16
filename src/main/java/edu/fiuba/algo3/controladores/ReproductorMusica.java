@@ -29,6 +29,7 @@ public class ReproductorMusica {
         String direccionParaMedia = path.toString();
         Media musica = new Media(direccionParaMedia);
         AudioClip mediaPlayer = new AudioClip(musica.getSource());
+        mediaPlayer.setCycleCount(AudioClip.INDEFINITE);
         mediaPlayer.play();
         mediaPlayer.setVolume(5);
         return  mediaPlayer;
