@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.controladores;
 
-import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
-import edu.fiuba.algo3.vistas.VistaGanador;
-import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import edu.fiuba.algo3.vistas.botones.OpcionOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,13 +11,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent> {
+public class ControladorEnviarOrderedChoice extends ControladorPreguntasJuego implements EventHandler<ActionEvent> {
 
-    private Stage stage;
     private ArrayList<OpcionOrderedChoice> opcionesVista;
     private HashMap<String,OpcionSimple> opcionesOrdenHash;
     private ArrayList<OpcionSimple> opcionesJugador;
-    private ContenedorPrincipal contenedorPrincipal;
 
     public ControladorEnviarOrderedChoice(Stage escenario, ContenedorPrincipal contenedorPrincipal){
         this.contenedorPrincipal = contenedorPrincipal;
@@ -50,12 +45,7 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
         else{
             convertirOpcionesSimples();
             RespuestaOrderedChoice respuestaDeUnJugador = new RespuestaOrderedChoice(opcionesJugador);
-            AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            if(AlgoHoot.getInstance().terminoElJuego()){
-                contenedorPrincipal.setCentro(new VistaGanador(stage,contenedorPrincipal));
-            }else{
-                contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
-            }
+            definirSiguienteVista(respuestaDeUnJugador);
         }
     }
 
