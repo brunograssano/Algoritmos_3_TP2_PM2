@@ -83,7 +83,11 @@ public class AlgoHoot {
         return jugador2;
     }
 
-    public FinJuego obtenerJugadorGanador() {
+    public String obtenerJugadorGanador() {
+        return turno.nombreDelJugador();
+    }
+
+    public FinJuego determinarGanador(){
         return  jugador1.compararYObtenerGanador(jugador2);
     }
 
