@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.desordenador.NoDesordena;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNeutro;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
@@ -14,7 +14,7 @@ public class AlgoHootTest {
     public void test01LePediAlAlgoHootUnaJugadaVoFRespondenBienAmbosJugadoresAmbosGananPuntos(){
 
 
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new NoDesordena());
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
 
         OpcionCorrectaVerdaderoFalso unaOpcionCorrecta = new OpcionCorrectaVerdaderoFalso(true);
         RespuestaVerdaderoFalso unaRespuestaCorrecta = new RespuestaVerdaderoFalso(unaOpcionCorrecta);
@@ -32,7 +32,7 @@ public class AlgoHootTest {
     @Test
     public void test02LePediAlAlgoHootUnaJugadaVoFRespondeBienUnoUsaExclusividadGanaElDobleDePuntos(){
 
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new NoDesordena());
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 
@@ -56,7 +56,7 @@ public class AlgoHootTest {
     public void test03LePidoAlAlgoHootUnGanadorEsteEsElJugadorConMasPuntos(){
 
         
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new NoDesordena());
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 

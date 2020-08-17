@@ -6,9 +6,6 @@ import edu.fiuba.algo3.vistas.textos.TextoPuntuacion;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextBoundsType;
 
 public class CajaJugador extends VBox {
 
