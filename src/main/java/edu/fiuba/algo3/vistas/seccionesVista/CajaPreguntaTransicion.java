@@ -5,6 +5,10 @@ import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeParcial;
+import edu.fiuba.algo3.modelo.puntajes.PuntajePenalizable;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import edu.fiuba.algo3.vistas.textos.TextoSeTerminaronPreguntas;
 import javafx.geometry.Pos;
@@ -21,11 +25,28 @@ public class CajaPreguntaTransicion extends VBox {
         else{
             Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
             determinarTipoPregunta(pregunta);
+            determinarPuntajePregunta(pregunta.tipoPuntaje());
             TextoPregunta enunciado = new TextoPregunta(pregunta.textoPregunta());
             super.getChildren().add(enunciado);
             super.setSpacing(ESPACIADO_CAJA_PREGUNTA);
             super.setAlignment(Pos.CENTER);
         }
+    }
+
+    private void determinarPuntajePregunta(Puntaje puntaje) {
+        TextoPregunta puntajePregunta;
+        if(puntaje instanceof PuntajeClasico){
+            puntajePregunta = new TextoPregunta("Puntaje Clásico");
+        }
+        else if(puntaje instanceof PuntajePenalizable){
+            puntajePregunta = new TextoPregunta("Puntaje Penalizable");
+        }
+        else {
+            puntajePregunta = new TextoPregunta("Puntaje Parcial");
+        }
+        puntajePregunta.setUnderline(true);
+        super.getChildren().add(puntajePregunta);
+
     }
 
     private void determinarTipoPregunta(Pregunta pregunta) {
@@ -42,6 +63,7 @@ public class CajaPreguntaTransicion extends VBox {
         else{
             tipoPregunta = new TextoPregunta("Ordered Choice");
         }
+        tipoPregunta.setUnderline(true);
         super.getChildren().add(tipoPregunta);
     }
 
