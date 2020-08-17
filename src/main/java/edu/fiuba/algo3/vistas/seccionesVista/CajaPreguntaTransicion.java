@@ -63,7 +63,7 @@ public class CajaPreguntaTransicion extends VBox {
         else{
             tipoPregunta = new TextoPregunta("Ordered Choice");
         }
-        tipoPregunta.setUnderline(true);
+        tipoPregunta.setStyle("-fx-font-weight: bold");
         super.getChildren().add(tipoPregunta);
     }
 
