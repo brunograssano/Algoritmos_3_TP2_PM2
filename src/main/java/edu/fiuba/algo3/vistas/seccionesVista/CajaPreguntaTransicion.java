@@ -7,7 +7,6 @@ import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.puntajes.PuntajeParcial;
 import edu.fiuba.algo3.modelo.puntajes.PuntajePenalizable;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import edu.fiuba.algo3.vistas.textos.TextoSeTerminaronPreguntas;
@@ -16,7 +15,7 @@ import javafx.scene.layout.VBox;
 
 public class CajaPreguntaTransicion extends VBox {
 
-    private static final double ESPACIADO_CAJA_PREGUNTA = 25;
+    private static final double ESPACIADO_CAJA_PREGUNTA = 10;
 
     public CajaPreguntaTransicion(){
         if(AlgoHoot.getInstance().terminoElJuego()){

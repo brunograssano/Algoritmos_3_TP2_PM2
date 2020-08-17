@@ -35,6 +35,8 @@ public class VistaOrderedChoice extends StackPane {
         GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
         VBox cajaPregunta = new VBox(30);
+        cajaPregunta.setPrefWidth(600);
+
         armarPregunta(cajaPregunta, controladorRespondioUsuario, opcionesCorrectas, pregunta.textoPregunta());
         VBox cajaInferior = new VBox();
 

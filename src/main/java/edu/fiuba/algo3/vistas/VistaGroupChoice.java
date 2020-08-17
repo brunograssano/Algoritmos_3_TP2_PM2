@@ -34,6 +34,8 @@ public class VistaGroupChoice extends StackPane{
 
         VBox cajaPregunta = new VBox(30);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
+        cajaPregunta.setPrefWidth(600);
+
         VBox cajaInferior = new VBox(20);
 
         ArrayList<String> nombresGrupos = pregunta.nombresGrupos();

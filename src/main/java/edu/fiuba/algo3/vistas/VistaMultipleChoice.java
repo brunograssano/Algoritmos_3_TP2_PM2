@@ -33,6 +33,7 @@ public class VistaMultipleChoice extends StackPane {
 
         VBox cajaPregunta = new VBox(30);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
+        cajaPregunta.setPrefWidth(600);
 
         ControladorEnviarMultipleChoice controladorRespondioUsuario = new ControladorEnviarMultipleChoice(stage,contenedorPrincipal);
         armarPregunta(cajaPregunta,preguntaMultipleChoice,controladorRespondioUsuario);
