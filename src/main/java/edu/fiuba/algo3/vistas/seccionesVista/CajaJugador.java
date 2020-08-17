@@ -10,9 +10,6 @@ import javafx.scene.paint.Color;
 
 public class CajaJugador extends VBox {
 
-    private static CornerRadii BORDE_CURVO_CAJA_JUGADOR = new CornerRadii(15);
-    private static BorderWidths GROSOR_BORDE_CAJA_JUGADOR = new BorderWidths(1.5D);
-
     public CajaJugador(Jugador jugador, String unColor) {
 
         String nombre = jugador.obtenerNombre();
@@ -22,8 +19,8 @@ public class CajaJugador extends VBox {
         TextoPuntuacion puntosJugador = new TextoPuntuacion(puntos);
 
         super.setMinSize(140,50);
-        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, BORDE_CURVO_CAJA_JUGADOR, GROSOR_BORDE_CAJA_JUGADOR)));
-        super.setBackground(new Background(new BackgroundFill(Color.web(unColor, EstilosApp.ALPHA_CAJA_JUGADOR), BORDE_CURVO_CAJA_JUGADOR,null)));
+        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
+        super.setBackground(new Background(new BackgroundFill(Color.web(unColor, EstilosApp.ALPHA_CAJA_JUGADOR), EstilosApp.BORDE_CURVO,null)));
 
         CajaBonusJugador cajaBonusJugador = new CajaBonusJugador(jugador);
 
