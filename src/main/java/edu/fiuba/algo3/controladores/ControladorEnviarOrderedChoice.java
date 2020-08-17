@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaGanador;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
-import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
+import edu.fiuba.algo3.vistas.botones.OpcionOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;

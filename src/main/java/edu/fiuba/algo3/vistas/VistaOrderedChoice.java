@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
-import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
+import edu.fiuba.algo3.vistas.botones.OpcionOrderedChoice;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;

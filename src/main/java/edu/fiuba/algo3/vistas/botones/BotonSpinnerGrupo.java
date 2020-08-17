@@ -39,19 +39,26 @@ public class BotonSpinnerGrupo extends HBox {
         spinner.setMaxHeight(50);
         spinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
 
-
-        Background unFondito = new Background(new BackgroundFill(Color.web(AMARILLO), new CornerRadii(0), new Insets(1)));
         Label label = new Label(opcion.obtenerTexto());
-        label.setBackground(unFondito);
         label.setFont(Font.font("montserrat", 25));
         label.setTextFill(Color.BLACK);
+
+        Insets padding = new Insets(8,8,8,8);
+        CornerRadii bordeRedondeado = new CornerRadii(10);
+        Color colorTransparente = Color.rgb(248, 128, 25,0.3);
+        spinner.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
+        spinner.setPadding(padding);
+        label.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
+        label.setPadding(padding);
 
         super.setAlignment(Pos.CENTER);
         super.setSpacing(2);
         super.getChildren().addAll(spinner, label);
     }
+
     public String getGrupoOpcion(){
         return spinner.getValue();
     }
+
     public OpcionSimple getOpcionSpinner() { return opcionSpinner;}
 }
