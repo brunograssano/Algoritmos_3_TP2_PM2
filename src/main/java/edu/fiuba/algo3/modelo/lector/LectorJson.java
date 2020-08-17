@@ -2,16 +2,11 @@ package edu.fiuba.algo3.modelo.lector;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import java.io.FileReader;
 import java.io.IOException;
-
-import edu.fiuba.algo3.modelo.respuestas.Respuesta;
-import edu.fiuba.algo3.modelo.resultados.Resultado;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
