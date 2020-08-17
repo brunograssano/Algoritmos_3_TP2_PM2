@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
+import edu.fiuba.algo3.modelo.desordenador.CriterioOrden;
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.lector.LectorPreguntas;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
@@ -34,14 +34,14 @@ public class AlgoHoot {
         return algohoot;
     }
 
-    public void agregarJugadores(String nombreJugador1, String nombreJugador2, CriterioDesorden unCriterio){
+    public void agregarJugadores(String nombreJugador1, String nombreJugador2, CriterioOrden unCriterio){
         jugador1 = new Jugador(nombreJugador1);
         jugador2 = new Jugador(nombreJugador2);
         turno = new TurnoPrimerJugador(jugador1);
         crearJugadas(unCriterio);
     }
 
-    private void crearJugadas(CriterioDesorden unDesordenador){
+    private void crearJugadas(CriterioOrden unDesordenador){
         unDesordenador.desordenar(preguntas);
         for(Pregunta pregunta:preguntas) {
             jugadas.push(new Jugada(jugador1,jugador2,pregunta));

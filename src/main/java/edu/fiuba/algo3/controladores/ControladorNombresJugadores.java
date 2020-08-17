@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controladores;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.desordenador.Desordenador;
+import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
 import javafx.event.ActionEvent;
@@ -36,7 +36,7 @@ public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
             nombresSinCompletar.show();
         }
         else{
-            AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2,new Desordenador());
+            AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2,new CriterioDesorden());
             contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
         }
     }

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
-import edu.fiuba.algo3.modelo.desordenador.Desordenador;
+import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
@@ -57,8 +57,8 @@ public class VistaGroupChoice extends StackPane{
     private void armarPregunta(ArrayList<String> nombresGrupos,VBox cajaPregunta, GroupChoice preguntaGroupChoice, ControladorEnviarGroupChoice controlador) {
 
         ArrayList<OpcionSimple> opciones = preguntaGroupChoice.respuestasPregunta();
-        Desordenador desordenador = new Desordenador();
-        desordenador.desordenar(opciones);
+        CriterioDesorden criterioDesorden = new CriterioDesorden();
+        criterioDesorden.desordenar(opciones);
 
         VBox cajaSpinners = new VBox(10);
         cajaSpinners.setAlignment(Pos.CENTER);

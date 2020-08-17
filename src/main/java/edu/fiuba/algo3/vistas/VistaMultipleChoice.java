@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
-import edu.fiuba.algo3.modelo.desordenador.Desordenador;
+import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
 import edu.fiuba.algo3.modelo.preguntas.multipleChoice.MultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
@@ -53,9 +53,9 @@ public class VistaMultipleChoice extends StackPane {
 
     private void armarPregunta(VBox cajaPregunta,MultipleChoice preguntaMultipleChoice,ControladorEnviarMultipleChoice controlador) {
         ArrayList<OpcionEvaluable> opciones = preguntaMultipleChoice.respuestasAPregunta();
-        Desordenador desordenador = new Desordenador();
+        CriterioDesorden criterioDesorden = new CriterioDesorden();
 
-        desordenador.desordenar(opciones);
+        criterioDesorden.desordenar(opciones);
         VBox cajaAgrupadoraDeOpciones = new VBox();
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER_LEFT);
         cajaAgrupadoraDeOpciones.setSpacing(15);
