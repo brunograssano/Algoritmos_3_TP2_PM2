@@ -18,7 +18,7 @@ public class TextoSinExclusividad extends Label {
         super.setAlignment(Pos.CENTER);
         Insets paddingSinMultiplicador = new Insets(10,10,10,10);
         CornerRadii bordeRedondeado = new CornerRadii(10);
-        Color rojoTransparente = Color.rgb(239, 45, 86,0.3);
+        Color rojoTransparente = Color.web(EstilosApp.ROJO,EstilosApp.ALPHA_OPCIONES);
         super.setBackground(new Background(new BackgroundFill(rojoTransparente,bordeRedondeado,null)));
         super.setPadding(paddingSinMultiplicador);
         super.setText("Se quedo sin exclusividad.");
