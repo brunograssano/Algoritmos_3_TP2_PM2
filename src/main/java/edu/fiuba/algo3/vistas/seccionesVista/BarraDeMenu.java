@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
+    private String rutaMusica = "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\";
+
     MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
 
     public BarraDeMenu(Stage stage) {
@@ -54,16 +56,16 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionMusicaDivertida = new MenuItem("Música Kahoot Divertida :)");
 
         opcionSinMusica.setOnAction(new ControladorMusica("",unReproductor));
-        opcionMusicaComun.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3",unReproductor));
-        opcionMusicaTrance.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\trance.mp3",unReproductor));
-        opcionMusicaHalloween.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\halloween.mp3",unReproductor));
-        opcionMusica8bits.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\8bits.mp3",unReproductor));
-        opcionMusicaTrap.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\trap.mp3",unReproductor));
-        opcionMusicaDisco.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\disco.mp3",unReproductor));
-        opcionMusicaFantasy.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\fantasy.mp3",unReproductor));
-        opcionMusicaReggae.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\reggae.mp3",unReproductor));
-        opcionMusicaSpace.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\space.mp3",unReproductor));
-        opcionMusicaDivertida.setOnAction(new ControladorMusica("\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\earrape.mp3",unReproductor));
+        opcionMusicaComun.setOnAction(new ControladorMusica(rutaMusica+"classic.mp3",unReproductor));
+        opcionMusicaTrance.setOnAction(new ControladorMusica(rutaMusica+"trance.mp3",unReproductor));
+        opcionMusicaHalloween.setOnAction(new ControladorMusica(rutaMusica+"halloween.mp3",unReproductor));
+        opcionMusica8bits.setOnAction(new ControladorMusica(rutaMusica+"8bits.mp3",unReproductor));
+        opcionMusicaTrap.setOnAction(new ControladorMusica(rutaMusica+"trap.mp3",unReproductor));
+        opcionMusicaDisco.setOnAction(new ControladorMusica(rutaMusica+"disco.mp3",unReproductor));
+        opcionMusicaFantasy.setOnAction(new ControladorMusica(rutaMusica+"fantasy.mp3",unReproductor));
+        opcionMusicaReggae.setOnAction(new ControladorMusica(rutaMusica+"reggae.mp3",unReproductor));
+        opcionMusicaSpace.setOnAction(new ControladorMusica(rutaMusica+"space.mp3",unReproductor));
+        opcionMusicaDivertida.setOnAction(new ControladorMusica(rutaMusica+"earrape.mp3",unReproductor));
 
         menuMusica.getItems().addAll(opcionSinMusica,opcionMusicaComun,opcionMusicaTrance,opcionMusicaHalloween,opcionMusica8bits);
         menuMusica.getItems().addAll(opcionMusicaTrap,opcionMusicaDisco,opcionMusicaFantasy,opcionMusicaReggae,opcionMusicaSpace,opcionMusicaDivertida);
