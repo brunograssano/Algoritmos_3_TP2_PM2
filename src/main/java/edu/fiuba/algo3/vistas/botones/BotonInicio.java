@@ -18,7 +18,7 @@ public class BotonInicio extends Button {
         super.setTextFill(Color.web(EstilosApp.GRIS));
         super.setOnAction(controlador);
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
-        Background unFondito = new Background(new BackgroundFill(Color.web(EstilosApp.VIOLETA), new CornerRadii(9), new Insets(1)));
+        Background unFondito = new Background(new BackgroundFill(Color.web(EstilosApp.VIOLETA), EstilosApp.BORDE_CURVO, new Insets(1)));
         super.setBackground(unFondito);
     }
 

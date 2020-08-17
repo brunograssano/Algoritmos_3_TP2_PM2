@@ -15,7 +15,10 @@ import java.util.ArrayList;
 
 public class CajaModificadores extends HBox {
 
+    private static int ESPACIO_ENTRE_MULTIPLICADORES = 40;
+
     public CajaModificadores(){
+        super(ESPACIO_ENTRE_MULTIPLICADORES);
         super.setAlignment(Pos.CENTER);
         Pregunta pregunta = AlgoHoot.getInstance().pedirPreguntaActual();
         if(pregunta.tipoPuntaje() instanceof PuntajePenalizable){
