@@ -18,9 +18,9 @@ public class BotonOpcionMultipleChoice extends CheckBox {
     public BotonOpcionMultipleChoice(OpcionEvaluable opcion, ControladorEnviarMultipleChoice controladorRespondioUsuario) {
         this.opcion = opcion;
         super.setText(opcion.obtenerTexto());
-        super.setFont(Font.font(EstilosApp.FUENTE, 25));
+        super.setFont(Font.font(EstilosApp.FUENTE, 20));
         super.setTextFill(Color.BLACK);
-        Insets padding = new Insets(8,8,8,8);
+        Insets padding = new Insets(6,6,6,6);
         CornerRadii bordeRedondeado = new CornerRadii(10);
         Color colorTransparente = Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES);
         super.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));

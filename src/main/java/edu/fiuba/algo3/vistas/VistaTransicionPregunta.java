@@ -28,6 +28,7 @@ public class VistaTransicionPregunta extends StackPane {
         CajaPreguntaTransicion pregunta = new CajaPreguntaTransicion();
 
         pregunta.setPrefWidth(640);
+        pregunta.setPrefHeight(400);
 
         HBox cajaBotonEmpezar = new HBox();
         BotonEmpezarPregunta botonEmpezarPregunta = new BotonEmpezarPregunta(stage,contenedorPrincipal);

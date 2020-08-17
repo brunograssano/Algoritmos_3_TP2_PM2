@@ -31,7 +31,7 @@ public class VistaMultipleChoice extends StackPane {
 
         GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
-        VBox cajaPregunta = new VBox(30);
+        VBox cajaPregunta = new VBox(20);
         cajaPregunta.setAlignment(Pos.TOP_CENTER);
         cajaPregunta.setPrefWidth(600);
 
@@ -57,7 +57,7 @@ public class VistaMultipleChoice extends StackPane {
         criterioDesorden.desordenar(opciones);
         VBox cajaAgrupadoraDeOpciones = new VBox();
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER_LEFT);
-        cajaAgrupadoraDeOpciones.setSpacing(15);
+        cajaAgrupadoraDeOpciones.setSpacing(10);
 
         for(OpcionEvaluable opcion:opciones) {
             BotonOpcionMultipleChoice boton = new BotonOpcionMultipleChoice(opcion,controlador);

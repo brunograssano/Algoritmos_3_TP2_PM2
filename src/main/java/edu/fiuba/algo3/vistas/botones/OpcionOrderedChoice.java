@@ -33,10 +33,10 @@ public class OpcionOrderedChoice extends HBox {
         spinner.getStyleClass().add(Spinner.STYLE_CLASS_ARROWS_ON_LEFT_VERTICAL);
 
         Label label = new Label(opcion.obtenerTexto());
-        label.setFont(Font.font(EstilosApp.FUENTE, 25));
+        label.setFont(Font.font(EstilosApp.FUENTE, 20));
         label.setTextFill(Color.BLACK);
 
-        Insets padding = new Insets(8,8,8,8);
+        Insets padding = new Insets(6,6,6,6);
         CornerRadii bordeRedondeado = new CornerRadii(10);
         Color colorTransparente = Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES);
         spinner.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
