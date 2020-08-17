@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas.seccionesVista;
 
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.TextoJugador;
 import edu.fiuba.algo3.vistas.textos.TextoPuntuacion;
 import javafx.geometry.Pos;
@@ -9,7 +10,6 @@ import javafx.scene.paint.Color;
 
 public class CajaJugador extends VBox {
 
-    private static float ALPHA_CAJA_JUGADOR = 0.1F;
     private static CornerRadii BORDE_CURVO_CAJA_JUGADOR = new CornerRadii(15);
     private static BorderWidths GROSOR_BORDE_CAJA_JUGADOR = new BorderWidths(1.5D);
 
@@ -23,7 +23,7 @@ public class CajaJugador extends VBox {
 
         super.setMinSize(140,50);
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, BORDE_CURVO_CAJA_JUGADOR, GROSOR_BORDE_CAJA_JUGADOR)));
-        super.setBackground(new Background(new BackgroundFill(Color.web(unColor, ALPHA_CAJA_JUGADOR), BORDE_CURVO_CAJA_JUGADOR,null)));
+        super.setBackground(new Background(new BackgroundFill(Color.web(unColor, EstilosApp.ALPHA_CAJA_JUGADOR), BORDE_CURVO_CAJA_JUGADOR,null)));
 
         CajaBonusJugador cajaBonusJugador = new CajaBonusJugador(jugador);
 

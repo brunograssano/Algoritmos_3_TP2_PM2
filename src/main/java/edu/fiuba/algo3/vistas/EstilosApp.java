@@ -8,4 +8,8 @@ public class EstilosApp {
     public static String AMARILLO = "FBD87F";
     public static String ROJO = "EF2D56";
     public static String FUENTE = "montserrat";
+    public static float ALPHA_CAJA_JUGADOR = 0.1F;
+    public static float ALPHA_CAJA_TURNO = 0.1F;
+    public static float ALPHA_OPCIONES = 0.3F;
+    public static float ALPHA_OPCIONES_VOF = 0.4F;
 }

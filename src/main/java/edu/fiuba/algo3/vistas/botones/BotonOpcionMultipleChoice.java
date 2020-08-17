@@ -22,7 +22,7 @@ public class BotonOpcionMultipleChoice extends CheckBox {
         super.setTextFill(Color.BLACK);
         Insets padding = new Insets(8,8,8,8);
         CornerRadii bordeRedondeado = new CornerRadii(10);
-        Color colorTransparente = Color.rgb(239, 197, 45,0.3);
+        Color colorTransparente = Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES);
         super.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
         super.setPadding(padding);
         super.selectedProperty().addListener((valorObservado, valorViejo, valorNuevo) -> {

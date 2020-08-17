@@ -38,7 +38,7 @@ public class OpcionOrderedChoice extends HBox {
 
         Insets padding = new Insets(8,8,8,8);
         CornerRadii bordeRedondeado = new CornerRadii(10);
-        Color colorTransparente = Color.rgb(255, 217, 0,0.3);
+        Color colorTransparente = Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES);
         spinner.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
         label.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
         label.setPadding(padding);

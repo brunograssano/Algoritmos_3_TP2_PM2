@@ -45,7 +45,7 @@ public class BotonSpinnerGrupo extends HBox {
 
         Insets padding = new Insets(4,4,4,4);
         CornerRadii bordeRedondeado = new CornerRadii(10);
-        Color colorTransparente = Color.rgb(248, 128, 25,0.3);
+        Color colorTransparente = Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES);
         spinner.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
         spinner.setPadding(padding);
         label.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
