@@ -6,9 +6,7 @@ import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -20,7 +18,8 @@ public class BotonMultiplicador extends Button {
         super.setTextFill(Color.BLACK);
         super.setOnAction(new ControladorModificador(this,multiplicador));
         super.setAlignment(Pos.CENTER);
-        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.AMARILLO), new CornerRadii(20), new Insets(1)));
+        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.AMARILLO),EstilosApp.BORDE_CURVO, new Insets(1)));
         super.setBackground(unFondo);
     }
 

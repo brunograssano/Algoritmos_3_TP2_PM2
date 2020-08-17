@@ -6,10 +6,7 @@ import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -30,7 +27,8 @@ public class BotonEnviarRespuestaOrderedChoice extends Button {
         controlador.agregarOpcionesSeleccionadas(opcionesOrden);
         controlador.agregarOpcionesCorrectas(opcionesCorrectas);
         super.setOnAction(controlador);
-        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), new CornerRadii(20), null));
+        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), EstilosApp.BORDE_CURVO, null));
         super.setBackground(unFondo);
     }
 }

@@ -20,9 +20,9 @@ public class BotonOpcionVerdaderoFalso extends Button {
         super.setTextFill(Color.BLACK);
         super.setOnAction(controladorRespondioUsuario);
 
-        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, BORDE_CURVO_OPCIONES, GROSOR_BORDE_OPCIONES)));
+        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
 
-        Background unFondito = new Background(new BackgroundFill(Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES_VOF), BORDE_CURVO_OPCIONES, new Insets(1)));
+        Background unFondito = new Background(new BackgroundFill(Color.web(EstilosApp.GRIS,EstilosApp.ALPHA_OPCIONES_VOF), EstilosApp.BORDE_CURVO, new Insets(1)));
         super.setBackground(unFondito);
     }
 }
