@@ -32,13 +32,13 @@ public class VistaVerdaderoFalso extends StackPane {
 
         VBox cajaEncabezado = new VBox(100);
         cajaEncabezado.setAlignment(Pos.TOP_CENTER);
-        VBox cajaPrincipal = new VBox(100);
-        cajaPrincipal.setAlignment(Pos.CENTER);
+        VBox cajaPregunta = new VBox(100);
+        cajaPregunta.setAlignment(Pos.CENTER);
 
-        armarPregunta(cajaPrincipal,cajaEncabezado,unaPregunta,contenedorPrincipal);
+        armarPregunta(cajaPregunta,cajaEncabezado,unaPregunta,contenedorPrincipal);
 
         grilla.add(cajaEncabezado,1,0);
-        grilla.add(cajaPrincipal,1,1);
+        grilla.add(cajaPregunta,1,1);
 
         super.getChildren().add(grilla);
     }
