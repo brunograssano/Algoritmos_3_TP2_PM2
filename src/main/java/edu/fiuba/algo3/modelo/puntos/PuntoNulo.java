@@ -7,9 +7,7 @@ public class PuntoNulo implements Punto {
     @Override
     public Puntuacion multiplicar(int factor) {
         Puntuacion puntosMultiplicados = new Puntuacion();
-        for(int i = 0; i < factor ; i++){
-            puntosMultiplicados.agregarPunto(this);
-        }
+        puntosMultiplicados.agregarPunto(this);
         return puntosMultiplicados;
     }
 

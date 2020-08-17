@@ -21,10 +21,6 @@ public class OrderParser implements Parser {
 
         jrespuestasEnOrden.forEach(jsRespuesta-> respuestasOrdenadas.add(new OpcionSimple((String) jsRespuesta )));
 
-//        for ( Object jsonRespuesta : jrespuestasEnOrden ){
-//            respuestasOrdenadas.add(new RespuestaOrden((String) jsonRespuesta));
-//        }
-
         return FabricaDePreguntas.CrearOrden(enunciado,respuestasOrdenadas);
     }
 }

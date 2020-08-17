@@ -53,8 +53,6 @@ public class LectorJson implements LectorPreguntas {
             ex.printStackTrace();
         } catch (ParseException ex) {
             ex.printStackTrace();
-        } catch (TipoDePuntajeEnArchivoNoValidoException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -64,13 +62,14 @@ public class LectorJson implements LectorPreguntas {
         ArrayList<Pregunta> preguntas = new ArrayList<>();
         Object obj = jsonParser.parse(lector);
         JSONArray preguntasJson = (JSONArray) obj;
-        //preguntasJson.forEach(jsPregunta -> preguntas.add(preguntaParser.parse((JSONObject) jsPregunta)));
         for(Object jsPregunta : preguntasJson){
 
             try{
                 Pregunta unaPregunta = preguntaParser.parse((JSONObject) jsPregunta);
                 preguntas.add(unaPregunta);
-            }catch(CantidadErroneaDeRespuestasParaPreguntaException ex){
+            } catch(CantidadErroneaDeRespuestasParaPreguntaException ex){
+                ex.printStackTrace();
+            } catch(TipoDePuntajeEnArchivoNoValidoException ex) {
                 ex.printStackTrace();
             }
 
