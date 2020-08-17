@@ -5,19 +5,29 @@ import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.resultados.ResultadoClasico;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RespuestaOrderedChoiceTest {
 
+    OpcionSimple elemento1;
+    OpcionSimple elemento2;
+    OpcionSimple elemento3;
+    OpcionSimple elemento4;
+
+    @BeforeEach
+    public void setUp(){
+        elemento1 = new OpcionSimple("1");
+        elemento2 = new OpcionSimple("2");
+        elemento3 = new OpcionSimple("3");
+        elemento4 = new OpcionSimple("4");
+    }
+
+
     @Test
     public void test01CreoUnaRespuestaOrderedChoiceYLaComparoConUnaIgualYSuma1Punto(){
-
-        OpcionSimple elemento1 = new OpcionSimple("1");
-        OpcionSimple elemento2 = new OpcionSimple("2");
-        OpcionSimple elemento3 = new OpcionSimple("3");
-        OpcionSimple elemento4 = new OpcionSimple("4");
 
         ArrayList<OpcionSimple> elementosOrden1 = new ArrayList<>();
         elementosOrden1.add(elemento1);
@@ -45,11 +55,6 @@ public class RespuestaOrderedChoiceTest {
     @Test
     public void test02CreoUnaRespuestaOrderedChoiceYLaComparoConUnaDistintaYSuma0Puntos(){
 
-        OpcionSimple elemento1 = new OpcionSimple("1");
-        OpcionSimple elemento2 = new OpcionSimple("2");
-        OpcionSimple elemento3 = new OpcionSimple("3");
-        OpcionSimple elemento4 = new OpcionSimple("4");
-
         ArrayList<OpcionSimple> elementosOrden1 = new ArrayList<>();
         elementosOrden1.add(elemento1);
         elementosOrden1.add(elemento2);
@@ -75,11 +80,6 @@ public class RespuestaOrderedChoiceTest {
 
     @Test
     public void test03CreoUnaRespuestaOrderedChoiceYLaComparoConUnaRespuestaGroupChoiceYSuma0Puntos(){
-
-        OpcionSimple elemento1 = new OpcionSimple("1");
-        OpcionSimple elemento2 = new OpcionSimple("2");
-        OpcionSimple elemento3 = new OpcionSimple("3");
-        OpcionSimple elemento4 = new OpcionSimple("4");
 
         ArrayList<OpcionSimple> elementosOrden1 = new ArrayList<>();
         elementosOrden1.add(elemento1);
@@ -128,7 +128,6 @@ public class RespuestaOrderedChoiceTest {
 
     @Test
     public void test05AlIntentarCrearUnaRespuestaOrderedChoiceConMenosDe2OpcionesSeDebeLanzarExcepcion(){
-
         OpcionSimple opcion1 = new OpcionSimple("Gatito");
 
         ArrayList<OpcionSimple> opcionesOrden = new ArrayList<>();

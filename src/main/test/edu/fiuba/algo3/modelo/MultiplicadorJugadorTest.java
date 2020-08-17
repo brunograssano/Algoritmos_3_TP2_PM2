@@ -8,20 +8,23 @@ import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
 import edu.fiuba.algo3.modelo.resultados.Resultado;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultiplicadorJugadorTest {
 
+    Jugador unJugador;
+
+    @BeforeEach
+    public void setUp(){
+        unJugador = new Jugador("Juan");
+    }
+
     @Test
     public void test01CreoUnMultiplicadorLoAplicoYLosPuntosSeDuplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
-        int unFactor = 2;
-
+         int unFactor = 2;
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
@@ -42,11 +45,7 @@ public class MultiplicadorJugadorTest {
 
     @Test
     public void test02CreoUnMultiplicadorLoAplicoYLosPuntosSeTriplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
         int unFactor = 3;
-
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
@@ -67,11 +66,7 @@ public class MultiplicadorJugadorTest {
 
     @Test
     public void test03CreoUnMultiplicadorLoAplicoEnUnaPuntuacionYLosPuntosSeTriplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
         int unFactor = 3;
-
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         Puntuacion puntos = new Puntuacion();
@@ -86,11 +81,7 @@ public class MultiplicadorJugadorTest {
 
     @Test
     public void test04CreoUnMultiplicadorLoAplicoEnUnaPuntuacionYLosPuntosSeDuplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
         int unFactor = 2;
-
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         Puntuacion puntos = new Puntuacion();
@@ -104,9 +95,6 @@ public class MultiplicadorJugadorTest {
     }
     @Test
     public void test05CreoUnMultiplicadorLoAplicoEnUnResultadoIncorrectoSuValorSigueSiendoCeroPuntos(){
-
-        Jugador unJugador = new Jugador("Juan");
-
         int unFactor = 3;
 
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);

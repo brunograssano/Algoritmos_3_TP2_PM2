@@ -5,18 +5,28 @@ import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.modelo.resultados.ResultadoClasico;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RespuestaGroupChoiceTest {
 
+    OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
+    OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
+    OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
+    OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
+
+    @BeforeEach
+    public void setUp(){
+        opcion1Grupo1 = new OpcionSimple("Gatito");
+        opcion2Grupo1 = new OpcionSimple("Conejo");
+        opcion1Grupo2 = new OpcionSimple("Lagarto");
+        opcion2Grupo2 = new OpcionSimple("Iguana");
+    }
+
     @Test
     public void test01CreoUnaRespuestaGroupChoiceYLaComparoConUnaIgualYSuma1Punto() {
-        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
-        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
-        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
-        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
 
         ArrayList<OpcionSimple> grupo1Respuesta = new ArrayList<>();
         ArrayList<OpcionSimple> grupo2Respuesta = new ArrayList<>();
@@ -39,11 +49,6 @@ public class RespuestaGroupChoiceTest {
 
     @Test
     public void test02CreoUnaRespuestaGroupChoiceYLaComparoConUnaDistintaYSuma0Puntos(){
-
-        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
-        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
-        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
-        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
 
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
         ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
@@ -75,11 +80,6 @@ public class RespuestaGroupChoiceTest {
     @Test
     public void test03CreoUnaRespuestaGroupChoiceYLaComparoConUnaRespuestaOrderedChoiceYSuma0Puntos(){
 
-        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
-        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
-        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
-        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
-
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
         ArrayList<OpcionSimple> opcionesGrupo2Respuesta1 = new ArrayList<>();
 
@@ -101,11 +101,6 @@ public class RespuestaGroupChoiceTest {
     @Test
     public void test04AlIntentarCrearUnaRespuestaGroupChoiceConMasDe5OpcionesSeDebeLanzarExcepcion(){
 
-        OpcionSimple opcion1Grupo1 = new OpcionSimple("Gatito");
-        OpcionSimple opcion2Grupo1 = new OpcionSimple("Conejo");
-        OpcionSimple opcion1Grupo2 = new OpcionSimple("Lagarto");
-        OpcionSimple opcion2Grupo2 = new OpcionSimple("Iguana");
-
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
         opcionesGrupo1Respuesta1.add(opcion1Grupo1);
         opcionesGrupo1Respuesta1.add(opcion2Grupo1);
@@ -125,9 +120,7 @@ public class RespuestaGroupChoiceTest {
 
     @Test
     public void test05AlIntentarCrearUnaRespuestaGroupChoiceConMenosDe2OpcionesSeDebeLanzarExcepcion(){
-
         OpcionSimple unicaOpcion = new OpcionSimple("Gatito");
-
 
         ArrayList<OpcionSimple> opcionesGrupo1Respuesta1 = new ArrayList<>();
         opcionesGrupo1Respuesta1.add(unicaOpcion);
