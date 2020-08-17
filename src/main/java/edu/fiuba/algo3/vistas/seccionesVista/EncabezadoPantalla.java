@@ -13,15 +13,15 @@ public class EncabezadoPantalla extends HBox {
     public EncabezadoPantalla(){
         TextoTurno textoDelTurno = new TextoTurno();
         TextoContadorPreguntas textoContadorPreguntas = new TextoContadorPreguntas();
-        CajaTurno cajaTurno = new CajaTurno(textoDelTurno,textoContadorPreguntas, EstilosApp.GRIS);
+        CajaTurno cajaTurno = new CajaTurno(textoDelTurno,textoContadorPreguntas, EstilosApp.VIOLETA);
         cajaTurno.setAlignment(Pos.CENTER);
 
         Jugador jugador1 = AlgoHoot.getInstance().obtenerJugador1();
-        CajaJugador cajaJugador1 = new CajaJugador(jugador1, EstilosApp.GRIS);
+        CajaJugador cajaJugador1 = new CajaJugador(jugador1, EstilosApp.ROJO);
         cajaJugador1.setAlignment(Pos.CENTER);
 
         Jugador jugador2 = AlgoHoot.getInstance().obtenerJugador2();
-        CajaJugador cajaJugador2 = new CajaJugador(jugador2, EstilosApp.GRIS);
+        CajaJugador cajaJugador2 = new CajaJugador(jugador2, EstilosApp.CELESTE);
         cajaJugador2.setAlignment(Pos.CENTER);
 
         super.setAlignment(Pos.TOP_CENTER);
