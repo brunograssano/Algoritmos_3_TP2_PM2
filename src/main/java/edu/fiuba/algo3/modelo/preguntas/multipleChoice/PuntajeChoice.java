@@ -10,6 +10,5 @@ public interface PuntajeChoice extends Puntaje {
 
     Resultado obtenerResultado(int respuestasCorrectasTotales, Jugador unJugador);
 
-    void puedeUsarModificador(Modificador modificador, ArrayList<Modificador> modificadoresDeLaJugada);
 }
 

@@ -16,7 +16,7 @@ public class BotonMultiplicador extends Button {
     static String AMARILLO = "FBD87F";
     
     public BotonMultiplicador(MultiplicadorJugador multiplicador) {
-        super.setText("Multiplicador x"+ multiplicador.factor());
+        super.setText("Usar Multiplicador x"+ multiplicador.factor());
         super.setFont(Font.font("montserrat", 20));
         super.setTextFill(Color.BLACK);
         super.setOnAction(new ControladorModificador(this,multiplicador));

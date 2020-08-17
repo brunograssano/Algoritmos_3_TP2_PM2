@@ -42,13 +42,10 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         return unResultado;
     }
 
-
-    //Este metodo se puede poner en la interfaz de PreguntaAutoEvaluable
     public ArrayList<OpcionEvaluable> respuestasAPregunta(){
         ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
-
         return opciones;
     }
 

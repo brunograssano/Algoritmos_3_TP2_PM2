@@ -58,6 +58,7 @@ public class VistaMultipleChoice extends StackPane {
         desordenador.desordenar(opciones);
         VBox cajaAgrupadoraDeOpciones = new VBox();
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER_LEFT);
+        cajaAgrupadoraDeOpciones.setSpacing(15);
 
         for(OpcionEvaluable opcion:opciones) {
             BotonOpcionMultipleChoice boton = new BotonOpcionMultipleChoice(opcion,controlador);
