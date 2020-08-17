@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -32,7 +33,7 @@ public class OpcionOrderedChoice extends HBox {
         spinner.getStyleClass().add(Spinner.STYLE_CLASS_ARROWS_ON_LEFT_VERTICAL);
 
         Label label = new Label(opcion.obtenerTexto());
-        label.setFont(Font.font("montserrat", 25));
+        label.setFont(Font.font(EstilosApp.FUENTE, 25));
         label.setTextFill(Color.BLACK);
 
         Insets padding = new Insets(8,8,8,8);

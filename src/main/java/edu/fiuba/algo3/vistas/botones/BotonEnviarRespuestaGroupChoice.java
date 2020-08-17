@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -15,11 +16,9 @@ import java.util.ArrayList;
 
 public class BotonEnviarRespuestaGroupChoice extends Button {
 
-    static String VERDE = "33FF96";
-
     public BotonEnviarRespuestaGroupChoice(ControladorEnviarGroupChoice controlador, VBox cajaOpciones) {
         super.setText("Enviar respuesta");
-        super.setFont(Font.font("montserrat", 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 20));
         super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opcionesGrupo =  cajaOpciones.getChildren();
@@ -29,7 +28,7 @@ public class BotonEnviarRespuestaGroupChoice extends Button {
         }
         controlador.agregarSpinnersGrupo(spinnersGrupo);
         super.setOnAction(controlador);
-        Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), new CornerRadii(20), new Insets(1)));
         super.setBackground(unFondo);
 
     }
