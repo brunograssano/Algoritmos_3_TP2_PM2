@@ -19,7 +19,7 @@ public class VistaAyuda extends StackPane {
         cajaPrincipal.setAlignment(Pos.CENTER);
 
         Label titulo = new Label("Ayuda sobre el juego");
-        titulo.setFont(Font.font("montserrat",25));
+        titulo.setFont(Font.font(EstilosApp.FUENTE,25));
         titulo.setTextFill(Color.BLACK);
         titulo.setWrapText(true);
 

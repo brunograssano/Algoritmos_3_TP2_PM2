@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class VistaVerdaderoFalso extends StackPane {
 
-    static String GRIS = "D8DDEF";
     private Stage stage;
 
     public VistaVerdaderoFalso(VerdaderoFalso unaPregunta, Stage stage, ContenedorPrincipal contenedorPrincipal){

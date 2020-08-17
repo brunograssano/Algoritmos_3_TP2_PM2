@@ -18,8 +18,6 @@ import java.util.ArrayList;
 
 public class VistaMultipleChoice extends StackPane {
 
-    static String GRIS = "D8DDEF";
-
     private Stage stage;
 
     public VistaMultipleChoice(MultipleChoice preguntaMultipleChoice, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {

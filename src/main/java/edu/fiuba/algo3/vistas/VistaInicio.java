@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 public class VistaInicio extends StackPane{
 
-    private static final String GRIS = "D8DDEF";
-
     private Stage stage;
 
     public VistaInicio(Stage stagePrincipal,ContenedorPrincipal contenedorPrincipal) {
@@ -28,7 +26,7 @@ public class VistaInicio extends StackPane{
         VBox cajaPrincipal = new VBox(70);
         cajaPrincipal.setAlignment(Pos.CENTER);
 
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(GRIS);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(EstilosApp.GRIS);
         cajaPrincipal.getChildren().add(textoAlgoHootInicio);
 
         BotonInicio botonInicio = new BotonInicio(new ControladorIniciarJuego(stagePrincipal,contenedorPrincipal));

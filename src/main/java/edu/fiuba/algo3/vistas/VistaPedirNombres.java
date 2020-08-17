@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 
 public class VistaPedirNombres extends StackPane{
 
-    private static final String GRIS = "D8DDEF";
-
     public VistaPedirNombres(Stage stage, ContenedorPrincipal contenedorPrincipal) {
         Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null,BackgroundPosition.CENTER,null);
@@ -27,15 +25,15 @@ public class VistaPedirNombres extends StackPane{
 
         VBox nombreJuego = new VBox(0);
         nombreJuego.setAlignment(Pos.TOP_CENTER);
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(GRIS);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(EstilosApp.GRIS);
         nombreJuego.getChildren().add(textoAlgoHootInicio);
 
         VBox cajaJugadores = new VBox(10);
         cajaJugadores.setAlignment(Pos.CENTER);
 
         Label labelJugador1 = new Label("Ingrese el nombre del Jugador 1");
-        labelJugador1.setFont(Font.font("montserrat",20));
-        labelJugador1.setTextFill(Color.web(GRIS));
+        labelJugador1.setFont(Font.font(EstilosApp.FUENTE,20));
+        labelJugador1.setTextFill(Color.web(EstilosApp.GRIS));
         cajaJugadores.getChildren().add(labelJugador1);
 
         TextField campoNombreJugador1 = new TextField();
@@ -43,8 +41,8 @@ public class VistaPedirNombres extends StackPane{
         cajaJugadores.getChildren().add(campoNombreJugador1);
 
         Label labelJugador2 = new Label("Ingrese el nombre del Jugador 2");
-        labelJugador2.setFont(Font.font("montserrat",20));
-        labelJugador2.setTextFill(Color.web(GRIS));
+        labelJugador2.setFont(Font.font(EstilosApp.FUENTE,20));
+        labelJugador2.setTextFill(Color.web(EstilosApp.GRIS));
         cajaJugadores.getChildren().add(labelJugador2);
 
         TextField campoNombreJugador2 = new TextField();

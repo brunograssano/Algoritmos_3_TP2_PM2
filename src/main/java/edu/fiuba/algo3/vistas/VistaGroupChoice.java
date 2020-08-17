@@ -18,8 +18,6 @@ import java.util.ArrayList;
 
 public class VistaGroupChoice extends StackPane{
 
-    static String GRIS = "D8DDEF";
-
     private Stage stage;
 
     public VistaGroupChoice(GroupChoice pregunta, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {

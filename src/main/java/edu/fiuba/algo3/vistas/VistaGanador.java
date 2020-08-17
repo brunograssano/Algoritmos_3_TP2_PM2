@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 
 public class VistaGanador extends StackPane {
 
-    private static final String GRIS = "D8DDEF";
     private Stage stage;
 
     public VistaGanador(Stage stage,ContenedorPrincipal contenedorPrincipal){
@@ -36,7 +35,7 @@ public class VistaGanador extends StackPane {
 
         VBox cajaLogo = new VBox();
         cajaLogo.setAlignment(Pos.CENTER);
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(GRIS);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(EstilosApp.GRIS);
         // textoAlgoHootInicio.setAlignment(Pos.CENTER);
         cajaLogo.getChildren().add(textoAlgoHootInicio);
 
@@ -46,8 +45,8 @@ public class VistaGanador extends StackPane {
         String textoResultado = AlgoHoot.getInstance().obtenerJugadorGanador();
         Label textoGanador = new Label(textoResultado);
 
-        textoGanador.setFont(Font.font("montserrat",40));
-        textoGanador.setTextFill(Color.web(GRIS));
+        textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
+        textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
         cajaGanador.getChildren().add(textoGanador);
         //textoGanador.setAlignment(Pos.CENTER);
 
