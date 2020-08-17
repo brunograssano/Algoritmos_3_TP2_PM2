@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.Background;
@@ -17,7 +18,7 @@ public class BotonOpcionMultipleChoice extends CheckBox {
     public BotonOpcionMultipleChoice(OpcionEvaluable opcion, ControladorEnviarMultipleChoice controladorRespondioUsuario) {
         this.opcion = opcion;
         super.setText(opcion.obtenerTexto());
-        super.setFont(Font.font("montserrat", 25));
+        super.setFont(Font.font(EstilosApp.FUENTE, 25));
         super.setTextFill(Color.BLACK);
         Insets padding = new Insets(8,8,8,8);
         CornerRadii bordeRedondeado = new CornerRadii(10);

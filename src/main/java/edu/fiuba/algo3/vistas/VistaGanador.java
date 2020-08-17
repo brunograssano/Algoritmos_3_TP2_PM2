@@ -43,8 +43,7 @@ public class VistaGanador extends StackPane {
         VBox cajaGanador = new VBox();
         cajaGanador.setAlignment(Pos.CENTER);
 
-        FinJuego resultadoFinal = AlgoHoot.getInstance().obtenerJugadorGanador();
-        String textoResultado = resultadoFinal.resultadoJuego();
+        String textoResultado = AlgoHoot.getInstance().obtenerJugadorGanador();
         Label textoGanador = new Label(textoResultado);
 
         textoGanador.setFont(Font.font("montserrat",40));

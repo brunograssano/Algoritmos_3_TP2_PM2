@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 
 public class BotonSpinnerGrupo extends HBox {
 
-    private final static String AMARILLO = "FBD87F";
     private final OpcionSimple opcionSpinner;
     private final Spinner<String> spinner;
 
@@ -40,7 +40,7 @@ public class BotonSpinnerGrupo extends HBox {
         spinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
 
         Label label = new Label(opcion.obtenerTexto());
-        label.setFont(Font.font("montserrat", 20));
+        label.setFont(Font.font(EstilosApp.FUENTE, 20));
         label.setTextFill(Color.BLACK);
 
         Insets padding = new Insets(4,4,4,4);

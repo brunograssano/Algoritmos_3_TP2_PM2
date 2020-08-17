@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -15,11 +16,10 @@ import javafx.scene.text.Font;
 import java.util.ArrayList;
 
 public class BotonEnviarRespuestaOrderedChoice extends Button {
-    static String VERDE = "33FF96";
 
     public BotonEnviarRespuestaOrderedChoice(ControladorEnviarOrderedChoice controlador, VBox cajaOpciones, ArrayList<OpcionSimple> opcionesCorrectas){
         super.setText("Enviar respuesta");
-        super.setFont(Font.font("montserrat", 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 20));
         super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opciones =  cajaOpciones.getChildren();
@@ -30,7 +30,7 @@ public class BotonEnviarRespuestaOrderedChoice extends Button {
         controlador.agregarOpcionesSeleccionadas(opcionesOrden);
         controlador.agregarOpcionesCorrectas(opcionesCorrectas);
         super.setOnAction(controlador);
-        Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), null));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), new CornerRadii(20), null));
         super.setBackground(unFondo);
     }
 }
