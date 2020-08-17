@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vistas.seccionesVista;
 
-import edu.fiuba.algo3.modelo.AlgoHoot;
+
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;

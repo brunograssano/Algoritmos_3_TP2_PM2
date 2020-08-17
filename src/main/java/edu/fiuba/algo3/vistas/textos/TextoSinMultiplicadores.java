@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas.textos;
 
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ import javafx.scene.text.Font;
 public class TextoSinMultiplicadores extends Label {
 
     public TextoSinMultiplicadores(){
-        super.setFont(Font.font("montserrat",20));
+        super.setFont(Font.font(EstilosApp.FUENTE,20));
         super.setTextFill(Color.BLACK);
         super.setAlignment(Pos.CENTER);
         Insets paddingSinMultiplicador = new Insets(10,10,10,10);
