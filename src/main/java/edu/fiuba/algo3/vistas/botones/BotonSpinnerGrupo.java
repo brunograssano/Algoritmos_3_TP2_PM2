@@ -40,10 +40,10 @@ public class BotonSpinnerGrupo extends HBox {
         spinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
 
         Label label = new Label(opcion.obtenerTexto());
-        label.setFont(Font.font("montserrat", 25));
+        label.setFont(Font.font("montserrat", 20));
         label.setTextFill(Color.BLACK);
 
-        Insets padding = new Insets(8,8,8,8);
+        Insets padding = new Insets(4,4,4,4);
         CornerRadii bordeRedondeado = new CornerRadii(10);
         Color colorTransparente = Color.rgb(248, 128, 25,0.3);
         spinner.setBackground(new Background(new BackgroundFill(colorTransparente,bordeRedondeado,null)));
