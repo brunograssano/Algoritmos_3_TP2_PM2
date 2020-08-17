@@ -49,10 +49,11 @@ public class TurnoTest {
     @Test
     public void test05CreoUnTurnoJugadorUsaExclusividadPidoExclusividadesDelJugadorYDevuelveUna(){
         Jugador unJugador = new Jugador("NombreJugador");
+        Jugador otroJugador = new Jugador("otroJugador");
         Respuesta unaRespuesta = new RespuestaVerdaderoFalso(new OpcionCorrectaVerdaderoFalso(true));
         Turno unTurno = new TurnoSegundoJugador(unaRespuesta, unJugador);
         Pregunta unaPregunta = new FabricaDePreguntas().CrearVerdaderoFalsoClasico("Un enunciado", true);
-        Jugada unaJugada = new Jugada(unJugador, new Jugador("otroJugador"),unaPregunta);
+        Jugada unaJugada = new Jugada(unJugador, otroJugador,unaPregunta);
 
         ArrayList<Exclusividad> exclusividades = unJugador.exclusividades();
         unaJugada.agregarModificador(exclusividades.get(0));

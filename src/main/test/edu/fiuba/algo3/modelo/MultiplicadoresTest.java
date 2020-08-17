@@ -10,23 +10,29 @@ import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultiplicadoresTest {
 
+
+    Jugador jugador1;
+    Jugador jugador2;
+
+    @BeforeEach
+    public void setUp(){
+        jugador1 = new Jugador("Joaquin");
+        jugador2 = new Jugador("Bruno");
+    }
+
+
     @Test
     public void test01ElJugadorAplicaMultiplicadorX2AUnaPreguntaPenalizableYRespondeCorrectamente(){
-
         String enunciado = "Slack acepta videollamadas";
-
         boolean enunciadoNoEsCorrecto = false;
-
         Pregunta pregunta = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado, enunciadoNoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Joaquin");
-        Jugador jugador2 = new Jugador("Bruno");
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
@@ -46,15 +52,9 @@ public class MultiplicadoresTest {
 
     @Test
     public void test02ElJugadorAplicaMultiplicadorX3AUnaPreguntaPenalizableYRespondeCorrectamente(){
-
         String enunciado = "Slack acepta videollamadas";
-
         boolean enunciadoNoEsCorrecto = false;
-
         Pregunta pregunta = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado, enunciadoNoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Joaquin");
-        Jugador jugador2 = new Jugador("Bruno");
 
         Jugada jugada = new Jugada(jugador1, jugador2, pregunta);
 
@@ -74,10 +74,8 @@ public class MultiplicadoresTest {
 
     @Test
     public void test03IntentoAgregarUnMultiplicadorEnUnVoFClasicoYRespondiendoNoSeVeAlteradoElResultadoEsperado(){
-
         String enunciado = "Slack acepta videollamadas";
         boolean enunciadoNoEsCorrecto = false;
-
         Pregunta pregunta = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado, enunciadoNoEsCorrecto);
 
         Jugador jugador1 = new Jugador("Joaquin");
@@ -100,9 +98,7 @@ public class MultiplicadoresTest {
 
     @Test
     public void test04IntentoAgregarUnMultiplicadorEnUnMultipleChoiceClasicoYRespondiendoNoSeVeAlteradoElResultadoEsperado(){
-
         String enunciado = "Cuales de estos son postres?";
-
         OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");
         OpcionCorrectaMultipleChoice respuestaCorrecta2 = new OpcionCorrectaMultipleChoice("Gelatina");
         OpcionIncorrectaMultipleChoice respuestaIncorrecta1 = new OpcionIncorrectaMultipleChoice("Cordero a la Wellington");
@@ -115,9 +111,6 @@ public class MultiplicadoresTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Joaquin");
-        Jugador jugador2 = new Jugador("Bruno");
 
         Jugada jugada = new Jugada(jugador1, jugador2, preguntaMultipleChoice);
 
@@ -141,7 +134,6 @@ public class MultiplicadoresTest {
 
     @Test
     public void test05IntentoAgregarUnMultiplicadorEnUnMultipleChoiceParcialYRespondiendoNoSeVeAlteradoElResultadoEsperado(){
-
         String enunciado = "Cuales de estos son postres?";
 
         OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("Tiramisú");

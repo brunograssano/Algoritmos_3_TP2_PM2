@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,21 +13,31 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JugadaTest {
 
+    String enunciado;
+    boolean enunciadoEsCorrecto;
+    Pregunta verdaderoFalso;
+
+    Jugador jugador1;
+    Jugador jugador2;
+    Jugada jugada;
+
+    @BeforeEach
+    public void setUp(){
+        enunciado = "Diciembre tiene 31 dias?";
+        enunciadoEsCorrecto = true;
+        verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
+
+        jugador1 = new Jugador("Pedro");
+        jugador2 = new Jugador("Juan");
+
+        jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
+    }
+
     @Test
     public void test01CreoUnaJugadaAmbosJugadoresRespondenBienYSeLeDevuelvenCorrectamenteLosPuntos() {
-
-        String enunciado = "Diciembre tiene 31 dias?";
-        boolean enunciadoEsCorrecto = true;
-        Pregunta verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
-
         ArrayList<Integer> puntosEsperados = new ArrayList<>();
         puntosEsperados.add(1);
         puntosEsperados.add(1);
-
-        Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
         OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
@@ -44,19 +55,9 @@ public class JugadaTest {
 
     @Test
     public void test02CreoUnaJugadaUnJugadorRespondeBienElOtroMalYSeLeDevuelvenCorrectamenteLosPuntos() {
-
-        String enunciado = "Diciembre tiene 31 dias?";
-        boolean enunciadoEsCorrecto = true;
-        Pregunta verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
-
         ArrayList<Integer> puntosEsperados = new ArrayList<>();
         puntosEsperados.add(1);
         puntosEsperados.add(0);
-
-        Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
         OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
         OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
@@ -75,19 +76,9 @@ public class JugadaTest {
 
     @Test
     public void test03CreoUnaJugadaAmbosJugadoresRespondenMalYSeLeDevuelvenCorrectamenteLosPuntos() {
-
-        String enunciado = "Diciembre tiene 31 dias?";
-        boolean enunciadoEsCorrecto = true;
-        Pregunta verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
-
         ArrayList<Integer> puntosEsperados = new ArrayList<>();
         puntosEsperados.add(0);
         puntosEsperados.add(0);
-
-        Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
         OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
