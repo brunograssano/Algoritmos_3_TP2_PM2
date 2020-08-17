@@ -12,34 +12,36 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashMap;
 
 public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent> {
 
     private Stage stage;
     private ArrayList<OpcionOrderedChoice> opcionesVista;
-    private ArrayList<OpcionSimple> opcionesCorrectas;
+    private HashMap<String,OpcionSimple> opcionesOrdenHash;
     private ArrayList<OpcionSimple> opcionesJugador;
     private ContenedorPrincipal contenedorPrincipal;
 
     public ControladorEnviarOrderedChoice(Stage escenario, ContenedorPrincipal contenedorPrincipal){
+        this.contenedorPrincipal = contenedorPrincipal;
         stage = escenario;
         opcionesJugador = new ArrayList<>();
-        this.contenedorPrincipal = contenedorPrincipal;
+        opcionesOrdenHash = new HashMap<>();
     }
+
     public void agregarOpcionesSeleccionadas(ArrayList<OpcionOrderedChoice> opciones){
         opcionesVista = opciones;
     }
 
     public void agregarOpcionesCorrectas(ArrayList<OpcionSimple> opcionesCorrectas){
-        this.opcionesCorrectas = opcionesCorrectas;
+        for (OpcionSimple opcion:opcionesCorrectas) {
+            opcionesOrdenHash.put(opcion.obtenerTexto(),opcion);
+        }
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-
-
-        if(seRepiteOpcionSeleccionada()) {
+        if(seRepitenOpcionesSeleccionadas()) {
             Alert repiteoOrden = new Alert(Alert.AlertType.ERROR);
             repiteoOrden.setHeaderText("Se repitieron posiciones");
             repiteoOrden.setContentText("Se deben elegir posiciones de orden distintas para cada opcion!");
@@ -55,58 +57,42 @@ public class ControladorEnviarOrderedChoice implements EventHandler<ActionEvent>
                 contenedorPrincipal.setCentro(new VistaTransicionPregunta(stage,contenedorPrincipal));
             }
         }
+    }
 
+    private boolean seRepitenOpcionesSeleccionadas() {
+        int contadorPos1 = 0, contadorPos2 = 0;
+        int contadorPos3 = 0, contadorPos4 = 0;
+        int contadorPos5 = 0;
+
+        ArrayList<Integer> listaAux = new ArrayList<>();
+        for(OpcionOrderedChoice opcion : opcionesVista){
+            listaAux.add(opcion.getNumeroOrden());
+        }
+        for(int orden : listaAux){
+            if(orden == 1)
+                contadorPos1++;
+            if(orden == 2)
+                contadorPos2 ++;
+            if(orden == 3)
+                contadorPos3 ++;
+            if(orden == 4)
+                contadorPos4 ++;
+            if(orden == 5)
+                contadorPos5 ++;
+        }
+        return hayMasDeUnaOpcionEnElMismoLugar(contadorPos1, contadorPos2, contadorPos3, contadorPos4, contadorPos5);
+    }
+
+    private boolean hayMasDeUnaOpcionEnElMismoLugar(int contadorPos1, int contadorPos2, int contadorPos3, int contadorPos4, int contadorPos5) {
+        return (contadorPos1 > 1) || (contadorPos2 > 1) || (contadorPos3 > 1) || (contadorPos4 > 1) || (contadorPos5 > 1);
     }
 
     private void convertirOpcionesSimples() {
+        opcionesVista.sort(new ComparadorOrderedChoice());
 
-        ArrayList <OpcionSimple> opcionesSeleccionadas = new ArrayList<>();
-
-        opcionesVista.sort(new Comparator<OpcionOrderedChoice>() {
-            @Override
-            public int compare(OpcionOrderedChoice opcion1, OpcionOrderedChoice opcion2) {
-                int valor = 0;
-                if (opcion1.getNumeroOrden() > opcion2.getNumeroOrden())
-                    valor = 1;
-                else if (opcion1.getNumeroOrden() < opcion2.getNumeroOrden())
-                    valor = -1;
-                return valor;
-            }
-        });
-        for (OpcionOrderedChoice opcion : opcionesVista) {
-            for (OpcionSimple opcionCorrecta : opcionesCorrectas){
-                if(opcion.getEnunciadoOpcion().equals(opcionCorrecta.obtenerTexto())) {
-                    opcionesSeleccionadas.add(opcionCorrecta);
-                }
-            }
-        }
-        this.opcionesJugador = opcionesSeleccionadas;
-    }
-
-        private boolean seRepiteOpcionSeleccionada() {
-
-            int contadorPos1 = 0;
-            int contadorPos2 = 0;
-            int contadorPos3 = 0;
-            int contadorPos4 = 0;
-            int contadorPos5 = 0;
-
-            ArrayList<Integer> listaAux = new ArrayList<Integer>();
-            for(OpcionOrderedChoice opcion : opcionesVista){
-                listaAux.add(opcion.getNumeroOrden());
-            }
-            for(int orden : listaAux){
-                if(orden == 1)
-                    contadorPos1++;
-                if(orden == 2)
-                    contadorPos2 ++;
-                if(orden == 3)
-                    contadorPos3 ++;
-                if(orden == 4)
-                    contadorPos4 ++;
-                if(orden == 5)
-                    contadorPos5 ++;
-            }
-            return ( (contadorPos1 > 1) || (contadorPos2 > 1) || (contadorPos3 > 1) || (contadorPos4 > 1) || (contadorPos5 > 1) );
+        for (OpcionOrderedChoice opcionVista:opcionesVista) {
+            opcionesJugador.add(opcionesOrdenHash.get(opcionVista.getEnunciadoOpcion()));
         }
     }
+
+}
