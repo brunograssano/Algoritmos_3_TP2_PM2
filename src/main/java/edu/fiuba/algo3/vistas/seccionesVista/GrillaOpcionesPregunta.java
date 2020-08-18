@@ -6,10 +6,10 @@ import javafx.scene.layout.GridPane;
 
 public class GrillaOpcionesPregunta extends GridPane {
 
-    public GrillaOpcionesPregunta(){
+    public GrillaOpcionesPregunta(int anchuraPrimeraColumna, int anchuraSegundaColumna){
         super.setMaxWidth(600);
-        super.getColumnConstraints().add(new ColumnConstraints(225));
-        super.getColumnConstraints().add(new ColumnConstraints(375));
+        super.getColumnConstraints().add(new ColumnConstraints(anchuraPrimeraColumna));
+        super.getColumnConstraints().add(new ColumnConstraints(anchuraSegundaColumna));
         super.setAlignment(Pos.CENTER);
         //debbugeo
         super.setGridLinesVisible(true);
