@@ -62,9 +62,9 @@
 	{
 		"MC": {
 			"puntaje": "clasico",
-			"enunciado" : "Seleccionar los títulos de libros de computación que NO existen",
+			"enunciado" : "Seleccionar los titulos de libros de computacion que NO existen",
 			"respuestasCorrectas": [
-				"Diry Code",
+				"Dirty Code",
 				"The C-- Language",
 				"Bug Complete 2"
 			],
