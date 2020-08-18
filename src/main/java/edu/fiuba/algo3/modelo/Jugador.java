@@ -13,13 +13,16 @@ public class Jugador {
     private ArrayList<MultiplicadorJugador> multiplicadores;
     private ArrayList<Exclusividad> exclusividades;
 
+    private static final int VALOR_PRIMER_MULTIPLICADOR = 2;
+    private static final int VALOR_SEGUNDO_MULTIPLICADOR = 3;
+
     public Jugador(String nombre) {
         this.nombre = nombre;
         puntos = new Puntuacion();
 
         multiplicadores = new ArrayList<>();
-        multiplicadores.add(new MultiplicadorJugador(this,2));
-        multiplicadores.add(new MultiplicadorJugador(this,3));
+        multiplicadores.add(new MultiplicadorJugador(this,VALOR_PRIMER_MULTIPLICADOR));
+        multiplicadores.add(new MultiplicadorJugador(this,VALOR_SEGUNDO_MULTIPLICADOR));
 
         exclusividades = new ArrayList<>();
         exclusividades.add(new Exclusividad(this));
