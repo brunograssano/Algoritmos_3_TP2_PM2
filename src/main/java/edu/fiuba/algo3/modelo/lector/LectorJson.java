@@ -2,13 +2,11 @@ package edu.fiuba.algo3.modelo.lector;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
+import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-
 import java.io.FileReader;
 import java.io.IOException;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -55,8 +53,6 @@ public class LectorJson implements LectorPreguntas {
             ex.printStackTrace();
         } catch (ParseException ex) {
             ex.printStackTrace();
-        } catch (TipoDePuntajeEnArchivoNoValidoException ex) {  //ver que hacemos con las excepciones.
-            ex.printStackTrace();
         }
     }
 
@@ -66,8 +62,18 @@ public class LectorJson implements LectorPreguntas {
         ArrayList<Pregunta> preguntas = new ArrayList<>();
         Object obj = jsonParser.parse(lector);
         JSONArray preguntasJson = (JSONArray) obj;
+        for(Object jsPregunta : preguntasJson){
 
-        preguntasJson.forEach(jsPregunta -> preguntas.add(preguntaParser.parse((JSONObject) jsPregunta)));
+            try{
+                Pregunta unaPregunta = preguntaParser.parse((JSONObject) jsPregunta);
+                preguntas.add(unaPregunta);
+            } catch(CantidadErroneaDeRespuestasParaPreguntaException ex){
+                ex.printStackTrace();
+            } catch(TipoDePuntajeEnArchivoNoValidoException ex) {
+                ex.printStackTrace();
+            }
+
+        }
         preguntasTotales.addAll(preguntas);
 
     }

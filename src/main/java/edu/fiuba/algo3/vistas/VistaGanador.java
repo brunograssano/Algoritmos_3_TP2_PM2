@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.vistas;
 
-import edu.fiuba.algo3.controladores.ControladorGanador;
+import edu.fiuba.algo3.controladores.ControladorReiniciarJuego;
 import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.vistas.botones.BotonEmpezarPregunta;
+import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -16,34 +17,50 @@ import javafx.stage.Stage;
 
 public class VistaGanador extends StackPane {
 
-    static String VIOLETA = "9370DB";
     private Stage stage;
 
-    public VistaGanador(Stage stage){
+    public VistaGanador(Stage stage,ContenedorPrincipal contenedorPrincipal){
 
         this.stage = stage;
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoInicio.png");
+        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
 
-        VBox cajaPrincipal = new VBox(180);
-        cajaPrincipal.setAlignment(Pos.CENTER);
+        GrillaGanador grilla = new GrillaGanador(1280,720);
+        grilla.setAlignment(Pos.CENTER);
 
-        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(VIOLETA);
+        VBox cajaLogo = new VBox();
+        cajaLogo.setAlignment(Pos.CENTER);
+        AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(EstilosApp.GRIS);
+        // textoAlgoHootInicio.setAlignment(Pos.CENTER);
+        cajaLogo.getChildren().add(textoAlgoHootInicio);
 
-        ControladorGanador controladorGanador = new ControladorGanador();
-        Label textoGanador = new Label(controladorGanador.obtenerResultadoFinal());
-        textoGanador.setFont(Font.font("montserrat",40));
-        textoGanador.setTextFill(Color.web(VIOLETA));
+        VBox cajaGanador = new VBox();
+        cajaGanador.setAlignment(Pos.CENTER);
+
+        String textoResultado = AlgoHoot.getInstance().obtenerJugadorGanador();
+        Label textoGanador = new Label(textoResultado);
+
+        textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
+        textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
+        cajaGanador.getChildren().add(textoGanador);
+        //textoGanador.setAlignment(Pos.CENTER);
+
+        VBox cajaInferior = new VBox(20);
+        cajaInferior.setAlignment(Pos.CENTER);
+
+        BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage,contenedorPrincipal));
+        cajaInferior.getChildren().add(botonReiniciarJuego);
 
         BotonTerminarJuego botonTerminarJuego = new BotonTerminarJuego(new ControladorTerminarJuego());
+        cajaInferior.getChildren().add(botonTerminarJuego);
 
-        cajaPrincipal.getChildren().add(textoAlgoHootInicio);
-        cajaPrincipal.getChildren().add(textoGanador);
-        cajaPrincipal.getChildren().add(botonTerminarJuego);
-        super.getChildren().add(cajaPrincipal);
+        grilla.add(cajaLogo,0,0);
+        grilla.add(textoGanador,0,1);
+        grilla.add(cajaInferior, 0, 2);
+        super.getChildren().add(grilla);
     }
 }

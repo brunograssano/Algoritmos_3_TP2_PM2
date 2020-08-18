@@ -1,13 +1,12 @@
 package edu.fiuba.algo3.modelo.modificadores.multiplicadores;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeParcial;
+import edu.fiuba.algo3.modelo.puntajes.PuntajePenalizable;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 
 import java.util.ArrayList;
 
@@ -24,19 +23,16 @@ public class MultiplicadorJugador implements Modificador, Multiplicador {
     @Override
     public void usarEnPuntaje(PuntajePenalizable puntajePenalizable, ArrayList<Modificador> modificadoresDeLaJugada) {
         modificadoresDeLaJugada.add(this);
-        jugador.pierdeModificador(this);
+        jugador.pierdeMultiplicador(this);
     }
 
     @Override
     public void usarEnPuntaje(PuntajeClasico puntajeClasico, ArrayList<Modificador> modificadoresDeLaJugada) {
-        throw new ModificadorNoAptoParaPreguntaException();
     }
 
     @Override
     public void usarEnPuntaje(PuntajeParcial puntajeParcial, ArrayList<Modificador> modificadoresDeLaJugada) {
-        throw new ModificadorNoAptoParaPreguntaException();
     }
-
 
 
     @Override
@@ -52,4 +48,7 @@ public class MultiplicadorJugador implements Modificador, Multiplicador {
         return puntos;
     }
 
+    public int factor() {
+        return factor;
+    }
 }

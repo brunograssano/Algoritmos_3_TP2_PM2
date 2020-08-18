@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.AnalizadorExclusividad;
-import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoPenalizable;
+import edu.fiuba.algo3.modelo.resultados.ResultadoPenalizable;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultadoPenalizableTest {

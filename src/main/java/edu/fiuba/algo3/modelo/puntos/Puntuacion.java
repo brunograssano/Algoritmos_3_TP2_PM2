@@ -7,7 +7,7 @@ public class Puntuacion implements Punto {
     private ArrayList<Punto> puntos;
 
     public Puntuacion(){
-        puntos = new ArrayList<Punto>();
+        puntos = new ArrayList<>();
     }
 
     public void agregarPunto(Punto unPunto){
@@ -29,6 +29,10 @@ public class Puntuacion implements Punto {
         return puntuacionRepresentable.representar();
     }
 
+    /*
+     * Precondicion: El factor es un numero positivo
+     * Postcondicion: Devolvera los puntos multiplicados
+     */
     public Puntuacion multiplicar(int factor) {
         Puntuacion puntuacionMultiplicada = new Puntuacion();
         for (Punto punto:puntos) {

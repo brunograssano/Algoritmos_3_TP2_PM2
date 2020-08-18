@@ -1,7 +1,7 @@
 [
 	{
 		"GROUP": {
-			"enunciado" : "Cuales son frutas y cuales son verduras?",
+			"enunciado" : "Agrupar en Frutas y Verduras",
 			"labelGrupo1" : "Frutas",
 			"labelGrupo2" : "Verduras",
 			"respuestasGrupo1": [
@@ -17,7 +17,7 @@
 
 	{
 		"GROUP": {
-			"enunciado" : "Cuales son de tipado estatico y cuales de tipado dinamico?",
+			"enunciado" : "Agrupar en tipado estatico y dinamico",
 			"labelGrupo1" : "Estatico",
 			"labelGrupo2" : "Dinamico",
 			"respuestasGrupo1": [
@@ -33,7 +33,7 @@
 
 	{
 		"GROUP": {
-			"enunciado" : "Cuales son de tipado estatico y cuales de tipado dinamico?",
+			"enunciado" : "Agrupar en tipado estatico y dinamico",
 			"labelGrupo1" : "Estatico",
 			"labelGrupo2" : "Dinamico",
 			"respuestasGrupo1": [
@@ -51,7 +51,7 @@
 
 	{
 		"GROUP": {
-			"enunciado" : "Cuales son modelos de GPUS y cuales de CPUS?",
+			"enunciado" : "Agrupar en GPUs y CPUs",
 			"labelGrupo1" : "GPUs",
 			"labelGrupo2" : "CPUs",
 			"respuestasGrupo1": [
@@ -66,7 +66,7 @@
 	},
 	{
 		"GROUP": {
-			"enunciado" : "Cuales son modelos de GPUS y cuales de CPUS?",
+			"enunciado" : "Agrupar en GPUs y CPUs",
 			"labelGrupo1" : "GPUs",
 			"labelGrupo2" : "CPUs",
 			"respuestasGrupo1": [
@@ -83,7 +83,7 @@
 	},
 	{
 		"GROUP": {
-			"enunciado" : "Cuales son perifericos de entrada y cuales de salida?",
+			"enunciado" : "Agrupar en perifericos de entrada y salida",
 			"labelGrupo1" : "Entrada",
 			"labelGrupo2" : "Salida",
 			"respuestasGrupo1": [

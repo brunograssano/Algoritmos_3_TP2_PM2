@@ -1,21 +1,30 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.FabricaDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class JugadorTest {
+
+    Jugador jugador1;
+    Jugador jugador2;
+
+    @BeforeEach
+    public void setUp(){
+        jugador1 = new Jugador("Lucas");
+        jugador2 = new Jugador("Gonzalo");
+    }
+
 
     @Test
     public void test01CreoUnJugadorYLePidoSusPuntosDeberiaSerCero() {
@@ -25,13 +34,9 @@ public class JugadorTest {
 
     @Test
     public void test02UnJugadorEsAsignadoLosPuntosAlResponderCorrectamenteUnVerdaderoFalsoClasico() {
-
         String enunciado = "Diciembre tiene 31 dias?";
         boolean enunciadoEsCorrecto = true;
         Pregunta verdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
 
         Jugada jugada = new Jugada(jugador1,jugador2,verdaderoFalso);
 
@@ -54,9 +59,6 @@ public class JugadorTest {
         OpcionIncorrectaVerdaderoFalso respuestaIncorrecta = new OpcionIncorrectaVerdaderoFalso(!enunciadoEsCorrecto);
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
@@ -81,9 +83,6 @@ public class JugadorTest {
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoClasico(enunciado,enunciadoEsCorrecto);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
         OpcionCorrectaVerdaderoFalso respuestaJugador1 = respuestaCorrecta;
@@ -107,9 +106,6 @@ public class JugadorTest {
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
         OpcionIncorrectaVerdaderoFalso respuestaJugador1 = respuestaIncorrecta;
@@ -131,9 +127,6 @@ public class JugadorTest {
         OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
@@ -157,9 +150,6 @@ public class JugadorTest {
         OpcionCorrectaVerdaderoFalso respuestaCorrecta = new OpcionCorrectaVerdaderoFalso(enunciadoEsCorrecto);
 
         Pregunta preguntaVerdaderoFalso = FabricaDePreguntas.CrearVerdaderoFalsoPenalizable(enunciado,enunciadoEsCorrecto);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         Jugada jugada = new Jugada(jugador1,jugador2,preguntaVerdaderoFalso);
 
@@ -202,9 +192,6 @@ public class JugadorTest {
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
@@ -240,9 +227,6 @@ public class JugadorTest {
         respuestasIncorrectas.add(respuestaIncorrecta3);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
@@ -281,9 +265,6 @@ public class JugadorTest {
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceClasico(enunciado,respuestasCorrectas,respuestasIncorrectas);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
@@ -320,12 +301,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta4);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-
-
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
@@ -362,12 +338,7 @@ public class JugadorTest {
         respuestasCorrectas.add(respuestaCorrecta4);
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
-
-
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
@@ -403,9 +374,6 @@ public class JugadorTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
@@ -444,9 +412,6 @@ public class JugadorTest {
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoiceParcial(enunciado,respuestasCorrectas,respuestasIncorrectas);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
@@ -458,6 +423,7 @@ public class JugadorTest {
 
         RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
         RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
+
         //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas
         for (int i = 0; i < 10; i++) {
             jugada.procesarJugada(respuestasJugador1MC,respuestasJugador2MC);
@@ -491,9 +457,6 @@ public class JugadorTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
@@ -530,9 +493,6 @@ public class JugadorTest {
         respuestasIncorrectas.add(respuestaIncorrecta1);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
@@ -573,9 +533,6 @@ public class JugadorTest {
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
@@ -596,8 +553,6 @@ public class JugadorTest {
     }
     @Test
     public void test18UnJugadorRespondeUnaPreguntaMultipleChoicePenalizableCon3RespuestasIncorrectasYResta3Puntos() {
-
-
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
         OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("C#");
@@ -615,9 +570,6 @@ public class JugadorTest {
         respuestasIncorrectas.add(respuestaIncorrecta3);
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
-
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
 
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
 
@@ -639,8 +591,6 @@ public class JugadorTest {
 
     @Test
     public void test19UnJugadorRespondeVariasPreguntasMultipleChoicePenalizablesYTieneElNumeroCorrectoDePuntos() {
-
-
         String enunciado = "Cuales de estos son lenguajes de programacion?";
 
         OpcionCorrectaMultipleChoice respuestaCorrecta1 = new OpcionCorrectaMultipleChoice("C#");
@@ -659,9 +609,6 @@ public class JugadorTest {
 
         Pregunta preguntaMultipleChoice = FabricaDePreguntas.CrearMultipleChoicePenalizable(enunciado,respuestasCorrectas,respuestasIncorrectas);
 
-        Jugador jugador1 = new Jugador("Lucas");
-        Jugador jugador2 = new Jugador("Gonzalo");
-
         ArrayList<OpcionEvaluable> respuestasJugador1 = new ArrayList<>();
         respuestasJugador1.add(respuestaCorrecta1);
         respuestasJugador1.add(respuestaCorrecta2);
@@ -673,7 +620,6 @@ public class JugadorTest {
 
         RespuestaMultipleChoice respuestasJugador1MC = new RespuestaMultipleChoice(respuestasJugador1);
         RespuestaMultipleChoice respuestasJugador2MC = new RespuestaMultipleChoice(respuestasJugador2);
-
 
         //Reutilizamos la misma pregunta y el jugador las responde varias veces con distintas respuestas para simular que responde muchas preguntas
         for (int i = 0; i < 10; i++) {

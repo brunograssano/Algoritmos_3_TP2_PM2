@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.modificadores.exclusividad;
 
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 
 public class UsuarioSeEquivoco implements SituacionesExclusividad {
 

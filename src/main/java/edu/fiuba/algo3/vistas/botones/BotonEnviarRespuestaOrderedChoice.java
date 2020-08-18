@@ -1,29 +1,23 @@
 package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.vistas.seccionesVista.OpcionOrderedChoice;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
 public class BotonEnviarRespuestaOrderedChoice extends Button {
-    static String VERDE = "33FF96";
 
     public BotonEnviarRespuestaOrderedChoice(ControladorEnviarOrderedChoice controlador, VBox cajaOpciones, ArrayList<OpcionSimple> opcionesCorrectas){
         super.setText("Enviar respuesta");
-        super.setFont(Font.font("montserrat", 20));
-        super.setTextFill(Color.WHITE);
+        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opciones =  cajaOpciones.getChildren();
         ArrayList<OpcionOrderedChoice> opcionesOrden = new ArrayList<>();
@@ -33,7 +27,8 @@ public class BotonEnviarRespuestaOrderedChoice extends Button {
         controlador.agregarOpcionesSeleccionadas(opcionesOrden);
         controlador.agregarOpcionesCorrectas(opcionesCorrectas);
         super.setOnAction(controlador);
-        Background unFondo = new Background(new BackgroundFill(Color.web(VERDE), new CornerRadii(20), new Insets(1)));
+        super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), EstilosApp.BORDE_CURVO, null));
         super.setBackground(unFondo);
     }
 }

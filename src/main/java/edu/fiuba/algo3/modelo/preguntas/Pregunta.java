@@ -2,11 +2,9 @@ package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
+import edu.fiuba.algo3.modelo.puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 import java.util.ArrayList;
 
 public abstract class Pregunta {
@@ -29,6 +27,8 @@ public abstract class Pregunta {
         return enunciado;
     }
 
-    public abstract ArrayList<Opcion> respuestas();
+    public Puntaje tipoPuntaje(){
+        return puntaje;
+    }
 
 }

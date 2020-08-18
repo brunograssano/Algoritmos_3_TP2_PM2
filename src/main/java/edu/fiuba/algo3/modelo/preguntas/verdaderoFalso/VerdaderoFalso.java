@@ -1,16 +1,12 @@
 package edu.fiuba.algo3.modelo.preguntas.verdaderoFalso;
 
-import edu.fiuba.algo3.modelo.desordenador.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 import java.util.ArrayList;
 
 public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
@@ -38,12 +34,10 @@ public class VerdaderoFalso extends Pregunta implements PreguntaAutoEvaluable {
         return unResultado;
     }
 
-    @Override
-    public ArrayList<Opcion> respuestas() {
-        ArrayList<Opcion> opciones = new ArrayList<>();
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
+        ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.add(respuestaCorrecta);
         opciones.add(respuestaIncorrecta);
-        Desordenador.desordenar(opciones);
         return opciones;
     }
 
