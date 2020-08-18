@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorReiniciarJuego;
 import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
 import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.FinJuego;
 import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
