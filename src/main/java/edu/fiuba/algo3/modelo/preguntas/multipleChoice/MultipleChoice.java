@@ -1,19 +1,14 @@
 package edu.fiuba.algo3.modelo.preguntas.multipleChoice;
 
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
-import edu.fiuba.algo3.modelo.Desordenador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaAutoEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaAutoEvaluable;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
 
@@ -47,15 +42,12 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
         return unResultado;
     }
 
-    @Override
-    public ArrayList<Opcion> respuestas() {
-        ArrayList<Opcion> opciones = new ArrayList<>();
+    public ArrayList<OpcionEvaluable> respuestasAPregunta(){
+        ArrayList<OpcionEvaluable> opciones = new ArrayList<>();
         opciones.addAll(respuestasCorrectas);
         opciones.addAll(respuestasIncorrectas);
-        Desordenador.desordenar(opciones);
         return opciones;
     }
-
 
 }
 

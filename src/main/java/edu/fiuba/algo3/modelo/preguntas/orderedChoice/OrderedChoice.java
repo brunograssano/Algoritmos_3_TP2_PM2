@@ -3,13 +3,13 @@ package edu.fiuba.algo3.modelo.preguntas.orderedChoice;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
-
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.respuestas.Respuesta;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaComparable;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class OrderedChoice extends Pregunta implements PreguntaComparable {
 
@@ -27,8 +27,8 @@ public class OrderedChoice extends Pregunta implements PreguntaComparable {
     }
 
     @Override
-    public ArrayList<Opcion> respuestas() {
-        return(new ArrayList<>(respuestaCorrecta.respuestas()));
+    public ArrayList<OpcionSimple> respuestasPregunta() {
+        return (new ArrayList<>(respuestaCorrecta.respuestas()));
     }
 
     @Override

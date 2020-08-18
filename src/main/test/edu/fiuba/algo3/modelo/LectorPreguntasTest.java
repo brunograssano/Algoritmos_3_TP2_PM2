@@ -2,31 +2,42 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.lector.LectorJson;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.groupChoice.Grupo;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionSimple;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaMultipleChoice;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.orderedChoice.Orden;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionCorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.multipleChoice.OpcionIncorrectaMultipleChoice;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LectorPreguntasTest {
 
+    LectorJson lector;
+    ArrayList<Pregunta> preguntas;
+    Jugador jugador1;
+    Jugador jugador2;
+
+    @BeforeEach
+    public void setUp(){
+        lector = new LectorJson();
+        preguntas = lector.generarPreguntas();
+        jugador1 = new Jugador("Pedro");
+        jugador2 = new Jugador("Juan");
+    }
+
     @Test
     public void test01GeneroPreguntaVoFYUnJugadorDebePoderResponderla() {
-
-        LectorJson lector = new LectorJson();
-        ArrayList<Pregunta> preguntas = lector.generarPreguntas();
         boolean enunciadoEsCorrecto = true;
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
 
         Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(19)); //primer VoF en la lista
 
@@ -42,11 +53,6 @@ public class LectorPreguntasTest {
 
     @Test
     public void test02GeneroPreguntaMultipleChoiceYUnJugadorDebePoderResponderla() {
-
-        LectorJson lector = new LectorJson();
-        ArrayList<Pregunta> preguntas = lector.generarPreguntas();
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
 
         Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(0)); //primer multiplechoice en la lista
 
@@ -76,17 +82,13 @@ public class LectorPreguntasTest {
     @Test
     public void test03GeneroPreguntaOrderedChoiceYUnJugadorDebePoderResponderla() {
 
-        LectorJson lector = new LectorJson();
-        ArrayList<Pregunta> preguntas = lector.generarPreguntas();
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
+        OrderedChoice preguntaOrderedChoice = (OrderedChoice) preguntas.get(7);
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntaOrderedChoice); //primer orderedchoice en la lista
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(7)); //primer orderedchoice en la lista
-
-        OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
-        OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
-        OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
-        OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
+        OpcionSimple primerRespuestaJugador1 =  preguntaOrderedChoice.respuestasPregunta().get(0);
+        OpcionSimple segundaRespuestaJugador1 = preguntaOrderedChoice.respuestasPregunta().get(1);
+        OpcionSimple tercerRespuestaJugador1 =  preguntaOrderedChoice.respuestasPregunta().get(2);
+        OpcionSimple cuartaRespuestaJugador1 =  preguntaOrderedChoice.respuestasPregunta().get(3);
 
         ArrayList<OpcionSimple> respuestasOrderJugador = new ArrayList<>();
 
@@ -106,17 +108,13 @@ public class LectorPreguntasTest {
     @Test
     public void test04GeneroPreguntaGroupChoiceYUnJugadorDebePoderResponderla() {
 
-        LectorJson lector = new LectorJson();
-        ArrayList<Pregunta> preguntas = lector.generarPreguntas();
-        Jugador jugador1 = new Jugador("Pedro");
-        Jugador jugador2 = new Jugador("Juan");
+        GroupChoice preguntaGroupChoice = (GroupChoice) preguntas.get(13);
+        Jugada jugada = new Jugada(jugador1,jugador2, preguntaGroupChoice); //primer groupchoice en la lista
 
-        Jugada jugada = new Jugada(jugador1,jugador2, preguntas.get(13)); //primer groupchoice en la lista
-
-        OpcionSimple primerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(0));
-        OpcionSimple segundaRespuestaJugador1 = (OpcionSimple)(jugada.respuestasAPregunta().get(1));
-        OpcionSimple tercerRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(2));
-        OpcionSimple cuartaRespuestaJugador1 =  (OpcionSimple)(jugada.respuestasAPregunta().get(3));
+        OpcionSimple primerRespuestaJugador1 =  preguntaGroupChoice.respuestasPregunta().get(0);
+        OpcionSimple segundaRespuestaJugador1 = preguntaGroupChoice.respuestasPregunta().get(1);
+        OpcionSimple tercerRespuestaJugador1 =  preguntaGroupChoice.respuestasPregunta().get(2);
+        OpcionSimple cuartaRespuestaJugador1 =  preguntaGroupChoice.respuestasPregunta().get(3);
 
         ArrayList<OpcionSimple> respuestasPrimerGrupo = new ArrayList<>() ;
         respuestasPrimerGrupo.add(primerRespuestaJugador1);

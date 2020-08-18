@@ -1,26 +1,22 @@
 package edu.fiuba.algo3.controladores;
 
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaMultipleChoice;
-import edu.fiuba.algo3.vistas.VistaTransicionPregunta;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaMultipleChoice;
+import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
-public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent> {
+public class ControladorEnviarMultipleChoice extends ControladorPreguntasJuego implements EventHandler<ActionEvent> {
 
     private ArrayList<OpcionEvaluable> respuestasUsuario;
-    private Stage stage;
 
-    public ControladorEnviarMultipleChoice(Stage stage){
+    public ControladorEnviarMultipleChoice(Stage stage,ContenedorPrincipal contenedorPrincipal){
         respuestasUsuario = new ArrayList<>();
         this.stage = stage;
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
 
@@ -34,18 +30,15 @@ public class ControladorEnviarMultipleChoice implements EventHandler<ActionEvent
         }
         else{
             RespuestaMultipleChoice respuestaDeUnJugador = new RespuestaMultipleChoice(respuestasUsuario);
-            AlgoHoot.getInstance().procesarTurno(respuestaDeUnJugador);
-            VistaTransicionPregunta vistaTransicion = new VistaTransicionPregunta(stage);
-            Scene scene = new Scene(vistaTransicion,800,600);
-            stage.setScene(scene);
+            definirSiguienteVista(respuestaDeUnJugador);
         }
     }
 
-    public void eliminarOpcion(Opcion opcion) {
+    public void eliminarOpcion(OpcionEvaluable opcion) {
         respuestasUsuario.remove(opcion);
     }
 
-    public void agregarOpcion(Opcion opcion) {
-        respuestasUsuario.add((OpcionEvaluable) opcion); //Hacer double dispatch
+    public void agregarOpcion(OpcionEvaluable opcion) {
+        respuestasUsuario.add(opcion);
     }
 }

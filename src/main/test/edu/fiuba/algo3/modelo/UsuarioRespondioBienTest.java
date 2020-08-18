@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.modificadores.UsuarioRespondioBien;
-import edu.fiuba.algo3.modelo.modificadores.UsuarioSeEquivoco;
-import edu.fiuba.algo3.modelo.preguntas.resultados.ResultadoParcial;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.UsuarioRespondioBien;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.UsuarioSeEquivoco;
+import edu.fiuba.algo3.modelo.resultados.ResultadoParcial;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UsuarioRespondioBienTest {

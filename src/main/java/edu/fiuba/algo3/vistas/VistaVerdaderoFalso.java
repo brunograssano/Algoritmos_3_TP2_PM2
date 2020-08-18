@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarVerdaderoFalso;
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.Jugada;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.opciones.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
+import edu.fiuba.algo3.modelo.preguntas.OpcionEvaluable;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.VerdaderoFalso;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionVerdaderoFalso;
-import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -17,55 +17,58 @@ import java.util.ArrayList;
 
 public class VistaVerdaderoFalso extends StackPane {
 
-    static String VIOLETA = "9370DB";
-    static String GRIS = "D8DDEF";
-    static String VERDE = "33FF96";
-    static String AZUL = "0083E0";
-    static String ROJO = "EF2D56";
-    static String AMARILLO = "FBD87F";
     private Stage stage;
 
-    public VistaVerdaderoFalso(Stage stage){
+    public VistaVerdaderoFalso(VerdaderoFalso unaPregunta, Stage stage, ContenedorPrincipal contenedorPrincipal){
         super();
         this.stage = stage;
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoPreguntasVioleta.png");
+        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoVerdaderoFalso.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
+
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
+
         VBox cajaEncabezado = new VBox(100);
         cajaEncabezado.setAlignment(Pos.TOP_CENTER);
-        VBox cajaPrincipal = new VBox(100);
-        cajaPrincipal.setAlignment(Pos.CENTER);
 
-        armarPregunta(cajaPrincipal,cajaEncabezado);
+        VBox cajaPregunta = new VBox(100);
+        cajaPregunta.setAlignment(Pos.CENTER);
+        cajaPregunta.setPrefWidth(600);
 
-        super.getChildren().add(cajaEncabezado);
-        super.getChildren().add(cajaPrincipal);
+        armarPregunta(cajaPregunta,cajaEncabezado,unaPregunta,contenedorPrincipal);
+
+        grilla.add(cajaEncabezado,1,0);
+        grilla.add(cajaPregunta,1,1);
+
+        super.getChildren().add(grilla);
     }
 
-    private void armarPregunta(VBox cajaPrincipal,VBox cajaEncabezado) {
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
-        cajaEncabezado.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
+    private void armarPregunta(VBox cajaPrincipal, VBox cajaEncabezado, VerdaderoFalso unaPregunta, ContenedorPrincipal contenedorPrincipal) {
+
+        cajaEncabezado.getChildren().add(new EncabezadoPantalla());
+        ArrayList<OpcionEvaluable> opciones = unaPregunta.respuestasAPregunta();
+        CriterioDesorden criterioDesorden = new CriterioDesorden();
+        criterioDesorden.desordenar(opciones);
         HBox cajaAgrupadoraDeOpciones = new HBox(100);
         cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER);
 
-        for(Opcion opcion:opciones) {
-            if (opcion.obtenerTexto() == "Verdadero"){
-                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,(OpcionEvaluable) opcion));
+        for(OpcionEvaluable opcion:opciones) {
+            if (opcion.obtenerTexto().equals("Verdadero")){
+                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
-
-        for(Opcion opcion:opciones) {
-            if (opcion.obtenerTexto() == "Falso"){
-                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,(OpcionEvaluable) opcion));
+        for(OpcionEvaluable opcion:opciones) {
+            if (opcion.obtenerTexto().equals("Falso")){
+                BotonOpcionVerdaderoFalso boton = new BotonOpcionVerdaderoFalso(opcion,new ControladorEnviarVerdaderoFalso(stage,opcion,contenedorPrincipal));
+                boton.setMinSize(200,75);
+                boton.setMaxSize(200,75);
                 cajaAgrupadoraDeOpciones.getChildren().add(boton);
             }
         }
-
-        cajaPrincipal.getChildren().add(new CajaPregunta());
+        cajaPrincipal.getChildren().add(new TextoPregunta(unaPregunta.textoPregunta()));
         cajaPrincipal.getChildren().add(cajaAgrupadoraDeOpciones);
     }
 

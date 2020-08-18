@@ -1,20 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.modificadores.Exclusividad;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionCorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.opciones.evaluables.OpcionIncorrectaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.desordenador.CriterioNeutro;
+import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionCorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.verdaderoFalso.OpcionIncorrectaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.respuestas.RespuestaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AlgoHootTest {
 
     @Test
     public void test01LePediAlAlgoHootUnaJugadaVoFRespondenBienAmbosJugadoresAmbosGananPuntos(){
-
-        Desordenador.setCriterio(new CriterioNoDesordena());
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno");
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
 
         OpcionCorrectaVerdaderoFalso unaOpcionCorrecta = new OpcionCorrectaVerdaderoFalso(true);
         RespuestaVerdaderoFalso unaRespuestaCorrecta = new RespuestaVerdaderoFalso(unaOpcionCorrecta);
@@ -31,9 +29,7 @@ public class AlgoHootTest {
 
     @Test
     public void test02LePediAlAlgoHootUnaJugadaVoFRespondeBienUnoUsaExclusividadGanaElDobleDePuntos(){
-
-        Desordenador.setCriterio(new CriterioNoDesordena());
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno");
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 
@@ -55,9 +51,7 @@ public class AlgoHootTest {
 
     @Test
     public void test03LePidoAlAlgoHootUnGanadorEsteEsElJugadorConMasPuntos(){
-
-        Desordenador.setCriterio(new CriterioNoDesordena());
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno");
+        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 
@@ -71,9 +65,13 @@ public class AlgoHootTest {
         AlgoHoot.getInstance().procesarTurno(unaRespuestaIncorrecta);
 
         Jugador jugador1 = AlgoHoot.getInstance().obtenerJugador1();
-        Jugador jugadorGanador = AlgoHoot.getInstance().obtenerJugadorGanador();
+        FinJuego estadoFinal = AlgoHoot.getInstance().determinarGanador();
 
-        assertEquals(jugador1,jugadorGanador);
+        String nombreGanador = jugador1.obtenerNombre();
+        String puntosGanador = String.valueOf(jugador1.obtenerPuntos());
+        String resultadoEsperado = "Gano el jugador "+nombreGanador+" con "+ puntosGanador +" puntos";
+
+        assertEquals(resultadoEsperado,estadoFinal.resultadoJuego());
     }
 
 }

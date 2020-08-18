@@ -1,0 +1,32 @@
+`@startuml
+hide empty description
+
+state  "Pregunta para un jugador" as Pregunta
+state  "Aplica modificador X2" as AplicaModificador <<choice>>
+state  "Responde bien" as RespondeBien
+state  "Responde bien con modificador" as RespondeBienModif
+state  "Responde mal" as RespondeMal
+state  "Responde mal con modificador" as RespondeMalModif
+state  "Sumar puntos" as SumarPuntos
+state "siaplica" <<fork>>
+state "noaplica" <<fork>>
+
+[*] -down-> Pregunta
+Pregunta--> AplicaModificador
+AplicaModificador--> siaplica: si aplica
+siaplica-->RespondeBienModif
+siaplica-->RespondeMalModif
+AplicaModificador--> noaplica: no aplica
+noaplica-->RespondeBien
+noaplica-->RespondeMal
+
+note left of AplicaModificador: aplica modificador x2?
+
+
+RespondeBienModif--> SumarPuntos:2
+RespondeBien--> SumarPuntos:1
+RespondeMalModif--> SumarPuntos:0
+RespondeMal--> SumarPuntos:0
+
+SumarPuntos--> [*]
+@enduml

@@ -1,13 +1,15 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.Jugada;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
+import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
+import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
-import edu.fiuba.algo3.vistas.seccionesVista.CajaPregunta;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaOpcionesPregunta;
+import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -16,49 +18,64 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class VistaGroupChoice extends StackPane{
-    static String VIOLETA = "9370DB";
-    static String GRIS = "D8DDEF";
-    static String VERDE = "33FF96";
-    static String AZUL = "0083E0";
-    static String ROJO = "EF2D56";
-    static String AMARILLO = "FBD87F";
 
     private Stage stage;
 
-    public VistaGroupChoice(Stage stagePrincipal) {
+    public VistaGroupChoice(GroupChoice pregunta, Stage stagePrincipal, ContenedorPrincipal contenedorPrincipal) {
+
         super();
         this.stage = stagePrincipal;
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/FondoPreguntasVioleta.png");
+        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoGrupos.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
-        VBox cajaPrincipal = new VBox(70);
-        cajaPrincipal.setAlignment(Pos.TOP_CENTER);
+        GrillaBasePreguntas grilla = new GrillaBasePreguntas(1280, 720);
 
-        armarPregunta(cajaPrincipal);
+        VBox cajaPregunta = new VBox(30);
+        cajaPregunta.setAlignment(Pos.TOP_CENTER);
+        cajaPregunta.setPrefWidth(600);
 
-        super.getChildren().add(cajaPrincipal);
+        VBox cajaInferior = new VBox(20);
+
+        ArrayList<String> nombresGrupos = pregunta.nombresGrupos();
+        ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(nombresGrupos, stage, contenedorPrincipal);
+        VBox cajaOpciones = armarPregunta(nombresGrupos, cajaPregunta, pregunta, controladorRespondioUsuario);
+
+        BotonEnviarRespuestaGroupChoice botonEnviar = new BotonEnviarRespuestaGroupChoice(controladorRespondioUsuario, cajaOpciones);
+
+        cajaInferior.getChildren().add(botonEnviar);
+        cajaInferior.setAlignment(Pos.CENTER);
+
+        grilla.add(new EncabezadoPantalla(),0,0);
+        grilla.add(cajaPregunta,0,1);
+        grilla.add(cajaInferior,0,2);
+
+        super.getChildren().add(grilla);
     }
 
-    private void armarPregunta(VBox cajaPrincipal) {
-        Jugada jugadaActual = AlgoHoot.getInstance().pedirJugada();
-        cajaPrincipal.getChildren().add(new EncabezadoPantalla(GRIS));
-        ArrayList<Opcion> opciones = jugadaActual.respuestasAPregunta();
+    private VBox armarPregunta(ArrayList<String> nombresGrupos,VBox cajaPregunta, GroupChoice preguntaGroupChoice, ControladorEnviarGroupChoice controlador) {
 
-        VBox cajaSpinners = new VBox();
+        ArrayList<OpcionSimple> opciones = preguntaGroupChoice.respuestasPregunta();
+        CriterioDesorden criterioDesorden = new CriterioDesorden();
+        criterioDesorden.desordenar(opciones);
 
-        cajaSpinners.setAlignment(Pos.CENTER);
+        GrillaOpcionesPregunta grillaOpciones = new GrillaOpcionesPregunta(180,420);
+        grillaOpciones.setAlignment(Pos.CENTER);
 
-        ControladorEnviarGroupChoice controladorRespondioUsuario = new ControladorEnviarGroupChoice(stage);
-        for(Opcion opcion:opciones) {
-            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(opcion,controladorRespondioUsuario);
-            cajaSpinners.getChildren().add(boton);
+        VBox cajaOpciones = new VBox(10);
+        cajaOpciones.setAlignment(Pos.CENTER);
+
+        for(OpcionSimple opcion:opciones) {
+            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(nombresGrupos,opcion,controlador);
+            boton.setAlignment(Pos.CENTER_LEFT);
+            cajaOpciones.getChildren().add(boton);
         }
-
-        cajaPrincipal.getChildren().add(new CajaPregunta());
-        cajaPrincipal.getChildren().add(cajaSpinners);
-        cajaPrincipal.getChildren().add(new BotonEnviarRespuestaMultipleChoice(controladorRespondioUsuario));
+        cajaPregunta.getChildren().add(new TextoPregunta(preguntaGroupChoice.textoPregunta()));
+        cajaOpciones.setAlignment(Pos.TOP_LEFT);
+        grillaOpciones.add(cajaOpciones,1,0);
+        cajaPregunta.getChildren().add(grillaOpciones);
+        return cajaOpciones;
     }
 }

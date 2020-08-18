@@ -1,73 +1,30 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.Excepciones.ModificadorNoAptoParaPreguntaException;
-import edu.fiuba.algo3.modelo.modificadores.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.MultiplicadorJugador;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeParcial;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalizable;
+import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.puntajes.PuntajePenalizable;
 import edu.fiuba.algo3.modelo.puntos.PuntoNegativo;
 import edu.fiuba.algo3.modelo.puntos.PuntoPositivo;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 import edu.fiuba.algo3.modelo.puntos.PuntuacionRepresentable;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MultiplicadorJugadorTest {
 
-    @Test
-    public void test01AlIntentarAplicarUnMultiplicadorAUnPuntajeClasicoSeDebeLanzarExcepcion(){
+    Jugador unJugador;
 
-        Jugador unJugador = new Jugador("Juan");
-
-        int unFactor = 2;
-
-        MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
-
-        ArrayList<Modificador> modificadoresDeLaJugada = new ArrayList();
-
-        modificadoresDeLaJugada.add(unMultiplicador);
-
-        PuntajeClasico unPuntaje = new PuntajeClasico();
-
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{
-                    unMultiplicador.usarEnPuntaje(unPuntaje,modificadoresDeLaJugada);}
-        );
+    @BeforeEach
+    public void setUp(){
+        unJugador = new Jugador("Juan");
     }
 
     @Test
-    public void test02AlIntentarAplicarUnMultiplicadorAUnPuntajeParcialSeDebeLanzarExcepcion(){
-
-        Jugador unJugador = new Jugador("Juan");
-
-        int unFactor = 2;
-
-        MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
-
-        ArrayList<Modificador> modificadoresDeLaJugada = new ArrayList();
-
-        PuntajeParcial unPuntaje = new PuntajeParcial();
-
-        assertThrows(ModificadorNoAptoParaPreguntaException.class,
-                ()->{
-                    unMultiplicador.usarEnPuntaje(unPuntaje,modificadoresDeLaJugada);}
-        );
-    }
-
-    @Test
-    public void test03CreoUnMultiplicadorLoAplicoEnUnPuntajePenalizableYLosPuntosSeDuplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
-        int unFactor = 2;
-
+    public void test01CreoUnMultiplicadorLoAplicoYLosPuntosSeDuplican(){
+         int unFactor = 2;
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
@@ -87,12 +44,8 @@ public class MultiplicadorJugadorTest {
     }
 
     @Test
-    public void test04CreoUnMultiplicadorLoAplicoEnUnPuntajePenalizableYLosPuntosSeTriplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
+    public void test02CreoUnMultiplicadorLoAplicoYLosPuntosSeTriplican(){
         int unFactor = 3;
-
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         PuntajePenalizable unPuntaje = new PuntajePenalizable();
@@ -112,12 +65,8 @@ public class MultiplicadorJugadorTest {
     }
 
     @Test
-    public void test05CreoUnMultiplicadorLoAplicoEnUnaPuntuacionYLosPuntosSeTriplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
+    public void test03CreoUnMultiplicadorLoAplicoEnUnaPuntuacionYLosPuntosSeTriplican(){
         int unFactor = 3;
-
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         Puntuacion puntos = new Puntuacion();
@@ -131,12 +80,8 @@ public class MultiplicadorJugadorTest {
     }
 
     @Test
-    public void test06CreoUnMultiplicadorLoAplicoEnUnaPuntuacionYLosPuntosSeDuplican(){
-
-        Jugador unJugador = new Jugador("Juan");
-
+    public void test04CreoUnMultiplicadorLoAplicoEnUnaPuntuacionYLosPuntosSeDuplican(){
         int unFactor = 2;
-
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);
 
         Puntuacion puntos = new Puntuacion();
@@ -149,10 +94,7 @@ public class MultiplicadorJugadorTest {
         assertEquals(-20,puntos.representar());
     }
     @Test
-    public void test07CreoUnMultiplicadorLoAplicoEnUnResultadoIncorrectoSuValorSigueSiendoCeroPuntos(){
-
-        Jugador unJugador = new Jugador("Juan");
-
+    public void test05CreoUnMultiplicadorLoAplicoEnUnResultadoIncorrectoSuValorSigueSiendoCeroPuntos(){
         int unFactor = 3;
 
         MultiplicadorJugador unMultiplicador = new MultiplicadorJugador(unJugador,unFactor);

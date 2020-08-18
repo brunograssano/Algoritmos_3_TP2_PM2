@@ -3,10 +3,10 @@ package edu.fiuba.algo3.modelo.preguntas.groupChoice;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.PreguntaComparable;
-import edu.fiuba.algo3.modelo.preguntas.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
-import edu.fiuba.algo3.modelo.preguntas.respuestas.*;
-import edu.fiuba.algo3.modelo.preguntas.resultados.Resultado;
+import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
+import edu.fiuba.algo3.modelo.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.respuestas.*;
+import edu.fiuba.algo3.modelo.resultados.Resultado;
 
 import java.util.ArrayList;
 
@@ -34,8 +34,12 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
     }
 
     @Override
-    public ArrayList<Opcion> respuestas() {
-        return(new ArrayList<>(respuestaCorrecta.respuestas()));
+    public ArrayList<OpcionSimple> respuestasPregunta() {
+        return (new ArrayList<>(respuestaCorrecta.respuestasAPregunta()));
+    }
+
+    public ArrayList<String> nombresGrupos() {
+       return respuestaCorrecta.nombresGrupos();
     }
 
 }
