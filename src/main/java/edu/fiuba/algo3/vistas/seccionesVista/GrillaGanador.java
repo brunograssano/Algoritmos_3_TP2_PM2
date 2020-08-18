@@ -18,7 +18,5 @@ public class GrillaGanador extends GridPane{
         super.getRowConstraints().add(new RowConstraints(TAM_GANADOR));
         super.getRowConstraints().add(new RowConstraints(TAM_BOTON_SALIR));
 
-        //debbugeo
-        //super.setGridLinesVisible(true);
     }
 }

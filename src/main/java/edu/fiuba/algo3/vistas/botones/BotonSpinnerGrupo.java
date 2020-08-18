@@ -26,13 +26,13 @@ public class BotonSpinnerGrupo extends HBox {
     public BotonSpinnerGrupo(ArrayList<String> nombresGrupos, OpcionSimple opcion, ControladorEnviarGroupChoice controlador) {
 
 
-        ObservableList<String> nombresGruposPosibles = FXCollections.observableArrayList(); //estos strings deberian recibirse por parametro.
+        ObservableList<String> nombresGruposPosibles = FXCollections.observableArrayList();
         nombresGruposPosibles.addAll(nombresGrupos);
 
         spinner = new Spinner<>();
         opcionSpinner = opcion;
 
-        SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<String>(nombresGruposPosibles);
+        SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<>(nombresGruposPosibles);
         valueFactory.setValue(nombresGruposPosibles.get(0)); //valor por defecto
         spinner.setValueFactory(valueFactory);
         spinner.setMaxWidth(350);

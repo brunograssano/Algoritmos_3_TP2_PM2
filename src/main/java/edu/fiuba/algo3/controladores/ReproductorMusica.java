@@ -10,8 +10,8 @@ public class ReproductorMusica {
     private AudioClip temaEscuchandose;
 
     public ReproductorMusica(){
-        String direccion = "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3";
-        temaEscuchandose = reproducirTema(direccion);
+        String direccionMusicaInicio = "\\src\\main\\java\\edu\\fiuba\\algo3\\resources\\musica\\classic.mp3";
+        temaEscuchandose = reproducirTema(direccionMusicaInicio);
     }
 
     public void escucharTema(String direccion) {

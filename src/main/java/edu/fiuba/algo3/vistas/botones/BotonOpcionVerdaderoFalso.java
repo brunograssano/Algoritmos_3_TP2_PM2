@@ -11,9 +11,6 @@ import javafx.scene.text.Font;
 
 public class BotonOpcionVerdaderoFalso extends Button {
 
-    private static CornerRadii BORDE_CURVO_OPCIONES = new CornerRadii(15);
-    private static BorderWidths GROSOR_BORDE_OPCIONES = new BorderWidths(1.5D);
-
     public BotonOpcionVerdaderoFalso(OpcionEvaluable opcion, ControladorEnviarVerdaderoFalso controladorRespondioUsuario) {
         super.setText(opcion.obtenerTexto());
         super.setFont(Font.font(EstilosApp.FUENTE, 35));
