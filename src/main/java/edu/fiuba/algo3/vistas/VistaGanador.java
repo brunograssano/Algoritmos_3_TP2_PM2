@@ -48,8 +48,9 @@ public class VistaGanador extends StackPane {
         textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
         cajaGanador.getChildren().add(textoGanador);
 
-        VBox cajaInferior = new VBox(20);
+        HBox cajaInferior = new HBox(20);
         cajaInferior.setAlignment(Pos.CENTER);
+        cajaInferior.setSpacing(100);
 
         BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage,contenedorPrincipal));
         cajaInferior.getChildren().add(botonReiniciarJuego);
