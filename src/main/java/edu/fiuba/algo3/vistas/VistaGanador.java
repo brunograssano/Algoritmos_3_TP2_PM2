@@ -35,7 +35,7 @@ public class VistaGanador extends StackPane {
         VBox cajaLogo = new VBox();
         cajaLogo.setAlignment(Pos.CENTER);
         AlgoHootPrincipal textoAlgoHootInicio = new AlgoHootPrincipal(EstilosApp.GRIS);
-        // textoAlgoHootInicio.setAlignment(Pos.CENTER);
+
         cajaLogo.getChildren().add(textoAlgoHootInicio);
 
         VBox cajaGanador = new VBox();
@@ -47,7 +47,6 @@ public class VistaGanador extends StackPane {
         textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
         textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
         cajaGanador.getChildren().add(textoGanador);
-        //textoGanador.setAlignment(Pos.CENTER);
 
         VBox cajaInferior = new VBox(20);
         cajaInferior.setAlignment(Pos.CENTER);

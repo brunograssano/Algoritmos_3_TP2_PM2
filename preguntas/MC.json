@@ -64,13 +64,13 @@
 			"puntaje": "clasico",
 			"enunciado" : "Seleccionar los títulos de libros de computación que NO existen",
 			"respuestasCorrectas": [
-				"Structure and Interpretation of Refrigerator Programs",
-				"The C-- Programming Language ANSI Edition",
+				"Diry Code",
+				"The C-- Language",
 				"Bug Complete 2"
 			],
 			"respuestasIncorrectas": [
 				"Code Complete 2",
-				"Automate the Boring Stuff with Python"
+				"The Pragmatic Programmer"
 			]
 		}
 	},

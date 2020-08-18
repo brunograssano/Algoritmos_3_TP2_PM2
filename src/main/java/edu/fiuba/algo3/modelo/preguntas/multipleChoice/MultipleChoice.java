@@ -31,8 +31,8 @@ public class MultipleChoice extends Pregunta implements PreguntaAutoEvaluable {
     }
 
     @Override
-    public Resultado responder(Respuesta respuestasUsuario, Jugador unJugador) {
-        return respuestasUsuario.evaluarEnBaseAPregunta(this,unJugador);
+    public Resultado responder(Respuesta respuestasJugador, Jugador unJugador) {
+        return respuestasJugador.evaluarEnBaseAPregunta(this,unJugador);
     }
 
     @Override
