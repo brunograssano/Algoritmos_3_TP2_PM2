@@ -25,8 +25,8 @@ note left of AplicaModificador: aplica modificador x2?
 
 RespondeBienModif--> SumarPuntos:2
 RespondeBien--> SumarPuntos:1
-RespondeMalModif--> SumarPuntos:0
-RespondeMal--> SumarPuntos:0
+RespondeMalModif--> SumarPuntos:-2
+RespondeMal--> SumarPuntos:-1
 
 SumarPuntos--> [*]
 @enduml
