@@ -8,6 +8,7 @@ import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaMultipleChoice;
 import edu.fiuba.algo3.vistas.botones.BotonOpcionMultipleChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.seccionesVista.GrillaOpcionesPregunta;
 import edu.fiuba.algo3.vistas.textos.TextoPregunta;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -51,20 +52,23 @@ public class VistaMultipleChoice extends StackPane {
     }
 
     private void armarPregunta(VBox cajaPregunta,MultipleChoice preguntaMultipleChoice,ControladorEnviarMultipleChoice controlador) {
+
         ArrayList<OpcionEvaluable> opciones = preguntaMultipleChoice.respuestasAPregunta();
         CriterioDesorden criterioDesorden = new CriterioDesorden();
 
         criterioDesorden.desordenar(opciones);
-        VBox cajaAgrupadoraDeOpciones = new VBox();
-        cajaAgrupadoraDeOpciones.setAlignment(Pos.CENTER_LEFT);
-        cajaAgrupadoraDeOpciones.setSpacing(10);
+        GrillaOpcionesPregunta grillaOpciones = new GrillaOpcionesPregunta();
+        grillaOpciones.setAlignment(Pos.CENTER);
+        VBox cajaOpciones = new VBox(10);
+
 
         for(OpcionEvaluable opcion:opciones) {
             BotonOpcionMultipleChoice boton = new BotonOpcionMultipleChoice(opcion,controlador);
-            cajaAgrupadoraDeOpciones.getChildren().add(boton);
+            cajaOpciones.getChildren().add(boton);
         }
 
+        grillaOpciones.add(cajaOpciones,1,0);
         cajaPregunta.getChildren().add(new TextoPregunta(preguntaMultipleChoice.textoPregunta()));
-        cajaPregunta.getChildren().add(cajaAgrupadoraDeOpciones);
+        cajaPregunta.getChildren().add(grillaOpciones);
     }
 }
