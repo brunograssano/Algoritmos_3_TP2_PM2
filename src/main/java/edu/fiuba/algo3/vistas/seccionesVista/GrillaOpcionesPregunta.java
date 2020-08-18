@@ -12,6 +12,6 @@ public class GrillaOpcionesPregunta extends GridPane {
         super.getColumnConstraints().add(new ColumnConstraints(anchuraSegundaColumna));
         super.setAlignment(Pos.CENTER);
         //debbugeo
-        super.setGridLinesVisible(true);
+        //super.setGridLinesVisible(true);
     }
 }

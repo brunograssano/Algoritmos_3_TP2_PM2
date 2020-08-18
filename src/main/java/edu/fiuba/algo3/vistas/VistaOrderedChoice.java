@@ -53,7 +53,6 @@ public class VistaOrderedChoice extends StackPane {
         super.getChildren().add(grilla);
     }
 
-
     private VBox armarPregunta(VBox cajaPregunta, ControladorEnviarOrderedChoice controlador, ArrayList<OpcionSimple> opciones, String textoPregunta)  {
 
         CriterioDesorden criterioDesorden = new CriterioDesorden();

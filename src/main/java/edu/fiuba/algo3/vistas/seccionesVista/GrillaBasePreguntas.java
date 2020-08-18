@@ -21,6 +21,6 @@ public class GrillaBasePreguntas extends GridPane {
         super.getRowConstraints().add(new RowConstraints(TAM_ENCABEZADO));
         super.getRowConstraints().add(new RowConstraints(TAM_SECCION_PREGUNTA));
         super.getRowConstraints().add(new RowConstraints(TAM_BOTON_ENVIAR));
-        super.setGridLinesVisible(true);
+        //super.setGridLinesVisible(true);
     }
 }
