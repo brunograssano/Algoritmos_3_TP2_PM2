@@ -35,7 +35,7 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
 
     @Override
     public ArrayList<OpcionSimple> respuestasPregunta() {
-        return (new ArrayList<>(respuestaCorrecta.respuestasAPregunta()));
+        return (respuestaCorrecta.respuestasAPregunta());
     }
 
     public ArrayList<String> nombresGrupos() {
