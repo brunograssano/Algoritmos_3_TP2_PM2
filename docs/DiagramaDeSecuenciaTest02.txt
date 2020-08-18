@@ -11,6 +11,7 @@ participant Jugada
 participant ":Jugada" as jugada
 participant ":Pregunta" as pregunta
 participant ":PuntajeVerdaderoFalso" as puntaje
+participant "respuestaJugador: RespuestaAutoEvaluable" as respuesta
 participant "jugador1\n:Jugador" as j1
 participant "jugador2\n:Jugador" as j2
 
@@ -24,18 +25,21 @@ Test -> Jugada: new (jugador1,jugador2,verdaderoFalso)
 activate Jugada
 Jugada --> Test: jugada
 deactivate Jugada
-
+    
 activate jugada
 Test ->jugada: ProcesarJugada(respuestaJugador1,respuestaJugador2)
 
 loop por cada jugador
-    jugada->pregunta: evaluar(respuestaJugador)
+    jugada->pregunta: responder(respuestaJugador, jugador)
     activate pregunta
     pregunta -> puntaje: obtenerResultado(cantidadRespuestasCorrectasTotales)
     activate puntaje
     puntaje --> pregunta: resultadoJugador:ResultadoClasico
     deactivate puntaje
-    pregunta->pregunta:evaluarRespuestasUsuario(respuestasUsuario, resultadoJugador)
+    
+    pregunta->respuesta:evaluar(resultadoJugador)
+    activate respuesta
+    deactivate respuesta
     pregunta-->jugada:resultadoJugador
     deactivate pregunta
 end
