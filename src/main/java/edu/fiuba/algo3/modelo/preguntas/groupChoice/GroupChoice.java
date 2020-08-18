@@ -29,8 +29,8 @@ public class GroupChoice extends Pregunta implements PreguntaComparable {
     }
 
     @Override
-    public Resultado responder(Respuesta respuestasUsuario, Jugador unJugador) {
-        return respuestasUsuario.evaluarEnBaseAPregunta(this,unJugador);
+    public Resultado responder(Respuesta respuestasJugador, Jugador unJugador) {
+        return respuestasJugador.evaluarEnBaseAPregunta(this,unJugador);
     }
 
     @Override
