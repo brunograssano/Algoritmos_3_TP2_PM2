@@ -53,7 +53,7 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionMusicaFantasy = new MenuItem("Música Kahoot Fantasy");
         MenuItem opcionMusicaReggae = new MenuItem("Música Kahoot Reggae");
         MenuItem opcionMusicaSpace = new MenuItem("Música Kahoot Space");
-        MenuItem opcionMusicaDivertida = new MenuItem("Música Kahoot Divertida :)");
+        MenuItem opcionMusicaDivertida = new MenuItem("Música Kahoot Divertida :) (Bajar Volumen)");
 
         opcionSinMusica.setOnAction(new ControladorMusica("",unReproductor));
         opcionMusicaComun.setOnAction(new ControladorMusica(rutaMusica+"classic.mp3",unReproductor));
