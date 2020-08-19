@@ -2,13 +2,14 @@ package edu.fiuba.algo3.modelo.lector;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import edu.fiuba.algo3.Excepciones.ArchivoNoEncontradoException;
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javafx.scene.control.Alert;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,7 +29,7 @@ public class LectorJson implements LectorPreguntas {
     }
 
     @Override
-    public ArrayList<Pregunta> generarPreguntas() {
+    public ArrayList<Pregunta> generarPreguntas() throws ArchivoNoEncontradoException {
 
         Parser parserVerdaderoFalso = new VerdaderoFalsoParser();
         Parser parserMultipleChoice = new MultipleChoiceParser();
@@ -41,7 +42,7 @@ public class LectorJson implements LectorPreguntas {
         return preguntasTotales;
     }
 
-    private void agregarPreguntasDeArchivo(ArrayList<Pregunta> preguntasTotales, String ruta, Parser preguntaParser) {
+    private void agregarPreguntasDeArchivo(ArrayList<Pregunta> preguntasTotales, String ruta, Parser preguntaParser) throws ArchivoNoEncontradoException {
 
         JSONParser jsonParser = new JSONParser();
 
@@ -50,11 +51,8 @@ public class LectorJson implements LectorPreguntas {
             agregarPreguntas(preguntasTotales, lector, preguntaParser, jsonParser);
 
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-            Alert archivoNoEncontrado = new Alert(Alert.AlertType.ERROR);
-            archivoNoEncontrado.setHeaderText("Archivo no Encontrado");
-            archivoNoEncontrado.setContentText("Por favor revise que los archivos VoF.json, Order.json, MC.json y Group.json se encuentren en preguntas/ y con el formato correcto.");
-            archivoNoEncontrado.show();
+            throw new ArchivoNoEncontradoException(System.getProperty("user.dir") + ruta);
+
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
