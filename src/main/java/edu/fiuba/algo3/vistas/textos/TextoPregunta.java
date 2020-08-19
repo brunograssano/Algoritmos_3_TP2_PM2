@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.vistas.textos;
 
 import edu.fiuba.algo3.vistas.EstilosApp;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 public class TextoPregunta extends Label {
 
@@ -12,7 +12,7 @@ public class TextoPregunta extends Label {
         super(enunciado);
         super.setFont(Font.font(EstilosApp.FUENTE,35));
         super.setTextFill(Color.BLACK);
-        super.setAlignment(Pos.CENTER);
+        super.setTextAlignment(TextAlignment.CENTER);
         super.setWrapText(true);
     }
 }
