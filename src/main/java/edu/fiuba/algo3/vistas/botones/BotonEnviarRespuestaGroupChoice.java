@@ -15,7 +15,8 @@ public class BotonEnviarRespuestaGroupChoice extends Button {
 
     public BotonEnviarRespuestaGroupChoice(ControladorEnviarGroupChoice controlador, VBox cajaOpciones) {
         super.setText("Enviar respuesta");
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 30));
+        super.setPadding(new Insets(10));
         super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opcionesGrupo =  cajaOpciones.getChildren();

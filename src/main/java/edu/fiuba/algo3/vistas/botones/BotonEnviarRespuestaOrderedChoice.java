@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.vistas.EstilosApp;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -16,7 +17,8 @@ public class BotonEnviarRespuestaOrderedChoice extends Button {
 
     public BotonEnviarRespuestaOrderedChoice(ControladorEnviarOrderedChoice controlador, VBox cajaOpciones, ArrayList<OpcionSimple> opcionesCorrectas){
         super.setText("Enviar respuesta");
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 30));
+        super.setPadding(new Insets(10));
         super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opciones =  cajaOpciones.getChildren();

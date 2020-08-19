@@ -15,7 +15,8 @@ public class BotonEmpezarPregunta extends Button {
 
     public BotonEmpezarPregunta(Stage stage, ContenedorPrincipal contenedorPrincipal){
         super.setText("Ir a la pregunta");
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 30));
+        super.setPadding(new Insets(10));
         super.setTextFill(Color.BLACK);
         super.setOnAction(new ControladorSiguientePregunta(stage,contenedorPrincipal));
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
