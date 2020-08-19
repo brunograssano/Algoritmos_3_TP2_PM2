@@ -11,8 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
-
 public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
 
     private Stage stage;
@@ -40,7 +38,7 @@ public class ControladorNombresJugadores implements EventHandler<ActionEvent> {
         }
         else{
             try{
-            AlgoHoot.getInstance().agregarJugadores(nombreJugador1,nombreJugador2,new CriterioDesorden());
+            AlgoHoot.getInstance().inicializarJuego(nombreJugador1,nombreJugador2,new CriterioDesorden());
             }
             catch(ArchivoNoEncontradoException ex) {
                 ex.printStackTrace();

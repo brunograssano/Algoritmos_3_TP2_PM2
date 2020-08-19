@@ -20,7 +20,7 @@ public class BotonEmpezarPregunta extends Button {
         super.setTextFill(Color.BLACK);
         super.setOnAction(new ControladorSiguientePregunta(stage,contenedorPrincipal));
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
-        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), EstilosApp.BORDE_CURVO, new Insets(1)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE, EstilosApp.ALPHA_BOTON_INACTIVO), EstilosApp.BORDE_CURVO, new Insets(0)));
         super.setBackground(unFondo);
         super.setAlignment(Pos.CENTER);
     }

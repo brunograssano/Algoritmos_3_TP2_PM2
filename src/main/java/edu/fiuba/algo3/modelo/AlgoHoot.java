@@ -13,7 +13,6 @@ import edu.fiuba.algo3.modelo.turnos.TerminoJuego;
 import edu.fiuba.algo3.modelo.turnos.Turno;
 import edu.fiuba.algo3.modelo.turnos.TurnoPrimerJugador;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -40,7 +39,7 @@ public class AlgoHoot {
         return algohoot;
     }
 
-    public void agregarJugadores(String nombreJugador1, String nombreJugador2, CriterioOrdenamiento unCriterio){
+    public void inicializarJuego(String nombreJugador1, String nombreJugador2, CriterioOrdenamiento unCriterio){
         jugador1 = new Jugador(nombreJugador1);
         jugador2 = new Jugador(nombreJugador2);
         turno = new TurnoPrimerJugador(jugador1);

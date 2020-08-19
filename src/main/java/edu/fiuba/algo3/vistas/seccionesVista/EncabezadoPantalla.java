@@ -21,7 +21,7 @@ public class EncabezadoPantalla extends HBox {
         cajaJugador1.setAlignment(Pos.CENTER);
 
         Jugador jugador2 = AlgoHoot.getInstance().obtenerJugador2();
-        CajaJugador cajaJugador2 = new CajaJugador(jugador2, EstilosApp.CELESTE);
+        CajaJugador cajaJugador2 = new CajaJugador(jugador2, EstilosApp.AZUL);
         cajaJugador2.setAlignment(Pos.CENTER);
 
         super.setAlignment(Pos.TOP_CENTER);
