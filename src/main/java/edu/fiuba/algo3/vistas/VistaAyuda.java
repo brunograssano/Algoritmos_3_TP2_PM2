@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.vistas.textos.TextoAyuda;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,10 +17,13 @@ public class VistaAyuda extends StackPane {
         super.setBackground(fondo);
 
         VBox cajaPrincipal = new VBox(70);
+        cajaPrincipal.setPadding(new Insets(20));
         cajaPrincipal.setAlignment(Pos.CENTER);
 
         Label titulo = new Label("Ayuda sobre el juego");
         titulo.setFont(Font.font(EstilosApp.FUENTE,25));
+        titulo.setStyle("-fx-font-weight: bold");
+        titulo.setUnderline(true);
         titulo.setTextFill(Color.BLACK);
         titulo.setWrapText(true);
 

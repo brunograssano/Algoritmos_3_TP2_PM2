@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.controladores.AplicacionOnKeyPressEventHandler;
+import edu.fiuba.algo3.controladores.ControladorTeclaPresionada;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
 import edu.fiuba.algo3.vistas.VistaInicio;
 import javafx.application.Application;
@@ -19,7 +19,7 @@ public class App extends Application {
         contenedorPrincipal.setCentro(new VistaInicio(stage,contenedorPrincipal));
 
         Scene sceneInicio = new Scene(contenedorPrincipal,1280, 720);
-        sceneInicio.setOnKeyPressed(new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu()));
+        sceneInicio.setOnKeyPressed(new ControladorTeclaPresionada(stage, contenedorPrincipal.getBarraDeMenu()));
 
         Image icono = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/Icono.png");
         stage.getIcons().add(icono);

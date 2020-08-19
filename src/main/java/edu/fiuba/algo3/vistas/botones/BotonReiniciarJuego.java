@@ -13,7 +13,8 @@ public class BotonReiniciarJuego extends Button {
 
     public BotonReiniciarJuego(EventHandler<ActionEvent> controlador){
         super.setText("Reiniciar Juego");
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 30));
+        super.setPadding(new Insets(10));
         super.setTextFill(Color.BLACK);
         super.setOnAction(controlador);
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
