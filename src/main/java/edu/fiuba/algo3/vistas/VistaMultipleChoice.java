@@ -57,7 +57,7 @@ public class VistaMultipleChoice extends StackPane {
         CriterioDesorden criterioDesorden = new CriterioDesorden();
 
         criterioDesorden.desordenar(opciones);
-        GrillaOpcionesPregunta grillaOpciones = new GrillaOpcionesPregunta(175,425);
+        GrillaOpcionesPregunta grillaOpciones = new GrillaOpcionesPregunta(250,350);
         grillaOpciones.setAlignment(Pos.CENTER);
         VBox cajaOpciones = new VBox(10);
 
