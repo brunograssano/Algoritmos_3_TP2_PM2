@@ -8,8 +8,8 @@ public class GrillaTransicion extends GridPane {
     private static final double DISTANCIA_FILAS = 20;
     private static final double TAM_ENCABEZADO = 110;
     private static final double TAM_CAJA_PREGUNTA = 300;
-    private static final double TAM_BONUS = 47.5;
-    private static final double TAM_BOTON_IR = 47.5;
+    private static final double TAM_BONUS = 70;
+    private static final double TAM_BOTON_IR = 70;
 
 
     public GrillaTransicion (double anchoPantalla, double altoPantalla) {

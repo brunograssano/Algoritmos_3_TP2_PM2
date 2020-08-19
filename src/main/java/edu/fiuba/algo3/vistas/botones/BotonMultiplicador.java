@@ -14,7 +14,8 @@ public class BotonMultiplicador extends Button {
     
     public BotonMultiplicador(MultiplicadorJugador multiplicador) {
         super.setText("Usar Multiplicador x"+ multiplicador.factor());
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 15));
+        super.setPadding(new Insets(5));
         super.setTextFill(Color.BLACK);
         super.setOnAction(new ControladorModificador(this,multiplicador));
         super.setAlignment(Pos.CENTER);

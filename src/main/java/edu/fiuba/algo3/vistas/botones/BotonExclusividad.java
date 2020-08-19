@@ -15,7 +15,8 @@ public class BotonExclusividad extends Button {
 
     public BotonExclusividad(ArrayList<Exclusividad> exclusividades) {
         super.setText("Usar Exclusividad");
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 15));
+        super.setPadding(new Insets(5));
         super.setTextFill(Color.BLACK);
         Exclusividad exclusividad = exclusividades.get(0);
         super.setOnAction(new ControladorModificador(this,exclusividad));
