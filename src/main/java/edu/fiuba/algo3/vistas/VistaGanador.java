@@ -5,6 +5,7 @@ import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Empate;
 import edu.fiuba.algo3.modelo.Ganador;
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
@@ -53,12 +54,14 @@ public class VistaGanador extends StackPane {
         if(ganador instanceof Empate){
              textoGanador.setText("Empate! Ambos jugadores son muy inteligentes");
              textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
-        }else
-            textoGanador.setFont(Font.font(EstilosApp.FUENTE,70));{
-            if(Math.abs(ganador.obtenerPuntos()) > 1){
-                textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() +" puntos");
-            }else{
-                textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() +" punto");
+        }else if(ganador instanceof Jugador){
+            textoGanador.setFont(Font.font(EstilosApp.FUENTE,70));
+            {
+                if (Math.abs(ganador.obtenerPuntos()) > 1) {
+                    textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() + " puntos");
+                } else {
+                    textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() + " punto");
+                }
             }
         }
 
