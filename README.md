@@ -38,3 +38,11 @@ Para ejecutar la aplicacion usar: mvn clean javafx:run
 ## Licencia
 
 Este repositorio está bajo la Licencia MIT
+
+## Imagenes de la aplicación
+
+![Alt text](docs/imagenesApp/ImagenNombresAlgoHoot.PNG?raw=true "Imagen del pedido de nombres de la aplicacion")  
+
+![Alt text](docs/imagenesApp/ImagenPreguntaGrupoAlgoHoot.PNG?raw=true "Imagen de pregunta de grupos")  
+
+![Alt text](docs/imagenesApp/ImagenPreguntaVoFAlgoHoot.PNG?raw=true "Imagen de pregunta de verdadero o falso")
