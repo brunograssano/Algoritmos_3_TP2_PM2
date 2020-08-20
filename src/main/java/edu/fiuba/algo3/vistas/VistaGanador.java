@@ -7,7 +7,6 @@ import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -41,16 +40,15 @@ public class VistaGanador extends StackPane {
 
         VBox cajaGanador = new VBox();
         cajaGanador.setAlignment(Pos.CENTER);
-        cajaGanador.setPadding(new Insets(90,0,0,0));
+
         String textoResultado = AlgoHoot.getInstance().obtenerJugadorGanador();
         Label textoGanador = new Label(textoResultado);
-        textoGanador.setFont(new Font(EstilosApp.FUENTE, 90));
+
+        textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
         textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
         cajaGanador.getChildren().add(textoGanador);
 
-
-
-        VBox cajaInferior = new VBox(30);
+        VBox cajaInferior = new VBox(20);
         cajaInferior.setAlignment(Pos.CENTER);
 
         BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage,contenedorPrincipal));
