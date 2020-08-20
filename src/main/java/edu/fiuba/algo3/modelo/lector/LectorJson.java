@@ -2,11 +2,14 @@ package edu.fiuba.algo3.modelo.lector;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import edu.fiuba.algo3.Excepciones.ArchivoNoEncontradoException;
 import edu.fiuba.algo3.Excepciones.CantidadErroneaDeRespuestasParaPreguntaException;
 import edu.fiuba.algo3.Excepciones.TipoDePuntajeEnArchivoNoValidoException;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import java.io.FileReader;
 import java.io.IOException;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -26,7 +29,7 @@ public class LectorJson implements LectorPreguntas {
     }
 
     @Override
-    public ArrayList<Pregunta> generarPreguntas() {
+    public ArrayList<Pregunta> generarPreguntas() throws ArchivoNoEncontradoException {
 
         Parser parserVerdaderoFalso = new VerdaderoFalsoParser();
         Parser parserMultipleChoice = new MultipleChoiceParser();
@@ -39,7 +42,7 @@ public class LectorJson implements LectorPreguntas {
         return preguntasTotales;
     }
 
-    private void agregarPreguntasDeArchivo(ArrayList<Pregunta> preguntasTotales, String ruta, Parser preguntaParser) {
+    private void agregarPreguntasDeArchivo(ArrayList<Pregunta> preguntasTotales, String ruta, Parser preguntaParser) throws ArchivoNoEncontradoException {
 
         JSONParser jsonParser = new JSONParser();
 
@@ -48,10 +51,9 @@ public class LectorJson implements LectorPreguntas {
             agregarPreguntas(preguntasTotales, lector, preguntaParser, jsonParser);
 
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (ParseException ex) {
+            throw new ArchivoNoEncontradoException(System.getProperty("user.dir") + ruta);
+
+        } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
     }
@@ -62,20 +64,17 @@ public class LectorJson implements LectorPreguntas {
         ArrayList<Pregunta> preguntas = new ArrayList<>();
         Object obj = jsonParser.parse(lector);
         JSONArray preguntasJson = (JSONArray) obj;
-        for(Object jsPregunta : preguntasJson){
 
+        for(Object jsPregunta : preguntasJson){
             try{
                 Pregunta unaPregunta = preguntaParser.parse((JSONObject) jsPregunta);
                 preguntas.add(unaPregunta);
-            } catch(CantidadErroneaDeRespuestasParaPreguntaException ex){
-                ex.printStackTrace();
-            } catch(TipoDePuntajeEnArchivoNoValidoException ex) {
+            } catch(CantidadErroneaDeRespuestasParaPreguntaException | TipoDePuntajeEnArchivoNoValidoException ex){
                 ex.printStackTrace();
             }
-
         }
-        preguntasTotales.addAll(preguntas);
 
+        preguntasTotales.addAll(preguntas);
     }
 
 }

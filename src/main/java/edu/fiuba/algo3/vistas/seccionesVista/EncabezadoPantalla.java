@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vistas.seccionesVista;
 
 import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.TextoContadorPreguntas;
 import edu.fiuba.algo3.vistas.textos.TextoTurno;
 import javafx.geometry.Pos;
@@ -21,7 +21,7 @@ public class EncabezadoPantalla extends HBox {
         cajaJugador1.setAlignment(Pos.CENTER);
 
         Jugador jugador2 = AlgoHoot.getInstance().obtenerJugador2();
-        CajaJugador cajaJugador2 = new CajaJugador(jugador2, EstilosApp.CELESTE);
+        CajaJugador cajaJugador2 = new CajaJugador(jugador2, EstilosApp.AZUL);
         cajaJugador2.setAlignment(Pos.CENTER);
 
         super.setAlignment(Pos.TOP_CENTER);

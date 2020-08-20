@@ -7,19 +7,19 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 
-public class AplicacionOnKeyPressEventHandler implements EventHandler<KeyEvent> {
+public class ControladorTeclaPresionada implements EventHandler<KeyEvent> {
 
     private Stage stage;
     private BarraDeMenu menuBar;
 
-    public AplicacionOnKeyPressEventHandler(Stage stage, BarraDeMenu menuBar) {
+    public ControladorTeclaPresionada(Stage stage, BarraDeMenu menuBar) {
         this.stage = stage;
         this.menuBar = menuBar;
     }
 
     @Override
-    public void handle(KeyEvent event) {
-        if (event.getCode() == KeyCode.ESCAPE) {
+    public void handle(KeyEvent evento) {
+        if (evento.getCode() == KeyCode.ESCAPE) {
             stage.setMaximized(true);
             menuBar.aplicacionMaximizada();
         }

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.controladores;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaGroupChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
-import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
+import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerGroupChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class ControladorEnviarGroupChoice extends ControladorPreguntasJuego implements EventHandler<ActionEvent> {
 
     private final HashMap<String, ArrayList<OpcionSimple>> respuestasUsuario;
-    ArrayList<BotonSpinnerGrupo> spinnerGrupos;
+    ArrayList<SpinnerGroupChoice> spinnerGrupos;
     private final ArrayList<String> nombresGrupo;
 
     public ControladorEnviarGroupChoice(ArrayList<String> nombresGrupo, Stage stage, ContenedorPrincipal contenedorPrincipal) {
@@ -32,12 +32,12 @@ public class ControladorEnviarGroupChoice extends ControladorPreguntasJuego impl
         definirSiguienteVista(respuestaDeUnJugador);
     }
 
-    public void agregarSpinnersGrupo(ArrayList<BotonSpinnerGrupo> spinnerGrupos){
+    public void agregarSpinnersGrupo(ArrayList<SpinnerGroupChoice> spinnerGrupos){
         this.spinnerGrupos = spinnerGrupos;
     }
 
-    public void agregarOpcionesSeleccionadas(ArrayList<BotonSpinnerGrupo> spinnersGrupo) {
-        for(BotonSpinnerGrupo spinner : spinnersGrupo){
+    public void agregarOpcionesSeleccionadas(ArrayList<SpinnerGroupChoice> spinnersGrupo) {
+        for(SpinnerGroupChoice spinner : spinnersGrupo){
            respuestasUsuario.get(spinner.getGrupoOpcion()).add(spinner.getOpcionSpinner());
         }
     }

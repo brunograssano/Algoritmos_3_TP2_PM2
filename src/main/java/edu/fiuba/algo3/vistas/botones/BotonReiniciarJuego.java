@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vistas.botones;
 
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.controladores.ControladorActivarBoton;
+import edu.fiuba.algo3.controladores.ControladorDesactivarBoton;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,12 +15,17 @@ public class BotonReiniciarJuego extends Button {
 
     public BotonReiniciarJuego(EventHandler<ActionEvent> controlador){
         super.setText("Reiniciar Juego");
-        super.setFont(Font.font(EstilosApp.FUENTE, 20));
+        super.setFont(Font.font(EstilosApp.FUENTE, 30));
+        super.setPadding(new Insets(10));
         super.setTextFill(Color.BLACK);
-        super.setOnAction(controlador);
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
-        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE), EstilosApp.BORDE_CURVO, new Insets(1)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE, EstilosApp.ALPHA_BOTON_INACTIVO), EstilosApp.BORDE_CURVO, new Insets(0)));
         super.setBackground(unFondo);
+
+        super.setOnAction(controlador);
+        super.setOnMouseEntered(new ControladorActivarBoton(this, EstilosApp.VERDE));
+        super.setOnMouseExited(new ControladorDesactivarBoton(this, EstilosApp.VERDE));
+
     }
 
 }

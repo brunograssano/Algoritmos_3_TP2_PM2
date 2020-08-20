@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.vistas.botones;
+package edu.fiuba.algo3.vistas.seccionesVista.spinners;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -15,14 +15,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class OpcionOrderedChoice extends HBox {
+public class SpinnerOrderedChoice extends HBox {
 
     private final static int PRIMER_POSICION = 1;
     private final static int VALOR_INICIAL_SPINNER = 1;
     private Label label;
     private Spinner<Integer> spinner;
 
-    public OpcionOrderedChoice(OpcionSimple opcion, int cantidadOpciones, ControladorEnviarOrderedChoice controlador){
+    public SpinnerOrderedChoice(OpcionSimple opcion, int cantidadOpciones, ControladorEnviarOrderedChoice controlador){
 
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(PRIMER_POSICION, cantidadOpciones, VALOR_INICIAL_SPINNER);
 

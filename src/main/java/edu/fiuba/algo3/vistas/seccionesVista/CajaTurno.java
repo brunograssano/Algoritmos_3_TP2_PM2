@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vistas.seccionesVista;
 
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.TextoContadorPreguntas;
 import edu.fiuba.algo3.vistas.textos.TextoTurno;
 import javafx.geometry.Insets;

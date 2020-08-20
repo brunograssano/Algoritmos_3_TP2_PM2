@@ -3,7 +3,7 @@ package edu.fiuba.algo3.controladores;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.respuestas.RespuestaOrderedChoice;
 import edu.fiuba.algo3.vistas.ContenedorPrincipal;
-import edu.fiuba.algo3.vistas.botones.OpcionOrderedChoice;
+import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerOrderedChoice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class ControladorEnviarOrderedChoice extends ControladorPreguntasJuego implements EventHandler<ActionEvent> {
 
-    private ArrayList<OpcionOrderedChoice> opcionesVista;
+    private ArrayList<SpinnerOrderedChoice> opcionesVista;
     private HashMap<String,OpcionSimple> opcionesOrdenHash;
     private ArrayList<OpcionSimple> opcionesJugador;
 
@@ -24,7 +24,7 @@ public class ControladorEnviarOrderedChoice extends ControladorPreguntasJuego im
         opcionesOrdenHash = new HashMap<>();
     }
 
-    public void agregarOpcionesSeleccionadas(ArrayList<OpcionOrderedChoice> opciones){
+    public void agregarOpcionesSeleccionadas(ArrayList<SpinnerOrderedChoice> opciones){
         opcionesVista = opciones;
     }
 
@@ -55,7 +55,7 @@ public class ControladorEnviarOrderedChoice extends ControladorPreguntasJuego im
         int contadorPos5 = 0;
 
         ArrayList<Integer> listaAux = new ArrayList<>();
-        for(OpcionOrderedChoice opcion : opcionesVista){
+        for(SpinnerOrderedChoice opcion : opcionesVista){
             listaAux.add(opcion.getNumeroOrden());
         }
         for(int orden : listaAux){
@@ -80,7 +80,7 @@ public class ControladorEnviarOrderedChoice extends ControladorPreguntasJuego im
     private void convertirOpcionesSimples() {
         opcionesVista.sort(new ComparadorOrderedChoice());
 
-        for (OpcionOrderedChoice opcionVista:opcionesVista) {
+        for (SpinnerOrderedChoice opcionVista:opcionesVista) {
             opcionesJugador.add(opcionesOrdenHash.get(opcionVista.getEnunciadoOpcion()));
         }
     }

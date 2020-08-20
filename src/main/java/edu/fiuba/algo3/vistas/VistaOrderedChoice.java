@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.orderedChoice.OrderedChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaOrderedChoice;
-import edu.fiuba.algo3.vistas.botones.OpcionOrderedChoice;
+import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerOrderedChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaOpcionesPregunta;
@@ -64,7 +64,7 @@ public class VistaOrderedChoice extends StackPane {
         VBox cajaOpciones = new VBox(5);
 
         for(OpcionSimple opcion : opciones){
-            OpcionOrderedChoice opcionOrdenable = new OpcionOrderedChoice(opcion, opciones.size(), controlador);
+            SpinnerOrderedChoice opcionOrdenable = new SpinnerOrderedChoice(opcion, opciones.size(), controlador);
             opcionOrdenable.setAlignment(Pos.CENTER_LEFT);
             cajaOpciones.getChildren().add(opcionOrdenable);
         }

@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.turnos;
 
-import edu.fiuba.algo3.modelo.AlgoHoot;
-import edu.fiuba.algo3.modelo.FinJuego;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
@@ -22,8 +20,7 @@ public class TerminoJuego extends Turno {
     }
 
     public String nombreDelJugador(){
-        FinJuego estadoFinalDelJuego = AlgoHoot.getInstance().determinarGanador();
-        return estadoFinalDelJuego.resultadoJuego();
+        return "";
     }
 
     public ArrayList<MultiplicadorJugador> multiplicadoresJugador(){

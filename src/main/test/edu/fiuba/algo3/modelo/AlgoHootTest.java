@@ -12,7 +12,7 @@ public class AlgoHootTest {
 
     @Test
     public void test01LePediAlAlgoHootUnaJugadaVoFRespondenBienAmbosJugadoresAmbosGananPuntos(){
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
+        AlgoHoot.getInstance().inicializarJuego("Joaquin","Bruno",new CriterioNeutro());
 
         OpcionCorrectaVerdaderoFalso unaOpcionCorrecta = new OpcionCorrectaVerdaderoFalso(true);
         RespuestaVerdaderoFalso unaRespuestaCorrecta = new RespuestaVerdaderoFalso(unaOpcionCorrecta);
@@ -29,7 +29,7 @@ public class AlgoHootTest {
 
     @Test
     public void test02LePediAlAlgoHootUnaJugadaVoFRespondeBienUnoUsaExclusividadGanaElDobleDePuntos(){
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
+        AlgoHoot.getInstance().inicializarJuego("Joaquin","Bruno",new CriterioNeutro());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 
@@ -51,7 +51,7 @@ public class AlgoHootTest {
 
     @Test
     public void test03LePidoAlAlgoHootUnGanadorEsteEsElJugadorConMasPuntos(){
-        AlgoHoot.getInstance().agregarJugadores("Joaquin","Bruno",new CriterioNeutro());
+        AlgoHoot.getInstance().inicializarJuego("Joaquin","Bruno",new CriterioNeutro());
 
         AlgoHoot.getInstance().usarModificador(new Exclusividad(AlgoHoot.getInstance().obtenerJugador1()));
 
@@ -65,13 +65,11 @@ public class AlgoHootTest {
         AlgoHoot.getInstance().procesarTurno(unaRespuestaIncorrecta);
 
         Jugador jugador1 = AlgoHoot.getInstance().obtenerJugador1();
-        FinJuego estadoFinal = AlgoHoot.getInstance().determinarGanador();
+        Ganador ganadorDelJuego = AlgoHoot.getInstance().obtenerGanador();
 
-        String nombreGanador = jugador1.obtenerNombre();
-        String puntosGanador = String.valueOf(jugador1.obtenerPuntos());
-        String resultadoEsperado = "Gano el jugador "+nombreGanador+" con "+ puntosGanador +" puntos";
+        String nombreEsperado = jugador1.obtenerNombre();
 
-        assertEquals(resultadoEsperado,estadoFinal.resultadoJuego());
+        assertEquals(nombreEsperado ,ganadorDelJuego.obtenerNombre());
     }
 
 }
