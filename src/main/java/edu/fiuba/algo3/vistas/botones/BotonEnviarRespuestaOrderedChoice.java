@@ -1,8 +1,11 @@
 package edu.fiuba.algo3.vistas.botones;
 
+import edu.fiuba.algo3.controladores.ControladorActivarBoton;
+import edu.fiuba.algo3.controladores.ControladorDesactivarBoton;
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerOrderedChoice;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -22,15 +25,18 @@ public class BotonEnviarRespuestaOrderedChoice extends Button {
         super.setTextFill(Color.BLACK);
         //Recibo la VBox de opciones dentro de pregunta
         ObservableList<Node> opciones =  cajaOpciones.getChildren();
-        ArrayList<OpcionOrderedChoice> opcionesOrden = new ArrayList<>();
+        ArrayList<SpinnerOrderedChoice> opcionesOrden = new ArrayList<>();
         for(Node opcion : opciones ){
-            opcionesOrden.add((OpcionOrderedChoice) opcion);
+            opcionesOrden.add((SpinnerOrderedChoice) opcion);
         }
         controlador.agregarOpcionesSeleccionadas(opcionesOrden);
         controlador.agregarOpcionesCorrectas(opcionesCorrectas);
-        super.setOnAction(controlador);
         super.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, EstilosApp.BORDE_CURVO, EstilosApp.GROSOR_BORDE)));
-        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE, EstilosApp.ALPHA_CAJA_JUGADOR_INACTIVO), EstilosApp.BORDE_CURVO, new Insets(0)));
+        Background unFondo = new Background(new BackgroundFill(Color.web(EstilosApp.VERDE, EstilosApp.ALPHA_BOTON_INACTIVO), EstilosApp.BORDE_CURVO, new Insets(0)));
         super.setBackground(unFondo);
+
+        super.setOnAction(controlador);
+        super.setOnMouseEntered(new ControladorActivarBoton(this, EstilosApp.VERDE));
+        super.setOnMouseExited(new ControladorDesactivarBoton(this, EstilosApp.VERDE));
     }
 }

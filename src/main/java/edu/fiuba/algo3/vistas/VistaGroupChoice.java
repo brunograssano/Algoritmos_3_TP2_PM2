@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.desordenador.CriterioDesorden;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
 import edu.fiuba.algo3.modelo.preguntas.groupChoice.GroupChoice;
 import edu.fiuba.algo3.vistas.botones.BotonEnviarRespuestaGroupChoice;
-import edu.fiuba.algo3.vistas.botones.BotonSpinnerGrupo;
+import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerGroupChoice;
 import edu.fiuba.algo3.vistas.seccionesVista.EncabezadoPantalla;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaOpcionesPregunta;
@@ -68,7 +68,7 @@ public class VistaGroupChoice extends StackPane{
         cajaOpciones.setAlignment(Pos.CENTER);
 
         for(OpcionSimple opcion:opciones) {
-            BotonSpinnerGrupo boton = new BotonSpinnerGrupo(nombresGrupos,opcion,controlador);
+            SpinnerGroupChoice boton = new SpinnerGroupChoice(nombresGrupos,opcion,controlador);
             boton.setAlignment(Pos.CENTER_LEFT);
             cajaOpciones.getChildren().add(boton);
         }
