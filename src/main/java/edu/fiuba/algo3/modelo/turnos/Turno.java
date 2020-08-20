@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.turnos;
 
+import edu.fiuba.algo3.Excepciones.GanadorNoDefinidoException;
+import edu.fiuba.algo3.modelo.Ganador;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
@@ -24,5 +26,9 @@ public abstract class Turno {
 
     public ArrayList<Exclusividad> exclusividadesJugador(){
         return jugadorDelTurno.exclusividades();
+    }
+
+    public Ganador obtenerGanador(){
+        throw new GanadorNoDefinidoException();
     }
 }

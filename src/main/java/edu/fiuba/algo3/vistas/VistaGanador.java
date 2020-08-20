@@ -3,6 +3,8 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorReiniciarJuego;
 import edu.fiuba.algo3.controladores.ControladorTerminarJuego;
 import edu.fiuba.algo3.modelo.AlgoHoot;
+import edu.fiuba.algo3.modelo.Empate;
+import edu.fiuba.algo3.modelo.Ganador;
 import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
@@ -43,11 +45,23 @@ public class VistaGanador extends StackPane {
         cajaGanador.setAlignment(Pos.CENTER);
         cajaGanador.setPadding(new Insets(90,0,0,0));
 
-        String textoResultado = AlgoHoot.getInstance().obtenerJugadorGanador();
-        Label textoGanador = new Label(textoResultado);
+        Ganador ganador = AlgoHoot.getInstance().obtenerGanador();
+        Label textoGanador = new Label();
 
-        textoGanador.setFont(Font.font(EstilosApp.FUENTE,90));
         textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
+
+        if(ganador instanceof Empate){
+             textoGanador.setText("Empate! Ambos jugadores son muy inteligentes");
+             textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
+        }else
+            textoGanador.setFont(Font.font(EstilosApp.FUENTE,70));{
+            if(Math.abs(ganador.obtenerPuntos()) > 1){
+                textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() +" puntos");
+            }else{
+                textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() +" punto");
+            }
+        }
+
         cajaGanador.getChildren().add(textoGanador);
 
         VBox cajaInferior = new VBox(30);

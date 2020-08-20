@@ -4,9 +4,10 @@ import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.modificadores.multiplicadores.MultiplicadorJugador;
 import edu.fiuba.algo3.modelo.puntos.Punto;
 import edu.fiuba.algo3.modelo.puntos.Puntuacion;
+
 import java.util.ArrayList;
 
-public class Jugador {
+public class Jugador implements Ganador {
 
     private String nombre;
     private Puntuacion puntos;
@@ -29,12 +30,18 @@ public class Jugador {
         exclusividades.add(new Exclusividad(this));
     }
 
-    public void sumarPuntos(Punto unosPuntos){
-        puntos.agregarPunto(unosPuntos);
+    @Override
+    public String obtenerNombre() {
+        return nombre;
     }
 
+    @Override
     public int obtenerPuntos(){
         return puntos.representar();
+    }
+
+    public void sumarPuntos(Punto unosPuntos){
+        puntos.agregarPunto(unosPuntos);
     }
 
     public void pierdeExclusividad(Exclusividad exclusividad) {
@@ -45,17 +52,15 @@ public class Jugador {
         multiplicadores.remove(multiplicadorJugador);
     }
 
-    public String obtenerNombre() {
-        return nombre;
-    }
-
     public FinJuego compararYObtenerGanador(Jugador jugadorContrario){
+
         if(this.obtenerPuntos() < jugadorContrario.obtenerPuntos()){
-            return new GanadorJuego(jugadorContrario);
+            return new JuegoGanado(jugadorContrario);
         }else if (this.obtenerPuntos() > jugadorContrario.obtenerPuntos()){
-            return new GanadorJuego(this);
+            return new JuegoGanado(this);
+        }else {
+            return new JuegoEmpatado();
         }
-        return new JuegoEmpatado();
     }
 
     public ArrayList<MultiplicadorJugador> multiplicadores() {
