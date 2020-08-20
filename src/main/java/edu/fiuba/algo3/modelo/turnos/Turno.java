@@ -25,4 +25,5 @@ public abstract class Turno {
     public ArrayList<Exclusividad> exclusividadesJugador(){
         return jugadorDelTurno.exclusividades();
     }
+
 }

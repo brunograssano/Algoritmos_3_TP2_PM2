@@ -65,13 +65,11 @@ public class AlgoHootTest {
         AlgoHoot.getInstance().procesarTurno(unaRespuestaIncorrecta);
 
         Jugador jugador1 = AlgoHoot.getInstance().obtenerJugador1();
-        FinJuego estadoFinal = AlgoHoot.getInstance().determinarGanador();
+        Ganador ganadorDelJuego = AlgoHoot.getInstance().obtenerGanador();
 
-        String nombreGanador = jugador1.obtenerNombre();
-        String puntosGanador = String.valueOf(jugador1.obtenerPuntos());
-        String resultadoEsperado = "Gano el jugador " +nombreGanador+" con " + puntosGanador +" puntos";
+        String nombreEsperado = jugador1.obtenerNombre();
 
-        assertEquals(resultadoEsperado,estadoFinal.resultadoJuego());
+        assertEquals(nombreEsperado ,ganadorDelJuego.obtenerNombre());
     }
 
 }

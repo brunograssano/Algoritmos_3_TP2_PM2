@@ -88,20 +88,16 @@ public class AlgoHoot {
         return jugador2;
     }
 
-    public String obtenerJugadorGanador() {
-        return turno.nombreDelJugador();
-    }
-
-    public FinJuego determinarGanador(){
+    public Ganador obtenerGanador() {
         return  jugador1.compararYObtenerGanador(jugador2);
-    }
-
-    public boolean terminoElJuego() {
-        return turno.terminoElJuego();
     }
 
     public String nombreDelJugadorEnTurno() {
         return turno.nombreDelJugador();
+    }
+
+    public boolean terminoElJuego() {
+        return turno.terminoElJuego();
     }
 
     public ArrayList<MultiplicadorJugador> multiplicadoresJugador() {

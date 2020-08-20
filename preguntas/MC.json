@@ -46,7 +46,7 @@
 	{
 		"MC": {
 			"puntaje": "penalizable",
-			"enunciado" : "Cuales de los siguientes son sets de instrucciones de procesadores?",
+			"enunciado" : "Cuales de las siguientes son sets de instrucciones de procesadores?",
 			"respuestasCorrectas": [
 				"ARM64",
 				"RISCV",
