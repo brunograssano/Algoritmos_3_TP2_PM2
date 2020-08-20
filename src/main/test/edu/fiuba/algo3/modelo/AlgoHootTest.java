@@ -69,7 +69,7 @@ public class AlgoHootTest {
 
         String nombreGanador = jugador1.obtenerNombre();
         String puntosGanador = String.valueOf(jugador1.obtenerPuntos());
-        String resultadoEsperado = "Gano el jugador "+nombreGanador+" con "+ puntosGanador +" puntos";
+        String resultadoEsperado = "Gano el jugador " +nombreGanador+" con " + puntosGanador +" puntos";
 
         assertEquals(resultadoEsperado,estadoFinal.resultadoJuego());
     }
