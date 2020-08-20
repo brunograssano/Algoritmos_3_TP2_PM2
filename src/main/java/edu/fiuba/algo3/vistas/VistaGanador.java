@@ -11,6 +11,7 @@ import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
 import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
+import edu.fiuba.algo3.vistas.textos.TextoJugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -19,6 +20,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class VistaGanador extends StackPane {
@@ -58,25 +62,7 @@ public class VistaGanador extends StackPane {
         cajaGanador.setPadding(new Insets(90, 0, 0, 0));
 
         Ganador ganador = AlgoHoot.getInstance().obtenerGanador();
-        Label textoGanador = new Label();
-
-        textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
-
-        if(ganador instanceof Empate){
-             textoGanador.setText("Empate! Ambos jugadores son muy inteligentes");
-             textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
-        }else if(ganador instanceof Jugador){
-            textoGanador.setFont(Font.font(EstilosApp.FUENTE,70));
-            {
-                if (Math.abs(ganador.obtenerPuntos()) > 1) {
-                    textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() + " puntos");
-                } else {
-                    textoGanador.setText("El Ganador es " + ganador.obtenerNombre() + " con " + ganador.obtenerPuntos() + " punto");
-                }
-            }
-        }
-
-        cajaGanador.getChildren().add(textoGanador);
+        armarTextoGanador(cajaGanador, ganador);
 
         VBox cajaInferior = new VBox(30);
         cajaInferior.setAlignment(Pos.CENTER);
@@ -88,8 +74,69 @@ public class VistaGanador extends StackPane {
         cajaInferior.getChildren().add(botonTerminarJuego);
 
         grilla.add(cajaLogo, 0, 0);
-        grilla.add(textoGanador, 0, 1);
+        grilla.add(cajaGanador, 0, 1);
         grilla.add(cajaInferior, 0, 2);
         super.getChildren().add(grilla);
     }
+
+
+    private void armarTextoGanador(VBox cajaGanador, Ganador ganador){
+
+        if(ganador instanceof Empate){
+            Label textoGanador = new Label();
+            textoGanador.setTextFill(Color.web(EstilosApp.GRIS));
+            textoGanador.setText("Empate! Ambos jugadores son muy inteligentes");
+            textoGanador.setFont(Font.font(EstilosApp.FUENTE,40));
+            cajaGanador.getChildren().add(textoGanador);
+        }else if(ganador instanceof Jugador){
+            TextFlow flow = new TextFlow();
+
+            Text elGanadorEs =new Text("El Ganador es ");
+            elGanadorEs.setStyle("-fx-font-weight: regular");
+
+            elGanadorEs.setFont(Font.font(EstilosApp.FUENTE,60));
+
+            Text con =new Text(" con ");
+            elGanadorEs.setStyle("-fx-font-weight: regular");
+
+            con.setFont(Font.font(EstilosApp.FUENTE,60));
+
+            Text nombreGanador=new Text(ganador.obtenerNombre());
+            nombreGanador.setStyle("-fx-font-weight: bold");
+            nombreGanador.setFont(Font.font(EstilosApp.FUENTE,80));
+
+            if(ganador.obtenerNombre().equals(AlgoHoot.getInstance().obtenerJugador1().obtenerNombre())){
+                nombreGanador.setFill(Color.RED);
+            }
+            else{
+                nombreGanador.setFill(Color.BLUE);
+            }
+
+            Text puntosGanador=new Text(""+ ganador.obtenerPuntos());
+            puntosGanador.setStyle("-fx-font-weight: bold");
+            puntosGanador.setFont(Font.font(EstilosApp.FUENTE,80));
+
+            Text puntos =new Text();
+            elGanadorEs.setStyle("-fx-font-weight: regular");
+
+            puntos.setFont(Font.font(EstilosApp.FUENTE,60));
+
+            if (Math.abs(ganador.obtenerPuntos()) != 1) {
+                puntos.setText("puntos.");
+            } else {
+                puntos.setText("punto.");
+            }
+
+
+            flow.getChildren().addAll(elGanadorEs, nombreGanador, con, puntosGanador, puntos);
+            flow.setTextAlignment(TextAlignment.CENTER);
+            cajaGanador.getChildren().add(flow);
+        }
+    }
+
+
+
+
+
+
 }
