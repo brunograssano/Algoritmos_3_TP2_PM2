@@ -89,10 +89,6 @@ public class AlgoHoot {
     }
 
     public Ganador obtenerGanador() {
-        return turno.obtenerGanador();
-    }
-
-    public FinJuego obtenerEstadoFinalJuego(){
         return  jugador1.compararYObtenerGanador(jugador2);
     }
 
@@ -103,7 +99,6 @@ public class AlgoHoot {
     public boolean terminoElJuego() {
         return turno.terminoElJuego();
     }
-
 
     public ArrayList<MultiplicadorJugador> multiplicadoresJugador() {
         return turno.multiplicadoresJugador();

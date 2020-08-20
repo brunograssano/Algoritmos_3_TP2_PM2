@@ -52,14 +52,13 @@ public class Jugador implements Ganador {
         multiplicadores.remove(multiplicadorJugador);
     }
 
-    public FinJuego compararYObtenerGanador(Jugador jugadorContrario){
-
+    public Ganador compararYObtenerGanador(Jugador jugadorContrario){
         if(this.obtenerPuntos() < jugadorContrario.obtenerPuntos()){
-            return new JuegoGanado(jugadorContrario);
+            return jugadorContrario;
         }else if (this.obtenerPuntos() > jugadorContrario.obtenerPuntos()){
-            return new JuegoGanado(this);
+            return this;
         }else {
-            return new JuegoEmpatado();
+            return new Empate();
         }
     }
 
