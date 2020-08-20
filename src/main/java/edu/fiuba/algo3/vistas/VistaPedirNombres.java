@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.ControladorNombresJugadores;
 import edu.fiuba.algo3.vistas.botones.BotonInicio;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaBasePreguntas;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

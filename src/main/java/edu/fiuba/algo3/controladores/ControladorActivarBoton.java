@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.controladores;
 
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

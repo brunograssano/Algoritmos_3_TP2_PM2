@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.AlgoHoot;
 import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

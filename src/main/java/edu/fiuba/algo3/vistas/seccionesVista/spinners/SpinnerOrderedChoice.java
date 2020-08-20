@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vistas.seccionesVista.spinners;
 
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.vistas.botones;
 import edu.fiuba.algo3.controladores.ControladorActivarBoton;
 import edu.fiuba.algo3.controladores.ControladorDesactivarBoton;
 import edu.fiuba.algo3.controladores.ControladorEnviarGroupChoice;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerGroupChoice;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
