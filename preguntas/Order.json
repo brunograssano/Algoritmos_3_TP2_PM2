@@ -1,3 +1,76 @@
-[
 
+[
+	{
+		"ORDER": {
+			"enunciado" : "Colocar los siguientes lenguajes en orden de creacion",
+			"respuestasEnOrden": [
+				"Fortran",
+				"C",
+				"Java",
+				"Brainfuck"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar las siguientes redes en orden descendente de creacion",
+			"respuestasEnOrden": [
+				"TikTok",
+				"Instagram",
+				"Twitter",
+				"Facebook",
+				"Myspace"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden los siguientes numeros binarios",
+			"respuestasEnOrden": [
+				"00000001",
+				"00000111",
+				"00010010",
+				"10000001"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden apropiado el uso de los siguientes comandos",
+			"respuestasEnOrden": [
+				"git clone",
+				"git branch dev",
+				"git add",
+				"git commit",
+				"git push"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden de creacion las siguientes distribuciones de linux",
+			"respuestasEnOrden": [
+				"Debian",
+				"Mandrake",
+				"Arch",
+				"Ubuntu",
+				"PoP OS!"
+			]
+		}
+	},
+
+	{
+		"ORDER": {
+			"enunciado" : "Colocar en orden descendiente las siguientes velocidades",
+			"respuestasEnOrden": [
+				"256 KBps",
+				"256 Kbps",
+				"1024 b/s"
+			]
+		}
+	}
 ]
