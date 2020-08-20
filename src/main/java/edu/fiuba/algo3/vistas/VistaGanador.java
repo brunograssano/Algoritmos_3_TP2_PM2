@@ -61,8 +61,11 @@ public class VistaGanador extends StackPane {
         Ganador ganador = AlgoHoot.getInstance().obtenerGanador();
         armarTextoGanador(cajaGanador, ganador);
 
-        VBox cajaInferior = new VBox(30);
+
+        HBox cajaInferior = new HBox(20);
+
         cajaInferior.setAlignment(Pos.CENTER);
+        cajaInferior.setSpacing(100);
 
         BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage, contenedorPrincipal));
         cajaInferior.getChildren().add(botonReiniciarJuego);
@@ -130,10 +133,6 @@ public class VistaGanador extends StackPane {
             cajaGanador.getChildren().add(flow);
         }
     }
-
-
-
-
-
-
+  
+  
 }
