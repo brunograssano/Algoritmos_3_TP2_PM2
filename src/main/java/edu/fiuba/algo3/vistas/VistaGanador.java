@@ -11,7 +11,6 @@ import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
 import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
-import edu.fiuba.algo3.vistas.textos.TextoJugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -60,12 +59,9 @@ public class VistaGanador extends StackPane {
 
         Ganador ganador = AlgoHoot.getInstance().obtenerGanador();
         armarTextoGanador(cajaGanador, ganador);
-
-
-        HBox cajaInferior = new HBox(20);
-
+        
+        VBox cajaInferior = new VBox(30);
         cajaInferior.setAlignment(Pos.CENTER);
-        cajaInferior.setSpacing(100);
 
         BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage, contenedorPrincipal));
         cajaInferior.getChildren().add(botonReiniciarJuego);
@@ -112,11 +108,11 @@ public class VistaGanador extends StackPane {
                 nombreGanador.setFill(Color.BLUE);
             }
 
-            Text textoPuntosGanador=new Text(""+ ganador.obtenerPuntos());
+            Text textoPuntosGanador = new Text(""+ ganador.obtenerPuntos());
             textoPuntosGanador.setStyle("-fx-font-weight: bold");
             textoPuntosGanador.setFont(Font.font(EstilosApp.FUENTE,80));
 
-            Text textoPuntos =new Text();
+            Text textoPuntos = new Text();
             textoElGanadorEs.setStyle("-fx-font-weight: regular");
 
             textoPuntos.setFont(Font.font(EstilosApp.FUENTE,60));
@@ -126,7 +122,6 @@ public class VistaGanador extends StackPane {
             } else {
                 textoPuntos.setText("punto.");
             }
-
 
             flow.getChildren().addAll(textoElGanadorEs, nombreGanador, textoCon, textoPuntosGanador, textoPuntos);
             flow.setTextAlignment(TextAlignment.CENTER);
