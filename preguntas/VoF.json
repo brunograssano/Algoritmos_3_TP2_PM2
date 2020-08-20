@@ -1,2 +1,89 @@
 [
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"La primera computadora en Argentina se llamo Clementina",
+			"enunciadoEsCorrecto": true
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": false,
+			"enunciado":"Uno de los padres de la computacion es Alan Turing",
+			"enunciadoEsCorrecto": true
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"Hasta ahora la computacion cuantica no esta disponible al consumidor",
+			"enunciadoEsCorrecto": true
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"El patron poxy fue creado por Richard Stallman",
+			"enunciadoEsCorrecto": false
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"C tiene Garbage Collector",
+			"enunciadoEsCorrecto": false
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"El principal objetivo del lenguaje Rust es la velocidad de desarrollo, poniendo los bugs en segundo plano",
+			"enunciadoEsCorrecto": false
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": false,
+			"enunciado":"El kernel de Linux tiene licencia GPLv2",
+			"enunciadoEsCorrecto": true
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": false,
+			"enunciado":"Git es software propietario",
+			"enunciadoEsCorrecto": false
+		}
+	},
+	{
+		"VoF": {
+			"penalizable": false,
+			"enunciado":"Microsoft no tiene proyectos open source",
+			"enunciadoEsCorrecto": false
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": true,
+			"enunciado":"Git es un invento del creador del Linux Kernel, Linus Torvalds",
+			"enunciadoEsCorrecto": true
+		}
+	},
+
+	{
+		"VoF": {
+			"penalizable": false,
+			"enunciado":"Son \"lenguajes dinamicos\" aquellos que en la informatica no contienen palabras derivadas del latin",
+			"enunciadoEsCorrecto": false
+		}
+	}
+
 ]
