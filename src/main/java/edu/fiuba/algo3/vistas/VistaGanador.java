@@ -59,7 +59,7 @@ public class VistaGanador extends StackPane {
 
         Ganador ganador = AlgoHoot.getInstance().obtenerGanador();
         armarTextoGanador(cajaGanador, ganador);
-        
+
         VBox cajaInferior = new VBox(30);
         cajaInferior.setAlignment(Pos.CENTER);
 
