@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorActivarBoton;
 import edu.fiuba.algo3.controladores.ControladorDesactivarBoton;
 import edu.fiuba.algo3.controladores.ControladorEnviarOrderedChoice;
 import edu.fiuba.algo3.modelo.preguntas.OpcionSimple;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.seccionesVista.spinners.SpinnerOrderedChoice;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

@@ -4,7 +4,7 @@ import edu.fiuba.algo3.controladores.ControladorActivarBoton;
 import edu.fiuba.algo3.controladores.ControladorDesactivarBoton;
 import edu.fiuba.algo3.controladores.ControladorModificador;
 import edu.fiuba.algo3.modelo.modificadores.exclusividad.Exclusividad;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

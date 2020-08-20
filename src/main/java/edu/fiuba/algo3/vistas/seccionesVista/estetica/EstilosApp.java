@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vistas;
+package edu.fiuba.algo3.vistas.seccionesVista.estetica;
 
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;

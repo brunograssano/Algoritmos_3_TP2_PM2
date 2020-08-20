@@ -9,11 +9,13 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.vistas.botones.BotonReiniciarJuego;
 import edu.fiuba.algo3.vistas.botones.BotonTerminarJuego;
 import edu.fiuba.algo3.vistas.seccionesVista.GrillaGanador;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.AlgoHootPrincipal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,19 +23,28 @@ import javafx.stage.Stage;
 
 public class VistaGanador extends StackPane {
 
-    private Stage stage;
+    private final Stage stage;
+    //   private final ArrayList<MovingDot> puntitos;
+    //   private final Random randomizador = new Random();
 
-    public VistaGanador(Stage stage,ContenedorPrincipal contenedorPrincipal){
+    public VistaGanador(Stage stage, ContenedorPrincipal contenedorPrincipal) {
 
         this.stage = stage;
+//        puntitos = new ArrayList<>();
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
-        BackgroundImage fondoImagen = new BackgroundImage(imagen,null,null, BackgroundPosition.CENTER,null);
+        Image imagenfondo = new Image("file:" + System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
+        BackgroundImage fondoImagen = new BackgroundImage(imagenfondo, null, null, BackgroundPosition.CENTER, null);
         Background fondo = new Background(fondoImagen);
         super.setBackground(fondo);
 
 
-        GrillaGanador grilla = new GrillaGanador(1280,720);
+        Image imagenPapelPicado = new Image("file:" + System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/papelpicado.gif");
+        ImageView imageviewpapel = new ImageView(imagenPapelPicado);
+        imageviewpapel.setFitHeight(720);
+        imageviewpapel.setFitWidth(1280);
+        super.getChildren().add(imageviewpapel);
+
+        GrillaGanador grilla = new GrillaGanador(1280, 720);
         grilla.setAlignment(Pos.CENTER);
 
         VBox cajaLogo = new VBox();
@@ -44,7 +55,7 @@ public class VistaGanador extends StackPane {
 
         VBox cajaGanador = new VBox();
         cajaGanador.setAlignment(Pos.CENTER);
-        cajaGanador.setPadding(new Insets(90,0,0,0));
+        cajaGanador.setPadding(new Insets(90, 0, 0, 0));
 
         Ganador ganador = AlgoHoot.getInstance().obtenerGanador();
         Label textoGanador = new Label();
@@ -70,14 +81,14 @@ public class VistaGanador extends StackPane {
         VBox cajaInferior = new VBox(30);
         cajaInferior.setAlignment(Pos.CENTER);
 
-        BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage,contenedorPrincipal));
+        BotonReiniciarJuego botonReiniciarJuego = new BotonReiniciarJuego(new ControladorReiniciarJuego(stage, contenedorPrincipal));
         cajaInferior.getChildren().add(botonReiniciarJuego);
 
         BotonTerminarJuego botonTerminarJuego = new BotonTerminarJuego(new ControladorTerminarJuego());
         cajaInferior.getChildren().add(botonTerminarJuego);
 
-        grilla.add(cajaLogo,0,0);
-        grilla.add(textoGanador,0,1);
+        grilla.add(cajaLogo, 0, 0);
+        grilla.add(textoGanador, 0, 1);
         grilla.add(cajaInferior, 0, 2);
         super.getChildren().add(grilla);
     }

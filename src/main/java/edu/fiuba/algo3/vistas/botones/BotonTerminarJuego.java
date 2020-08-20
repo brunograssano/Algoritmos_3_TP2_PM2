@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vistas.botones;
 
 import edu.fiuba.algo3.controladores.ControladorActivarBoton;
 import edu.fiuba.algo3.controladores.ControladorDesactivarBoton;
-import edu.fiuba.algo3.vistas.EstilosApp;
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

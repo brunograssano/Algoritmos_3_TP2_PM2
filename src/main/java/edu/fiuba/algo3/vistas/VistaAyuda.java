@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.vistas.seccionesVista.estetica.EstilosApp;
 import edu.fiuba.algo3.vistas.textos.TextoAyuda;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
