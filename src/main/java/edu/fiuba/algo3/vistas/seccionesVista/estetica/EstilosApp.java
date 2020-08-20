@@ -8,7 +8,7 @@ public class EstilosApp {
     public static final String GRIS = "D8DDEF";
     public static final String VIOLETA = "9370DB";
     public static final String VERDE = "40F99B";
-    public static final String AZUL = "090DAB";
+    public static final String AZUL = "161AF3";
     public static final String AMARILLO = "FFC857";
     public static final String ROJO = "EF2D56";
     public static final String FUENTE = "montserrat";
