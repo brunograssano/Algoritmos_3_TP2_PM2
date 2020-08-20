@@ -28,13 +28,10 @@ import javafx.stage.Stage;
 public class VistaGanador extends StackPane {
 
     private final Stage stage;
-    //   private final ArrayList<MovingDot> puntitos;
-    //   private final Random randomizador = new Random();
 
     public VistaGanador(Stage stage, ContenedorPrincipal contenedorPrincipal) {
 
         this.stage = stage;
-//        puntitos = new ArrayList<>();
 
         Image imagenfondo = new Image("file:" + System.getProperty("user.dir") + "/src/main/java/edu/fiuba/algo3/resources/imagenes/fondoInicio.jpg");
         BackgroundImage fondoImagen = new BackgroundImage(imagenfondo, null, null, BackgroundPosition.CENTER, null);
@@ -91,15 +88,15 @@ public class VistaGanador extends StackPane {
         }else if(ganador instanceof Jugador){
             TextFlow flow = new TextFlow();
 
-            Text elGanadorEs =new Text("El Ganador es ");
-            elGanadorEs.setStyle("-fx-font-weight: regular");
+            Text textoElGanadorEs =new Text("El Ganador es ");
+            textoElGanadorEs.setStyle("-fx-font-weight: regular");
 
-            elGanadorEs.setFont(Font.font(EstilosApp.FUENTE,60));
+            textoElGanadorEs.setFont(Font.font(EstilosApp.FUENTE,60));
 
-            Text con =new Text(" con ");
-            elGanadorEs.setStyle("-fx-font-weight: regular");
+            Text textoCon =new Text(" con ");
+            textoElGanadorEs.setStyle("-fx-font-weight: regular");
 
-            con.setFont(Font.font(EstilosApp.FUENTE,60));
+            textoCon.setFont(Font.font(EstilosApp.FUENTE,60));
 
             Text nombreGanador=new Text(ganador.obtenerNombre());
             nombreGanador.setStyle("-fx-font-weight: bold");
@@ -112,23 +109,23 @@ public class VistaGanador extends StackPane {
                 nombreGanador.setFill(Color.BLUE);
             }
 
-            Text puntosGanador=new Text(""+ ganador.obtenerPuntos());
-            puntosGanador.setStyle("-fx-font-weight: bold");
-            puntosGanador.setFont(Font.font(EstilosApp.FUENTE,80));
+            Text textoPuntosGanador=new Text(""+ ganador.obtenerPuntos());
+            textoPuntosGanador.setStyle("-fx-font-weight: bold");
+            textoPuntosGanador.setFont(Font.font(EstilosApp.FUENTE,80));
 
-            Text puntos =new Text();
-            elGanadorEs.setStyle("-fx-font-weight: regular");
+            Text textoPuntos =new Text();
+            textoElGanadorEs.setStyle("-fx-font-weight: regular");
 
-            puntos.setFont(Font.font(EstilosApp.FUENTE,60));
+            textoPuntos.setFont(Font.font(EstilosApp.FUENTE,60));
 
             if (Math.abs(ganador.obtenerPuntos()) != 1) {
-                puntos.setText("puntos.");
+                textoPuntos.setText("puntos.");
             } else {
-                puntos.setText("punto.");
+                textoPuntos.setText("punto.");
             }
 
 
-            flow.getChildren().addAll(elGanadorEs, nombreGanador, con, puntosGanador, puntos);
+            flow.getChildren().addAll(textoElGanadorEs, nombreGanador, textoCon, textoPuntosGanador, textoPuntos);
             flow.setTextAlignment(TextAlignment.CENTER);
             cajaGanador.getChildren().add(flow);
         }
