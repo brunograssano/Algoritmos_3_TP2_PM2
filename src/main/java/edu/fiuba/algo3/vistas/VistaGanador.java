@@ -118,9 +118,9 @@ public class VistaGanador extends StackPane {
             textoPuntos.setFont(Font.font(EstilosApp.FUENTE,60));
 
             if (Math.abs(ganador.obtenerPuntos()) != 1) {
-                textoPuntos.setText("puntos.");
+                textoPuntos.setText(" puntos.");
             } else {
-                textoPuntos.setText("punto.");
+                textoPuntos.setText(" punto.");
             }
 
             flow.getChildren().addAll(textoElGanadorEs, nombreGanador, textoCon, textoPuntosGanador, textoPuntos);
