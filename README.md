@@ -16,7 +16,7 @@ Corrector: Pablo Massuh - [perfil](https://github.com/xpitr256)
 ## Manejo de recursos aparte
 Tablero de Trello - [Trello](https://trello.com/b/VJmgsyJc/tp-algoritmos)  
 
-Edicion de Informe - [Overleaf](https://es.overleaf.com/3373845313gbbdtrmdjgdn)  
+Ver codigo de Informe - [Overleaf](https://www.overleaf.com/read/hjwzhvctscfg)  
 
 ### Pre-requisitos
 
